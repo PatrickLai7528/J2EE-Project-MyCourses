@@ -7,8 +7,11 @@ package entity;
  * @ProjectName server
  */
 
+import javax.persistence.*;
 import java.util.Objects;
 
+@Entity
+@Table(name = "comment_entity")
 public class CommentEntity {
     private long cmid;
     private String content;
@@ -17,12 +20,9 @@ public class CommentEntity {
     public CommentEntity() {
     }
 
-    public CommentEntity(long cmid, String content, String commentByEmail) {
-        this.cmid = cmid;
-        this.content = content;
-        this.commentByEmail = commentByEmail;
-    }
-
+    @Id
+    @Column(name = "cmid")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public long getCmid() {
         return cmid;
     }
@@ -31,6 +31,7 @@ public class CommentEntity {
         this.cmid = cmid;
     }
 
+    @Column(name = "content")
     public String getContent() {
         return content;
     }
@@ -39,6 +40,7 @@ public class CommentEntity {
         this.content = content;
     }
 
+    @Column(name="comment_by_email")
     public String getCommentByEmail() {
         return commentByEmail;
     }

@@ -7,12 +7,15 @@ package entity;
  * @ProjectName server
  */
 
+import javax.persistence.*;
 import java.util.Date;
 import java.util.Objects;
 
+@Entity
+@Table(name = "releasement_entity")
 public class ReleasementEntity {
     private long rid;
-    private  CourseEntity courseEntity;
+    private CourseEntity courseEntity;
     private int startHour;
     private int startMin;
     private int endHour;
@@ -26,19 +29,9 @@ public class ReleasementEntity {
     public ReleasementEntity() {
     }
 
-    public ReleasementEntity(long rid, CourseEntity courseEntity, int startHour, int startMin, int endHour, int endMin, int repeatAfterNDay, Date effectiveTime, Date deadTime, int limitNumber) {
-        this.rid = rid;
-        this.courseEntity = courseEntity;
-        this.startHour = startHour;
-        this.startMin = startMin;
-        this.endHour = endHour;
-        this.endMin = endMin;
-        this.repeatAfterNDay = repeatAfterNDay;
-        this.effectiveTime = effectiveTime;
-        this.deadTime = deadTime;
-        this.limitNumber = limitNumber;
-    }
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "rid")
     public long getRid() {
         return rid;
     }
@@ -47,6 +40,8 @@ public class ReleasementEntity {
         this.rid = rid;
     }
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "course_id", referencedColumnName = "cid")
     public CourseEntity getCourseEntity() {
         return courseEntity;
     }
@@ -55,6 +50,7 @@ public class ReleasementEntity {
         this.courseEntity = courseEntity;
     }
 
+    @Column(name = "start_hour")
     public int getStartHour() {
         return startHour;
     }
@@ -63,6 +59,7 @@ public class ReleasementEntity {
         this.startHour = startHour;
     }
 
+    @Column(name = "start_min")
     public int getStartMin() {
         return startMin;
     }
@@ -71,6 +68,7 @@ public class ReleasementEntity {
         this.startMin = startMin;
     }
 
+    @Column(name = "end_hour")
     public int getEndHour() {
         return endHour;
     }
@@ -79,6 +77,7 @@ public class ReleasementEntity {
         this.endHour = endHour;
     }
 
+    @Column(name = "end_min")
     public int getEndMin() {
         return endMin;
     }
@@ -87,6 +86,7 @@ public class ReleasementEntity {
         this.endMin = endMin;
     }
 
+    @Column(name = "repeat_after_n_day")
     public int getRepeatAfterNDay() {
         return repeatAfterNDay;
     }
@@ -95,6 +95,7 @@ public class ReleasementEntity {
         this.repeatAfterNDay = repeatAfterNDay;
     }
 
+    @Column(name = "effective_time")
     public Date getEffectiveTime() {
         return effectiveTime;
     }
@@ -103,6 +104,7 @@ public class ReleasementEntity {
         this.effectiveTime = effectiveTime;
     }
 
+    @Column(name = "dead_time")
     public Date getDeadTime() {
         return deadTime;
     }
@@ -111,6 +113,7 @@ public class ReleasementEntity {
         this.deadTime = deadTime;
     }
 
+    @Column(name = "limit_number")
     public int getLimitNumber() {
         return limitNumber;
     }

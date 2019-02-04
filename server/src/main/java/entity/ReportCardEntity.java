@@ -8,22 +8,22 @@ package entity;
  * @ProjectName server
  */
 
-import java.util.Map;
+import javax.persistence.*;
+import java.util.List;
 import java.util.Objects;
 
+@Entity
+@Table(name = "report_card_entity")
 public class ReportCardEntity {
     private long rcid;
-    // string for student no. double for score
-    private Map<String, Double> report;
+    private List<ReportCardItem> reportCardItemList   ;
 
     public ReportCardEntity() {
     }
 
-    public ReportCardEntity(long rcid, Map<String, Double> report) {
-        this.rcid = rcid;
-        this.report = report;
-    }
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "rcid")
     public long getRcid() {
         return rcid;
     }
@@ -32,19 +32,21 @@ public class ReportCardEntity {
         this.rcid = rcid;
     }
 
-    public Map<String, Double> getReport() {
-        return report;
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "report_card_item")
+    public List<ReportCardItem> getReportCardItemList() {
+        return reportCardItemList;
     }
 
-    public void setReport(Map<String, Double> report) {
-        this.report = report;
+    public void setReportCardItemList(List<ReportCardItem> reportCardItemList) {
+        this.reportCardItemList = reportCardItemList;
     }
 
     @Override
     public String toString() {
         return "ReportCardEntity{" +
                 "rcid=" + rcid +
-                ", report=" + report +
+                ", reportCardItemList=" + reportCardItemList +
                 '}';
     }
 
@@ -54,11 +56,11 @@ public class ReportCardEntity {
         if (!(o instanceof ReportCardEntity)) return false;
         ReportCardEntity that = (ReportCardEntity) o;
         return getRcid() == that.getRcid() &&
-                Objects.equals(getReport(), that.getReport());
+                Objects.equals(getReportCardItemList(), that.getReportCardItemList());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getRcid(), getReport());
+        return Objects.hash(getRcid(), getReportCardItemList());
     }
 }

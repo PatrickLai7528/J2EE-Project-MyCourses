@@ -8,23 +8,23 @@ package entity;
  * @ProjectName server
  */
 
+import javax.persistence.*;
 import java.util.List;
 import java.util.Objects;
 
+@Entity
+@Table(name = "forum_entity")
 public class ForumEntity {
     private long fid;
     private String topic;
     private List<CommentEntity> commentEntityList;
-
+    private CourseEntity courseEntity;
     public ForumEntity() {
     }
 
-    public ForumEntity(long fid, String topic, List<CommentEntity> commentEntityList) {
-        this.fid = fid;
-        this.topic = topic;
-        this.commentEntityList = commentEntityList;
-    }
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "fid")
     public long getFid() {
         return fid;
     }
@@ -33,6 +33,7 @@ public class ForumEntity {
         this.fid = fid;
     }
 
+    @Column(name = "topic", unique = true)
     public String getTopic() {
         return topic;
     }
@@ -41,6 +42,7 @@ public class ForumEntity {
         this.topic = topic;
     }
 
+    @OneToMany
     public List<CommentEntity> getCommentEntityList() {
         return commentEntityList;
     }
@@ -56,6 +58,15 @@ public class ForumEntity {
                 ", topic='" + topic + '\'' +
                 ", commentEntityList=" + commentEntityList +
                 '}';
+    }
+
+    @JoinColumn(name = "course_id")
+    public CourseEntity getCourseEntity() {
+        return courseEntity;
+    }
+
+    public void setCourseEntity(CourseEntity courseEntity) {
+        this.courseEntity = courseEntity;
     }
 
     @Override

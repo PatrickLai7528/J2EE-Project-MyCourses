@@ -1,5 +1,7 @@
 package entity;
 
+import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 
 /*
@@ -9,24 +11,21 @@ import java.util.Objects;
  * @Date 2019-02-03
  * @ProjectName server
  */
-public final class StudentEntity {
+
+@Entity
+@Table(name = "student_entity")
+public final class StudentEntity implements Serializable {
     private String email;
     private String password;
     private String name;
-    private long studentNo;
-    private boolean isDeleted;
+    private String studentNo;
+    private boolean deleted;
 
     public StudentEntity() {
     }
 
-    public StudentEntity(String email, String password, String name, long studentNo, boolean isDeleted) {
-        this.email = email;
-        this.password = password;
-        this.name = name;
-        this.studentNo = studentNo;
-        this.isDeleted = isDeleted;
-    }
-
+    @Id
+    @Column(name = "email", length = 200)
     public String getEmail() {
         return email;
     }
@@ -35,6 +34,8 @@ public final class StudentEntity {
         this.email = email;
     }
 
+    @Basic
+    @Column(name = "password", length = 200)
     public String getPassword() {
         return password;
     }
@@ -43,6 +44,8 @@ public final class StudentEntity {
         this.password = password;
     }
 
+    @Basic
+    @Column(name = "name", length = 200)
     public String getName() {
         return name;
     }
@@ -51,20 +54,24 @@ public final class StudentEntity {
         this.name = name;
     }
 
-    public long getStudentNo() {
+    @Basic
+    @Column(name = "student_no", unique = true, length = 200)
+    public String getStudentNo() {
         return studentNo;
     }
 
-    public void setStudentNo(long studentNo) {
+    public void setStudentNo(String studentNo) {
         this.studentNo = studentNo;
     }
 
-    public boolean isDeleted() {
-        return isDeleted;
+    @Basic
+    @Column(name = "deleted")
+    public boolean getDeleted() {
+        return deleted;
     }
 
     public void setDeleted(boolean deleted) {
-        isDeleted = deleted;
+        this.deleted = deleted;
     }
 
     @Override
@@ -74,7 +81,7 @@ public final class StudentEntity {
                 ", password='" + password + '\'' +
                 ", name='" + name + '\'' +
                 ", studentNo=" + studentNo +
-                ", isDeleted=" + isDeleted +
+                ", isDeleted=" + deleted +
                 '}';
     }
 
@@ -83,15 +90,15 @@ public final class StudentEntity {
         if (this == o) return true;
         if (!(o instanceof StudentEntity)) return false;
         StudentEntity that = (StudentEntity) o;
-        return getStudentNo() == that.getStudentNo() &&
-                isDeleted() == that.isDeleted() &&
-                getEmail().equals(that.getEmail()) &&
-                getPassword().equals(that.getPassword()) &&
-                getName().equals(that.getName());
+        return getDeleted() == that.getDeleted() &&
+                Objects.equals(getEmail(), that.getEmail()) &&
+                Objects.equals(getPassword(), that.getPassword()) &&
+                Objects.equals(getName(), that.getName()) &&
+                Objects.equals(getStudentNo(), that.getStudentNo());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getEmail(), getPassword(), getName(), getStudentNo(), isDeleted());
+        return Objects.hash(getEmail(), getPassword(), getName(), getStudentNo(), getDeleted());
     }
 }

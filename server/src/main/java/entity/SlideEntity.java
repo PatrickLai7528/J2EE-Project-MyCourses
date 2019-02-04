@@ -8,22 +8,23 @@ package entity;
  * @ProjectName server
  */
 
+import javax.persistence.*;
 import java.util.Objects;
 
+@Entity
+@Table(name = "slide_entity")
 public class SlideEntity {
     private long sid;
     private String title;
     private String filePath;
+    private CourseEntity courseEntity;
 
     public SlideEntity() {
     }
 
-    public SlideEntity(long sid, String title, String filePath) {
-        this.sid = sid;
-        this.title = title;
-        this.filePath = filePath;
-    }
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "sid")
     public long getSid() {
         return sid;
     }
@@ -32,6 +33,7 @@ public class SlideEntity {
         this.sid = sid;
     }
 
+    @Column(name = "title")
     public String getTitle() {
         return title;
     }
@@ -40,12 +42,22 @@ public class SlideEntity {
         this.title = title;
     }
 
+    @Column(name = "file_path")
     public String getFilePath() {
         return filePath;
     }
 
     public void setFilePath(String filePath) {
         this.filePath = filePath;
+    }
+
+    @Column(name = "course_id")
+    public CourseEntity getCourseEntity() {
+        return courseEntity;
+    }
+
+    public void setCourseEntity(CourseEntity courseEntity) {
+        this.courseEntity = courseEntity;
     }
 
     @Override

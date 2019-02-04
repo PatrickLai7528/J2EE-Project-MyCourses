@@ -7,8 +7,11 @@ package entity;
  * @ProjectName server
  */
 
+import javax.persistence.*;
 import java.util.Objects;
 
+@Entity
+@Table(name = "assignment_entity")
 public class AssignmentEntity {
     private long assId;
     private String title;
@@ -18,13 +21,7 @@ public class AssignmentEntity {
     public AssignmentEntity() {
     }
 
-    public AssignmentEntity(long assId, String title, String description, SlideEntity slideEntity) {
-        this.assId = assId;
-        this.title = title;
-        this.description = description;
-        this.slideEntity = slideEntity;
-    }
-
+    @Column(name = "ass_id")
     public long getAssId() {
         return assId;
     }
@@ -33,6 +30,7 @@ public class AssignmentEntity {
         this.assId = assId;
     }
 
+    @Column(name = "title")
     public String getTitle() {
         return title;
     }
@@ -41,6 +39,7 @@ public class AssignmentEntity {
         this.title = title;
     }
 
+    @Column(name = "description")
     public String getDescription() {
         return description;
     }
@@ -49,6 +48,8 @@ public class AssignmentEntity {
         this.description = description;
     }
 
+    @ManyToOne
+    @MapKey(name = "sid")
     public SlideEntity getSlideEntity() {
         return slideEntity;
     }

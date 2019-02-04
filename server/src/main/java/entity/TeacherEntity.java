@@ -1,5 +1,9 @@
 package entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Objects;
 
 /*
@@ -9,24 +13,19 @@ import java.util.Objects;
  * @Date 2019-02-03
  * @ProjectName server
  */
+@Entity
+@Table(name = "teacher_entity")
 public final class TeacherEntity {
-
     private String email;
     private String password;
     private String name;
     private long teacherNo;
 
-
-    public TeacherEntity(String email, String password, String name, long teacherNo) {
-        this.email = email;
-        this.password = password;
-        this.name = name;
-        this.teacherNo = teacherNo;
-    }
-
     public TeacherEntity() {
     }
 
+    @Id
+    @Column(name="email")
     public String getEmail() {
         return email;
     }
@@ -35,6 +34,7 @@ public final class TeacherEntity {
         this.email = email;
     }
 
+    @Column(name = "password")
     public String getPassword() {
         return password;
     }
@@ -43,6 +43,7 @@ public final class TeacherEntity {
         this.password = password;
     }
 
+    @Column(name = "name")
     public String getName() {
         return name;
     }
@@ -51,6 +52,7 @@ public final class TeacherEntity {
         this.name = name;
     }
 
+    @Column(name = "teacher_no", unique = true)
     public long getTeacherNo() {
         return teacherNo;
     }
