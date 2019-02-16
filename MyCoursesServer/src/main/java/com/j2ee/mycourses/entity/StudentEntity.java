@@ -25,7 +25,7 @@ public final class StudentEntity implements Serializable {
     }
 
     @Id
-    @Column(name = "semail", length = 200)
+    @Column(name = "email", length = 200)
     public String getEmail() {
         return this.email;
     }

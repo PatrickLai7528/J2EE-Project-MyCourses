@@ -1,28 +1,31 @@
-import * as React from "react";
-import {Component} from "react";
+import * as React from 'react';
 import './App.css';
-import {
-    Layout
-} from 'antd';
-
-import MyContent from "./../MyContent/MyContent";
+import {Layout} from "antd";
 import MySider from "../MySider/MySider";
-import MyHeader from "./../MyHeader/MyHeader";
+import {MyContent} from "../MyContent/MyContent";
+import {MyHeader} from "../MyHeader/MyHeader";
 
-export default class App extends Component {
+// class App extends Component {
+//     render() {
+//         return (
+//             <div>
+//                 fuck
+//             </div>
+//         );
+//     }
+// }
+const {Footer} = Layout;
+const App = () => (
+    <Layout>
+        <MySider/>
+        <Layout style={{marginLeft: 200}}>
+            {/*<MyHeader/>*/}
+            <MyContent/>
+            <Footer style={{textAlign: 'center'}}>
+                Ant Design ©2018 Created by Ant UED
+            </Footer>
+        </Layout>
+    </Layout>
+);
 
-    render() {
-        return (
-            <Layout>
-                <MyHeader/>
-                <Layout>
-                    <MySider/>
-                    <Layout>
-                        <MyContent/>
-                    </Layout>
-                </Layout>
-            </Layout>
-        );
-    }
-}
-
+export default App;

@@ -37,7 +37,7 @@ public class UserAuthService implements IUserAuthService {
 
     @Override
     public void registry(TeacherEntity teacherEntity) throws TeacherRepeatedException {
-        if (teacherDao.retrieveByEmail(teacherEntity.getTeacherEmail()) != null)
+        if (teacherDao.retrieveByEmail(teacherEntity.getEmail()) != null)
             throw new TeacherRepeatedException();
 
         teacherEntity.setPassword(encryptService.encrypt(teacherEntity.getPassword()));
@@ -74,11 +74,11 @@ public class UserAuthService implements IUserAuthService {
 
     @Override
     public boolean logIn(TeacherEntity teacherEntity) throws TeacherNotExistException {
-        if (teacherDao.retrieveByEmail(teacherEntity.getTeacherEmail()) == null)
+        if (teacherDao.retrieveByEmail(teacherEntity.getEmail()) == null)
             throw new TeacherNotExistException();
         String unEncryptedPassword = teacherEntity.getPassword();
         String encryptedPassword = encryptService.encrypt(unEncryptedPassword);
-        TeacherEntity teacherFound = teacherDao.retrieveByEmail(teacherEntity.getTeacherEmail());
+        TeacherEntity teacherFound = teacherDao.retrieveByEmail(teacherEntity.getEmail());
         return teacherFound.getPassword().equals(encryptedPassword);
     }
 

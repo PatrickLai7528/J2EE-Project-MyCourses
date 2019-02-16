@@ -1,7 +1,9 @@
 package com.j2ee.mycourses.entity;
 
-import javax.persistence.*;
-import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Objects;
 
 /*
@@ -13,8 +15,8 @@ import java.util.Objects;
  */
 @Entity
 @Table(name = "teacher_entity")
-public final class TeacherEntity implements Serializable {
-    private String teacherEmail;
+public final class TeacherEntity {
+    private String email;
     private String password;
     private String name;
     private String teacherNo;
@@ -23,16 +25,15 @@ public final class TeacherEntity implements Serializable {
     }
 
     @Id
-    @Column(name = "teacher_email", length = 230)
-    public String getTeacherEmail() {
-        return teacherEmail;
+    @Column(name = "email", length = 200)
+    public String getEmail() {
+        return email;
     }
 
-    public void setTeacherEmail(String email) {
-        this.teacherEmail = email;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    @Basic
     @Column(name = "password")
     public String getPassword() {
         return password;
@@ -42,7 +43,6 @@ public final class TeacherEntity implements Serializable {
         this.password = password;
     }
 
-    @Basic
     @Column(name = "name")
     public String getName() {
         return name;
@@ -52,7 +52,6 @@ public final class TeacherEntity implements Serializable {
         this.name = name;
     }
 
-    @Basic
     @Column(name = "tid", unique = true)
     public String getTeacherNo() {
         return teacherNo;
@@ -65,7 +64,7 @@ public final class TeacherEntity implements Serializable {
     @Override
     public String toString() {
         return "TeacherEntity{" +
-                "email='" + teacherEmail + '\'' +
+                "email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", name='" + name + '\'' +
                 ", teacherNo=" + teacherNo +
@@ -78,13 +77,13 @@ public final class TeacherEntity implements Serializable {
         if (!(o instanceof TeacherEntity)) return false;
         TeacherEntity that = (TeacherEntity) o;
         return getTeacherNo().equals(that.getTeacherNo()) &&
-                getTeacherEmail().equals(that.getTeacherEmail()) &&
+                getEmail().equals(that.getEmail()) &&
                 getPassword().equals(that.getPassword()) &&
                 getName().equals(that.getName());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getTeacherEmail(), getPassword(), getName(), getTeacherNo());
+        return Objects.hash(getEmail(), getPassword(), getName(), getTeacherNo());
     }
 }

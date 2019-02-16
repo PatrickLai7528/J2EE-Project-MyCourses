@@ -26,6 +26,5 @@
         <mapping class="com.j2ee.mycourses.entity.ReportCardEntity"/>
         <mapping class="com.j2ee.mycourses.entity.ReportCardItem"/>
         <mapping class="com.j2ee.mycourses.entity.SlideEntity"/>
-        <mapping class="com.j2ee.mycourses.entity.SelectionEntity"/>
     </session-factory>
 </hibernate-configuration>

@@ -8,14 +8,12 @@ package com.j2ee.mycourses.entity;
  */
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
-import java.util.Set;
 
 @Entity
 @Table(name = "releasement_entity")
-public class ReleasementEntity implements Serializable {
+public class ReleasementEntity {
     private long rid;
     private CourseEntity courseEntity;
     private int startHour;
@@ -26,6 +24,7 @@ public class ReleasementEntity implements Serializable {
     private Date effectiveTime;
     private Date deadTime;
     private int limitNumber;
+
 
     public ReleasementEntity() {
     }

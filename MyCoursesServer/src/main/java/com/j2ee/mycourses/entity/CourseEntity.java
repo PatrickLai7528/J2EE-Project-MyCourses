@@ -9,18 +9,14 @@ package com.j2ee.mycourses.entity;
  */
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
 @Entity
 @Table(name = "course_entity")
-public class CourseEntity implements Serializable {
+public class CourseEntity {
     private long cid;
     private String name;
-
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "tid")
     private TeacherEntity teacherEntity;
     private List<SlideEntity> slideEntityList;
     private List<AssignmentEntity> assignmentEntityList;
@@ -90,7 +86,8 @@ public class CourseEntity implements Serializable {
         this.forumEntityList = forumEntityList;
     }
 
-
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "teacher_no", referencedColumnName = "tid")
     public TeacherEntity getTeacherEntity() {
         return teacherEntity;
     }
@@ -104,7 +101,7 @@ public class CourseEntity implements Serializable {
         return "CourseEntity{" +
                 "cid=" + cid +
                 ", name='" + name + '\'' +
-//                ", teacherEntity=" + teacherEntity +
+                ", teacherEntity=" + teacherEntity +
                 ", slideEntityList=" + slideEntityList +
                 ", assignmentEntities=" + assignmentEntityList +
                 ", reportCardEntity=" + reportCardEntity +
@@ -119,7 +116,7 @@ public class CourseEntity implements Serializable {
         CourseEntity that = (CourseEntity) o;
         return getCid() == that.getCid() &&
                 Objects.equals(getName(), that.getName()) &&
-//                Objects.equals(getTeacherEntity(), that.getTeacherEntity()) &&
+                Objects.equals(getTeacherEntity(), that.getTeacherEntity()) &&
                 Objects.equals(getSlideEntityList(), that.getSlideEntityList()) &&
                 Objects.equals(getAssignmentEntityList(), that.getAssignmentEntityList()) &&
                 Objects.equals(getReportCardEntity(), that.getReportCardEntity()) &&
@@ -128,6 +125,6 @@ public class CourseEntity implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(getCid(), getName(), getSlideEntityList(), getAssignmentEntityList(), getReportCardEntity(), getForumEntityList());
+        return Objects.hash(getCid(), getName(), getTeacherEntity(), getSlideEntityList(), getAssignmentEntityList(), getReportCardEntity(), getForumEntityList());
     }
 }

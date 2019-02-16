@@ -8,12 +8,11 @@ package com.j2ee.mycourses.entity;
  */
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
 @Table(name = "comment_entity")
-public class CommentEntity implements Serializable {
+public class CommentEntity {
     private long cmid;
     private String content;
     private String messageFrom;
