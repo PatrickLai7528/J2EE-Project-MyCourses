@@ -2,152 +2,58 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b7acb967-7f4e-4e76-a68d-ff398a1380be" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../MyCoursesClient/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyCoursesClient/myapp/config-overrides.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/actions/actions.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/api/IAPIReponse.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/api/Settings.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/api/StudentAPI.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/AuthSiderItem/AuthSiderItem.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/EditProfile/EditProfile.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/LogIn/LogIn.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/LogIn/LogIn.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/MyContent/MyContent.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/MyHeader/MyHeader.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/MyHeader/MyHeader.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/MySider/MySider.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/MySider/MySider.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/Registry/Registyr.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/SettingSiderItem/SettingSiderItem.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/containers/AuthSiderItemContainer/AuthSiderItemContainer.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/index.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/reducers/AuthReducer.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/reducers/reducer.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/store/store.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/test/TestStudentAPI.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/controller/APIResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/controller/StudentController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/IAssignmentDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/ICommentDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/ICourseDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/IForumDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/IGeneralDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/IReleasementDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/IReportCardDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/IStudentDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/ITeacherDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/factory/DaoFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/impl/AbstractGeneralDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/impl/AssignmentDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/impl/CommentDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/impl/CourseDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/impl/ForumDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/impl/ReleasementDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/impl/ReportCardDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/impl/StudentDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/impl/TeacherDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/AssignmentEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/CommentEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/CourseEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/ForumEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/ReleasementEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/ReportCardEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/ReportCardItem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/SlideEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/StudentEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/TeacherEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/error/StudentNotExistException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/error/StudentRepeatedException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/error/TeacherNotExistException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/error/TeacherRepeatedException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/service/IEncryptService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/service/IUserAuthService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/service/impl/EncryptService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/service/impl/TeacherService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/service/impl/UserAuthService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/utils/HibernateUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/j2ee/mycourses/dao/impl/AssignmentDaoTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/j2ee/mycourses/dao/impl/CommentDaoTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/j2ee/mycourses/dao/impl/CourseDaoTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/j2ee/mycourses/dao/impl/ForumDaoTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/j2ee/mycourses/dao/impl/ReleasementDaoTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/j2ee/mycourses/dao/impl/ReportCardDaoTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/j2ee/mycourses/dao/impl/StudentDaoTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/j2ee/mycourses/dao/impl/TeacherDaoTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/j2ee/mycourses/entity/EntityMappingTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/j2ee/mycourses/service/impl/EncryptServiceTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/j2ee/mycourses/service/impl/UserAuthServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../docs/未想好叫甚麼名字的文檔.md" beforeDir="false" afterPath="$PROJECT_DIR$/../docs/未想好叫甚麼名字的文檔.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/.idea/artifacts/server_war_exploded.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/.idea/libraries/Hibernate_5_3_7_5_3_7.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/.idea/libraries/Maven__antlr_antlr_2_7_7.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/.idea/libraries/Maven__com_fasterxml_classmate_1_3_4.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/.idea/libraries/Maven__com_google_protobuf_protobuf_java_2_6_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/.idea/libraries/Maven__com_sun_xml_bind_jaxb_core_2_2_11.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/.idea/libraries/Maven__com_sun_xml_bind_jaxb_impl_2_2_11.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/.idea/libraries/Maven__javax_activation_javax_activation_api_1_2_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/.idea/libraries/Maven__javax_persistence_javax_persistence_api_2_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/.idea/libraries/Maven__javax_xml_bind_jaxb_api_2_2_11.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/.idea/libraries/Maven__junit_junit_4_11.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/.idea/libraries/Maven__mysql_mysql_connector_java_8_0_12.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/.idea/libraries/Maven__net_bytebuddy_byte_buddy_1_8_17.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/.idea/libraries/Maven__org_dom4j_dom4j_2_1_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/.idea/libraries/Maven__org_hibernate_common_hibernate_commons_annotations_5_0_4_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/.idea/libraries/Maven__org_hibernate_hibernate_core_5_3_7_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/.idea/libraries/Maven__org_javassist_javassist_3_23_1_GA.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/.idea/libraries/Maven__org_jboss_jandex_2_0_5_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/.idea/libraries/Maven__org_jboss_logging_jboss_logging_3_3_2_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/.idea/libraries/Maven__org_jboss_spec_javax_transaction_jboss_transaction_api_1_2_spec_1_1_1_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/.idea/libraries/Spring_4_3_18_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/.idea/libraries/Spring_MVC_4_3_18_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/.idea/server.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/out/artifacts/server_war_exploded/META-INF/MANIFEST.MF" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/out/artifacts/server_war_exploded/WEB-INF/applicationContext.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/out/artifacts/server_war_exploded/WEB-INF/dispatcher-servlet.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/out/artifacts/server_war_exploded/WEB-INF/web.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/out/artifacts/server_war_exploded/index.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/src/main/java/dao/IStudentDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/src/main/java/dao/ITeacherDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/src/main/java/dao/factory/DaoFactory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/src/main/java/dao/impl/StudentDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/src/main/java/dao/impl/TeacherDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/src/main/java/entity/AssignmentEntity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/src/main/java/entity/CommentEntity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/src/main/java/entity/CourseEntity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/src/main/java/entity/ForumEntity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/src/main/java/entity/ReleasementEntity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/src/main/java/entity/ReportCardEntity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/src/main/java/entity/ReportCardItem.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/src/main/java/entity/SlideEntity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/src/main/java/entity/StudentEntity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/src/main/java/entity/TeacherEntity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/src/main/java/error/Temp.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/src/main/java/error/dao/NoValue2DoingBetweenException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/src/main/java/runner/Application.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/src/main/java/service/IStudentService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/src/main/java/utils/HibernateUtils.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/src/main/resources/hibernate.cfg.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/src/test/java/dao/impl/StudentDaoTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/src/test/java/entity/EntityMappingTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/target/classes/hibernate.cfg.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/web/WEB-INF/applicationContext.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/web/WEB-INF/dispatcher-servlet.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/web/WEB-INF/web.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/web/index.jsp" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/controller/TestController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/ISelectionDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/impl/SelectionDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/SelectionEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/SelectionState.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/SelectionStateConverter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/error/CourseHasNoTeacherException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/service/ICourseService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/service/impl/CourseService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/j2ee/mycourses/controller/UserAuthControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyCoursesClient/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesClient/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyCoursesClient/myapp/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesClient/myapp/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/actions/actions.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/App/App.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/App/App.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/AuthSiderItem/AuthSiderItem.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/EditProfile/EditProfile.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/LogIn/LogIn.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/LogIn/LogIn.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/MyContent/MyContent.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/MyHeader/MyHeader.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/MyHeader/MyHeader.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/MySider/MySider.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/MySider/MySider.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/Registry/Registyr.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/SettingSiderItem/SettingSiderItem.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/containers/AuthSiderItemContainer/AuthSiderItemContainer.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/reducers/AuthReducer.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/reducers/reducer.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/store/store.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyCoursesClient/myapp/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesClient/myapp/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/controller/StudentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/controller/UserAuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/factory/DaoFactory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/impl/CourseDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/impl/CourseDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/impl/TeacherDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/impl/TeacherDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/AssignmentEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/AssignmentEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/CommentEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/CommentEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/CourseEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/CourseEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/ForumEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/ForumEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/ReleasementEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/ReleasementEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/ReportCardEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/ReportCardEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/ReportCardItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/ReportCardItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/SlideEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/SlideEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/StudentEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/StudentEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/TeacherEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/TeacherEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/service/impl/UserAuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/service/impl/UserAuthService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/j2ee/mycourses/dao/impl/TeacherDaoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/j2ee/mycourses/dao/impl/TeacherDaoTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/j2ee/mycourses/service/impl/UserAuthServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/j2ee/mycourses/service/impl/UserAuthServiceTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -193,15 +99,36 @@
     </SUITE>
   </component>
   <component name="CoverageViewManager">
-    <option name="myElementSize" value="19" />
+    <option name="myElementSize" value="15" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/impl/TeacherDao.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="152">
+              <caret line="60" column="44" selection-start-line="60" selection-start-column="44" selection-end-line="60" selection-end-column="44" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/j2ee/mycourses/dao/impl/TeacherDaoTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-835">
+              <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/service/impl/UserAuthService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="262">
-              <caret line="84" column="32" lean-forward="true" selection-start-line="84" selection-start-column="32" selection-end-line="84" selection-end-column="32" />
+            <state relative-caret-position="200">
+              <caret line="43" selection-start-line="43" selection-end-line="43" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -210,33 +137,30 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/service/impl/TeacherService.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/AssignmentEntity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="8" column="27" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/test/java/com/j2ee/mycourses/service/impl/UserAuthServiceTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="359">
-              <caret line="111" lean-forward="true" selection-start-line="111" selection-end-line="111" />
+            <state relative-caret-position="134">
+              <caret line="14" column="4" selection-start-line="14" selection-start-column="3" selection-end-line="14" selection-end-column="4" />
               <folding>
                 <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/impl/ForumDao.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="48" column="13" selection-start-line="48" selection-start-column="13" selection-end-line="48" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#626#627#0" expanded="true" />
+                <element signature="e#654#655#0" expanded="true" />
+                <element signature="e#694#695#0" expanded="true" />
+                <element signature="e#728#729#0" expanded="true" />
+                <element signature="e#788#789#0" expanded="true" />
+                <element signature="e#816#817#0" expanded="true" />
+                <element signature="e#858#859#0" expanded="true" />
+                <element signature="e#892#893#0" expanded="true" />
+                <element signature="e#964#965#0" expanded="true" />
+                <element signature="e#998#999#0" expanded="true" />
+                <element signature="e#1052#1053#0" expanded="true" />
+                <element signature="e#1098#1099#0" expanded="true" />
+                <element signature="e#1234#1235#0" expanded="true" />
+                <element signature="e#1268#1269#0" expanded="true" />
+                <element signature="e#1327#1328#0" expanded="true" />
+                <element signature="e#1373#1374#0" expanded="true" />
+                <element signature="e#2180#2181#0" expanded="true" />
+                <element signature="e#2275#2276#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -245,56 +169,118 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/ForumEntity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="25" column="18" lean-forward="true" selection-start-line="25" selection-start-column="18" selection-end-line="25" selection-end-column="18" />
+            <state relative-caret-position="177">
+              <caret line="19" column="24" lean-forward="true" selection-end-line="88" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#645#646#0" expanded="true" />
+                <element signature="e#671#672#0" expanded="true" />
+                <element signature="e#707#708#0" expanded="true" />
+                <element signature="e#737#738#0" expanded="true" />
+                <element signature="e#812#813#0" expanded="true" />
+                <element signature="e#840#841#0" expanded="true" />
+                <element signature="e#882#883#0" expanded="true" />
+                <element signature="e#916#917#0" expanded="true" />
+                <element signature="e#988#989#0" expanded="true" />
+                <element signature="e#1028#1029#0" expanded="true" />
+                <element signature="e#2060#2061#0" expanded="true" />
+                <element signature="e#2141#2142#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/service/IUserAuthService.java">
+        <entry file="file://$PROJECT_DIR$/mvnw">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/TeacherEntity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="790">
-              <caret line="49" column="23" lean-forward="true" selection-start-line="49" selection-start-column="23" selection-end-line="49" selection-end-column="23" />
+            <state relative-caret-position="92">
+              <caret line="25" column="28" selection-start-line="25" selection-start-column="28" selection-end-line="25" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/CourseEntity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="162">
+              <caret line="22" column="27" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="27" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#798#799#0" expanded="true" />
+                <element signature="e#824#825#0" expanded="true" />
+                <element signature="e#860#861#0" expanded="true" />
+                <element signature="e#890#891#0" expanded="true" />
+                <element signature="e#963#964#0" expanded="true" />
+                <element signature="e#990#991#0" expanded="true" />
+                <element signature="e#1030#1031#0" expanded="true" />
+                <element signature="e#1062#1063#0" expanded="true" />
+                <element signature="e#1211#1212#0" expanded="true" />
+                <element signature="e#1249#1250#0" expanded="true" />
+                <element signature="e#1322#1323#0" expanded="true" />
+                <element signature="e#1376#1377#0" expanded="true" />
+                <element signature="e#1535#1536#0" expanded="true" />
+                <element signature="e#1578#1579#0" expanded="true" />
+                <element signature="e#1882#1883#0" expanded="true" />
+                <element signature="e#1921#1922#0" expanded="true" />
+                <element signature="e#1995#1996#0" expanded="true" />
+                <element signature="e#2051#2052#0" expanded="true" />
+                <element signature="e#2178#2179#0" expanded="true" />
+                <element signature="e#2216#2217#0" expanded="true" />
+                <element signature="e#2289#2290#0" expanded="true" />
+                <element signature="e#2343#2344#0" expanded="true" />
+                <element signature="e#2517#2518#0" expanded="true" />
+                <element signature="e#2553#2554#0" expanded="true" />
+                <element signature="e#2618#2619#0" expanded="true" />
+                <element signature="e#2668#2669#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/service/IEncryptService.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/StudentEntity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="8" column="34" lean-forward="true" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
+            <state relative-caret-position="334">
+              <caret line="30" column="5" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#601#602#0" expanded="true" />
+                <element signature="e#634#635#0" expanded="true" />
+                <element signature="e#676#677#0" expanded="true" />
+                <element signature="e#710#711#0" expanded="true" />
+                <element signature="e#801#802#0" expanded="true" />
+                <element signature="e#832#833#0" expanded="true" />
+                <element signature="e#880#881#0" expanded="true" />
+                <element signature="e#920#921#0" expanded="true" />
+                <element signature="e#1003#1004#0" expanded="true" />
+                <element signature="e#1030#1031#0" expanded="true" />
+                <element signature="e#1070#1071#0" expanded="true" />
+                <element signature="e#1102#1103#0" expanded="true" />
+                <element signature="e#1211#1212#0" expanded="true" />
+                <element signature="e#1243#1244#0" expanded="true" />
+                <element signature="e#1293#1294#0" expanded="true" />
+                <element signature="e#1335#1336#0" expanded="true" />
+                <element signature="e#1411#1412#0" expanded="true" />
+                <element signature="e#1441#1442#0" expanded="true" />
+                <element signature="e#1488#1489#0" expanded="true" />
+                <element signature="e#1526#1527#0" expanded="true" />
+                <element signature="e#2415#2416#0" expanded="true" />
+                <element signature="e#2518#2519#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/com/j2ee/mycourses/dao/impl/ForumDaoTest.java">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="960">
-              <caret line="42" column="5" selection-start-line="42" selection-start-column="5" selection-end-line="42" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/com/j2ee/mycourses/dao/impl/CourseDaoTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1152">
-              <caret line="52" column="5" selection-start-line="52" selection-start-column="5" selection-end-line="52" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/com/j2ee/mycourses/dao/impl/CommentDaoTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="960">
-              <caret line="42" column="5" selection-start-line="42" selection-start-column="5" selection-end-line="42" selection-end-column="5" />
+            <state relative-caret-position="295">
+              <caret line="29" column="8" selection-start-line="29" selection-start-column="8" selection-end-line="29" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -304,9 +290,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="JUnit4 Test Class" />
+        <option value="Enum" />
         <option value="Interface" />
         <option value="Class" />
-        <option value="JUnit4 Test Class" />
       </list>
     </option>
   </component>
@@ -316,45 +303,12 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/error/StudentNotExistException.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/ReleasementEntity.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/StudentEntity.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
-        <option value="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/service/imlp/StudentService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/IGeneralDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/ICommentDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/IForumDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/IReleasementDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/IReportCardDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/impl/AbstractGeneralDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/impl/TeacherDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/impl/StudentDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/ICourseDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/impl/CourseDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/impl/AssigmentDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/CommentEntity.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/impl/CommentDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/impl/AssignmentDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/impl/ReleasementDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/impl/ReportCardDao.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/ForumEntity.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/impl/ForumDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/ReportCardItem.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/ReportCardEntity.java" />
-        <option value="$PROJECT_DIR$/src/test/java/com/j2ee/mycourses/dao/impl/ReportCardDaoTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/com/j2ee/mycourses/dao/impl/ReleasementDaoTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/j2ee/mycourses/dao/impl/ForumDaoTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/j2ee/mycourses/dao/impl/CourseDaoTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/j2ee/mycourses/dao/impl/CommentDaoTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/ITeacherDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/IStudentDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/TeacherEntity.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/j2ee/mycourses/dao/impl/TeacherDaoTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/IAssignmentDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/SlideEntity.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/AssignmentEntity.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/CourseEntity.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/error/CourseAlreadyExistException.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/service/ITeacherService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/service/IStudentService.java" />
@@ -362,11 +316,44 @@
         <option value="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/error/TeacherRepeatedException.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/j2ee/mycourses/service/imlp/UserAuthServiceTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/service/imlp/UserAuthService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/controller/StudentController.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/j2ee/mycourses/dao/impl/AssignmentDaoTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/service/IUserAuthService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/service/impl/UserAuthService.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/j2ee/mycourses/service/impl/UserAuthServiceTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/service/impl/EncryptService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/service/CourseSelectionState.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/service/ICourseService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/error/CourseHasNoTeacherException.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/controller/StudentController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/ISelectionDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/impl/SelectionDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/security/WebSecurityConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/controller/TestController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
+        <option value="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/config/CorsFilter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/config/GlobalCorsConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/config/CORSConfiguration.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/impl/CourseDao.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/j2ee/mycourses/controller/UserAuthControllerTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/controller/UserAuthController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/service/impl/CourseService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/StudentEntity.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/SlideEntity.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/SelectionStateConverter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/SelectionState.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/SelectionEntity.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/ReportCardItem.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/ReportCardEntity.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/ReleasementEntity.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/ForumEntity.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/CommentEntity.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/IStudentDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/TeacherEntity.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/impl/TeacherDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/service/impl/UserAuthService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/AssignmentEntity.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/CourseEntity.java" />
       </list>
     </option>
   </component>
@@ -388,6 +375,7 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -428,87 +416,12 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="mycourses" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MyCoursesServer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MyCoursesServer" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="mycourses" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MyCoursesServer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MyCoursesServer" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="mycourses" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-              <item name="impl" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MyCoursesServer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MyCoursesServer" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="mycourses" type="462c0819:PsiDirectoryNode" />
-              <item name="utils" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MyCoursesServer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MyCoursesServer" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MyCoursesServer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MyCoursesServer" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MyCoursesServer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MyCoursesServer" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MyCoursesServer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MyCoursesServer" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="mycourses" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MyCoursesServer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MyCoursesServer" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="mycourses" type="462c0819:PsiDirectoryNode" />
-              <item name="impl" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MyCoursesServer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MyCoursesServer" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="mycourses" type="462c0819:PsiDirectoryNode" />
-              <item name="impl" type="462c0819:PsiDirectoryNode" />
+              <item name="entity" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -518,7 +431,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549809289594" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550309118729" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers" value="true" />
@@ -558,24 +471,67 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.UserAuthServiceTest.teacherRegistryTwice">
-    <configuration name="UserAuthServiceTest.studentLogIn" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Spring Boot.MycoursesApplication">
+    <configuration name="HibernateUtils" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.j2ee.mycourses.utils.HibernateUtils" />
       <module name="MyCoursesServer" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.j2ee.mycourses.service.impl.*" />
+          <option name="PATTERN" value="com.j2ee.mycourses.utils.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.j2ee.mycourses.service.impl" />
-      <option name="MAIN_CLASS_NAME" value="com.j2ee.mycourses.service.impl.UserAuthServiceTest" />
-      <option name="METHOD_NAME" value="studentLogIn" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TeacherDaoTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="MyCoursesServer" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.j2ee.mycourses.dao.impl.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.j2ee.mycourses.dao.impl" />
+      <option name="MAIN_CLASS_NAME" value="com.j2ee.mycourses.dao.impl.TeacherDaoTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserAuthControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="MyCoursesServer" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.j2ee.mycourses.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.j2ee.mycourses.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.j2ee.mycourses.controller.UserAuthControllerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserAuthControllerTest.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="MyCoursesServer" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.j2ee.mycourses.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.j2ee.mycourses.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.j2ee.mycourses.controller.UserAuthControllerTest" />
+      <option name="METHOD_NAME" value="test" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserAuthServiceTest.studentLogInWithNotExist" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UserAuthServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="MyCoursesServer" />
       <extension name="coverage">
         <pattern>
@@ -585,56 +541,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.j2ee.mycourses.service.impl" />
       <option name="MAIN_CLASS_NAME" value="com.j2ee.mycourses.service.impl.UserAuthServiceTest" />
-      <option name="METHOD_NAME" value="studentLogInWithNotExist" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UserAuthServiceTest.teacherLogInWithoutRegistry" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="MyCoursesServer" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.j2ee.mycourses.service.impl.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.j2ee.mycourses.service.impl" />
-      <option name="MAIN_CLASS_NAME" value="com.j2ee.mycourses.service.impl.UserAuthServiceTest" />
-      <option name="METHOD_NAME" value="teacherLogInWithoutRegistry" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UserAuthServiceTest.teacherRegistry" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="MyCoursesServer" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.j2ee.mycourses.service.impl.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.j2ee.mycourses.service.impl" />
-      <option name="MAIN_CLASS_NAME" value="com.j2ee.mycourses.service.impl.UserAuthServiceTest" />
-      <option name="METHOD_NAME" value="teacherRegistry" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UserAuthServiceTest.teacherRegistryTwice" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="MyCoursesServer" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.j2ee.mycourses.service.impl.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.j2ee.mycourses.service.impl" />
-      <option name="MAIN_CLASS_NAME" value="com.j2ee.mycourses.service.impl.UserAuthServiceTest" />
-      <option name="METHOD_NAME" value="teacherRegistryTwice" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -648,11 +555,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.UserAuthServiceTest.teacherRegistryTwice" />
-        <item itemvalue="JUnit.UserAuthServiceTest.teacherLogInWithoutRegistry" />
-        <item itemvalue="JUnit.UserAuthServiceTest.teacherRegistry" />
-        <item itemvalue="JUnit.UserAuthServiceTest.studentLogIn" />
-        <item itemvalue="JUnit.UserAuthServiceTest.studentLogInWithNotExist" />
+        <item itemvalue="JUnit.TeacherDaoTest" />
+        <item itemvalue="JUnit.UserAuthControllerTest.test" />
+        <item itemvalue="JUnit.UserAuthControllerTest" />
+        <item itemvalue="JUnit.UserAuthServiceTest" />
+        <item itemvalue="Application.HibernateUtils" />
       </list>
     </recent_temporary>
   </component>
@@ -669,32 +576,13 @@
       <workItem from="1549269019765" duration="1204000" />
       <workItem from="1549351082369" duration="18000" />
       <workItem from="1549379623713" duration="32680000" />
-      <workItem from="1549791372778" duration="1021000" />
+      <workItem from="1549791372778" duration="6960000" />
+      <workItem from="1550051029190" duration="13455000" />
+      <workItem from="1550294193986" duration="2198000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="AssignmentDaoTest_update - 2019.02.10 at 17h 28m 39s.xml">
-      <configuration name="AssignmentDaoTest.update" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="UserAuthServiceTest_studentLogIn - 2019.02.10 at 17h 30m 31s.xml">
-      <configuration name="UserAuthServiceTest.studentLogIn" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="UserAuthServiceTest_studentLogInWithNotExist - 2019.02.10 at 17h 32m 13s.xml">
-      <configuration name="UserAuthServiceTest.studentLogInWithNotExist" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="UserAuthServiceTest_studentLogIn - 2019.02.10 at 17h 33m 30s.xml">
-      <configuration name="UserAuthServiceTest.studentLogIn" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="UserAuthServiceTest_teacherRegistry - 2019.02.10 at 22h 28m 27s.xml">
-      <configuration name="UserAuthServiceTest.teacherRegistry" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="UserAuthServiceTest_teacherRegistry - 2019.02.10 at 22h 29m 12s.xml">
-      <configuration name="UserAuthServiceTest.teacherRegistry" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="UserAuthServiceTest_teacherRegistry - 2019.02.10 at 22h 31m 26s.xml">
-      <configuration name="UserAuthServiceTest.teacherRegistry" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="UserAuthServiceTest_teacherRegistry - 2019.02.10 at 22h 32m 09s.xml">
       <configuration name="UserAuthServiceTest.teacherRegistry" configurationId="JUnit" />
     </history-entry>
@@ -704,15 +592,36 @@
     <history-entry file="UserAuthServiceTest_teacherLogInWithoutRegistry - 2019.02.10 at 22h 33m 34s.xml">
       <configuration name="UserAuthServiceTest.teacherLogInWithoutRegistry" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="UserAuthServiceTest_teacherRegistryTwice - 2019.02.10 at 22h 34m 47s.xml">
+      <configuration name="UserAuthServiceTest.teacherRegistryTwice" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UserAuthServiceTest - 2019.02.15 at 02h 39m 48s.xml">
+      <configuration name="UserAuthServiceTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UserAuthControllerTest_test - 2019.02.15 at 18h 16m 01s.xml">
+      <configuration name="UserAuthControllerTest.test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UserAuthControllerTest - 2019.02.15 at 18h 17m 10s.xml">
+      <configuration name="UserAuthControllerTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UserAuthControllerTest_test - 2019.02.15 at 18h 19m 38s.xml">
+      <configuration name="UserAuthControllerTest.test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TeacherDaoTest - 2019.02.16 at 13h 50m 43s.xml">
+      <configuration name="TeacherDaoTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TeacherDaoTest - 2019.02.16 at 13h 51m 24s.xml">
+      <configuration name="TeacherDaoTest" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="34923000" />
+    <option name="totallyTimeSpent" value="56515000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22013889" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23125" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Persistence" order="3" side_tool="true" />
@@ -725,8 +634,8 @@
       <window_info anchor="bottom" id="Duplicate detector" order="1" weight="0.32934132" />
       <window_info anchor="bottom" id="Message" order="2" />
       <window_info anchor="bottom" id="Find" order="3" weight="0.32934132" />
-      <window_info anchor="bottom" id="Run" order="4" visible="true" weight="0.43832335" />
-      <window_info anchor="bottom" id="Debug" order="5" weight="0.44071856" />
+      <window_info anchor="bottom" id="Run" order="4" weight="0.348503" />
+      <window_info anchor="bottom" id="Debug" order="5" visible="true" weight="0.44071856" />
       <window_info anchor="bottom" id="Cvs" order="6" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="7" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="8" />
@@ -748,7 +657,7 @@
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Theme Preview" order="8" />
       <window_info anchor="right" id="Bean Validation" order="9" />
-      <window_info active="true" anchor="right" id="Coverage" order="10" side_tool="true" visible="true" weight="0.054166667" />
+      <window_info anchor="right" id="Coverage" order="10" side_tool="true" weight="0.05625" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -763,475 +672,16 @@
           <properties />
           <option name="timeStamp" value="2" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/service/impl/EncryptService.java</url>
+          <line>34</line>
+          <properties />
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/IForumDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="12" column="1" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/IReleasementDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="12" column="1" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/ICourseDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="12" column="22" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/impl/StudentDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="427">
-          <caret line="89" column="34" lean-forward="true" selection-start-line="88" selection-start-column="7" selection-end-line="89" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/IGeneralDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="14" selection-start-line="14" selection-end-line="14" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/CommentEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-425">
-          <caret line="34" column="37" lean-forward="true" selection-start-line="34" selection-start-column="37" selection-end-line="34" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#709#710#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/ReleasementEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1184">
-          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#757#758#0" expanded="true" />
-            <element signature="e#783#784#0" expanded="true" />
-            <element signature="e#819#820#0" expanded="true" />
-            <element signature="e#849#850#0" expanded="true" />
-            <element signature="e#1001#1002#0" expanded="true" />
-            <element signature="e#1036#1037#0" expanded="true" />
-            <element signature="e#1098#1099#0" expanded="true" />
-            <element signature="e#1146#1147#0" expanded="true" />
-            <element signature="e#1212#1213#0" expanded="true" />
-            <element signature="e#1244#1245#0" expanded="true" />
-            <element signature="e#1291#1292#0" expanded="true" />
-            <element signature="e#1333#1334#0" expanded="true" />
-            <element signature="e#1397#1398#0" expanded="true" />
-            <element signature="e#1428#1429#0" expanded="true" />
-            <element signature="e#1473#1474#0" expanded="true" />
-            <element signature="e#1513#1514#0" expanded="true" />
-            <element signature="e#1575#1576#0" expanded="true" />
-            <element signature="e#1605#1606#0" expanded="true" />
-            <element signature="e#1648#1649#0" expanded="true" />
-            <element signature="e#1686#1687#0" expanded="true" />
-            <element signature="e#1746#1747#0" expanded="true" />
-            <element signature="e#1775#1776#0" expanded="true" />
-            <element signature="e#1816#1817#0" expanded="true" />
-            <element signature="e#1852#1853#0" expanded="true" />
-            <element signature="e#1932#1933#0" expanded="true" />
-            <element signature="e#1970#1971#0" expanded="true" />
-            <element signature="e#2029#2030#0" expanded="true" />
-            <element signature="e#2083#2084#0" expanded="true" />
-            <element signature="e#2158#2159#0" expanded="true" />
-            <element signature="e#2194#2195#0" expanded="true" />
-            <element signature="e#2250#2251#0" expanded="true" />
-            <element signature="e#2300#2301#0" expanded="true" />
-            <element signature="e#2365#2366#0" expanded="true" />
-            <element signature="e#2396#2397#0" expanded="true" />
-            <element signature="e#2442#2443#0" expanded="true" />
-            <element signature="e#2482#2483#0" expanded="true" />
-            <element signature="e#2552#2553#0" expanded="true" />
-            <element signature="e#2586#2587#0" expanded="true" />
-            <element signature="e#2637#2638#0" expanded="true" />
-            <element signature="e#2683#2684#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/ReportCardItem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="76" column="68" selection-start-line="76" selection-start-column="68" selection-end-line="76" selection-end-column="68" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#568#569#0" expanded="true" />
-            <element signature="e#596#597#0" expanded="true" />
-            <element signature="e#636#637#0" expanded="true" />
-            <element signature="e#670#671#0" expanded="true" />
-            <element signature="e#739#740#0" expanded="true" />
-            <element signature="e#771#772#0" expanded="true" />
-            <element signature="e#821#822#0" expanded="true" />
-            <element signature="e#863#864#0" expanded="true" />
-            <element signature="e#923#924#0" expanded="true" />
-            <element signature="e#951#952#0" expanded="true" />
-            <element signature="e#993#994#0" expanded="true" />
-            <element signature="e#1027#1028#0" expanded="true" />
-            <element signature="e#2094#2095#0" expanded="true" />
-            <element signature="e#2192#2193#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/ReportCardEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="38" column="58" lean-forward="true" selection-start-line="38" selection-start-column="58" selection-end-line="38" selection-end-column="58" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#551#552#0" expanded="true" />
-            <element signature="e#578#579#0" expanded="true" />
-            <element signature="e#616#617#0" expanded="true" />
-            <element signature="e#648#649#0" expanded="true" />
-            <element signature="e#792#793#0" expanded="true" />
-            <element signature="e#833#834#0" expanded="true" />
-            <element signature="e#1566#1567#0" expanded="true" />
-            <element signature="e#1637#1638#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/impl/TeacherDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="47" column="11" lean-forward="true" selection-start-line="48" selection-start-column="8" selection-end-line="57" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/impl/ReportCardDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="21" column="5" lean-forward="true" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/impl/ReleasementDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="63" column="18" lean-forward="true" selection-start-line="70" selection-start-column="7" selection-end-line="71" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/impl/CourseDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="58" column="18" selection-start-line="64" selection-start-column="7" selection-end-line="65" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/impl/CommentDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="41" column="18" lean-forward="true" selection-start-line="43" selection-start-column="8" selection-end-line="51" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/j2ee/mycourses/MycoursesApplicationTests.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/ITeacherDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="12" column="62" selection-start-line="12" selection-start-column="62" selection-end-line="12" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/IReportCardDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="11" column="47" selection-start-line="11" selection-start-column="47" selection-end-line="11" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/utils/HibernateUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-56">
-          <caret line="20" selection-start-line="20" selection-end-line="20" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="474">
-          <caret line="23" column="77" lean-forward="true" selection-start-line="23" selection-start-column="77" selection-end-line="23" selection-end-column="77" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/j2ee/mycourses/dao/impl/TeacherDaoTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="99" column="5" selection-start-line="99" selection-start-column="5" selection-end-line="99" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/j2ee/mycourses/dao/impl/StudentDaoTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-198">
-          <caret line="30" column="16" selection-start-line="30" selection-start-column="16" selection-end-line="30" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/TeacherEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="86" column="19" selection-start-line="86" selection-start-column="19" selection-end-line="86" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/IAssignmentDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="73">
-          <caret line="12" column="49" selection-start-line="12" selection-start-column="49" selection-end-line="12" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/SlideEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-687">
-          <caret line="25" column="54" selection-start-line="25" selection-start-column="54" selection-end-line="25" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/AssignmentEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-269">
-          <caret line="56" column="5" selection-start-line="56" selection-start-column="5" selection-end-line="56" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/CourseEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="406">
-          <caret line="39" column="40" selection-start-line="39" selection-start-column="40" selection-end-line="39" selection-end-column="40" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/error/CourseAlreadyExistException.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/service/ITeacherService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
-          <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/error/TeacherNotExistException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="14" column="23" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="23" />
-          <folding>
-            <element signature="e#292#293#0" expanded="true" />
-            <element signature="e#312#313#0" expanded="true" />
-            <element signature="e#373#374#0" expanded="true" />
-            <element signature="e#393#394#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/error/TeacherRepeatedException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="14" column="23" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="23" />
-          <folding>
-            <element signature="e#316#317#0" expanded="true" />
-            <element signature="e#401#402#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/controller/StudentController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="177">
-          <caret line="21" selection-start-line="21" selection-end-line="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/StudentEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-995">
-          <caret line="26" column="7" selection-start-line="26" selection-start-column="7" selection-end-line="26" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.11/junit-4.11.jar!/org/junit/internal/runners/model/ReflectiveCallable.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.11/junit-4.11.jar!/org/junit/runners/model/FrameworkMethod.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="28" selection-start-line="28" selection-end-line="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/IStudentDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
-          <caret line="17" column="12" selection-start-line="17" selection-start-column="12" selection-end-line="17" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/j2ee/mycourses/dao/impl/ReportCardDaoTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/j2ee/mycourses/dao/impl/ReleasementDaoTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="383">
-          <caret line="52" column="5" selection-start-line="52" selection-start-column="5" selection-end-line="52" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/j2ee/mycourses/dao/impl/AssignmentDaoTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2376">
-          <caret line="111" column="5" selection-start-line="111" selection-start-column="5" selection-end-line="111" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/impl/AbstractGeneralDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="960">
-          <caret line="46" column="34" selection-start-line="46" selection-start-column="34" selection-end-line="46" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/service/impl/EncryptService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="720">
-          <caret line="34" selection-start-line="34" selection-end-line="34" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/impl/AssignmentDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="33" selection-start-line="33" selection-end-line="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/j2ee/mycourses/dao/impl/ForumDaoTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="960">
-          <caret line="42" column="5" selection-start-line="42" selection-start-column="5" selection-end-line="42" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/j2ee/mycourses/dao/impl/CourseDaoTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1152">
-          <caret line="52" column="5" selection-start-line="52" selection-start-column="5" selection-end-line="52" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/j2ee/mycourses/dao/impl/CommentDaoTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="960">
-          <caret line="42" column="5" selection-start-line="42" selection-start-column="5" selection-end-line="42" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/impl/ForumDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="48" column="13" selection-start-line="48" selection-start-column="13" selection-end-line="48" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/ForumEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="25" column="18" lean-forward="true" selection-start-line="25" selection-start-column="18" selection-end-line="25" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/service/impl/TeacherService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="8" column="27" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/service/IUserAuthService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="790">
@@ -1246,10 +696,98 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/service/impl/UserAuthService.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/service/CourseSelectionState.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/error/CourseHasNoTeacherException.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="262">
-          <caret line="84" column="32" lean-forward="true" selection-start-line="84" selection-start-column="32" selection-end-line="84" selection-end-column="32" />
+        <state relative-caret-position="280">
+          <caret line="14" column="23" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="23" />
+          <folding>
+            <element signature="e#325#326#0" expanded="true" />
+            <element signature="e#413#414#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/IForumDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="143">
+          <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/ICourseDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="143">
+          <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/IAssignmentDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="73">
+          <caret line="12" column="49" selection-start-line="12" selection-start-column="49" selection-end-line="12" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/impl/ForumDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="916">
+          <caret line="48" column="13" selection-start-line="48" selection-start-column="13" selection-end-line="48" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/service/ICourseService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="18" column="44" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="44" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/ISelectionDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="20" column="85" selection-start-line="20" selection-start-column="85" selection-end-line="20" selection-end-column="85" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/security/WebSecurityConfig.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="5" column="23" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/MyCoursesApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mvnw.cmd">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="791">
+          <caret line="70" column="21" selection-start-line="70" selection-start-column="21" selection-end-line="70" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/service/impl/EncryptService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="183">
+          <caret line="34" selection-start-line="34" selection-end-line="34" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1258,10 +796,449 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/j2ee/mycourses/service/impl/UserAuthServiceTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="359">
-          <caret line="111" lean-forward="true" selection-start-line="111" selection-end-line="111" />
+        <state relative-caret-position="-280">
+          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/impl/SelectionDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1381">
+          <caret line="75" column="18" selection-start-line="75" selection-start-column="18" selection-end-line="75" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/hibernate-core-5.3.7.Final.jar!/org/hibernate/internal/SessionImpl.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="143">
+          <caret line="591" selection-start-line="591" selection-end-line="591" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/impl/AbstractGeneralDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="25" selection-start-line="25" selection-end-line="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/controller/TestController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="21" column="40" selection-start-line="21" selection-start-column="40" selection-end-line="21" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#436#437#0" expanded="true" />
+            <element signature="e#465#466#0" expanded="true" />
+            <element signature="e#525#526#0" expanded="true" />
+            <element signature="e#572#573#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/impl/CourseDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1272">
+          <caret line="62" column="5" selection-start-line="62" selection-start-column="5" selection-end-line="62" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/j2ee/mycourses/controller/UserAuthControllerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="31" column="37" lean-forward="true" selection-start-line="31" selection-start-column="37" selection-end-line="31" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/config/CORSConfiguration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="624">
+          <caret line="26" column="25" selection-start-line="26" selection-start-column="25" selection-end-line="26" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/hibernate-core-5.3.7.Final.jar!/org/hibernate/engine/internal/ForeignKeys.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="143">
+          <caret line="41" selection-start-line="41" selection-end-line="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/IReleasementDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="174">
+          <caret line="8" column="32" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/service/impl/CourseService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="452">
+          <caret line="38" column="52" selection-end-line="59" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1669#1670#0" expanded="true" />
+            <element signature="e#1697#1698#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/SlideEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="309">
+          <caret line="37" column="24" selection-end-line="89" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#601#602#0" expanded="true" />
+            <element signature="e#627#628#0" expanded="true" />
+            <element signature="e#663#664#0" expanded="true" />
+            <element signature="e#693#694#0" expanded="true" />
+            <element signature="e#764#765#0" expanded="true" />
+            <element signature="e#792#793#0" expanded="true" />
+            <element signature="e#834#835#0" expanded="true" />
+            <element signature="e#868#869#0" expanded="true" />
+            <element signature="e#946#947#0" expanded="true" />
+            <element signature="e#977#978#0" expanded="true" />
+            <element signature="e#1025#1026#0" expanded="true" />
+            <element signature="e#1065#1066#0" expanded="true" />
+            <element signature="e#1946#1947#0" expanded="true" />
+            <element signature="e#2018#2019#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/SelectionStateConverter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="359">
+          <caret line="21" column="31" lean-forward="true" selection-end-line="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#471#472#0" expanded="true" />
+            <element signature="e#519#520#0" expanded="true" />
+            <element signature="e#597#598#0" expanded="true" />
+            <element signature="e#648#649#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/SelectionState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="237">
+          <caret line="51" column="28" selection-end-line="60" />
+          <folding>
+            <element signature="e#451#452#0" expanded="true" />
+            <element signature="e#485#486#0" expanded="true" />
+            <element signature="e#517#518#0" expanded="true" />
+            <element signature="e#550#551#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/SelectionEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="261">
+          <caret line="42" column="38" lean-forward="true" selection-end-line="88" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#646#647#0" expanded="true" />
+            <element signature="e#673#674#0" expanded="true" />
+            <element signature="e#711#712#0" expanded="true" />
+            <element signature="e#743#744#0" expanded="true" />
+            <element signature="e#895#896#0" expanded="true" />
+            <element signature="e#935#936#0" expanded="true" />
+            <element signature="e#1217#1218#0" expanded="true" />
+            <element signature="e#1253#1254#0" expanded="true" />
+            <element signature="e#1318#1319#0" expanded="true" />
+            <element signature="e#1368#1369#0" expanded="true" />
+            <element signature="e#1501#1502#0" expanded="true" />
+            <element signature="e#1538#1539#0" expanded="true" />
+            <element signature="e#1606#1607#0" expanded="true" />
+            <element signature="e#1658#1659#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/ReportCardItem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="359">
+          <caret line="35" column="32" selection-end-line="87" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/ReportCardEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="22" column="30" lean-forward="true" selection-end-line="67" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#604#605#0" expanded="true" />
+            <element signature="e#631#632#0" expanded="true" />
+            <element signature="e#669#670#0" expanded="true" />
+            <element signature="e#701#702#0" expanded="true" />
+            <element signature="e#857#858#0" expanded="true" />
+            <element signature="e#898#899#0" expanded="true" />
+            <element signature="e#1631#1632#0" expanded="true" />
+            <element signature="e#1702#1703#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/ReleasementEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="10" column="15" lean-forward="true" selection-end-line="163" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/impl/StudentDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="166">
+          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/IStudentDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="358">
+          <caret line="19" column="34" lean-forward="true" selection-end-line="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/controller/UserAuthController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="102" column="5" selection-start-line="102" selection-start-column="5" selection-end-line="102" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#859#860#0" expanded="true" />
+            <element signature="e#913#914#0" expanded="true" />
+            <element signature="e#4002#4003#0" expanded="true" />
+            <element signature="e#4029#4030#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/hibernate-core-5.3.7.Final.jar!/org/hibernate/tuple/entity/AbstractEntityTuplizer.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="139" selection-start-line="139" selection-end-line="139" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/hibernate-core-5.3.7.Final.jar!/org/hibernate/persister/entity/AbstractEntityPersister.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="3275" selection-start-line="3275" selection-end-line="3275" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/CommentEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#571#572#0" expanded="true" />
+            <element signature="e#598#599#0" expanded="true" />
+            <element signature="e#636#637#0" expanded="true" />
+            <element signature="e#668#669#0" expanded="true" />
+            <element signature="e#732#733#0" expanded="true" />
+            <element signature="e#762#763#0" expanded="true" />
+            <element signature="e#808#809#0" expanded="true" />
+            <element signature="e#846#847#0" expanded="true" />
+            <element signature="e#917#918#0" expanded="true" />
+            <element signature="e#951#952#0" expanded="true" />
+            <element signature="e#1008#1009#0" expanded="true" />
+            <element signature="e#1057#1058#0" expanded="true" />
+            <element signature="e#1735#1736#0" expanded="true" />
+            <element signature="e#1813#1814#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/hibernate-core-5.3.7.Final.jar!/org/hibernate/property/access/spi/GetterMethodImpl.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="33" selection-start-line="33" selection-end-line="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/TeacherEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="25" column="28" selection-start-line="25" selection-start-column="28" selection-end-line="25" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="295">
+          <caret line="29" column="8" selection-start-line="29" selection-start-column="8" selection-end-line="29" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/StudentEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="334">
+          <caret line="30" column="5" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#601#602#0" expanded="true" />
+            <element signature="e#634#635#0" expanded="true" />
+            <element signature="e#676#677#0" expanded="true" />
+            <element signature="e#710#711#0" expanded="true" />
+            <element signature="e#801#802#0" expanded="true" />
+            <element signature="e#832#833#0" expanded="true" />
+            <element signature="e#880#881#0" expanded="true" />
+            <element signature="e#920#921#0" expanded="true" />
+            <element signature="e#1003#1004#0" expanded="true" />
+            <element signature="e#1030#1031#0" expanded="true" />
+            <element signature="e#1070#1071#0" expanded="true" />
+            <element signature="e#1102#1103#0" expanded="true" />
+            <element signature="e#1211#1212#0" expanded="true" />
+            <element signature="e#1243#1244#0" expanded="true" />
+            <element signature="e#1293#1294#0" expanded="true" />
+            <element signature="e#1335#1336#0" expanded="true" />
+            <element signature="e#1411#1412#0" expanded="true" />
+            <element signature="e#1441#1442#0" expanded="true" />
+            <element signature="e#1488#1489#0" expanded="true" />
+            <element signature="e#1526#1527#0" expanded="true" />
+            <element signature="e#2415#2416#0" expanded="true" />
+            <element signature="e#2518#2519#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/impl/TeacherDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="60" column="44" selection-start-line="60" selection-start-column="44" selection-end-line="60" selection-end-column="44" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/j2ee/mycourses/dao/impl/TeacherDaoTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-835">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/service/impl/UserAuthService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="43" selection-start-line="43" selection-end-line="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mvnw">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/AssignmentEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="134">
+          <caret line="14" column="4" selection-start-line="14" selection-start-column="3" selection-end-line="14" selection-end-column="4" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#626#627#0" expanded="true" />
+            <element signature="e#654#655#0" expanded="true" />
+            <element signature="e#694#695#0" expanded="true" />
+            <element signature="e#728#729#0" expanded="true" />
+            <element signature="e#788#789#0" expanded="true" />
+            <element signature="e#816#817#0" expanded="true" />
+            <element signature="e#858#859#0" expanded="true" />
+            <element signature="e#892#893#0" expanded="true" />
+            <element signature="e#964#965#0" expanded="true" />
+            <element signature="e#998#999#0" expanded="true" />
+            <element signature="e#1052#1053#0" expanded="true" />
+            <element signature="e#1098#1099#0" expanded="true" />
+            <element signature="e#1234#1235#0" expanded="true" />
+            <element signature="e#1268#1269#0" expanded="true" />
+            <element signature="e#1327#1328#0" expanded="true" />
+            <element signature="e#1373#1374#0" expanded="true" />
+            <element signature="e#2180#2181#0" expanded="true" />
+            <element signature="e#2275#2276#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/ForumEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="19" column="24" lean-forward="true" selection-end-line="88" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#645#646#0" expanded="true" />
+            <element signature="e#671#672#0" expanded="true" />
+            <element signature="e#707#708#0" expanded="true" />
+            <element signature="e#737#738#0" expanded="true" />
+            <element signature="e#812#813#0" expanded="true" />
+            <element signature="e#840#841#0" expanded="true" />
+            <element signature="e#882#883#0" expanded="true" />
+            <element signature="e#916#917#0" expanded="true" />
+            <element signature="e#988#989#0" expanded="true" />
+            <element signature="e#1028#1029#0" expanded="true" />
+            <element signature="e#2060#2061#0" expanded="true" />
+            <element signature="e#2141#2142#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/CourseEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="22" column="27" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#798#799#0" expanded="true" />
+            <element signature="e#824#825#0" expanded="true" />
+            <element signature="e#860#861#0" expanded="true" />
+            <element signature="e#890#891#0" expanded="true" />
+            <element signature="e#963#964#0" expanded="true" />
+            <element signature="e#990#991#0" expanded="true" />
+            <element signature="e#1030#1031#0" expanded="true" />
+            <element signature="e#1062#1063#0" expanded="true" />
+            <element signature="e#1211#1212#0" expanded="true" />
+            <element signature="e#1249#1250#0" expanded="true" />
+            <element signature="e#1322#1323#0" expanded="true" />
+            <element signature="e#1376#1377#0" expanded="true" />
+            <element signature="e#1535#1536#0" expanded="true" />
+            <element signature="e#1578#1579#0" expanded="true" />
+            <element signature="e#1882#1883#0" expanded="true" />
+            <element signature="e#1921#1922#0" expanded="true" />
+            <element signature="e#1995#1996#0" expanded="true" />
+            <element signature="e#2051#2052#0" expanded="true" />
+            <element signature="e#2178#2179#0" expanded="true" />
+            <element signature="e#2216#2217#0" expanded="true" />
+            <element signature="e#2289#2290#0" expanded="true" />
+            <element signature="e#2343#2344#0" expanded="true" />
+            <element signature="e#2517#2518#0" expanded="true" />
+            <element signature="e#2553#2554#0" expanded="true" />
+            <element signature="e#2618#2619#0" expanded="true" />
+            <element signature="e#2668#2669#0" expanded="true" />
           </folding>
         </state>
       </provider>

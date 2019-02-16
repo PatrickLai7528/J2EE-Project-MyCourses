@@ -9,12 +9,13 @@ package com.j2ee.mycourses.entity;
  */
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
 @Entity
 @Table(name = "forum_entity")
-public class ForumEntity {
+public class ForumEntity implements Serializable {
     private long fid;
     private String topic;
     private List<CommentEntity> commentEntityList;

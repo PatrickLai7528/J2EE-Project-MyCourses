@@ -1,19 +1,32 @@
 import * as React from "react";
+import {Component} from "react";
+import './MyContent.css';
+import {Layout} from 'antd';
+// import CompetitionSimpleBlock from "./../CompetitionSimpleBlock/CompetitionSimpleBlock";
+import {Redirect, Route, Switch} from 'react-router-dom'
+import CompetitionCalendar from "./../CompetitionCalendar/CompetitionCalendar"
+import CompetitionDisplay from "./../CompetitionDisplay/CompetitionDisplay"
+import DefaultHome from "../DefaultHome/DefaultHome";
+import Setting from "../Setting/Setting";
 
-import {Layout} from "antd";
-import {Route, Switch} from "react-router";
-import LogIn from "../LogIn/LogIn";
-import {EditProfile} from "../EditProfile/EditProfile";
 
-export const MyContent = () => {
-    return (
-        <Layout.Content style={{margin: '24px 16px 0', overflow: 'initial'}}>
-            <div style={{padding: 24, background: '#fff', textAlign: 'center',minHeight:"700px"}}>
+export default class MyContent extends Component<any, any> {
+    public constructor(props: any) {
+        super(props);
+    }
+
+    render() {
+        return (
+            <Layout.Content style={{marginLeft: "80px", marginRight: "80px", marginTop: "20px"}}>
                 <Switch>
-                    <Route exact={true} path={"/login"} component={LogIn}/>
-                    <Route exact={true} path={"/profile"} component={EditProfile}/>
+                    <Route exact path="/home" component={DefaultHome}/>
+                    <Route exact path="/calendar" component={CompetitionCalendar}/>
+                    <Route exact path="/display/:type" component={CompetitionDisplay}/>
+                    <Route exact path="/setting" component={Setting}/>
+                    <Redirect to="/home"/>
                 </Switch>
-            </div>
-        </Layout.Content>
-    )
+            </Layout.Content>
+        );
+    }
 }
+

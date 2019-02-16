@@ -42,7 +42,7 @@ public class UserAuthServiceTest {
 
         teacherEntity.setTeacherNo("123456");
         teacherEntity.setName("teacher haha");
-        teacherEntity.setEmail("teacher@smail.nju.edu.cn");
+        teacherEntity.setTeacherEmail("teacher@smail.nju.edu.cn");
         teacherEntity.setPassword("123123");
     }
 

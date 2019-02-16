@@ -23,12 +23,12 @@ public class TeacherDaoTest {
         stub1 = new TeacherEntity();
         stub2 = new TeacherEntity();
 
-        stub1.setEmail("teacher1@teacher.com");
+        stub1.setTeacherEmail("teacher1@teacher.com");
         stub1.setName("teacher1");
         stub1.setPassword("123123123");
         stub1.setTeacherNo("thisisteacherno1");
 
-        stub2.setEmail("teacher2@teacher.com");
+        stub2.setTeacherEmail("teacher2@teacher.com");
         stub2.setName("teacher2");
         stub2.setPassword("123123123");
         stub2.setTeacherNo("thisisteacherno2");
@@ -45,8 +45,8 @@ public class TeacherDaoTest {
         teacherDao.create(stub1);
         teacherDao.create(stub2);
 
-        TeacherEntity found1 = teacherDao.retrieveByEmail(stub1.getEmail());
-        TeacherEntity found2 = teacherDao.retrieveByEmail(stub2.getEmail());
+        TeacherEntity found1 = teacherDao.retrieveByEmail(stub1.getTeacherEmail());
+        TeacherEntity found2 = teacherDao.retrieveByEmail(stub2.getTeacherEmail());
 
         assertEquals(found1, stub1);
         assertEquals(found2, stub2);
@@ -69,9 +69,9 @@ public class TeacherDaoTest {
         boolean has2 = false;
 
         for(TeacherEntity teacherEntity : list){
-            if(teacherEntity.getEmail().equals(stub1.getEmail()))
+            if(teacherEntity.getTeacherEmail().equals(stub1.getTeacherEmail()))
                 has1 = true;
-            else if(teacherEntity.getEmail().equals(stub2.getEmail()))
+            else if(teacherEntity.getTeacherEmail().equals(stub2.getTeacherEmail()))
                 has2 = true;
         }
 
@@ -91,10 +91,10 @@ public class TeacherDaoTest {
         teacherDao.update(stub1);
         teacherDao.update(stub2);
 
-        TeacherEntity teacherEntity = teacherDao.retrieveByEmail(stub1.getEmail());
+        TeacherEntity teacherEntity = teacherDao.retrieveByEmail(stub1.getTeacherEmail());
         assertEquals(teacherEntity.getName(), stub1.getName());
 
-        TeacherEntity teacherEntity1 = teacherDao.retrieveByEmail(stub2.getEmail());
+        TeacherEntity teacherEntity1 = teacherDao.retrieveByEmail(stub2.getTeacherEmail());
         assertEquals(teacherEntity1.getTeacherNo(), stub2.getTeacherNo());
 
     }

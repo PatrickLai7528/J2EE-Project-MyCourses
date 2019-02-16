@@ -7,11 +7,12 @@ package com.j2ee.mycourses.entity;/*
  */
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
 @Table(name = "report_card_item")
-public class ReportCardItem {
+public class ReportCardItem implements Serializable {
     private long rciid;
     private String studentNo;
     private double score;
@@ -31,6 +32,7 @@ public class ReportCardItem {
         this.rciid = rciid;
     }
 
+    @Basic
     @Column(name = "student_no")
     public String getStudentNo() {
         return studentNo;
@@ -40,6 +42,7 @@ public class ReportCardItem {
         this.studentNo = studentNo;
     }
 
+    @Basic
     @Column(name = "score")
     public double getScore() {
         return score;

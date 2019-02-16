@@ -9,12 +9,13 @@ package com.j2ee.mycourses.entity;
  */
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
 @Entity
 @Table(name = "report_card_entity")
-public class ReportCardEntity {
+public class ReportCardEntity implements Serializable {
     private long rcid;
     private List<ReportCardItem> reportCardItemList   ;
 
