@@ -1,0 +1,12 @@
+.releasement__display-flex-outsider {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-content: stretch;
+}
+
+.releasement__display-flex-insider {
+    margin: 0 8px 8px;
+}

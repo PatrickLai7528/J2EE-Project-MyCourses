@@ -2,6 +2,7 @@ import * as React from "react";
 import {IReleasement} from "../../types/entities";
 import {Button, Card} from "antd";
 import MarkdownGenerator from "../../utils/MarkdownGenerator";
+import "./ReleasementDisplay.css"
 
 const ReactMarkdown = require('react-markdown');
 
@@ -13,11 +14,11 @@ export interface ICourseDisplayProps {
 
 const ReleasementDisplay: React.FunctionComponent<ICourseDisplayProps> = (props: ICourseDisplayProps) => {
     return (
-        <div>
+        <div className={"releasement__display-flex-outsider"}>
             {
                 props.releasementList.map((releasement: IReleasement) => {
                     return (
-                        <div key={releasement.rid}>
+                        <div key={releasement.rid} className={"releasement__display-flex-insider"}>
                             <Card
                                 style={{width: 300, marginTop: 16}}
                                 actions={[<Button htmlType="button" onClick={() => {
