@@ -1,9 +1,7 @@
 package com.j2ee.mycourses.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 
 /*
@@ -15,25 +13,25 @@ import java.util.Objects;
  */
 @Entity
 @Table(name = "teacher_entity")
-public final class TeacherEntity {
-    private String email;
+public final class TeacherEntity implements Serializable {
+    private String teacherEmail;
     private String password;
     private String name;
-    private String teacherNo;
+    private Long teacherNo;
 
     public TeacherEntity() {
     }
 
-    @Id
-    @Column(name = "email", length = 200)
-    public String getEmail() {
-        return email;
+    @Column(name = "teacher_email", length = 230)
+    public String getTeacherEmail() {
+        return teacherEmail;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setTeacherEmail(String email) {
+        this.teacherEmail = email;
     }
 
+    @Basic
     @Column(name = "password")
     public String getPassword() {
         return password;
@@ -43,6 +41,7 @@ public final class TeacherEntity {
         this.password = password;
     }
 
+    @Basic
     @Column(name = "name")
     public String getName() {
         return name;
@@ -52,19 +51,21 @@ public final class TeacherEntity {
         this.name = name;
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "tid", unique = true)
-    public String getTeacherNo() {
+    public Long getTeacherNo() {
         return teacherNo;
     }
 
-    public void setTeacherNo(String teacherNo) {
+    public void setTeacherNo(Long teacherNo) {
         this.teacherNo = teacherNo;
     }
 
     @Override
     public String toString() {
         return "TeacherEntity{" +
-                "email='" + email + '\'' +
+                "email='" + teacherEmail + '\'' +
                 ", password='" + password + '\'' +
                 ", name='" + name + '\'' +
                 ", teacherNo=" + teacherNo +
@@ -77,13 +78,13 @@ public final class TeacherEntity {
         if (!(o instanceof TeacherEntity)) return false;
         TeacherEntity that = (TeacherEntity) o;
         return getTeacherNo().equals(that.getTeacherNo()) &&
-                getEmail().equals(that.getEmail()) &&
+                getTeacherEmail().equals(that.getTeacherEmail()) &&
                 getPassword().equals(that.getPassword()) &&
                 getName().equals(that.getName());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getEmail(), getPassword(), getName(), getTeacherNo());
+        return Objects.hash(getTeacherEmail(), getPassword(), getName(), getTeacherNo());
     }
 }

@@ -9,11 +9,12 @@ package com.j2ee.mycourses.entity;
  */
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
 @Table(name = "slide_entity")
-public class SlideEntity {
+public class SlideEntity implements Serializable {
     private long sid;
     private String title;
     private String filePath;
@@ -33,6 +34,7 @@ public class SlideEntity {
         this.sid = sid;
     }
 
+    @Basic
     @Column(name = "title")
     public String getTitle() {
         return title;
@@ -42,6 +44,7 @@ public class SlideEntity {
         this.title = title;
     }
 
+    @Basic
     @Column(name = "file_path")
     public String getFilePath() {
         return filePath;

@@ -8,12 +8,13 @@ package com.j2ee.mycourses.entity;
  */
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
 @Table(name = "comment_entity")
-public class CommentEntity {
-    private long cmid;
+public class CommentEntity implements Serializable {
+    private Long cmid;
     private String content;
     private String messageFrom;
 
@@ -22,12 +23,11 @@ public class CommentEntity {
 
     @Id
     @Column(name = "cmid")
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    public long getCmid() {
+    public Long getCmid() {
         return cmid;
     }
 
-    public void setCmid(long cmid) {
+    public void setCmid(Long cmid) {
         this.cmid = cmid;
     }
 

@@ -8,11 +8,12 @@ package com.j2ee.mycourses.entity;
  */
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
 @Table(name = "assignment_entity")
-public class AssignmentEntity {
+public class AssignmentEntity implements Serializable {
     private long assId;
     private String title;
     private String description;

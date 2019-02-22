@@ -40,9 +40,9 @@ public class UserAuthServiceTest {
         studentEntity.setName("賴健明");
 
 
-        teacherEntity.setTeacherNo("123456");
+        teacherEntity.setTeacherNo((long) 123456);
         teacherEntity.setName("teacher haha");
-        teacherEntity.setEmail("teacher@smail.nju.edu.cn");
+        teacherEntity.setTeacherEmail("teacher@smail.nju.edu.cn");
         teacherEntity.setPassword("123123");
     }
 

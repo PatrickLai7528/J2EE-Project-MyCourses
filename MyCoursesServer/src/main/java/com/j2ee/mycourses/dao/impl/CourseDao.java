@@ -13,9 +13,11 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public class CourseDao extends AbstractGeneralDao<CourseEntity> implements ICourseDao {
 
     @Override
@@ -45,14 +47,14 @@ public class CourseDao extends AbstractGeneralDao<CourseEntity> implements ICour
     protected void updateHook(Session session, Transaction transaction, CourseEntity courseEntity) {
         Query query = session.createQuery("update CourseEntity " +
                 "set name = :name," +
-                "teacherEntity = :teacherEntity," +
+//                "teacherEntity = :teacherEntity," +
                 "assignmentEntityList = :assignmentEntityList," +
                 "slideEntityList = :slideEntityList, " +
                 "forumEntityList = : forumEntityList," +
                 "reportCardEntity = :reportCardEntity " +
                 "where cid = :cid");
         query.setParameter("name", courseEntity.getName());
-        query.setParameter("teacherEntity", courseEntity.getTeacherEntity());
+//        query.setParameter("teacherEntity", courseEntity.getTeacherEntity());
         query.setParameter("assignmentEntityList",  courseEntity.getAssignmentEntityList());
         query.setParameter("slideEntityList", courseEntity.getSlideEntityList());
         query.setParameter("forumEntityList", courseEntity.getForumEntityList());

@@ -26,7 +26,7 @@ public class TeacherDao extends AbstractGeneralDao<TeacherEntity> implements ITe
     public TeacherEntity retrieveByEmail(String email) {
         SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
         Session session = sessionFactory.openSession();
-        Query<TeacherEntity> query = session.createQuery("from TeacherEntity  where email = :email",
+        Query<TeacherEntity> query = session.createQuery("from TeacherEntity  where teacherEmail = :email",
                 TeacherEntity.class);
         query.setParameter("email", email);
         return query.list().isEmpty() ? null : query.list().get(0);
@@ -34,7 +34,16 @@ public class TeacherDao extends AbstractGeneralDao<TeacherEntity> implements ITe
 
     @Override
     protected void createHook(Session session, Transaction transaction, TeacherEntity teacherEntity) {
-        session.save(teacherEntity);
+        System.out.println(teacherEntity);
+
+        // try to new a instance
+//        TeacherEntity a = new TeacherEntity();
+//        a.setEmail(teacherEntity.getEmail());
+//        a.setName(teacherEntity.getName());
+//        a.setPassword(teacherEntity.getPassword());
+//        a.setTeacherNo(teacherEntity.getTeacherNo());
+
+        session.saveOrUpdate(teacherEntity);
         transaction.commit();
     }
 
@@ -49,11 +58,11 @@ public class TeacherDao extends AbstractGeneralDao<TeacherEntity> implements ITe
         Query query = session.createQuery("update TeacherEntity " +
                 "set name = :name," +
                 "teacherNo = :teacherNo," +
-                "password = :password where email = :email");
+                "password = :password where teacherEmail = :email");
         query.setParameter("name", teacherEntity.getName());
         query.setParameter("teacherNo", teacherEntity.getTeacherNo());
         query.setParameter("password", teacherEntity.getPassword());
-        query.setParameter("email", teacherEntity.getEmail());
+        query.setParameter("email", teacherEntity.getTeacherEmail());
         query.executeUpdate();
         transaction.commit();
     }
