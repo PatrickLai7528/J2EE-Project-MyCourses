@@ -105,6 +105,7 @@
     <SUITE FILE_PATH="coverage/MyCoursesServer$AssignmentDaoTest_update.ic" NAME="AssignmentDaoTest.update Coverage Results" MODIFIED="1549790914858" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.j2ee.mycourses.dao.impl.*</FILTER>
     </SUITE>
+    <SUITE FILE_PATH="coverage/MyCoursesServer$MycoursesApplication.ic" NAME="MycoursesApplication Coverage Results" MODIFIED="1550861525055" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
   <component name="CoverageViewManager">
     <option name="myElementSize" value="19" />
@@ -284,10 +285,9 @@
       </MavenImportingSettings>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="y" value="23" />
+  <component name="ProjectFrameBounds" fullScreen="true">
     <option name="width" value="1440" />
-    <option name="height" value="822" />
+    <option name="height" value="900" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -413,11 +413,13 @@
   <component name="PropertiesComponent">
     <property name="RequestMappingsPanelOrder0" value="0" />
     <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelOrder2" value="2" />
     <property name="RequestMappingsPanelWidth0" value="75" />
     <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RequestMappingsPanelWidth2" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550336208485" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550861569881" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers" value="true" />
@@ -457,7 +459,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.MycoursesApplication">
+  <component name="RunManager" selected="Spring Boot.MyApplication">
     <configuration name="UserAuthServiceTest.studentLogIn" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="MyCoursesServer" />
       <extension name="coverage">
@@ -534,6 +536,13 @@
       <option name="MAIN_CLASS_NAME" value="com.j2ee.mycourses.service.impl.UserAuthServiceTest" />
       <option name="METHOD_NAME" value="teacherRegistryTwice" />
       <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MyApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="MyCoursesServer" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.MyCourses.MyApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
