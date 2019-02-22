@@ -2,116 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5e92ab2f-ebd7-408b-b8b8-3bef3f1dfbb2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/myapp/src/api/CourseAPI.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myapp/src/api/ReleasementAPI.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myapp/src/api/SelectionAPI.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myapp/src/components/CourseAddingModal/CourseAddingModal.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myapp/src/components/CourseDisplay/CourseDisplay.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myapp/src/components/CourseDisplay/CourseDisplayContainer.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myapp/src/components/ReleaseCourseForm/ReleaseCourseForm.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myapp/src/components/ReleaseCourseForm/ReleaseCourseFormContainer.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myapp/src/components/ReleaseCourseForm/ReleaseCourseFormItem.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myapp/src/components/ReleasementDisplay/ReleasementDisplay.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myapp/src/components/ReleasementDisplay/ReleasementDisplayContainer.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myapp/src/components/StudentSider/StudentSider.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myapp/src/components/StudentSider/StudentSider.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myapp/src/components/TeacherSider/TeacherSider.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myapp/src/store/DataStore.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myapp/src/test/TestCourseAPI.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myapp/src/types/entities.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myapp/src/types/enums.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myapp/src/utils/CourseRepeateUtils.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyCoursesServer/src/main/resources/TeacherEntity.hbm.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapp/config-overrides.js" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/config-overrides.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapp/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapp/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapp/src/actions/actions.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapp/src/api/IAPIReponse.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapp/src/api/Settings.ts" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/src/api/Settings.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapp/src/api/StudentAPI.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapp/src/components/App/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/src/components/App/App.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myapp/src/components/App/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/src/components/App/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapp/src/components/AuthSiderItem/AuthSiderItem.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapp/src/components/EditProfile/EditProfile.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapp/src/components/LogIn/LogIn.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapp/src/components/LogIn/LogIn.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapp/src/components/MyContent/MyContent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/src/components/MyContent/MyContent.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapp/src/components/MyHeader/MyHeader.css" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/src/components/MyHeader/MyHeader.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapp/src/components/MyHeader/MyHeader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/src/components/MyHeader/MyHeader.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapp/src/components/MySider/MySider.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapp/src/components/MySider/MySider.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapp/src/components/Registry/Registyr.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapp/src/components/SettingSiderItem/SettingSiderItem.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapp/src/containers/AuthSiderItemContainer/AuthSiderItemContainer.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapp/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/src/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapp/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/src/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapp/src/react-app-env.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/src/react-app-env.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapp/src/reducers/AuthReducer.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapp/src/reducers/reducer.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapp/src/store/store.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapp/src/test/TestStudentAPI.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapp/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/tsconfig.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapp/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/yarn.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyCoursesServer/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesServer/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyCoursesServer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesServer/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyCoursesServer/mvnw.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesServer/mvnw.cmd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyCoursesServer/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesServer/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/j2ee/mycourses/MyCoursesApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/j2ee/mycourses/MyCoursesApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/j2ee/mycourses/controller/APIResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/j2ee/mycourses/controller/APIResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/j2ee/mycourses/controller/StudentController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/j2ee/mycourses/dao/IAssignmentDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/j2ee/mycourses/dao/IAssignmentDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/j2ee/mycourses/dao/ICommentDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/j2ee/mycourses/dao/ICommentDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/j2ee/mycourses/dao/ICourseDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/j2ee/mycourses/dao/ICourseDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/j2ee/mycourses/dao/IForumDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/j2ee/mycourses/dao/IForumDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/j2ee/mycourses/dao/IGeneralDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/j2ee/mycourses/dao/IGeneralDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/j2ee/mycourses/dao/IReleasementDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/j2ee/mycourses/dao/IReleasementDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/j2ee/mycourses/dao/IReportCardDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/j2ee/mycourses/dao/IReportCardDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/j2ee/mycourses/dao/IStudentDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/j2ee/mycourses/dao/IStudentDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/j2ee/mycourses/dao/ITeacherDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/j2ee/mycourses/dao/ITeacherDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/j2ee/mycourses/dao/factory/DaoFactory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/j2ee/mycourses/dao/impl/AbstractGeneralDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/j2ee/mycourses/dao/impl/AbstractGeneralDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/j2ee/mycourses/dao/impl/AssignmentDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/j2ee/mycourses/dao/impl/AssignmentDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/j2ee/mycourses/dao/impl/CommentDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/j2ee/mycourses/dao/impl/CommentDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/j2ee/mycourses/dao/impl/CourseDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/j2ee/mycourses/dao/impl/CourseDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/j2ee/mycourses/dao/impl/ForumDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/j2ee/mycourses/dao/impl/ForumDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/j2ee/mycourses/dao/impl/ReleasementDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/j2ee/mycourses/dao/impl/ReleasementDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/j2ee/mycourses/dao/impl/ReportCardDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/j2ee/mycourses/dao/impl/ReportCardDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/j2ee/mycourses/dao/impl/StudentDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/j2ee/mycourses/dao/impl/StudentDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/j2ee/mycourses/dao/impl/TeacherDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/j2ee/mycourses/dao/impl/TeacherDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/j2ee/mycourses/entity/AssignmentEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/j2ee/mycourses/entity/AssignmentEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/j2ee/mycourses/entity/CommentEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/j2ee/mycourses/entity/CommentEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/j2ee/mycourses/entity/CourseEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/j2ee/mycourses/entity/CourseEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/j2ee/mycourses/entity/ForumEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/j2ee/mycourses/entity/ForumEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/j2ee/mycourses/entity/ReleasementEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/j2ee/mycourses/entity/ReleasementEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/j2ee/mycourses/entity/ReportCardEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/j2ee/mycourses/entity/ReportCardEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/j2ee/mycourses/entity/ReportCardItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/j2ee/mycourses/entity/ReportCardItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/j2ee/mycourses/entity/SlideEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/j2ee/mycourses/entity/SlideEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/j2ee/mycourses/entity/StudentEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/j2ee/mycourses/entity/StudentEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/j2ee/mycourses/entity/TeacherEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/j2ee/mycourses/entity/TeacherEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/j2ee/mycourses/error/StudentNotExistException.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/j2ee/mycourses/error/StudentNotExistException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/j2ee/mycourses/error/StudentRepeatedException.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/j2ee/mycourses/error/StudentRepeatedException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/j2ee/mycourses/error/TeacherNotExistException.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/j2ee/mycourses/error/TeacherNotExistException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/j2ee/mycourses/error/TeacherRepeatedException.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/j2ee/mycourses/error/TeacherRepeatedException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/j2ee/mycourses/service/IEncryptService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/j2ee/mycourses/service/IEncryptService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/j2ee/mycourses/service/IUserAuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/j2ee/mycourses/service/IUserAuthService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/j2ee/mycourses/service/impl/EncryptService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/j2ee/mycourses/service/impl/EncryptService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/j2ee/mycourses/service/impl/UserAuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/j2ee/mycourses/service/impl/UserAuthService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/j2ee/mycourses/utils/HibernateUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/j2ee/mycourses/utils/HibernateUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyCoursesServer/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesServer/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyCoursesServer/src/main/resources/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesServer/src/main/resources/hibernate.cfg.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyCoursesServer/src/test/java/com/j2ee/mycourses/MycoursesApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesServer/src/test/java/com/j2ee/mycourses/MycoursesApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyCoursesServer/src/test/java/com/j2ee/mycourses/dao/impl/AssignmentDaoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesServer/src/test/java/com/j2ee/mycourses/dao/impl/AssignmentDaoTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyCoursesServer/src/test/java/com/j2ee/mycourses/dao/impl/CommentDaoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesServer/src/test/java/com/j2ee/mycourses/dao/impl/CommentDaoTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyCoursesServer/src/test/java/com/j2ee/mycourses/dao/impl/CourseDaoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesServer/src/test/java/com/j2ee/mycourses/dao/impl/CourseDaoTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyCoursesServer/src/test/java/com/j2ee/mycourses/dao/impl/ForumDaoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesServer/src/test/java/com/j2ee/mycourses/dao/impl/ForumDaoTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyCoursesServer/src/test/java/com/j2ee/mycourses/dao/impl/ReleasementDaoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesServer/src/test/java/com/j2ee/mycourses/dao/impl/ReleasementDaoTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyCoursesServer/src/test/java/com/j2ee/mycourses/dao/impl/ReportCardDaoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesServer/src/test/java/com/j2ee/mycourses/dao/impl/ReportCardDaoTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyCoursesServer/src/test/java/com/j2ee/mycourses/dao/impl/StudentDaoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesServer/src/test/java/com/j2ee/mycourses/dao/impl/StudentDaoTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyCoursesServer/src/test/java/com/j2ee/mycourses/dao/impl/TeacherDaoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesServer/src/test/java/com/j2ee/mycourses/dao/impl/TeacherDaoTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyCoursesServer/src/test/java/com/j2ee/mycourses/entity/EntityMappingTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesServer/src/test/java/com/j2ee/mycourses/entity/EntityMappingTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyCoursesServer/src/test/java/com/j2ee/mycourses/service/impl/EncryptServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesServer/src/test/java/com/j2ee/mycourses/service/impl/EncryptServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyCoursesServer/src/test/java/com/j2ee/mycourses/service/impl/UserAuthServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesServer/src/test/java/com/j2ee/mycourses/service/impl/UserAuthServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myapp/src/components/StudentSider/StudentSider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/src/components/StudentSider/StudentSider.tsx" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -148,7 +40,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/myapp/src/api/ReleasementAPI.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="691">
@@ -160,11 +52,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/myapp/src/components/App/App.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1296">
-              <caret line="117" column="28" selection-start-line="117" selection-start-column="28" selection-end-line="117" selection-end-column="28" />
+            <state relative-caret-position="97">
+              <caret line="164" column="45" selection-start-line="164" selection-start-column="45" selection-end-line="164" selection-end-column="45" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
               </folding>
@@ -192,8 +84,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/myapp/src/components/StudentSider/StudentSider.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="277">
-              <caret line="38" column="13" lean-forward="true" selection-start-line="38" selection-start-column="13" selection-end-line="38" selection-end-column="13" />
+            <state relative-caret-position="-602">
+              <caret line="17" column="23" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
               </folding>
@@ -274,10 +166,10 @@
         <option value="$PROJECT_DIR$/myapp/src/components/CourseDisplay/CourseDisplay.tsx" />
         <option value="$PROJECT_DIR$/myapp/src/api/Releasement.ts" />
         <option value="$PROJECT_DIR$/myapp/src/api/SelectionAPI.ts" />
-        <option value="$PROJECT_DIR$/myapp/src/components/StudentSider/StudentSider.tsx" />
         <option value="$PROJECT_DIR$/myapp/src/components/ReleasementDisplay/ReleasementDisplayContainer.tsx" />
         <option value="$PROJECT_DIR$/myapp/src/api/CourseAPI.ts" />
         <option value="$PROJECT_DIR$/myapp/src/api/ReleasementAPI.ts" />
+        <option value="$PROJECT_DIR$/myapp/src/components/StudentSider/StudentSider.tsx" />
         <option value="$PROJECT_DIR$/myapp/src/components/App/App.tsx" />
       </list>
     </option>
@@ -508,7 +400,7 @@
       <workItem from="1550577603296" duration="352000" />
       <workItem from="1550649304959" duration="11761000" />
       <workItem from="1550671228982" duration="1430000" />
-      <workItem from="1550739882034" duration="37531000" />
+      <workItem from="1550739882034" duration="38423000" />
     </task>
     <servers />
   </component>
@@ -530,7 +422,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="83870000" />
+    <option name="totallyTimeSpent" value="84762000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -936,16 +828,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/myapp/src/components/StudentSider/StudentSider.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
-          <caret line="38" column="13" lean-forward="true" selection-start-line="38" selection-start-column="13" selection-end-line="38" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/myapp/src/components/ReleasementDisplay/ReleasementDisplayContainer.tsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="78">
@@ -962,16 +844,6 @@
           <caret line="172" column="8" lean-forward="true" selection-start-line="145" selection-start-column="7" selection-end-line="172" selection-end-column="8" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myapp/src/components/App/App.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1296">
-          <caret line="117" column="28" selection-start-line="117" selection-start-column="28" selection-end-line="117" selection-end-column="28" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -995,6 +867,26 @@
           <caret line="71" column="5" selection-start-line="71" selection-start-column="5" selection-end-line="71" selection-end-column="5" />
           <folding>
             <element signature="e#0#42#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myapp/src/components/StudentSider/StudentSider.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-602">
+          <caret line="17" column="23" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myapp/src/components/App/App.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="97">
+          <caret line="164" column="45" selection-start-line="164" selection-start-column="45" selection-end-line="164" selection-end-column="45" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -162,7 +162,7 @@ export default class App extends Component<IAppProps, IAppState> {
                         /**
                          *  default showing student sider
                          */
-                        this.state.userType !== "student" ?
+                        this.state.userType === "teacher" ?
                             (
                                 <TeacherSider
                                     userType={this.state.userType}
