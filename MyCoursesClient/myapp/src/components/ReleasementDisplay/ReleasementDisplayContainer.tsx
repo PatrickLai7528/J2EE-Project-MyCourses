@@ -1,5 +1,5 @@
 import * as React from "react";
-import {IReleasement} from "../../types/entities";
+import {IReleasement, ISelection} from "../../types/entities";
 import IAPIResponse from "../../api/IAPIResponse";
 import CourseAPI from "../../api/CourseAPI";
 import {Divider, message, Spin} from "antd";
@@ -28,6 +28,10 @@ export default class ReleasementDisplayContainer extends React.Component<IReleam
         }
     }
 
+    /**
+     * the reason of fetching here instead of in App.tsx:
+     *      - no other place use the releasement
+     */
     public componentDidMount() {
         this.setState({isLoading: true});
         ReleasementAPI.getInstance().getAllReleasement()

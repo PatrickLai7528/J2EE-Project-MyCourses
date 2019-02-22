@@ -21,6 +21,11 @@ interface IAppState {
     courseList: ICourse[]
 }
 
+// export interface ISendSelectionProps{
+//     sendSelection:
+// }
+
+
 export interface IAppProps {
 
 }
@@ -37,6 +42,7 @@ export default class App extends Component<IAppProps, IAppState> {
             courseList: []
         }
     }
+
 
     private getCourseOf(teacherEmail: string): void {
         CourseAPI.getInstance().getCourseOf(teacherEmail)
