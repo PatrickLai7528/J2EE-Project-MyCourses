@@ -22,6 +22,7 @@ export default class TeacherSider extends React.Component<ITeacherSiderProps, IT
             <Layout.Sider style={{background: '#fff'}}
                           collapsible={true}
                           collapsedWidth={0}
+                          width={250}
             >
                 <Menu
                     mode="inline"

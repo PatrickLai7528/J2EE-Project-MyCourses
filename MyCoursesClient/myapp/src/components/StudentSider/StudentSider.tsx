@@ -19,6 +19,7 @@ const StudentSider: React.FunctionComponent<IStudentSiderProps> = (props: IStude
     return (
         <Layout.Sider style={{background: '#fff'}}
                       collapsible={true}
+                      width={250}
                       collapsedWidth={0}
         >
             <Menu

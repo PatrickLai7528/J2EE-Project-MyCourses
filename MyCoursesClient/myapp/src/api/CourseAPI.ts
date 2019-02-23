@@ -1,8 +1,8 @@
 import axios from "axios";
 import IAPIResponse from "./IAPIResponse";
 import NetworkSettings from "../setting/NetworkSettings";
-import {ICourse, IReleasement, ISelection} from "../types/entities";
-import {toApprovalState, toSelectionState} from "../types/enums";
+import {ICourse} from "../types/entities";
+import {toApprovalState} from "../types/enums";
 
 
 export interface ISendReleasementData {
@@ -34,7 +34,7 @@ export default class CourseAPI {
             const url: string =
                 NetworkSettings.getOpenNetworkIP()
                 + "/course/add?teacherEmail=" + teacherEmail
-                + "&addingCourseName=" + courseName;
+                + "&courseName=" + courseName;
             axios.post(url)
                 .then((response: any) => {
                     resolve({

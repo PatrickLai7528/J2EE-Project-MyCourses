@@ -13,8 +13,8 @@ import {ICourse, IReleasement, ISelection} from "../../types/entities";
 import TeacherSider from "../TeacherSider/TeacherSider";
 import SelectionAPI from "../../api/SelectionAPI";
 import ReleasementAPI from "../../api/ReleasementAPI";
-import {Cookie} from "universal-cookie";
 import Cookies from "universal-cookie/es6";
+import AssignmentAPI, {ISendAssignmentData} from "../../api/AssignmentAPI";
 
 interface IAppState {
     userType: UserType
@@ -201,6 +201,27 @@ export default class App extends Component<IAppProps, IAppState> {
             })
     }
 
+    public sendAssignment(data: ISendAssignmentData, onBefore?: () => void,
+                          onSuccess?: (response: IAPIResponse<any>) => void,
+                          onFail?: (response: IAPIResponse<any>) => void,
+                          onError?: (e: any) => void): void {
+        if (onBefore) onBefore();
+        AssignmentAPI.getInstance().sendAssignment(data)
+            .then((response: IAPIResponse<any>) => {
+                if (response.isSuccess) {
+                    if (onSuccess) onSuccess(response);
+                    // refresh teacher sider by fetching releasement
+                    if (this.state.email) this.getReleasementOf(this.state.email);
+                } else {
+                    if (onFail) onFail(response);
+                }
+            })
+            .catch((e: any) => {
+                console.log(e);
+                if (onError) onError(e);
+            })
+    }
+
     private handleReleaseClickFromTeacherSider(releasement: IReleasement): void {
         this.setState({managingReleasement: releasement})
     }
@@ -288,6 +309,7 @@ export default class App extends Component<IAppProps, IAppState> {
                             sendAddCourse={this.sendAddCourse.bind(this)}
                             sendCourseRelease={this.sendCourseRelease.bind(this)}
                             sendCourseSelection={this.sendCourseSelection.bind(this)}
+                            sendAssignment={this.sendAssignment.bind(this)}
                         />
                     </Layout>
                 </Layout>

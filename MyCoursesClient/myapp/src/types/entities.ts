@@ -24,10 +24,6 @@ export interface ICourse {
     name: string,
     teacherEntity: ITeacher
     approvalState: ApprovalState,
-    reportCardEntity?: IReportCard,
-    slideEntityList?: ISlide[],
-    assignmentEntityList?: IAssignment[],
-    forumEntityList?: IForum[]
 }
 
 export interface IAssignment {
@@ -77,6 +73,10 @@ export interface IReleasement {
     rid: number,
     approvalState: ApprovalState,
     courseEntity: ICourse,
+    reportCardEntity?: IReportCard,
+    slideEntityList?: ISlide[],
+    assignmentEntityList?: IAssignment[],
+    forumEntityList?: IForum[]
     startHour: number,
     startMin: number,
     endHour: number,

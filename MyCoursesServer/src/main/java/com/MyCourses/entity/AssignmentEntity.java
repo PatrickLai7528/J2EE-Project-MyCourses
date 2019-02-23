@@ -11,6 +11,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -30,6 +31,10 @@ public class AssignmentEntity implements Serializable {
 
     @Column(name = "description")
     private String description;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "smid")
+    private List<SubmissionEntity> submissionEntityList;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @MapKey(name = "sid")

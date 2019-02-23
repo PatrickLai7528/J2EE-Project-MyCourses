@@ -40,9 +40,9 @@ export function toSelectionState(str: string): SelectionState {
 export function toChinese(state: ApprovalState): string {
     switch (state) {
         case ApprovalState.WAITING:
-            return "待審批";
+            return "等待審批";
         case ApprovalState.APPROVED:
-            return "照常開課";
+            return "通過審批";
         case ApprovalState.REJECTED:
             return "取消課程";
         default:

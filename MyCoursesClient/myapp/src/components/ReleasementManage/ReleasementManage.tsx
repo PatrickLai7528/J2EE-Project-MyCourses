@@ -1,12 +1,15 @@
 import * as React from "react";
-import {UserType} from "../../api/UserAPI";
 import {Divider, Layout} from "antd";
 import {IReleasement} from "../../types/entities";
+import {ReleasementManageMessage} from "./ReleasementManageMessage";
+import {ReleasementManageAssignment} from "./ReleasementManageAssignment";
+import {ReleasementManageSlide} from "./ReleasementManageSlide";
 
 export interface IReleasementManageProps {
-    userType: UserType
-    email: string
     releasement: IReleasement
+    editable: boolean
+    onSlideClick: () => void
+    onAssignmentClick: () => void
 }
 
 const {Content, Sider} = Layout;
@@ -15,21 +18,15 @@ export const ReleasementManage: React.FunctionComponent<IReleasementManageProps>
     return (
         <Layout>
             <Content>
+                <ReleasementManageMessage/>
                 <Divider/>
-                <h1>
-                    通知
-                </h1>
+                <ReleasementManageSlide editable={props.editable} onClick={props.onSlideClick}/>
                 <Divider/>
-                <h1>
-                    課件
-                </h1>
-                <Divider/>
-                <h1>
-                    作業
-                </h1>
+                <ReleasementManageAssignment releasement={props.releasement} editable={props.editable}
+                                             onClick={props.onAssignmentClick}/>
                 <Divider/>
             </Content>
-            <Sider theme={"light"} style={{margin: 15, padding: 8}}>
+            <Sider theme={"light"} style={{margin: 15, padding: 8}} width={350}>
                 <h1>討論區</h1>
             </Sider>
         </Layout>

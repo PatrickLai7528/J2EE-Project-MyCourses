@@ -33,19 +33,17 @@ export class ReleaseCourseForm extends React.Component<IReleaseCourseFormProps> 
     public render(): React.ReactNode {
         const {getFieldDecorator} = this.props.form;
         return (
-            <div>
-                <Form
-                    hideRequiredMark={true}
-                    layout={"horizontal"}
-                >
-                    <EffectiveTimeReleaseCourseFormItem getFieldDecorator={getFieldDecorator}/>
-                    <DeadTimeReleaseCourseFormItem getFieldDecorator={getFieldDecorator}/>
-                    <StartTimeReleaseCourseFormItem getFieldDecorator={getFieldDecorator}/>
-                    <EndTimeReleaseCourseFormItem getFieldDecorator={getFieldDecorator}/>
-                    <LimitNumberReleaseCourseFormItem getFieldDecorator={getFieldDecorator}/>
-                    <RepeatReleaseCourseFormItem getFieldDecorator={getFieldDecorator}/>
-                </Form>
-            </div>
+            <Form
+                hideRequiredMark={true}
+                layout={"horizontal"}
+            >
+                <EffectiveTimeReleaseCourseFormItem getFieldDecorator={getFieldDecorator}/>
+                <DeadTimeReleaseCourseFormItem getFieldDecorator={getFieldDecorator}/>
+                <StartTimeReleaseCourseFormItem getFieldDecorator={getFieldDecorator}/>
+                <EndTimeReleaseCourseFormItem getFieldDecorator={getFieldDecorator}/>
+                <LimitNumberReleaseCourseFormItem getFieldDecorator={getFieldDecorator}/>
+                <RepeatReleaseCourseFormItem getFieldDecorator={getFieldDecorator}/>
+            </Form>
         )
     }
 

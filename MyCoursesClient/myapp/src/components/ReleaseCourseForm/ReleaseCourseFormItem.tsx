@@ -54,7 +54,7 @@ export const StartTimeReleaseCourseFormItem: React.FunctionComponent<IGeneralRel
                     }
                 ],
             })(
-                <TimePicker format={"HH:mm"}/>
+                <TimePicker format={"HH:mm"} placeholder="上課時間"/>
             )}
         </Form.Item>
     )
@@ -72,7 +72,7 @@ export const EndTimeReleaseCourseFormItem: React.FunctionComponent<IGeneralRelea
                     }
                 ],
             })(
-                <TimePicker format={"HH:mm"}/>
+                <TimePicker format={"HH:mm"} placeholder="下課時間"/>
             )}
         </Form.Item>
     )
@@ -107,7 +107,7 @@ export const LimitNumberReleaseCourseFormItem: React.FunctionComponent<IGeneralR
                     }
                 ],
             })(
-                <InputNumber min={0} max={200}/>
+                <InputNumber min={0} max={200} placeholder="限選人數"/>
             )}
         </Form.Item>
     )

@@ -15,6 +15,7 @@ import {ICourse, IReleasement} from "../../types/entities";
 import IAPIResponse from "../../api/IAPIResponse";
 import {ISendReleasementData} from "../../api/CourseAPI";
 import ReleasementManageContainer from "../ReleasementManage/ReleasementManageContainer";
+import {ISendAssignmentData} from "../../api/AssignmentAPI";
 
 export interface IMyContentProps {
     userType: UserType
@@ -67,6 +68,21 @@ export interface IMyContentProps {
                           onSuccess?: (response: IAPIResponse<any>) => void,
                           onFail?: (response: IAPIResponse<any>) => void,
                           onError?: (e: any) => void) => void
+
+    /**
+     * send assignment callback from App.tsx
+     * @param data
+     * @param onBefore
+     * @param onSuccess
+     * @param onFail
+     * @param onError
+     */
+    sendAssignment: (data: ISendAssignmentData,
+                     onBefore?: () => void,
+                     onSuccess?: (response: IAPIResponse<any>) => void,
+                     onFail?: (response: IAPIResponse<any>) => void,
+                     onError?: (e: any) => void) => void
+
 }
 
 
@@ -101,6 +117,7 @@ export default class MyContent extends Component<IMyContentProps, any> {
                     <Route exact path="/releasement/manage" component={
                         () => {
                             return <ReleasementManageContainer
+                                sendAssignment={this.props.sendAssignment}
                                 userType={this.props.userType}
                                 email={this.props.email}
                                 releasement={this.props.managingReleasement}/>

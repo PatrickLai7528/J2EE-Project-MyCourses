@@ -26,6 +26,7 @@ public class ForumEntity implements Serializable {
     @Column(name = "fid")
     private Long fid;
 
+
     @Column(name = "topic")
     private String topic;
 
