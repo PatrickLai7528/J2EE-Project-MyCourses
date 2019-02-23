@@ -2,7 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b7acb967-7f4e-4e76-a68d-ff398a1380be" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/MyCourses/controller/SelectionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/MyCourses/controller/SelectionController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/ReleasementManage/ReleasementManage.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/ReleasementManage/ReleasementManageContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyCoursesClient/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesClient/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyCoursesClient/myapp/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesClient/myapp/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/api/ReleasementAPI.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/api/ReleasementAPI.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/App/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/App/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/MyContent/MyContent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/MyContent/MyContent.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/ReleasementDisplay/ReleasementDisplayContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/ReleasementDisplay/ReleasementDisplayContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/TeacherSider/TeacherSider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/TeacherSider/TeacherSider.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -83,11 +92,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/MyCourses/controller/SelectionController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="337">
-              <caret line="38" column="60" selection-start-line="38" selection-start-column="60" selection-end-line="38" selection-end-column="60" />
+            <state relative-caret-position="1032">
+              <caret line="57" column="16" lean-forward="true" selection-start-line="57" selection-start-column="16" selection-end-line="57" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/MyCourses/controller/ReleasementController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1482">
+              <caret line="31" column="13" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -268,7 +286,7 @@
     <property name="RequestMappingsPanelWidth2" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550905037222" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550914471900" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers" value="true" />
@@ -428,7 +446,7 @@
       <workItem from="1549379623713" duration="32680000" />
       <workItem from="1549791372778" duration="1021000" />
       <workItem from="1550311169599" duration="3228000" />
-      <workItem from="1550861419935" duration="1314000" />
+      <workItem from="1550861419935" duration="2257000" />
     </task>
     <servers />
   </component>
@@ -465,13 +483,13 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="39465000" />
+    <option name="totallyTimeSpent" value="40408000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22013889" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22013889" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Persistence" order="3" side_tool="true" />
@@ -484,7 +502,7 @@
       <window_info anchor="bottom" id="Duplicate detector" order="1" weight="0.32934132" />
       <window_info anchor="bottom" id="Message" order="2" />
       <window_info anchor="bottom" id="Find" order="3" weight="0.32934132" />
-      <window_info active="true" anchor="bottom" id="Run" order="4" visible="true" weight="0.43832335" />
+      <window_info anchor="bottom" id="Run" order="4" visible="true" weight="0.43832335" />
       <window_info anchor="bottom" id="Debug" order="5" weight="0.5005988" />
       <window_info anchor="bottom" id="Cvs" order="6" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="7" weight="0.4" />
@@ -526,7 +544,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/impl/CourseDao.java" />
     <entry file="file://$PROJECT_DIR$/src/test/java/com/j2ee/mycourses/MycoursesApplicationTests.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/IReportCardDao.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/utils/HibernateUtils.java" />
@@ -716,8 +733,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/MyCourses/controller/SelectionController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="337">
-          <caret line="38" column="60" selection-start-line="38" selection-start-column="60" selection-end-line="38" selection-end-column="60" />
+        <state relative-caret-position="1032">
+          <caret line="57" column="16" lean-forward="true" selection-start-line="57" selection-start-column="16" selection-end-line="57" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/MyCourses/controller/ReleasementController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1482">
+          <caret line="31" column="13" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
         </state>
       </provider>
     </entry>

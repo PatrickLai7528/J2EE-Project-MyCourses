@@ -29,7 +29,7 @@ export interface IReleamentDisplayContainerProps {
 }
 
 interface IReleasementDisplayContainerState {
-    // releasementList: IReleasement[]
+    // releasementListOfStudent: IReleasement[]
     // isLoading: boolean
     isCourseSelectionSending: boolean
 }
@@ -38,7 +38,7 @@ export default class ReleasementDisplayContainer extends React.Component<IReleam
     public constructor(props: IReleamentDisplayContainerProps) {
         super(props);
         this.state = {
-            // releasementList: [],
+            // releasementListOfStudent: [],
             // isLoading: false,
             isCourseSelectionSending: false
         }
@@ -54,7 +54,7 @@ export default class ReleasementDisplayContainer extends React.Component<IReleam
     //         .then((response: IAPIResponse<IReleasement[]>) => {
     //             if (response.isSuccess) {
     //                 if (response.payload)
-    //                     this.setState({releasementList: response.payload, isLoading: false})
+    //                     this.setState({releasementListOfStudent: response.payload, isLoading: false})
     //             } else {
     //                 message.error(response.message);
     //                 this.setState({isLoading: false})

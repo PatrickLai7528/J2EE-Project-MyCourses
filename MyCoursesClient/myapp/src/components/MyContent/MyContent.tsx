@@ -3,7 +3,7 @@ import {Component} from "react";
 import './MyContent.css';
 import {Layout} from 'antd';
 // import CompetitionSimpleBlock from "./../CompetitionSimpleBlock/CompetitionSimpleBlock";
-import {Redirect, Route, Router, Switch} from 'react-router-dom'
+import {Redirect, Route, Switch} from 'react-router-dom'
 import CompetitionCalendar from "./../CompetitionCalendar/CompetitionCalendar"
 import CompetitionDisplay from "./../CompetitionDisplay/CompetitionDisplay"
 import DefaultHome from "../DefaultHome/DefaultHome";
@@ -14,12 +14,20 @@ import CourseDisplayContainer from "../CourseDisplay/CourseDisplayContainer";
 import {ICourse, IReleasement} from "../../types/entities";
 import IAPIResponse from "../../api/IAPIResponse";
 import {ISendReleasementData} from "../../api/CourseAPI";
+import ReleasementManageContainer from "../ReleasementManage/ReleasementManageContainer";
 
 export interface IMyContentProps {
     userType: UserType
     email: string | undefined
     courseList: ICourse[]
     releasementList: IReleasement[]
+
+    /**
+     * for teacher, while teacher sider click a releasement,
+     * this releasement will be passed from App.tsx
+     */
+    managingReleasement?: IReleasement
+
     /**
      *
      * @param courseName
@@ -90,7 +98,14 @@ export default class MyContent extends Component<IMyContentProps, any> {
                             sendCourseRelease={this.props.sendCourseRelease}
                         />
                     }}/>
-                    <Redirect to="/home"/>
+                    <Route exact path="/releasement/manage" component={
+                        () => {
+                            return <ReleasementManageContainer
+                                userType={this.props.userType}
+                                email={this.props.email}
+                                releasement={this.props.managingReleasement}/>
+                        }
+                    }/>
                 </Switch>
             </Layout.Content>
         );

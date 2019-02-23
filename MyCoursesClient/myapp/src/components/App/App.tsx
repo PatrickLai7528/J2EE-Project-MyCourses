@@ -17,9 +17,20 @@ import ReleasementAPI from "../../api/ReleasementAPI";
 interface IAppState {
     userType: UserType
     email: string | undefined
+
+    // for student sider
     selectionList: ISelection[]
     courseList: ICourse[]
-    releasementList: IReleasement[]
+
+    // for the student to select these released course,
+    // the reason why keep it here, is for better performance
+    releasementListOfStudent: IReleasement[]
+
+    // for the teacher sider
+    releasementListOfTeacher: IReleasement[]
+
+    // for teacher to manage their released course
+    managingReleasement?: IReleasement
 }
 
 // export interface ISendSelectionProps{
@@ -41,7 +52,8 @@ export default class App extends Component<IAppProps, IAppState> {
             email: undefined,
             selectionList: [],
             courseList: [],
-            releasementList: []
+            releasementListOfStudent: [],
+            releasementListOfTeacher: []
         }
     }
 
@@ -77,16 +89,6 @@ export default class App extends Component<IAppProps, IAppState> {
             })
     }
 
-    private handleLogInSuccess(userType: UserType, email: string): void {
-        this.setState({userType: userType, email: email});
-        if (userType === "student") {
-            if (!email) return;
-            this.getSelectionOf(email);
-        } else if (userType === "teacher") {
-            if (!email) return;
-            this.getCourseOf(email)
-        }
-    }
 
     private sendAddCourse(courseName: string, email: string,
                           onBefore?: () => void,
@@ -113,7 +115,7 @@ export default class App extends Component<IAppProps, IAppState> {
             .then((response: IAPIResponse<IReleasement[]>) => {
                 if (response.isSuccess) {
                     if (response.payload)
-                        this.setState({releasementList: response.payload})
+                        this.setState({releasementListOfStudent: response.payload})
                 } else {
                     message.error(response.message);
                 }
@@ -134,9 +136,9 @@ export default class App extends Component<IAppProps, IAppState> {
         ReleasementAPI.getInstance().sendReleasement(data)
             .then((response: IAPIResponse<any>) => {
                 if (response.isSuccess) {
-                    if (onSuccess)
-                        onSuccess(response);
-                    // this.reduceCourse(data.cid)
+                    if (onSuccess) onSuccess(response);
+                    // refresh teacher sider by fetching releasement
+                    if (this.state.email) this.getReleasementOf(this.state.email);
                 } else {
                     if (onFail)
                         onFail(response);
@@ -171,6 +173,37 @@ export default class App extends Component<IAppProps, IAppState> {
             })
     }
 
+    private getReleasementOf(teacherEmail: string) {
+        ReleasementAPI.getInstance().getReleasementOf(teacherEmail)
+            .then((response: IAPIResponse<IReleasement[]>) => {
+                if (response.isSuccess) {
+                    if (response.payload)
+                        this.setState({releasementListOfTeacher: response.payload})
+                } else {
+                    message.error(response.message);
+                }
+            })
+            .catch((e: any) => {
+                console.log(e);
+                message.error("發生未知錯誤，請稍候再試");
+            })
+    }
+
+    private handleReleaseClickFromTeacherSider(releasement: IReleasement): void {
+        this.setState({managingReleasement: releasement})
+    }
+
+    private handleLogInSuccess(userType: UserType, email: string): void {
+        this.setState({userType: userType, email: email});
+        if (userType === "student") {
+            if (!email) return;
+            this.getSelectionOf(email);
+        } else if (userType === "teacher") {
+            if (!email) return;
+            this.getCourseOf(email);
+            this.getReleasementOf(email);
+        }
+    }
 
     private handleLogInFail(): void {
     }
@@ -208,8 +241,11 @@ export default class App extends Component<IAppProps, IAppState> {
                         this.state.userType === "teacher" ?
                             (
                                 <TeacherSider
+                                    onReleasementClick={this.handleReleaseClickFromTeacherSider.bind(this)}
                                     userType={this.state.userType}
-                                    email={this.state.email}/>
+                                    email={this.state.email}
+                                    releasementList={this.state.releasementListOfTeacher}
+                                />
                             )
                             :
                             (
@@ -227,7 +263,9 @@ export default class App extends Component<IAppProps, IAppState> {
                             email={this.state.email}
 
                             courseList={this.state.courseList}
-                            releasementList={this.state.releasementList}
+                            releasementList={this.state.releasementListOfStudent}
+
+                            managingReleasement={this.state.managingReleasement}
 
                             sendAddCourse={this.sendAddCourse.bind(this)}
                             sendCourseRelease={this.sendCourseRelease.bind(this)}

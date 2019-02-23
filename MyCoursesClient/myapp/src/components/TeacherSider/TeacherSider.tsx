@@ -2,10 +2,15 @@ import * as React from "react";
 import {NavLink} from "react-router-dom";
 import {Icon, Layout, Menu} from "antd";
 import {UserType} from "../../api/UserAPI";
+import {IReleasement} from "../../types/entities";
+
+const moment = require("moment");
 
 export interface ITeacherSiderProps {
     userType: UserType,
     email: string | undefined
+    releasementList: IReleasement[]
+    onReleasementClick: (releasement: IReleasement) => void;
 }
 
 interface ITeacherSiderState {
@@ -35,12 +40,27 @@ export default class TeacherSider extends React.Component<ITeacherSiderProps, IT
                     </Menu.Item>
                     <Menu.SubMenu key="types" title={<span><Icon type="profile"/>已發佈課程</span>}>
                         {
-                            !this.props.email || this.props.userType !== "student" ?
+                            !this.props.email || this.props.userType !== "teacher" ?
                                 (
                                     <Menu.Item disabled={true}>
                                         尚未登入
                                     </Menu.Item>
                                 ) : ""
+
+                        }
+                        {
+                            this.props.releasementList.map((releasement: IReleasement) => {
+                                return (
+                                    <Menu.Item key={releasement.rid}
+                                               onClick={() => {
+                                                   this.props.onReleasementClick(releasement)
+                                               }}>
+                                        <NavLink to={"/releasement/manage"}>
+                                            {moment(releasement.effectiveTime).format("MM-DD") + " " + releasement.courseEntity.name}
+                                        </NavLink>
+                                    </Menu.Item>
+                                )
+                            })
                         }
                         {/*{*/}
                         {/*this.props.selectionList.map((selection: ISelection) => {*/}
