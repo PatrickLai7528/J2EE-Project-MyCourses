@@ -1,7 +1,6 @@
 import * as React from "react";
 import {GetFieldDecoratorOptions} from "antd/lib/form/Form";
 import {DatePicker, Form, Input} from "antd";
-import TextArea from "antd/es/input/TextArea";
 import {IGeneralReleaseCourseFormItemProps} from "../ReleaseCourseForm/ReleaseCourseFormItem";
 
 export interface IGeneralAssignmentAddingFormItemProps {
@@ -38,8 +37,8 @@ export const DescriptionAssignmentAddingFormItem: React.FunctionComponent<IGener
                     }
                 ],
             })(
-                <TextArea  placeholder="作業描述"
-                          autosize={{minRows: 1, maxRows: 6}}/>
+                <Input placeholder="作業描述"
+                />
             )}
         </Form.Item>
     )
