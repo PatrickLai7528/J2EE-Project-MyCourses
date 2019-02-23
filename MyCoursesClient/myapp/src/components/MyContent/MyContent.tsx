@@ -4,9 +4,6 @@ import './MyContent.css';
 import {Layout} from 'antd';
 // import CompetitionSimpleBlock from "./../CompetitionSimpleBlock/CompetitionSimpleBlock";
 import {Route, Switch} from 'react-router-dom'
-import CompetitionCalendar from "./../CompetitionCalendar/CompetitionCalendar"
-import CompetitionDisplay from "./../CompetitionDisplay/CompetitionDisplay"
-import DefaultHome from "../DefaultHome/DefaultHome";
 import Setting from "../Setting/Setting";
 import ReleasementDisplayContainer from "../ReleasementDisplay/ReleasementDisplayContainer";
 import {UserType} from "../../api/UserAPI";
@@ -96,9 +93,6 @@ export default class MyContent extends Component<IMyContentProps, any> {
             <Layout.Content
                 style={{ marginLeft: "80px", marginRight: "80px", marginTop: "20px"}}>
                 <Switch>
-                    <Route exact path="/home" component={DefaultHome}/>
-                    <Route exact path="/calendar" component={CompetitionCalendar}/>
-                    <Route exact path="/display/:type" component={CompetitionDisplay}/>
                     <Route exact path="/setting" component={Setting}/>
                     <Route exact path="/releasement/all" component={() => {
                         return <ReleasementDisplayContainer

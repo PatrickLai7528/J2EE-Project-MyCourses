@@ -19,10 +19,11 @@ interface ITeacherSiderState {
 export default class TeacherSider extends React.Component<ITeacherSiderProps, ITeacherSiderState> {
     public render(): React.ReactNode {
         return (
-            <Layout.Sider style={{background: '#fff'}}
-                          collapsible={true}
-                          collapsedWidth={0}
-                          width={250}
+            <Layout.Sider
+                theme={"light"}
+                collapsible={true}
+                collapsedWidth={0}
+                width={250}
             >
                 <Menu
                     mode="inline"

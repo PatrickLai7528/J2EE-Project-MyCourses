@@ -18,6 +18,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -72,7 +73,8 @@ public class VerifyService implements IVerifyService {
     }
 
     private String getRandomVerifyCode(String email) {
-        String longCode = encryptService.encrypt(email);
+        String secretKey = "ujklajkldsajasio)(*&%";
+        String longCode = encryptService.encrypt(secretKey + email);
         if (longCode.length() > 6)
             return longCode.substring(0, 6);
         return longCode;

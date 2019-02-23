@@ -1,7 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b7acb967-7f4e-4e76-a68d-ff398a1380be" name="Default Changelist" comment="" />
+    <list default="true" id="b7acb967-7f4e-4e76-a68d-ff398a1380be" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../MyCoursesClient/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesClient/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/api/CompetitionAPI.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/api/CompetitionTypeAPI.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/api/ImageAPI.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/api/Settings.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/CompetitionAddingDrawer/CompetitionAddingDrawer.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/CompetitionAddingForm/CompetitionAddingForm.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/CompetitionBlock/CompetitionBlock.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/CompetitionBlock/CompetitionDetailBlock.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/CompetitionBlock/CompetitionSimpleBlock.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/CompetitionCalendar/CompetitionCalendar.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/CompetitionDisplay/CompetitionDisplay.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/CourseAddingModal/CourseAddingModal.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/DefaultHome/DefaultHome.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/DefaultHome/DefaultHome.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/MyContent/MyContent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/MyContent/MyContent.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/MyUpload/MyUpload.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/StudentSider/StudentSider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/StudentSider/StudentSider.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/TeacherSider/TeacherSider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/TeacherSider/TeacherSider.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/setting/NetworkSettings.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/setting/NetworkSettings.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/utils/AuthenticationUtils.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/utils/CourseRepeateUtils.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/utils/ImageUtils.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/utils/MarkdownGenerator.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/utils/MarkdownGenerator.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/MyCourses/service/impl/VerifyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/MyCourses/service/impl/VerifyService.java" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -93,8 +120,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/MyCourses/service/impl/VerifyService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-894">
-              <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
+            <state relative-caret-position="306">
+              <caret line="75" column="51" selection-start-line="75" selection-start-column="51" selection-end-line="75" selection-end-column="51" />
             </state>
           </provider>
         </entry>
@@ -161,7 +188,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/dao/impl/ForumDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/ReportCardItem.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/j2ee/mycourses/entity/ReportCardEntity.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/j2ee/mycourses/dao/impl/ReportCardDaoTest.java" />
@@ -212,6 +238,7 @@
         <option value="$PROJECT_DIR$/src/main/java/com/MyCourses/service/IReleasementService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/MyCourses/service/impl/ReleasementService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/MyCourses/controller/ReleasementController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/MyCourses/service/impl/VerifyService.java" />
       </list>
     </option>
   </component>
@@ -335,7 +362,7 @@
     <property name="RequestMappingsPanelWidth2" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550937853452" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550939025321" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers" value="true" />
@@ -495,7 +522,7 @@
       <workItem from="1549379623713" duration="32680000" />
       <workItem from="1549791372778" duration="1021000" />
       <workItem from="1550311169599" duration="3228000" />
-      <workItem from="1550861419935" duration="8948000" />
+      <workItem from="1550861419935" duration="9029000" />
     </task>
     <servers />
   </component>
@@ -532,7 +559,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="47099000" />
+    <option name="totallyTimeSpent" value="47180000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -913,8 +940,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/MyCourses/service/impl/VerifyService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-894">
-          <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
+        <state relative-caret-position="306">
+          <caret line="75" column="51" selection-start-line="75" selection-start-column="51" selection-end-line="75" selection-end-column="51" />
         </state>
       </provider>
     </entry>

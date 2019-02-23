@@ -17,7 +17,7 @@ export interface IStudentSiderProps {
 const StudentSider: React.FunctionComponent<IStudentSiderProps> = (props: IStudentSiderProps) => {
     console.log(props);
     return (
-        <Layout.Sider style={{background: '#fff'}}
+        <Layout.Sider theme={"light"}
                       collapsible={true}
                       width={250}
                       collapsedWidth={0}
