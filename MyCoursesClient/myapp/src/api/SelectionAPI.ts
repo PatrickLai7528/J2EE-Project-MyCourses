@@ -18,7 +18,9 @@ export default class SelectionAPI {
 
     public sendSelection(studentEmail: string, rid: string): Promise<IAPIResponse<ISelection[]>> {
         return new Promise<IAPIResponse<ISelection[]>>((resolve, reject) => {
-            axios.post(NetworkSettings.getOpenNetworkIP() + "/selection/select/" + rid, studentEmail)
+            const url: string = NetworkSettings.getOpenNetworkIP() + "/selection/select" +
+                "?rid=" + rid + "&studentEmail=" + studentEmail;
+            axios.post(url)
                 .then((response: any) => {
                     resolve({
                         isSuccess: response.data.code === 0,

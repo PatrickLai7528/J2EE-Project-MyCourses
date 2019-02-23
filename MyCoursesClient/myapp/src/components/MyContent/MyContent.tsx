@@ -11,7 +11,7 @@ import Setting from "../Setting/Setting";
 import ReleasementDisplayContainer from "../ReleasementDisplay/ReleasementDisplayContainer";
 import {UserType} from "../../api/UserAPI";
 import CourseDisplayContainer from "../CourseDisplay/CourseDisplayContainer";
-import {ICourse} from "../../types/entities";
+import {ICourse, IReleasement} from "../../types/entities";
 import IAPIResponse from "../../api/IAPIResponse";
 import {ISendReleasementData} from "../../api/CourseAPI";
 
@@ -19,6 +19,7 @@ export interface IMyContentProps {
     userType: UserType
     email: string | undefined
     courseList: ICourse[]
+    releasementList: IReleasement[]
     /**
      *
      * @param courseName
@@ -43,6 +44,21 @@ export interface IMyContentProps {
         onFail?: (response: IAPIResponse<any>) => void,
         onError?: (e: any) => void) => void
 
+
+    /**
+     *
+     * @param email
+     * @param rid
+     * @param onBefore
+     * @param onSuccess
+     * @param onFail
+     * @param onError
+     */
+    sendCourseSelection: (email: string, rid: number,
+                          onBefore?: () => void,
+                          onSuccess?: (response: IAPIResponse<any>) => void,
+                          onFail?: (response: IAPIResponse<any>) => void,
+                          onError?: (e: any) => void) => void
 }
 
 
@@ -60,7 +76,10 @@ export default class MyContent extends Component<IMyContentProps, any> {
                     <Route exact path="/display/:type" component={CompetitionDisplay}/>
                     <Route exact path="/setting" component={Setting}/>
                     <Route exact path="/releasement/all" component={() => {
-                        return <ReleasementDisplayContainer userType={this.props.userType} email={this.props.email}/>
+                        return <ReleasementDisplayContainer
+                            sendCourseSelection={this.props.sendCourseSelection}
+                            releasementList={this.props.releasementList}
+                            userType={this.props.userType} email={this.props.email}/>
                     }}/>
                     <Route exact path="/course/all" component={() => {
                         return <CourseDisplayContainer

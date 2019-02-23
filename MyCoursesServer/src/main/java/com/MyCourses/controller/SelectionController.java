@@ -31,13 +31,13 @@ public class SelectionController {
     }
 
     @PleaseLog
-    @PostMapping("select/{rid}")
+    @PostMapping("select")
     @CrossOrigin(origins = "http://localhost:3000")
-    public ResponseEntity<APIResponse<Object>> select(@PathVariable(name = "rid") Long rid,
-                                                      @RequestBody String studentEmail) {
+    public ResponseEntity<APIResponse<Object>> select(@RequestParam(name = "rid") String rid,
+                                                      @RequestParam(name = "studentEmail") String studentEmail) {
 //        String studentEmail = formData.getFirst("studentEmail");
 //        Long rid = Long.valueOf(formData.getFirst("rid"));
-        SelectionState selectionState = selectionService.select(studentEmail, rid);
+        SelectionState selectionState = selectionService.select(studentEmail, Long.valueOf(rid));
         try {
             String message;
             switch (selectionState) {
@@ -59,7 +59,7 @@ public class SelectionController {
 
     @PleaseLog
     @CrossOrigin(origins = "http://localhost:3000")
-    @RequestMapping("of")
+    @GetMapping("of")
     public ResponseEntity<APIResponse<List<SelectionEntity>>> getSelectionOf(@RequestParam(name = "studentEmail") String studentEmail) {
         List<SelectionEntity> list = selectionService.getSelectionOf(studentEmail);
         return new ResponseEntity<>(

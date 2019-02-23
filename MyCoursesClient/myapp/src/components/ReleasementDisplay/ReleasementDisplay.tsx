@@ -8,7 +8,7 @@ const ReactMarkdown = require('react-markdown');
 
 export interface ICourseDisplayProps {
     releasementList: IReleasement[],
-    isLoading: boolean
+    isCourseSelectionSending: boolean
     sendSelectAction: (releasement: IReleasement) => void
 }
 
@@ -21,9 +21,12 @@ const ReleasementDisplay: React.FunctionComponent<ICourseDisplayProps> = (props:
                         <div key={releasement.rid} className={"releasement__display-flex-insider"}>
                             <Card
                                 style={{width: 300, marginTop: 16}}
-                                actions={[<Button htmlType="button" onClick={() => {
-                                    props.sendSelectAction(releasement)
-                                }}>選課</Button>]}
+                                actions={[
+                                    <Button loading={props.isCourseSelectionSending} htmlType="button" onClick={
+                                        () => {
+                                            props.sendSelectAction(releasement)
+                                        }
+                                    }>選課</Button>]}
                             >
                                 <Card.Meta
                                     description={<ReactMarkdown escapeHtml={false}

@@ -1,7 +1,7 @@
 import * as React from "react";
 import {Component} from "react";
 import './App.css';
-import {Layout} from 'antd';
+import {Layout, message} from 'antd';
 
 import MyContent from "./../MyContent/MyContent";
 import StudentSider from "../StudentSider/StudentSider";
@@ -9,7 +9,7 @@ import MyHeader from "./../MyHeader/MyHeader";
 import {UserType} from "../../api/UserAPI";
 import CourseAPI, {ISendReleasementData} from "../../api/CourseAPI";
 import IAPIResponse from "../../api/IAPIResponse";
-import {ICourse, ISelection} from "../../types/entities";
+import {ICourse, IReleasement, ISelection} from "../../types/entities";
 import TeacherSider from "../TeacherSider/TeacherSider";
 import SelectionAPI from "../../api/SelectionAPI";
 import ReleasementAPI from "../../api/ReleasementAPI";
@@ -19,6 +19,7 @@ interface IAppState {
     email: string | undefined
     selectionList: ISelection[]
     courseList: ICourse[]
+    releasementList: IReleasement[]
 }
 
 // export interface ISendSelectionProps{
@@ -39,8 +40,13 @@ export default class App extends Component<IAppProps, IAppState> {
             userType: "visitor",
             email: undefined,
             selectionList: [],
-            courseList: []
+            courseList: [],
+            releasementList: []
         }
+    }
+
+    public componentWillMount(): void {
+        this.getAllReleasement();
     }
 
 
@@ -102,14 +108,21 @@ export default class App extends Component<IAppProps, IAppState> {
             })
     }
 
-    // private reduceCourse(cid: number): void {
-    //     let {courseList} = this.state;
-    //     for (let i = 0; i < courseList.length; i++) {
-    //         if (courseList[i].cid === cid) {
-    //             courseList.splice(i, 1)
-    //         }
-    //     }
-    // }
+    public getAllReleasement(): void {
+        ReleasementAPI.getInstance().getAllReleasement()
+            .then((response: IAPIResponse<IReleasement[]>) => {
+                if (response.isSuccess) {
+                    if (response.payload)
+                        this.setState({releasementList: response.payload})
+                } else {
+                    message.error(response.message);
+                }
+            })
+            .catch((e: any) => {
+                console.log(e);
+                message.error("發生未知錯誤，請稍候再試");
+            })
+    }
 
     private sendCourseRelease(
         data: ISendReleasementData,
@@ -134,6 +147,30 @@ export default class App extends Component<IAppProps, IAppState> {
                     onError(e);
             })
     }
+
+    private sendCourseSelection(email: string, rid: number,
+                                onBefore?: () => void,
+                                onSuccess?: (response: IAPIResponse<any>) => void,
+                                onFail?: (response: IAPIResponse<any>) => void,
+                                onError?: (e: any) => void): void {
+        if (onBefore) onBefore();
+        SelectionAPI.getInstance().sendSelection(email, String(rid))
+            .then((response: IAPIResponse<any>) => {
+                if (response.isSuccess) {
+                    if (onSuccess) onSuccess(response);
+                    // by fetching a selection of current student(email)
+                    // refresh the sider subitem
+                    if (this.state.email) this.getSelectionOf(this.state.email);
+                } else {
+                    if (onFail) onFail(response);
+                }
+            })
+            .catch((e: any) => {
+                console.log(e);
+                if (onError) onError(e);
+            })
+    }
+
 
     private handleLogInFail(): void {
     }
@@ -188,9 +225,13 @@ export default class App extends Component<IAppProps, IAppState> {
                         <MyContent
                             userType={this.state.userType}
                             email={this.state.email}
+
                             courseList={this.state.courseList}
+                            releasementList={this.state.releasementList}
+
                             sendAddCourse={this.sendAddCourse.bind(this)}
                             sendCourseRelease={this.sendCourseRelease.bind(this)}
+                            sendCourseSelection={this.sendCourseSelection.bind(this)}
                         />
                     </Layout>
                 </Layout>
