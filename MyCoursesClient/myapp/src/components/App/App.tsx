@@ -13,6 +13,8 @@ import {ICourse, IReleasement, ISelection} from "../../types/entities";
 import TeacherSider from "../TeacherSider/TeacherSider";
 import SelectionAPI from "../../api/SelectionAPI";
 import ReleasementAPI from "../../api/ReleasementAPI";
+import {Cookie} from "universal-cookie";
+import Cookies from "universal-cookie/es6";
 
 interface IAppState {
     userType: UserType
@@ -58,6 +60,16 @@ export default class App extends Component<IAppProps, IAppState> {
     }
 
     public componentWillMount(): void {
+        const cookie: Cookies = new Cookies();
+        console.log(cookie);
+        const token: string = cookie.get("token");
+        const userType: UserType = cookie.get("userType");
+        const email: string = cookie.get("email");
+        if (token && userType !== "visitor" && email) {
+            // already logged in and data stored in cookies
+            this.handleLogInSuccess(userType, email, token);
+        }
+
         this.getAllReleasement();
     }
 
@@ -193,8 +205,13 @@ export default class App extends Component<IAppProps, IAppState> {
         this.setState({managingReleasement: releasement})
     }
 
-    private handleLogInSuccess(userType: UserType, email: string): void {
+    private handleLogInSuccess(userType: UserType, email: string, token: string): void {
         this.setState({userType: userType, email: email});
+
+        const cookie: Cookies = new Cookies();
+        cookie.set("token", token);
+        cookie.set("userType", userType);
+        cookie.set("email", email);
         if (userType === "student") {
             if (!email) return;
             this.getSelectionOf(email);
@@ -204,6 +221,7 @@ export default class App extends Component<IAppProps, IAppState> {
             this.getReleasementOf(email);
         }
     }
+
 
     private handleLogInFail(): void {
     }

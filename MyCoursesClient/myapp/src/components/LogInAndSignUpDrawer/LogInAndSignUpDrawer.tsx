@@ -3,7 +3,6 @@ import {Button, Drawer, message, Spin} from "antd";
 import WrappedLogInForm, {LogInForm} from "../LogInForm/LogInForm";
 import WrappedSignUpForm, {SignUpForm} from "../SignUpForm/SignUpForm";
 import UserAPI, {UserType} from "../../api/UserAPI";
-import Cookies from 'universal-cookie';
 import IAPIResponse from "../../api/IAPIResponse";
 
 export interface ILogInAndSignUpProps {
@@ -15,7 +14,7 @@ export interface ILogInAndSignUpProps {
      * @param userType
      * @param email
      */
-    onLogInSuccess: (userType: UserType, email: string) => void
+    onLogInSuccess: (userType: UserType, email: string, token: string) => void
 
     /**
      * called while login failed without error
@@ -78,10 +77,8 @@ export default class LogInAndSignUpDrawer extends React.Component<ILogInAndSignU
                         UserAPI.getInstance().postLogin(loginData).then((response: IAPIResponse<any>) => {
                             console.log(response);
                             if (response.isSuccess) {
-                                this.props.onLogInSuccess(userType, email);
                                 message.success(response.message);
-                                const cookie: Cookies = new Cookies();
-                                cookie.set("token", response.payload);
+                                this.props.onLogInSuccess(userType, email, response.payload);
                                 // DataStore.getInstance()
                                 //     .put("userType", userType);
                                 // if (userType === "student")

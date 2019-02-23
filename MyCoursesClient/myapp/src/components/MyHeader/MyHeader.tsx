@@ -15,7 +15,7 @@ export interface IMyHeaderProps {
      * @param userType
      * @param email
      */
-    onLogInSuccess: (userType: UserType, email: string) => void
+    onLogInSuccess: (userType: UserType, email: string, token:string) => void
 
     /**
      * called while login failed without error
