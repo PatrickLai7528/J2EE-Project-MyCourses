@@ -27,7 +27,7 @@ export const ReleasementManage: React.FunctionComponent<IReleasementManageProps>
                                              onClick={props.onAssignmentClick}/>
                 <Divider/>
             </Content>
-            <Sider theme={"light"} style={{marginTop: 0, margin: 15, padding: 8}} width={350}>
+            <Sider theme={"light"} style={{marginTop: 0, margin: 15, padding: 8, background: "#f0f2f5"}} width={350}>
                 <ReleasementManageForum/>
             </Sider>
         </Layout>

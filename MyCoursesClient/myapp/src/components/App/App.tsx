@@ -288,7 +288,7 @@ export default class App extends Component<IAppProps, IAppState> {
                     onSignUpFail={this.handleSignUpFail.bind(this)}
                     onSignUpError={this.handleSignUpError.bind(this)}
                 />
-                <Layout>
+                <Layout >
                     {
                         /**
                          *  default showing student sider
