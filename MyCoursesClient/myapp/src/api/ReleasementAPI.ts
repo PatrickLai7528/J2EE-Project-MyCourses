@@ -42,6 +42,30 @@ export default class ReleasementAPI {
         });
     }
 
+    public getReleasementByRid(rid: number): Promise<IAPIResponse<IReleasement>> {
+        return new Promise<IAPIResponse<IReleasement>>((resolve, reject) => {
+            axios.get(NetworkSettings.getOpenNetworkIP() + "/releasement/rid/" + rid)
+                .then((response: any) => {
+                    let payload: IReleasement = response.data.payload;
+                    // @ts-ignore
+                    // here the enum approvalState is actually a string, so we need to make it right
+                    payload.approvalState = toApprovalState(payload.approvalState);
+                    // @ts-ignore
+                    // same
+                    payload.courseEntity.approvalState = toApprovalState(payload.courseEntity.approvalState);
+                    resolve({
+                        isSuccess: response.data.code === 0,
+                        code: response.data.code,
+                        message: response.data.message,
+                        payload: response.data.payload
+                    })
+                })
+                .catch((e: any) => {
+                    reject(e);
+                })
+        })
+    }
+
     public getReleasementOf(teacherEmail: string): Promise<IAPIResponse<IReleasement[]>> {
         return new Promise<IAPIResponse<IReleasement[]>>((resolve, reject) => {
             const url: string = NetworkSettings.getOpenNetworkIP() + "/releasement/of" +

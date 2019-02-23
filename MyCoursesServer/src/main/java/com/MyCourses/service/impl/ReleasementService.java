@@ -9,11 +9,13 @@ package com.MyCourses.service.impl;/*
 import com.MyCourses.dao.IReleasementDAO;
 import com.MyCourses.dao.ITeacherDAO;
 import com.MyCourses.entity.ReleasementEntity;
+import com.MyCourses.exceptions.ReleasementNotExistException;
 import com.MyCourses.exceptions.TeacherNotExistException;
 import com.MyCourses.service.IReleasementService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.print.DocFlavor;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -64,5 +66,12 @@ public class ReleasementService implements IReleasementService {
             }
         }
         return ret;
+    }
+
+    @Override
+    public ReleasementEntity getReleasementByRid(Long rid) throws ReleasementNotExistException {
+        ReleasementEntity releasementEntity = releasementDAO.retrieveByRid(rid);
+        if (releasementEntity == null) throw new ReleasementNotExistException();
+        return releasementEntity;
     }
 }

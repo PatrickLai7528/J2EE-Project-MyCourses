@@ -10,14 +10,6 @@ export interface IReleasementManageAssignmentProps {
 
 const {Panel} = Collapse;
 
-const customPanelStyle = {
-    background: '#f7f7f7',
-    borderRadius: 4,
-    marginTop: 24,
-    marginBottom: 24,
-    border: 0,
-    overflow: 'hidden',
-};
 
 const text = `
   A dog is a type of domesticated animal.
@@ -36,14 +28,13 @@ export const ReleasementManageAssignment: React.FunctionComponent<IReleasementMa
                     <Button htmlType={"button"} type={"primary"} onClick={props.onClick}>發佈作業</Button>) : ""
             }
             <Collapse
-                bordered={false}
-                defaultActiveKey={['1']}
+                style={{marginTop: 24}}
                 expandIcon={({isActive}) => <Icon type="caret-right" rotate={isActive ? 90 : 0}/>}
             >
                 {
                     props.releasement.assignmentEntityList
                     && props.releasement.assignmentEntityList.map((assignment: IAssignment) => {
-                        return <Panel header={assignment.title} key={String(assignment.assid)} style={customPanelStyle}>
+                        return <Panel header={assignment.title} key={String(assignment.assid)}>
                             {assignment.description}
                         </Panel>
                     })

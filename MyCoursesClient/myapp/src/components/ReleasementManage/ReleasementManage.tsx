@@ -4,6 +4,7 @@ import {IReleasement} from "../../types/entities";
 import {ReleasementManageMessage} from "./ReleasementManageMessage";
 import {ReleasementManageAssignment} from "./ReleasementManageAssignment";
 import {ReleasementManageSlide} from "./ReleasementManageSlide";
+import {ReleasementManageForum} from "./ReleasementManageForum";
 
 export interface IReleasementManageProps {
     releasement: IReleasement
@@ -26,8 +27,8 @@ export const ReleasementManage: React.FunctionComponent<IReleasementManageProps>
                                              onClick={props.onAssignmentClick}/>
                 <Divider/>
             </Content>
-            <Sider theme={"light"} style={{margin: 15, padding: 8}} width={350}>
-                <h1>討論區</h1>
+            <Sider theme={"light"} style={{marginTop: 0, margin: 15, padding: 8}} width={350}>
+                <ReleasementManageForum/>
             </Sider>
         </Layout>
     )

@@ -7,6 +7,7 @@ package com.MyCourses.service;/*
  */
 
 import com.MyCourses.entity.ReleasementEntity;
+import com.MyCourses.exceptions.ReleasementNotExistException;
 import com.MyCourses.exceptions.TeacherNotExistException;
 
 import java.util.List;
@@ -17,4 +18,6 @@ public interface IReleasementService {
     List<ReleasementEntity> getAvailable();
 
     List<ReleasementEntity> getReleasementOf(String teacherEmail) throws TeacherNotExistException;
+
+    ReleasementEntity getReleasementByRid(Long rid) throws ReleasementNotExistException;
 }

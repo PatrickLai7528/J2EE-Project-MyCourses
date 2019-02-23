@@ -10,6 +10,7 @@ package com.MyCourses.controller;
 import com.MyCourses.annotations.PleaseLog;
 import com.MyCourses.entity.ReleasementEntity;
 import com.MyCourses.exceptions.CourseNotExistException;
+import com.MyCourses.exceptions.ReleasementNotExistException;
 import com.MyCourses.exceptions.TeacherNotExistException;
 import com.MyCourses.exceptions.UnexpectedReleaseConfig;
 import com.MyCourses.service.ICourseService;
@@ -114,7 +115,25 @@ public class ReleasementController {
                     HttpStatus.INTERNAL_SERVER_ERROR
             );
         }
+    }
 
+    @GetMapping("rid/{rid}")
+    @PleaseLog
+    @CrossOrigin("http://localhost:3000")
+    public ResponseEntity<APIResponse<ReleasementEntity>> getReleasementByRid(@PathVariable(name = "rid") Long rid) {
+        try {
+            ReleasementEntity releasementEntity = releasementService.getReleasementByRid(rid);
+            return new ResponseEntity<>(
+                    ResponseUtils.ok("操作成功", releasementEntity),
+                    HttpStatus.OK
+            );
+        } catch (ReleasementNotExistException e) {
+            e.printStackTrace();
+            return new ResponseEntity(
+                    ResponseUtils.error("操作失敗"),
+                    HttpStatus.INTERNAL_SERVER_ERROR
+            );
+        }
     }
 
 //    private Map<String, String> getReleaseConfig(MultiValueMap<String, String> formData) throws UnexpectedReleaseConfig {

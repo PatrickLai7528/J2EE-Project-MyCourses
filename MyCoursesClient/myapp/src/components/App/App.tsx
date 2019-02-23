@@ -186,6 +186,7 @@ export default class App extends Component<IAppProps, IAppState> {
     }
 
     private getReleasementOf(teacherEmail: string) {
+        console.log("refreshing");
         ReleasementAPI.getInstance().getReleasementOf(teacherEmail)
             .then((response: IAPIResponse<IReleasement[]>) => {
                 if (response.isSuccess) {
@@ -201,6 +202,21 @@ export default class App extends Component<IAppProps, IAppState> {
             })
     }
 
+    private getReleasementByRid(rid: number): void {
+        ReleasementAPI.getInstance().getReleasementByRid(rid)
+            .then((response: IAPIResponse<IReleasement>) => {
+                if (response.isSuccess) {
+                    this.setState({managingReleasement: response.payload})
+                } else {
+                    message.error(response.message);
+                }
+            })
+            .catch((e: any) => {
+                console.log(e);
+                message.error("發生未知錯誤，請稍候再試")
+            })
+    }
+
     public sendAssignment(data: ISendAssignmentData, onBefore?: () => void,
                           onSuccess?: (response: IAPIResponse<any>) => void,
                           onFail?: (response: IAPIResponse<any>) => void,
@@ -210,8 +226,8 @@ export default class App extends Component<IAppProps, IAppState> {
             .then((response: IAPIResponse<any>) => {
                 if (response.isSuccess) {
                     if (onSuccess) onSuccess(response);
-                    // refresh teacher sider by fetching releasement
-                    if (this.state.email) this.getReleasementOf(this.state.email);
+                    // refresh assignment by fetching specific releasement
+                    this.getReleasementByRid(data.rid);
                 } else {
                     if (onFail) onFail(response);
                 }
