@@ -6,13 +6,20 @@ package com.MyCourses.utils;/*
  * @ProjectName spring-boot-demo
  */
 
+import com.MyCourses.exceptions.DateStringFormatException;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class DateUtils {
-    public static Date generateFrom(String dateStr) throws ParseException {
+    public static Date generateFrom(String dateStr) throws DateStringFormatException {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        return format.parse(dateStr);
+        try {
+            return format.parse(dateStr);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            throw new DateStringFormatException();
+        }
     }
 }

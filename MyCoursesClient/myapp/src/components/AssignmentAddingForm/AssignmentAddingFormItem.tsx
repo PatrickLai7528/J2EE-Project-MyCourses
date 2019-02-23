@@ -1,7 +1,8 @@
 import * as React from "react";
 import {GetFieldDecoratorOptions} from "antd/lib/form/Form";
-import {Input, Form} from "antd";
+import {DatePicker, Form, Input} from "antd";
 import TextArea from "antd/es/input/TextArea";
+import {IGeneralReleaseCourseFormItemProps} from "../ReleaseCourseForm/ReleaseCourseFormItem";
 
 export interface IGeneralAssignmentAddingFormItemProps {
     getFieldDecorator<T extends Object = {}>(id: keyof T, options?: GetFieldDecoratorOptions): (node: React.ReactNode) => React.ReactNode;
@@ -37,16 +38,46 @@ export const DescriptionAssignmentAddingFormItem: React.FunctionComponent<IGener
                     }
                 ],
             })(
-                <TextArea placeholder="作業描述" autosize={{minRows: 1, maxRows: 6}}/>
+                <TextArea  placeholder="作業描述"
+                          autosize={{minRows: 1, maxRows: 6}}/>
+            )}
+        </Form.Item>
+    )
+};
+export const DDLAssignmentAddingFormItem: React.FunctionComponent<IGeneralReleaseCourseFormItemProps> = (props: IGeneralReleaseCourseFormItemProps) => {
+    return (
+        <Form.Item
+            label="截止日期"
+        >
+            {props.getFieldDecorator('ddl', {
+                rules: [
+                    {
+                        required: true, message: '截止日期不能為空',
+                    }
+                ],
+            })(
+                <DatePicker placeholder="截止日期"/>
             )}
         </Form.Item>
     )
 };
 
+
 export const AttachmentAssignmentAddingFormItem: React.FunctionComponent<IGeneralAssignmentAddingFormItemProps> = (props: IGeneralAssignmentAddingFormItemProps) => {
     return (
-        <div>
-            1jjkljk
-        </div>
+        <Form.Item
+            label="作業描述"
+        >
+            123
+            {/*{props.getFieldDecorator('description', {*/}
+            {/*rules: [*/}
+            {/*{*/}
+            {/*required: true, message: '作業描述不能為空',*/}
+            {/*}*/}
+            {/*],*/}
+            {/*})(*/}
+            {/*<TextArea placeholder="作業描述" autosize={{minRows: 1, maxRows: 6}}/>*/}
+            {/*)}*/}
+        </Form.Item>
     )
-}
+};

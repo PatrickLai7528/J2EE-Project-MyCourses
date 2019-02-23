@@ -11,6 +11,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -28,6 +29,9 @@ public class AssignmentEntity implements Serializable {
 
     @Column(name = "title")
     private String title;
+
+    @Column(name = "ddl")
+    private Date ddl;
 
     @Column(name = "description")
     private String description;

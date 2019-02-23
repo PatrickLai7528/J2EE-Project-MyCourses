@@ -41,9 +41,11 @@ export class AssignmentAddingFormContainer extends React.Component<IAssignmentAd
             console.log(this.form.props.form);
             this.form.props.form.validateFields((err: any, values: any) => {
                     if (!err) {
-                        const {title, description} = values;
+                        let {title, description, ddl} = values;
+                        console.log(description);
+                        description = description.replace("\n", "%0A");
                         const sendAssignmentData: ISendAssignmentData = {
-                            title, description, rid: this.props.releasement.rid
+                            title, description, rid: this.props.releasement.rid, ddl: ddl.format("YYYY-MM-DD")
                         };
                         this.props.sendAssignment(sendAssignmentData,
                             this.props.onSendBefore,

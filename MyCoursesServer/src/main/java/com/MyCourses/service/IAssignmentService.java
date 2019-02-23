@@ -8,6 +8,8 @@ package com.MyCourses.service;/*
 
 import com.MyCourses.exceptions.ReleasementNotExistException;
 
+import java.util.Date;
+
 public interface IAssignmentService {
-    void addAssignment(Long rid, String title, String description) throws ReleasementNotExistException;
+    void addAssignment(Long rid, String title, String description, Date ddl) throws ReleasementNotExistException;
 }

@@ -1,5 +1,5 @@
 import * as React from "react";
-import {Button, Collapse, Icon} from "antd";
+import {Button, Card, Collapse, Icon, Tree} from "antd";
 import {IAssignment, IReleasement} from "../../types/entities";
 
 export interface IReleasementManageAssignmentProps {
@@ -8,14 +8,8 @@ export interface IReleasementManageAssignmentProps {
     onClick: () => void
 }
 
-const {Panel} = Collapse;
 
-
-const text = `
-  A dog is a type of domesticated animal.
-  Known for its loyalty and faithfulness,
-  it can be found as a welcome guest in many households across the world.
-`;
+const {TreeNode} = Tree;
 
 export const ReleasementManageAssignment: React.FunctionComponent<IReleasementManageAssignmentProps> = (props: IReleasementManageAssignmentProps) => {
     return (
@@ -27,28 +21,34 @@ export const ReleasementManageAssignment: React.FunctionComponent<IReleasementMa
                 props.editable ? (
                     <Button htmlType={"button"} type={"primary"} onClick={props.onClick}>發佈作業</Button>) : ""
             }
-            <Collapse
-                style={{marginTop: 24}}
-                expandIcon={({isActive}) => <Icon type="caret-right" rotate={isActive ? 90 : 0}/>}
-            >
-                {
-                    props.releasement.assignmentEntityList
-                    && props.releasement.assignmentEntityList.map((assignment: IAssignment) => {
-                        return <Panel header={assignment.title} key={String(assignment.assid)}>
-                            {assignment.description}
-                        </Panel>
-                    })
-                }
-                {/*<Panel header="This is panel header 1" key="1" style={customPanelStyle}>*/}
-                {/*<p>{text}</p>*/}
-                {/*</Panel>*/}
-                {/*<Panel header="This is panel header 2" key="2" style={customPanelStyle}>*/}
-                {/*<p>{text}</p>*/}
-                {/*</Panel>*/}
-                {/*<Panel header="This is panel header 3" key="3" style={customPanelStyle}>*/}
-                {/*<p>{text}</p>*/}
-                {/*</Panel>*/}
-            </Collapse>
+            <Card style={{marginTop: 24}}>
+                <Tree
+                    showLine={true}
+                    defaultExpandAll={true}
+                    // expandIcon={({isActive}) => <Icon type="caret-right" rotate={isActive ? 90 : 0}/>}
+                >
+                    {
+                        props.releasement.assignmentEntityList
+                        && props.releasement.assignmentEntityList.map((assignment: IAssignment) => {
+                            return (
+                                <TreeNode title={assignment.title} key={String(assignment.assid)}>
+                                    <TreeNode title={assignment.description}
+                                              key={String(assignment.assid) + "d"}/>
+                                </TreeNode>
+                            )
+                        })
+                    }
+                    {/*<Panel header="This is panel header 1" key="1" style={customPanelStyle}>*/}
+                    {/*<p>{text}</p>*/}
+                    {/*</Panel>*/}
+                    {/*<Panel header="This is panel header 2" key="2" style={customPanelStyle}>*/}
+                    {/*<p>{text}</p>*/}
+                    {/*</Panel>*/}
+                    {/*<Panel header="This is panel header 3" key="3" style={customPanelStyle}>*/}
+                    {/*<p>{text}</p>*/}
+                    {/*</Panel>*/}
+                </Tree>
+            </Card>
         </div>
     )
 };

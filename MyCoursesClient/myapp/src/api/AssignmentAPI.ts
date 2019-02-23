@@ -6,6 +6,7 @@ export interface ISendAssignmentData {
     title: string,
     description: string
     rid: number
+    ddl: string
 }
 
 export default class AssignmentAPI {
@@ -25,7 +26,8 @@ export default class AssignmentAPI {
             const url: string = NetworkSettings.getOpenNetworkIP() + "/assignment/add" +
                 "?title=" + data.title +
                 "&desc=" + data.description +
-                "&rid=" + data.rid;
+                "&rid=" + data.rid +
+                "&ddl=" + data.ddl;
             axios.post(url)
                 .then((response: any) => {
                     resolve({

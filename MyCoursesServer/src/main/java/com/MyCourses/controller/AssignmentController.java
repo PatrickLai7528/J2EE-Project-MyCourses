@@ -7,8 +7,10 @@ package com.MyCourses.controller;/*
  */
 
 import com.MyCourses.annotations.PleaseLog;
+import com.MyCourses.exceptions.DateStringFormatException;
 import com.MyCourses.exceptions.ReleasementNotExistException;
 import com.MyCourses.service.IAssignmentService;
+import com.MyCourses.utils.DateUtils;
 import com.MyCourses.utils.ResponseUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,6 +21,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
+
+import java.util.Date;
 
 @Controller
 @RequestMapping("assignment")
@@ -36,15 +40,17 @@ public class AssignmentController {
     public ResponseEntity<APIResponse> addAssignment(
             @RequestParam(name = "rid") Long rid,
             @RequestParam(name = "title") String title,
-            @RequestParam(name = "desc") String desc
+            @RequestParam(name = "desc") String desc,
+            @RequestParam(name = "ddl") String ddl
     ) {
         try {
-            assignmentService.addAssignment(rid, title, desc);
+            Date ddlDate = DateUtils.generateFrom(ddl);
+            assignmentService.addAssignment(rid, title, desc, ddlDate);
             return new ResponseEntity<>(
                     ResponseUtils.ok("操作成功"),
                     HttpStatus.OK
             );
-        } catch (ReleasementNotExistException e) {
+        } catch (ReleasementNotExistException | DateStringFormatException e) {
             e.printStackTrace();
             return new ResponseEntity<>(
                     ResponseUtils.error(e.getLocalizedMessage()), HttpStatus.INTERNAL_SERVER_ERROR
