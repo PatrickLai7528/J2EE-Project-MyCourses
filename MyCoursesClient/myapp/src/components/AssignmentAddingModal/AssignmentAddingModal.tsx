@@ -12,6 +12,9 @@ export interface IAssignmentAddingModalProps {
     onCancel: () => void
     confirmLoading: boolean
     isTimeToSubmit: boolean
+
+    refreshFormTrigger: boolean
+
     /**
      * send assignment callback from App.tsx
      * @param data
@@ -42,6 +45,7 @@ export const AssignmentAddingModal: React.FunctionComponent<IAssignmentAddingMod
             cancelText="取消"
         >
             <AssignmentAddingFormContainer
+                refreshFormTrigger={props.refreshFormTrigger}
                 releasement={props.releasement}
                 isTimeToSubmit={props.isTimeToSubmit}
                 sendAssignment={props.sendAssignment}

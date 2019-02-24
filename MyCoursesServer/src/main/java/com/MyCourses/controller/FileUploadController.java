@@ -6,13 +6,12 @@ package com.MyCourses.controller;/*
  * @ProjectName MyCoursesServer
  */
 
+import com.MyCourses.annotations.PleaseLog;
 import com.MyCourses.exceptions.FileEmptyException;
 import com.MyCourses.service.IFileUploadService;
 import com.MyCourses.utils.ResponseUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -30,11 +29,13 @@ public class FileUploadController {
 
 
     @RequestMapping(value = "attachment/upload", method = RequestMethod.POST)
+    @CrossOrigin(origins = "http://localhost:3000")
+    @PleaseLog
     public APIResponse<String> fileUpload(MultipartFile file) {
         try {
             String fileName = fileUploadService.uploadAttachment(file);
             return ResponseUtils.ok("上傳成功", fileName);
-        } catch (IOException | FileEmptyException e ) {
+        } catch (IOException | FileEmptyException e) {
             e.printStackTrace();
             return ResponseUtils.error("上傳失敗", "");
         }

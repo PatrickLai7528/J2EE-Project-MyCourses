@@ -10,6 +10,7 @@ export interface ISendAssignmentData {
     ddl: string
     fileSize: number,
     byteUnit: ByteUnit
+    fileName: string
 }
 
 export default class AssignmentAPI {
@@ -24,6 +25,28 @@ export default class AssignmentAPI {
         return AssignmentAPI.instance
     }
 
+    public uploadAttachment(formData: FormData): Promise<IAPIResponse<string>> {
+        console.log(formData);
+        return new Promise<IAPIResponse<string>>((resolve, reject) => {
+            axios.post(NetworkSettings.getOpenNetworkIP() + "/file/attachment/upload",
+                formData,
+                {headers: {"Content-Type": "application/x-www-form-urlencoded"}}
+            )
+                .then((response: any) => {
+                    resolve({
+                        isSuccess: response.data.code === 0,
+                        code: response.data.code,
+                        message: response.data.message,
+                        payload: response.data.payload
+                    })
+                })
+                .catch((e: any) => {
+                    console.log(e);
+                    reject(e);
+                })
+        })
+    }
+
     public sendAssignment(data: ISendAssignmentData): Promise<IAPIResponse<any>> {
         return new Promise<IAPIResponse<any>>((resolve, reject) => {
             const url: string = NetworkSettings.getOpenNetworkIP() + "/assignment/add" +
@@ -32,7 +55,8 @@ export default class AssignmentAPI {
                 "&rid=" + data.rid +
                 "&ddl=" + data.ddl +
                 "&unit=" + fromByteUnitToString(data.byteUnit) +
-                "&size=" + data.fileSize;
+                "&size=" + data.fileSize +
+                "&fileName=" + data.fileName;
             axios.post(url)
                 .then((response: any) => {
                     resolve({

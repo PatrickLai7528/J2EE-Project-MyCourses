@@ -10,6 +10,7 @@ import com.MyCourses.dao.IReleasementDAO;
 import com.MyCourses.entity.AssignmentEntity;
 import com.MyCourses.entity.FileSize;
 import com.MyCourses.entity.ReleasementEntity;
+import com.MyCourses.entity.SlideEntity;
 import com.MyCourses.entity.enums.ByteUnit;
 import com.MyCourses.exceptions.ReleasementNotExistException;
 import com.MyCourses.service.IAssignmentService;
@@ -31,7 +32,8 @@ public class AssignmentService implements IAssignmentService {
     }
 
     @Override
-    public void addAssignment(Long rid, String title, String description, Date ddl, int size, ByteUnit byteUnit) throws ReleasementNotExistException {
+    public void addAssignment(Long rid, String title, String description, Date ddl, int size, ByteUnit byteUnit,
+                              String fileName) throws ReleasementNotExistException {
         ReleasementEntity releasementEntity = releasementDAO.retrieveByRid(rid);
 
         if (releasementEntity == null) throw new ReleasementNotExistException();
@@ -39,14 +41,19 @@ public class AssignmentService implements IAssignmentService {
         AssignmentEntity assignmentEntity = new AssignmentEntity();
 
         FileSize fileSize = new FileSize();
-
         fileSize.setSize(size);
         fileSize.setUnit(byteUnit);
+
+        SlideEntity slideEntity = new SlideEntity();
+
+        slideEntity.setTitle("附件");
+        slideEntity.setFilePath(fileName);
 
         assignmentEntity.setDescription(description);
         assignmentEntity.setTitle(title);
         assignmentEntity.setDdl(ddl);
         assignmentEntity.setFileSize(fileSize);
+        assignmentEntity.setSlideEntity(slideEntity);
 
         List<AssignmentEntity> fromReleasement = releasementEntity.getAssignmentEntityList();
         if (fromReleasement == null)

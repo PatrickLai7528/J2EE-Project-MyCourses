@@ -39,11 +39,12 @@ public class AssignmentController {
             @RequestParam(name = "desc") String desc,
             @RequestParam(name = "ddl") String ddl,
             @RequestParam(name = "size") int size,
-            @RequestParam(name = "unit") String unit
+            @RequestParam(name = "unit") String unit,
+            @RequestParam(name = "fileName") String fileName
     ) {
         try {
             Date ddlDate = DateUtils.generateFrom(ddl);
-            assignmentService.addAssignment(rid, title, desc, ddlDate, size , ByteUnit.fromString(unit));
+            assignmentService.addAssignment(rid, title, desc, ddlDate, size, ByteUnit.fromString(unit), fileName);
             return ResponseUtils.ok("操作成功");
         } catch (ReleasementNotExistException | DateStringFormatException e) {
             e.printStackTrace();

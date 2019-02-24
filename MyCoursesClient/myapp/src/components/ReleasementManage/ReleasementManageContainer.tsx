@@ -30,6 +30,8 @@ interface IReleasementManageContainerState {
     assignmentModalConfirmLoading: boolean
 
     isTimeToSubmitAssignment: boolean
+
+    refreshFormTrigger: boolean
 }
 
 export default class ReleasementManageContainer extends React.Component<IReleasementManageContainerProps, IReleasementManageContainerState> {
@@ -39,7 +41,8 @@ export default class ReleasementManageContainer extends React.Component<IRelease
         this.state = {
             assignmentModalConfirmLoading: false,
             assignmentModalVisible: false,
-            isTimeToSubmitAssignment: false
+            isTimeToSubmitAssignment: false,
+            refreshFormTrigger: false
         }
     }
 
@@ -62,6 +65,7 @@ export default class ReleasementManageContainer extends React.Component<IRelease
                         onSlideClick={this.enableSlideAddingForm.bind(this)}
                     />
                     <AssignmentAddingModal
+                        refreshFormTrigger={this.state.refreshFormTrigger}
                         releasement={this.props.releasement}
                         sendAssignment={this.props.sendAssignment}
                         confirmLoading={this.state.assignmentModalConfirmLoading}
@@ -72,11 +76,16 @@ export default class ReleasementManageContainer extends React.Component<IRelease
 
                         onOk={() => {
                             // to trigger the form submit
-                            this.setState({isTimeToSubmitAssignment: true})
+                            this.setState({
+                                isTimeToSubmitAssignment: true
+                            })
                         }}
 
                         onCancel={() => {
-                            this.setState({assignmentModalVisible: false})
+                            this.setState({
+                                assignmentModalVisible: false,
+                                refreshFormTrigger: !this.state.refreshFormTrigger
+                            })
                         }}
 
                         onSendBefore={() => {
@@ -96,7 +105,8 @@ export default class ReleasementManageContainer extends React.Component<IRelease
                             this.setState({
                                 isTimeToSubmitAssignment: false,
                                 assignmentModalVisible: false,
-                                assignmentModalConfirmLoading: false
+                                assignmentModalConfirmLoading: false,
+                                refreshFormTrigger: !this.state.refreshFormTrigger
                             });
                             message.success(response.message);
                         }}
@@ -106,7 +116,8 @@ export default class ReleasementManageContainer extends React.Component<IRelease
                             this.setState({
                                 isTimeToSubmitAssignment: false,
                                 assignmentModalVisible: false,
-                                assignmentModalConfirmLoading: false
+                                assignmentModalConfirmLoading: false,
+                                refreshFormTrigger: !this.state.refreshFormTrigger
                             });
                             message.error("發生未知錯誤，請稍候再試")
                         }}

@@ -1,6 +1,9 @@
 import * as React from "react";
-import {Button, Card, Collapse, Icon, List} from "antd";
+import {Button, Icon, List} from "antd";
 import {IAssignment, IReleasement} from "../../types/entities";
+import {months} from "moment";
+
+const moment = require("moment");
 
 export interface IReleasementManageAssignmentProps {
     releasement: IReleasement
@@ -8,8 +11,17 @@ export interface IReleasementManageAssignmentProps {
     onClick: () => void
 }
 
-const Panel = Collapse.Panel;
+interface IIconTextProps {
+    type: string,
+    text: string
+}
 
+const IconText: React.FunctionComponent<IIconTextProps> = (props: IIconTextProps) => (
+    <span>
+    <Icon type={props.type} style={{marginRight: 8}}/>
+        {props.text}
+  </span>
+);
 
 export const ReleasementManageAssignment: React.FunctionComponent<IReleasementManageAssignmentProps> = (props: IReleasementManageAssignmentProps) => {
     return (
@@ -33,14 +45,19 @@ export const ReleasementManageAssignment: React.FunctionComponent<IReleasementMa
                     // expandIcon={({isActive}) => <Icon type="caret-right" rotate={isActive ? 90 : 0}/>}
                     renderItem={(assignment: IAssignment) => {
                         return (
-                            <List.Item>
+                            <List.Item
+                                actions={[
+                                    <IconText type="check" text={"提交人數：" + assignment.submissionEntityList.length}/>,
+                                    <IconText type="calendar"
+                                              text={"截止日期：" + moment(assignment.ddl).format("YYYY-MM-DD")}/>
+                                ]}
+                            >
                                 <List.Item.Meta
                                     title={assignment.title}
-                                    description={"描述：" + assignment.description}
+                                    description={"大小限制：" + assignment.fileSize.size + " " + assignment.fileSize.unit}
+
                                 />
-                                {
-                                    "作業限制：" + assignment.fileSize.size + " " + assignment.fileSize.unit
-                                }
+                                {assignment.description}
                             </List.Item>
                         )
                     }}

@@ -33,6 +33,13 @@ export interface IAssignment {
     ddl: number
     fileSize: IFileSize
     slideEntity: ISlide
+    submissionEntityList: ISubmission[]
+}
+
+export interface ISubmission {
+    smid: number,
+    studentEntity: IStudent[],
+    filePath: string
 }
 
 export interface IFileSize {

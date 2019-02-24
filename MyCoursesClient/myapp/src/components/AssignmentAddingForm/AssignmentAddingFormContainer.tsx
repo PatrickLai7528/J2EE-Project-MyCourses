@@ -24,6 +24,8 @@ export interface IAssignmentAddingFormContainerProps {
     onSendSuccess: (response: IAPIResponse<any>) => void
     onSendFail: (response: IAPIResponse<any>) => void
     onSendError: (e: any) => void
+
+    refreshFormTrigger: boolean
 }
 
 interface IAssignmentAddingFormContainerState {
@@ -34,7 +36,6 @@ export class AssignmentAddingFormContainer extends React.Component<IAssignmentAd
 
     public constructor(props: IAssignmentAddingFormContainerProps) {
         super(props);
-        this.state = {};
     }
 
     private submit(): void {
@@ -42,7 +43,7 @@ export class AssignmentAddingFormContainer extends React.Component<IAssignmentAd
             console.log(this.form.props.form);
             this.form.props.form.validateFields((err: any, values: any) => {
                     if (!err) {
-                        let {title, description, ddl, fileSize, byteUnit} = values;
+                        let {title, description, ddl, fileSize, byteUnit, attachment} = values;
                         console.log(values);
                         description = description.replace("\n", "%0A");
                         const sendAssignmentData: ISendAssignmentData = {
@@ -51,7 +52,8 @@ export class AssignmentAddingFormContainer extends React.Component<IAssignmentAd
                             rid: this.props.releasement.rid,
                             ddl: ddl.format("YYYY-MM-DD"),
                             fileSize,
-                            byteUnit: toByteUnit(byteUnit)
+                            byteUnit: toByteUnit(byteUnit),
+                            fileName: attachment
                         };
                         this.props.sendAssignment(sendAssignmentData,
                             this.props.onSendBefore,
@@ -72,9 +74,10 @@ export class AssignmentAddingFormContainer extends React.Component<IAssignmentAd
 
     public render(): React.ReactNode {
         return (
-            <WrappedAssignmentAddingForm wrappedComponentRef={(form: AssignmentAddingForm) => {
-                this.form = form;
-            }}/>
+            <WrappedAssignmentAddingForm resetTrigger={this.props.refreshFormTrigger}
+                                         wrappedComponentRef={(form: AssignmentAddingForm) => {
+                                             this.form = form;
+                                         }}/>
         )
     }
 }
