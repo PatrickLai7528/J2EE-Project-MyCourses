@@ -1,7 +1,7 @@
 import * as React from "react";
 import {FormComponentProps} from "antd/lib/form";
 import {Form} from "antd";
-import {AssignmentAddingForm, IAssignmentAddingFormProps} from "../AssignmentAddingForm/AssignmentAddingForm";
+import {IAssignmentAddingFormProps} from "../AssignmentAddingForm/AssignmentAddingForm";
 import {TitleSlideAddingFormItem, UploadSlideAddingFormItem} from "./SlideAddingFormItem";
 
 export interface ISlideAddingFormProps extends FormComponentProps {

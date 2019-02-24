@@ -30,10 +30,10 @@ public class SlideController {
     public APIResponse<Object> addSlideOf(
             @RequestParam(name = "rid") Long rid,
             @RequestParam(name = "title") String title,
-            @RequestParam(name = "filePath") String filePath
+            @RequestParam(name = "fileName") String fileName
     ) {
         try {
-            slideService.addSlide(title, filePath, rid);
+            slideService.addSlide(title, fileName, rid);
             return ResponseUtils.ok("操作成功");
         } catch (ReleasementNotExistException e) {
             e.printStackTrace();

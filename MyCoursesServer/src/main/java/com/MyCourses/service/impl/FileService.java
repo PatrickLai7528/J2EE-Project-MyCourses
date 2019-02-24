@@ -58,7 +58,7 @@ public class FileService implements IFileService {
         file.transferTo(newFile);
     }
 
-    private String confustFileName(String originalFilename) {
+    private String confuseFileName(String originalFilename) {
         String randomSuffix = encryptService.encrypt(new Date().toString()).substring(0, 10);
         String fileName = "s" + randomSuffix + "-" + originalFilename;
         return fileName;
@@ -66,7 +66,7 @@ public class FileService implements IFileService {
 
     @Override
     public String uploadAttachment(MultipartFile file) throws FileEmptyException, IOException {
-        String fileName = confustFileName(file.getOriginalFilename());
+        String fileName = confuseFileName(file.getOriginalFilename());
         // save files in separated folders
         upload(file, filePath + folderOfAttachment + fileName);
         return fileName;
@@ -74,7 +74,7 @@ public class FileService implements IFileService {
 
     @Override
     public String uploadSlide(MultipartFile file) throws FileEmptyException, IOException {
-        String fileName = confustFileName(file.getOriginalFilename());
+        String fileName = confuseFileName(file.getOriginalFilename());
         // save files in separated folders 
         upload(file, filePath + folderOfSlide + fileName);
         return fileName;

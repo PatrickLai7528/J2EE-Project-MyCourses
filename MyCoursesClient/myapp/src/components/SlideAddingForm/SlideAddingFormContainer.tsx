@@ -1,26 +1,23 @@
 import * as React from "react";
 import {SlideAddingForm, WrappedSlideAddingForm} from "./SlideAddingForm";
 import {IReleasement} from "../../types/entities";
-import {ISendAssignmentData} from "../../api/AssignmentAPI";
 import IAPIResponse from "../../api/IAPIResponse";
-import {AssignmentAddingForm, WrappedAssignmentAddingForm} from "../AssignmentAddingForm/AssignmentAddingForm";
-import {toByteUnit} from "../../types/enums";
-import {IAssignmentAddingFormContainerProps} from "../AssignmentAddingForm/AssignmentAddingFormContainer";
+import {ISendSlideData} from "../../api/SlideAPI";
 
 export interface ISlideAddingFormContainerProps {
     isTimeToSubmit: boolean
 
     releasement: IReleasement
 
-    // /**
-    //  * send assignment callback from App.tsx
-    //  * @param data
-    //  * @param onBefore
-    //  * @param onSuccess
-    //  * @param onFail
-    //  * @param onError
-    //  */
-    // sendAssignment: (data: ISendAssignmentData, onBefore?: () => void, onSuccess?: (response: IAPIResponse<any>) => void, onFail?: (response: IAPIResponse<any>) => void, onError?: (e: any) => void) => void
+    /**
+     * send assignment callback from App.tsx
+     * @param data
+     * @param onBefore
+     * @param onSuccess
+     * @param onFail
+     * @param onError
+     */
+    sendSlide: (data: ISendSlideData, onBefore?: () => void, onSuccess?: (response: IAPIResponse<any>) => void, onFail?: (response: IAPIResponse<any>) => void, onError?: (e: any) => void) => void
 
     onSendBefore: () => void
     onSendSuccess: (response: IAPIResponse<any>) => void
@@ -47,32 +44,27 @@ export class SlideAddingFormContainer extends React.Component<ISlideAddingFormCo
         if (this.form) {
             console.log(this.form.props.form);
             this.form.props.form.validateFields((err: any, values: any) => {
-                    // if (!err) {
-                    //     let {title, description, ddl, fileSize, byteUnit, attachment} = values;
-                    //     console.log(values);
-                    //     description = description.replace("\n", "%0A");
-                    //     const sendAssignmentData: ISendAssignmentData = {
-                    //         title,
-                    //         description,
-                    //         rid: this.props.releasement.rid,
-                    //         ddl: ddl.format("YYYY-MM-DD"),
-                    //         fileSize,
-                    //         byteUnit: toByteUnit(byteUnit),
-                    //         fileName: attachment
-                    //     };
-                    //     this.props.sendAssignment(sendAssignmentData,
-                    //         this.props.onSendBefore,
-                    //         this.props.onSendSuccess,
-                    //         this.props.onSendFail,
-                    //         this.props.onSendError
-                    //     )
-                    // }
+                    if (!err) {
+                        let {title,slide} = values;
+                        console.log(values);
+                        const sendAssignmentData: ISendSlideData = {
+                            title,
+                            rid: this.props.releasement.rid,
+                            fileName: slide
+                        };
+                        this.props.sendSlide(sendAssignmentData,
+                            this.props.onSendBefore,
+                            this.props.onSendSuccess,
+                            this.props.onSendFail,
+                            this.props.onSendError
+                        )
+                    }
                 }
             );
         }
     }
 
-    public componentWillReceiveProps(nextProps: Readonly<IAssignmentAddingFormContainerProps>, nextContext: any): void {
+    public componentWillReceiveProps(nextProps: Readonly<ISlideAddingFormContainerProps>, nextContext: any): void {
         if (nextProps.isTimeToSubmit)
             this.submit();
     }

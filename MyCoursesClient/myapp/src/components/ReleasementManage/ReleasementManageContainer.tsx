@@ -6,6 +6,7 @@ import {FormOption, GeneralAddingModal} from "../GeneralAddingModal/GeneralAddin
 import {ISendAssignmentData} from "../../api/AssignmentAPI";
 import IAPIResponse from "../../api/IAPIResponse";
 import {message} from "antd";
+import {ISendSlideData} from "../../api/SlideAPI";
 
 export interface IReleasementManageContainerProps {
     userType: UserType
@@ -22,14 +23,27 @@ export interface IReleasementManageContainerProps {
      */
     sendAssignment: (data: ISendAssignmentData, onBefore?: () => void, onSuccess?: (response: IAPIResponse<any>) => void, onFail?: (response: IAPIResponse<any>) => void, onError?: (e: any) => void) => void
 
+    /**
+     * send assignment callback from App.tsx
+     * @param data
+     * @param onBefore
+     * @param onSuccess
+     * @param onFail
+     * @param onError
+     */
+    sendSlide: (data: ISendSlideData, onBefore?: () => void, onSuccess?: (response: IAPIResponse<any>) => void, onFail?: (response: IAPIResponse<any>) => void, onError?: (e: any) => void) => void
 
 }
 
 interface IReleasementManageContainerState {
-    generalModalMode:FormOption
+    generalModalMode: FormOption
     generalModalVisible: boolean
     generalModalConfirmLoading: boolean
-    isTimeToSubmit: boolean
+
+
+    isTimeToSubmitAssignment: boolean
+    isTimeToSubmitSlide: boolean
+
     refreshFormTrigger: boolean
 }
 
@@ -41,18 +55,19 @@ export default class ReleasementManageContainer extends React.Component<IRelease
             generalModalMode: FormOption.ASSIGNMENT,
             generalModalConfirmLoading: false,
             generalModalVisible: false,
-            isTimeToSubmit: false,
+            isTimeToSubmitAssignment: false,
+            isTimeToSubmitSlide: false,
             refreshFormTrigger: false
         }
     }
 
     private enableAssignmentAddingForm(): void {
-        this.setState({generalModalVisible: true, generalModalMode:FormOption.ASSIGNMENT});
+        this.setState({generalModalVisible: true, generalModalMode: FormOption.ASSIGNMENT});
     }
 
 
     private enableSlideAddingForm(): void {
-        this.setState({generalModalVisible: true, generalModalMode:FormOption.SLIDE});
+        this.setState({generalModalVisible: true, generalModalMode: FormOption.SLIDE});
     }
 
     public render(): React.ReactNode {
@@ -69,18 +84,27 @@ export default class ReleasementManageContainer extends React.Component<IRelease
                         mode={this.state.generalModalMode}
                         refreshFormTrigger={this.state.refreshFormTrigger}
                         releasement={this.props.releasement}
+
                         sendAssignment={this.props.sendAssignment}
+                        sendSlide={this.props.sendSlide}
+
                         confirmLoading={this.state.generalModalConfirmLoading}
                         visible={this.state.generalModalVisible}
 
-                        // this is the trigger to submit the form submit
-                        isTimeToSubmit={this.state.isTimeToSubmit}
+                        // these are the trigger to submit the form submit
+                        isTimeToSubmitAssignment={this.state.isTimeToSubmitAssignment}
+                        isTimeToSubmitSlide={this.state.isTimeToSubmitSlide}
 
                         onOk={() => {
                             // to trigger the form submit
-                            this.setState({
-                                isTimeToSubmit: true
-                            })
+                            switch (this.state.generalModalMode) {
+                                case FormOption.ASSIGNMENT:
+                                    this.setState({isTimeToSubmitAssignment: true});
+                                    break;
+                                case FormOption.SLIDE:
+                                    this.setState({isTimeToSubmitSlide: true});
+                                    break;
+                            }
                         }}
 
                         onCancel={() => {
@@ -91,12 +115,30 @@ export default class ReleasementManageContainer extends React.Component<IRelease
                         }}
 
                         onSendBefore={() => {
-                            this.setState({isTimeToSubmit: false, generalModalConfirmLoading: true})
+                            // should set false here
+                            // otherwise it will submit again and again
+                            switch (this.state.generalModalMode) {
+                                case FormOption.ASSIGNMENT:
+                                    this.setState({isTimeToSubmitAssignment: false});
+                                    break;
+                                case FormOption.SLIDE:
+                                    this.setState({isTimeToSubmitSlide: false});
+                                    break;
+                            }
+
+                            this.setState({generalModalConfirmLoading: true})
                         }}
 
                         onSendSuccess={(response: IAPIResponse<any>) => {
+                            switch (this.state.generalModalMode) {
+                                case FormOption.ASSIGNMENT:
+                                    this.setState({isTimeToSubmitAssignment: false});
+                                    break;
+                                case FormOption.SLIDE:
+                                    this.setState({isTimeToSubmitSlide: false});
+                                    break;
+                            }
                             this.setState({
-                                isTimeToSubmit: false,
                                 generalModalVisible: false,
                                 generalModalConfirmLoading: false
                             });
@@ -104,8 +146,15 @@ export default class ReleasementManageContainer extends React.Component<IRelease
                         }}
 
                         onSendFail={(response: IAPIResponse<any>) => {
+                            switch (this.state.generalModalMode) {
+                                case FormOption.ASSIGNMENT:
+                                    this.setState({isTimeToSubmitAssignment: false});
+                                    break;
+                                case FormOption.SLIDE:
+                                    this.setState({isTimeToSubmitSlide: false});
+                                    break;
+                            }
                             this.setState({
-                                isTimeToSubmit: false,
                                 generalModalVisible: false,
                                 generalModalConfirmLoading: false,
                                 refreshFormTrigger: !this.state.refreshFormTrigger
@@ -114,9 +163,16 @@ export default class ReleasementManageContainer extends React.Component<IRelease
                         }}
 
                         onSendError={(e: any) => {
+                            switch (this.state.generalModalMode) {
+                                case FormOption.ASSIGNMENT:
+                                    this.setState({isTimeToSubmitAssignment: false});
+                                    break;
+                                case FormOption.SLIDE:
+                                    this.setState({isTimeToSubmitSlide: false});
+                                    break;
+                            }
                             console.log(e);
                             this.setState({
-                                isTimeToSubmit: false,
                                 generalModalVisible: false,
                                 generalModalConfirmLoading: false,
                                 refreshFormTrigger: !this.state.refreshFormTrigger

@@ -2,6 +2,8 @@ import * as React from "react";
 import {GetFieldDecoratorOptions, ValidationRule} from "antd/lib/form/Form";
 import {Button, Icon, message, Tooltip, Upload, Form, Input} from "antd";
 import {} from "antd/lib/form";
+import SlideAPI from "../../api/SlideAPI";
+import IAPIResponse from "../../api/IAPIResponse";
 
 export interface IGeneralSlideAddingFormItemProps {
     getFieldDecorator<T extends Object = {}>(id: keyof T, options?: GetFieldDecoratorOptions): (node: React.ReactNode) => React.ReactNode;
@@ -63,24 +65,25 @@ export class UploadSlideAddingFormItem extends React.Component<IUploadSlideAddin
         fileList.forEach((file) => {
             formData.append('file', file);
         });
-        // this.setState({uploading: true});
-        // AssignmentAPI.getInstance().uploadAttachment(formData)
-        //     .then((response: IAPIResponse<string>) => {
-        //         if (response.isSuccess) {
-        //             message.success(response.message);
-        //             this.setState({isUploaded: true})
-        //             if (response.payload)
-        //                 this.props.setFieldsValue({attachment: response.payload})
-        //         } else {
-        //             message.error(response.message)
-        //         }
-        //         this.setState({uploading: false});
-        //     })
-        //     .catch((e: any) => {
-        //         console.log(e);
-        //         message.error("發生未知錯誤，請稍候再試");
-        //         this.setState({uploading: false})
-        //     })
+        this.setState({uploading: true});
+        SlideAPI.getInstance().uploadSlide(formData)
+            .then((response: IAPIResponse<string>) => {
+                if (response.isSuccess) {
+                    message.success(response.message);
+                    this.setState({isUploaded: true});
+                    if (response.payload)
+                    // "slide" should be the same as FieldDecorator key
+                        this.props.setFieldsValue({slide: response.payload})
+                } else {
+                    message.error(response.message)
+                }
+                this.setState({uploading: false});
+            })
+            .catch((e: any) => {
+                console.log(e);
+                message.error("發生未知錯誤，請稍候再試");
+                this.setState({uploading: false})
+            })
     }
 
     private handleRemove(): void {
@@ -102,7 +105,7 @@ export class UploadSlideAddingFormItem extends React.Component<IUploadSlideAddin
             <Form.Item
                 label="課件"
             >
-                {this.props.getFieldDecorator('attachment', {
+                {this.props.getFieldDecorator('slide', {
                     rules: [
                         {
                             validator: this.validateIsUpload.bind(this)

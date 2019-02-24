@@ -5,6 +5,7 @@ import {ISendAssignmentData} from "../../api/AssignmentAPI";
 import IAPIResponse from "../../api/IAPIResponse";
 import {IReleasement} from "../../types/entities";
 import {SlideAddingFormContainer} from "../SlideAddingForm/SlideAddingFormContainer";
+import {ISendSlideData} from "../../api/SlideAPI";
 
 export enum FormOption {
     ASSIGNMENT, SLIDE
@@ -19,7 +20,9 @@ export interface IGeneralAddingModalProps {
     onOk: () => void
     onCancel: () => void
     confirmLoading: boolean
-    isTimeToSubmit: boolean
+
+    isTimeToSubmitAssignment: boolean
+    isTimeToSubmitSlide:boolean
 
     refreshFormTrigger: boolean
 
@@ -32,6 +35,17 @@ export interface IGeneralAddingModalProps {
      * @param onError
      */
     sendAssignment: (data: ISendAssignmentData, onBefore?: () => void, onSuccess?: (response: IAPIResponse<any>) => void, onFail?: (response: IAPIResponse<any>) => void, onError?: (e: any) => void) => void
+
+    /**
+     * send assignment callback from App.tsx
+     * @param data
+     * @param onBefore
+     * @param onSuccess
+     * @param onFail
+     * @param onError
+     */
+    sendSlide: (data: ISendSlideData, onBefore?: () => void, onSuccess?: (response: IAPIResponse<any>) => void, onFail?: (response: IAPIResponse<any>) => void, onError?: (e: any) => void) => void
+
 
     onSendBefore: () => void
     onSendSuccess: (response: IAPIResponse<any>) => void
@@ -60,7 +74,7 @@ export const GeneralAddingModal: React.FunctionComponent<IGeneralAddingModalProp
                     <AssignmentAddingFormContainer
                         refreshFormTrigger={props.refreshFormTrigger}
                         releasement={props.releasement}
-                        isTimeToSubmit={props.isTimeToSubmit}
+                        isTimeToSubmit={props.isTimeToSubmitAssignment}
                         sendAssignment={props.sendAssignment}
                         onSendBefore={props.onSendBefore}
                         onSendError={props.onSendFail}
@@ -71,9 +85,10 @@ export const GeneralAddingModal: React.FunctionComponent<IGeneralAddingModalProp
             {
                 props.mode === FormOption.SLIDE ?
                     <SlideAddingFormContainer
+                        sendSlide={props.sendSlide}
                         refreshFormTrigger={props.refreshFormTrigger}
                         releasement={props.releasement}
-                        isTimeToSubmit={props.isTimeToSubmit}
+                        isTimeToSubmit={props.isTimeToSubmitSlide}
                         onSendBefore={props.onSendBefore}
                         onSendError={props.onSendError}
                         onSendSuccess={props.onSendSuccess}
