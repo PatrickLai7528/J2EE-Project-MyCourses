@@ -33,7 +33,7 @@ public class AssignmentController {
     @PostMapping("add")
     @PleaseLog
     @CrossOrigin(origins = "http://localhost:3000")
-    public APIResponse addAssignment(
+    public APIResponse addAssignmentOf(
             @RequestParam(name = "rid") Long rid,
             @RequestParam(name = "title") String title,
             @RequestParam(name = "desc") String desc,
