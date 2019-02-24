@@ -19,6 +19,8 @@ export const ReleasementManage: React.FunctionComponent<IReleasementManageProps>
     return (
         <Layout>
             <Content>
+                <h1>{props.releasement.courseEntity.name}</h1>
+                <Divider/>
                 <ReleasementManageMessage/>
                 <Divider/>
                 <ReleasementManageSlide editable={props.editable} onClick={props.onSlideClick}

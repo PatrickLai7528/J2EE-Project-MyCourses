@@ -28,9 +28,27 @@ public class CommentEntity implements Serializable {
     @Column(name = "content")
     private String content;
 
-    @Column(name = "reply_to")
-    private String replyTo;
 
-    @Column(name = "message_from")
-    private String messageFrom;
+    /**
+     * 以下都是回覆誰
+     **/
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @MapKey(name = "teacher_reply")
+    private TeacherEntity teacherReply;
+
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @MapKey(name = "student_reply")
+    private StudentEntity studentReply;
+
+
+    /**
+     * 以下都是來自誰
+     **/
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @MapKey(name = "student_message_form")
+    private StudentEntity studentMessageFrom;
+
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @MapKey(name = "teacher_message_form")
+    private TeacherEntity teacherMessageFrom;
 }

@@ -50,13 +50,20 @@ export interface IFileSize {
 export interface IComment {
     cmid: number,
     content: number,
-    messageFrom: string,
+    teacherMessageFrom?: ITeacher,
+    studentMessageFrom?: IStudent,
+
+    teacherReply?: ITeacher,
+    studentReply?: IStudent
+
 }
 
 export interface IForum {
     fid: number,
     topic: string,
     commentEntityList: IComment[]
+    questionerTeacher?: ITeacher,
+    questionerStudent?: IStudent
 }
 
 export interface IReportCard {

@@ -26,6 +26,13 @@ public class ForumEntity implements Serializable {
     @Column(name = "fid")
     private Long fid;
 
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "student_email")
+    private StudentEntity questionerStudent;
+
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "teacher_email")
+    private TeacherEntity questionerTeacher;
 
     @Column(name = "topic")
     private String topic;

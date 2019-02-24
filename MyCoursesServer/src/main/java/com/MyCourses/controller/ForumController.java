@@ -28,9 +28,10 @@ public class ForumController {
     @PleaseLog
     @CrossOrigin(origins = "http://localhost:3000")
     public APIResponse<Object> addForum(@RequestParam(name = "topic") String topic,
-                                        @RequestParam(name = "rid") Long rid) {
+                                        @RequestParam(name = "rid") Long rid,
+                                        @RequestParam(name = "questioner") String questioner) {
         try {
-            forumService.addForum(topic, rid);
+            forumService.addForum(topic, questioner, rid);
             return ResponseUtils.ok("操作成功");
         } catch (ReleasementNotExistException e) {
             e.printStackTrace();

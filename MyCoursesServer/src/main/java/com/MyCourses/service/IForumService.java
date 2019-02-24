@@ -10,5 +10,5 @@ import com.MyCourses.exceptions.ReleasementNotExistException;
 
 public interface IForumService {
 
-    void addForum(String topic, Long rid) throws ReleasementNotExistException;
+    void addForum(String topic,String questioner, Long rid) throws ReleasementNotExistException;
 }
