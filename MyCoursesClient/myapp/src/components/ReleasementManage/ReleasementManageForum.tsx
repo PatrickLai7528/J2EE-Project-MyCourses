@@ -1,13 +1,25 @@
 import * as React from "react";
+import {Button, Card, Empty, List} from "antd";
+import {IForum, IReleasement} from "../../types/entities";
 
 export interface IReleasementManageForumProps {
-
+    releasement: IReleasement
 }
 
 export const ReleasementManageForum: React.FunctionComponent<IReleasementManageForumProps> = (props: IReleasementManageForumProps) => {
     return (
-        <div>
-            <h2>討論區</h2>
-        </div>
+        <Card title={"討論區"} style={{borderRadius: 10}} extra={<a>發起討論</a>}>
+            {
+                !props.releasement.forumEntityList || props.releasement.forumEntityList.length === 0 ?
+                    <Empty/>
+                    :
+                    <List
+                        size="small"
+                        bordered={false}
+                        dataSource={props.releasement.forumEntityList}
+                        renderItem={(forum: IForum) => (<List.Item><a>{forum.topic}</a></List.Item>)}
+                    />
+            }
+        </Card>
     )
 }

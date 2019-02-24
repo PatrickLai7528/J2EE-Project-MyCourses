@@ -29,7 +29,7 @@ export const ReleasementManage: React.FunctionComponent<IReleasementManageProps>
                 <Divider/>
             </Content>
             <Sider theme={"light"} style={{marginTop: 0, margin: 15, padding: 8, background: "#f0f2f5"}} width={250}>
-                <ReleasementManageForum/>
+                <ReleasementManageForum releasement={props.releasement}/>
             </Sider>
         </Layout>
     )

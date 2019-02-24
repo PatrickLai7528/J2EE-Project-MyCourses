@@ -76,6 +76,6 @@ public class ReleasementEntity implements Serializable {
     private List<AssignmentEntity> assignmentEntityList;
 
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "fid")
+    @JoinColumn(name = "rid")
     private List<ForumEntity> forumEntityList;
 }

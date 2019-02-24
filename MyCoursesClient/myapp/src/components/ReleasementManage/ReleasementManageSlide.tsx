@@ -1,5 +1,5 @@
 import * as React from "react";
-import {Button, Card, Tree} from "antd";
+import {Button, Card, Empty, Tree} from "antd";
 import {IReleasement, ISlide} from "../../types/entities";
 
 export interface IReleasementManageSlideProps {
@@ -44,6 +44,8 @@ const categorySlide = (slideList: ISlide[]): ICategorizedSlideResult => {
 }
 
 export const ReleasementManageSlide: React.FunctionComponent<IReleasementManageSlideProps> = (props: IReleasementManageSlideProps) => {
+    console.log("releasement");
+    console.log(props);
     return (
         <div>
             <h1>
@@ -60,30 +62,38 @@ export const ReleasementManageSlide: React.FunctionComponent<IReleasementManageS
             {/*categorySlide(props.releasement.slideEntityList) : ""*/}
             {/*}*/}
             <Card>
-                <Tree
-                    multiple={true}
-                    defaultExpandAll={true}
-                    showLine={true}
-                >
-                    {
-                        props.releasement.slideEntityList ?
-                            categorySlide(props.releasement.slideEntityList).categorySlideFolderList
-                                .map((folder: ICategorizedSlideFolder) => {
-                                    return (
-                                        <TreeNode key={folder.name} title={folder.name}>
-                                            {
-                                                folder.slideList.map((slide: ISlide) => {
-                                                    return (
-                                                        <TreeNode key={String(slide.sid)} title={slide.filePath}/>
-                                                    )
-                                                })
-                                            }
-                                        </TreeNode>
-                                    )
-                                }) : ""
-                    }
+                {
+                    !props.releasement.slideEntityList || props.releasement.slideEntityList.length === 0 ?
+                        <Empty/>
+                        :
+                        <Tree
+                            multiple={true}
+                            defaultExpandAll={true}
+                            showLine={true}
+                        >
 
-                </Tree>
+                            {
+                                props.releasement.slideEntityList ?
+                                    categorySlide(props.releasement.slideEntityList).categorySlideFolderList
+                                        .map((folder: ICategorizedSlideFolder) => {
+                                            return (
+                                                <TreeNode key={folder.name} title={folder.name}>
+                                                    {
+                                                        folder.slideList.map((slide: ISlide) => {
+                                                            return (
+                                                                <TreeNode key={String(slide.sid)}
+                                                                          title={slide.filePath}/>
+                                                            )
+                                                        })
+                                                    }
+                                                </TreeNode>
+                                            )
+                                        }) : ""
+                            }
+
+                        </Tree>
+
+                }
             </Card>
         </div>
     )

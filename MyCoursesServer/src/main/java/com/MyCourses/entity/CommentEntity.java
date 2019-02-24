@@ -28,6 +28,9 @@ public class CommentEntity implements Serializable {
     @Column(name = "content")
     private String content;
 
+    @Column(name = "reply_to")
+    private String replyTo;
+
     @Column(name = "message_from")
     private String messageFrom;
 }
