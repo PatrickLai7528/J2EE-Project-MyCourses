@@ -44,7 +44,8 @@ export const GeneralAddingModal: React.FunctionComponent<IGeneralAddingModalProp
     return (
         <Modal
             title={
-                props.mode === FormOption.ASSIGNMENT ? "發佈作業" : ""
+                props.mode === FormOption.ASSIGNMENT ? "發佈作業" :
+                    props.mode === FormOption.SLIDE ? "上傳課件" : ""
             }
             visible={props.visible}
             onOk={props.onOk}
@@ -69,7 +70,15 @@ export const GeneralAddingModal: React.FunctionComponent<IGeneralAddingModalProp
             }
             {
                 props.mode === FormOption.SLIDE ?
-                    <SlideAddingFormContainer/> : ""
+                    <SlideAddingFormContainer
+                        refreshFormTrigger={props.refreshFormTrigger}
+                        releasement={props.releasement}
+                        isTimeToSubmit={props.isTimeToSubmit}
+                        onSendBefore={props.onSendBefore}
+                        onSendError={props.onSendError}
+                        onSendSuccess={props.onSendSuccess}
+                        onSendFail={props.onSendFail}
+                    /> : ""
             }
         </Modal>
     )

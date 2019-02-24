@@ -31,7 +31,7 @@ export class AssignmentAddingForm extends React.Component<IAssignmentAddingFormP
     }
 
     public render(): React.ReactNode {
-        const {getFieldDecorator, setFieldsValue, resetFields} = this.props.form;
+        const {getFieldDecorator, setFieldsValue} = this.props.form;
         return (
             <Form
                 hideRequiredMark={true}
