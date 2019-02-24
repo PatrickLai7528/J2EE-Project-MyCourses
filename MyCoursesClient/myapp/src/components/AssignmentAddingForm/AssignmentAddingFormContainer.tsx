@@ -3,6 +3,7 @@ import {AssignmentAddingForm, WrappedAssignmentAddingForm} from "./AssignmentAdd
 import {ISendAssignmentData} from "../../api/AssignmentAPI";
 import IAPIResponse from "../../api/IAPIResponse";
 import {IReleasement} from "../../types/entities";
+import {toByteUnit} from "../../types/enums";
 
 export interface IAssignmentAddingFormContainerProps {
     isTimeToSubmit: boolean
@@ -41,11 +42,16 @@ export class AssignmentAddingFormContainer extends React.Component<IAssignmentAd
             console.log(this.form.props.form);
             this.form.props.form.validateFields((err: any, values: any) => {
                     if (!err) {
-                        let {title, description, ddl} = values;
-                        console.log(description);
+                        let {title, description, ddl, fileSize, byteUnit} = values;
+                        console.log(values);
                         description = description.replace("\n", "%0A");
                         const sendAssignmentData: ISendAssignmentData = {
-                            title, description, rid: this.props.releasement.rid, ddl: ddl.format("YYYY-MM-DD")
+                            title,
+                            description,
+                            rid: this.props.releasement.rid,
+                            ddl: ddl.format("YYYY-MM-DD"),
+                            fileSize,
+                            byteUnit: toByteUnit(byteUnit)
                         };
                         this.props.sendAssignment(sendAssignmentData,
                             this.props.onSendBefore,

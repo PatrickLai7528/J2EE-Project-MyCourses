@@ -14,7 +14,6 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-import java.util.Objects;
 
 @Entity
 @Table(name = "assignment_entity")
@@ -30,6 +29,9 @@ public class AssignmentEntity implements Serializable {
 
     @Column(name = "title")
     private String title;
+
+    @Embedded
+    private FileSize fileSize;
 
     @Column(name = "ddl")
     @Convert(converter = DateConverter.class)

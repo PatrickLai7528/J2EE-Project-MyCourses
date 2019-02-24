@@ -46,10 +46,7 @@ public class TokenAspect {
         if (isValidToken) {
             return pjp.proceed(pjp.getArgs());
         } else {
-            return new ResponseEntity<APIResponse<Object>>(
-                    ResponseUtils.error("請先登錄"),
-                    HttpStatus.UNAUTHORIZED
-            );
+            return ResponseUtils.error("請先登錄");
         }
     }
 

@@ -1,12 +1,15 @@
 import IAPIResponse from "./IAPIResponse";
 import NetworkSettings from "../setting/NetworkSettings";
 import axios from "axios";
+import {ByteUnit, fromByteUnitToString} from "../types/enums";
 
 export interface ISendAssignmentData {
     title: string,
     description: string
     rid: number
     ddl: string
+    fileSize: number,
+    byteUnit: ByteUnit
 }
 
 export default class AssignmentAPI {
@@ -27,7 +30,9 @@ export default class AssignmentAPI {
                 "?title=" + data.title +
                 "&desc=" + data.description +
                 "&rid=" + data.rid +
-                "&ddl=" + data.ddl;
+                "&ddl=" + data.ddl +
+                "&unit=" + fromByteUnitToString(data.byteUnit) +
+                "&size=" + data.fileSize;
             axios.post(url)
                 .then((response: any) => {
                     resolve({

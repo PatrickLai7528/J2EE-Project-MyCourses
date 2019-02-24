@@ -1,4 +1,4 @@
-import {ApprovalState, SelectionState} from "./enums";
+import {ApprovalState, ByteUnit, SelectionState} from "./enums";
 
 export interface IAdmin {
     adminEmail: string,
@@ -30,7 +30,14 @@ export interface IAssignment {
     assid: number,
     title: string,
     description: string,
+    ddl: number
+    fileSize: IFileSize
     slideEntity: ISlide
+}
+
+export interface IFileSize {
+    size: number,
+    unit: ByteUnit
 }
 
 export interface IComment {

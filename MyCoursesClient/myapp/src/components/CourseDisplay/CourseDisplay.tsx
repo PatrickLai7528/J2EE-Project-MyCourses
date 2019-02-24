@@ -1,7 +1,7 @@
 import * as React from "react";
 import {ICourse} from "../../types/entities";
 import {Button, Divider, Icon, Table, Tag} from "antd";
-import {ApprovalState, toChinese} from "../../types/enums";
+import {ApprovalState, fromApprovalStateToChinese} from "../../types/enums";
 
 export interface ICourseWithKey extends ICourse {
     key: number
@@ -52,7 +52,7 @@ const CourseDisplay: React.FunctionComponent<ICourseDisplayProps> = (props: ICou
                 default:
                     throw new Error("Unexpected Approval State");
             }
-            return (<Tag color={color} >{toChinese(state)}</Tag>)
+            return (<Tag color={color} >{fromApprovalStateToChinese(state)}</Tag>)
         }
     }, {
         title: '操作',

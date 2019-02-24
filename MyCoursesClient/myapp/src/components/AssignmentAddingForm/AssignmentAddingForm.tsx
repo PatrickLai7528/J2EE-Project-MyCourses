@@ -1,8 +1,8 @@
 import * as React from "react";
 import {Form} from "antd";
 import {
-    AttachmentAssignmentAddingFormItem, DDLAssignmentAddingFormItem,
-    DescriptionAssignmentAddingFormItem,
+    AttachmentAssignmentAddingFormItem, ByteUnitAssignmentAddingFormItem, DDLAssignmentAddingFormItem,
+    DescriptionAssignmentAddingFormItem, FileSizeLimitAssignmentAddingFormItem,
     TitleAssignmentAddingFormItem
 } from "./AssignmentAddingFormItem";
 import {FormComponentProps} from "antd/lib/form";
@@ -31,6 +31,8 @@ export class AssignmentAddingForm extends React.Component<IAssignmentAddingFormP
                 <TitleAssignmentAddingFormItem getFieldDecorator={getFieldDecorator}/>
                 <DDLAssignmentAddingFormItem getFieldDecorator={getFieldDecorator}/>
                 <DescriptionAssignmentAddingFormItem getFieldDecorator={getFieldDecorator}/>
+                <FileSizeLimitAssignmentAddingFormItem getFieldDecorator={getFieldDecorator}/>
+                <ByteUnitAssignmentAddingFormItem getFieldDecorator={getFieldDecorator}/>
                 <AttachmentAssignmentAddingFormItem getFieldDecorator={getFieldDecorator}/>
             </Form>
         )

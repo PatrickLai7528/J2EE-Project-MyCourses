@@ -4,7 +4,7 @@ import {Button, Divider, Icon, Input, message, Modal} from "antd";
 import {ICourse} from "../../types/entities";
 import {UserType} from "../../api/UserAPI";
 import IAPIResponse from "../../api/IAPIResponse";
-import {toChinese} from "../../types/enums";
+import {fromApprovalStateToChinese} from "../../types/enums";
 import ReleaseCourseFormContainer from "../ReleaseCourseForm/ReleaseCourseFormContainer";
 import {ISendReleasementData} from "../../api/CourseAPI";
 
@@ -138,7 +138,7 @@ export default class CourseDisplayContainer extends React.Component<ICourseDispl
                         })
                     }}
                     notOkToRelease={(course: ICourse) => {
-                        message.warn(toChinese(course.approvalState) + "課程不能發佈！")
+                        message.warn(fromApprovalStateToChinese(course.approvalState) + "課程不能發佈！")
                     }}
                 />
                 <Modal

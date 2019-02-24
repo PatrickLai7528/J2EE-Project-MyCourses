@@ -8,7 +8,9 @@ package com.MyCourses.service.impl;/*
 
 import com.MyCourses.dao.IReleasementDAO;
 import com.MyCourses.entity.AssignmentEntity;
+import com.MyCourses.entity.FileSize;
 import com.MyCourses.entity.ReleasementEntity;
+import com.MyCourses.entity.enums.ByteUnit;
 import com.MyCourses.exceptions.ReleasementNotExistException;
 import com.MyCourses.service.IAssignmentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,15 +31,23 @@ public class AssignmentService implements IAssignmentService {
     }
 
     @Override
-    public void addAssignment(Long rid, String title, String description, Date ddl) throws ReleasementNotExistException {
+    public void addAssignment(Long rid, String title, String description, Date ddl, int size, ByteUnit byteUnit) throws ReleasementNotExistException {
         ReleasementEntity releasementEntity = releasementDAO.retrieveByRid(rid);
 
         if (releasementEntity == null) throw new ReleasementNotExistException();
 
         AssignmentEntity assignmentEntity = new AssignmentEntity();
+
+        FileSize fileSize = new FileSize();
+
+        fileSize.setSize(size);
+        fileSize.setUnit(byteUnit);
+
         assignmentEntity.setDescription(description);
         assignmentEntity.setTitle(title);
         assignmentEntity.setDdl(ddl);
+        assignmentEntity.setFileSize(fileSize);
+
         List<AssignmentEntity> fromReleasement = releasementEntity.getAssignmentEntityList();
         if (fromReleasement == null)
             fromReleasement = new ArrayList<>();

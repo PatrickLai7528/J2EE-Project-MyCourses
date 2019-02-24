@@ -6,10 +6,11 @@ package com.MyCourses.service;/*
  * @ProjectName MyCoursesServer
  */
 
+import com.MyCourses.entity.enums.ByteUnit;
 import com.MyCourses.exceptions.ReleasementNotExistException;
 
 import java.util.Date;
 
 public interface IAssignmentService {
-    void addAssignment(Long rid, String title, String description, Date ddl) throws ReleasementNotExistException;
+    void addAssignment(Long rid, String title, String description, Date ddl, int size, ByteUnit byteUnit) throws ReleasementNotExistException;
 }

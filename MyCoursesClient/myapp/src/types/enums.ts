@@ -4,6 +4,36 @@ export enum ApprovalState {
     APPROVED,
 }
 
+export enum ByteUnit {
+    KB, MB, GB
+}
+
+export function toByteUnit(str: string): ByteUnit {
+    switch (str) {
+        case "KB":
+            return ByteUnit.KB;
+        case "MB":
+            return ByteUnit.MB;
+        case "GB":
+            return ByteUnit.GB;
+        default:
+            throw new Error("Unexpected ByteUnit")
+    }
+}
+
+export function fromByteUnitToString(byteUnit: ByteUnit): string {
+    switch (byteUnit) {
+        case ByteUnit.KB:
+            return "KB";
+        case ByteUnit.MB:
+            return "MB";
+        case ByteUnit.GB:
+            return "GB";
+        default:
+            throw new Error("Unexpected ByteUnit")
+    }
+}
+
 export function toApprovalState(str: string): ApprovalState {
     switch (str) {
         case "WAITING":
@@ -37,7 +67,7 @@ export function toSelectionState(str: string): SelectionState {
 }
 
 
-export function toChinese(state: ApprovalState): string {
+export function fromApprovalStateToChinese(state: ApprovalState): string {
     switch (state) {
         case ApprovalState.WAITING:
             return "等待審批";
