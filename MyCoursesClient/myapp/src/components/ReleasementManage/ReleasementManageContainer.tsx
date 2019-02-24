@@ -26,11 +26,10 @@ export interface IReleasementManageContainerProps {
 }
 
 interface IReleasementManageContainerState {
-    assignmentModalVisible: boolean
-    assignmentModalConfirmLoading: boolean
-
-    isTimeToSubmitAssignment: boolean
-
+    generalModalMode:FormOption
+    generalModalVisible: boolean
+    generalModalConfirmLoading: boolean
+    isTimeToSubmit: boolean
     refreshFormTrigger: boolean
 }
 
@@ -39,19 +38,21 @@ export default class ReleasementManageContainer extends React.Component<IRelease
     public constructor(props: IReleasementManageContainerProps) {
         super(props);
         this.state = {
-            assignmentModalConfirmLoading: false,
-            assignmentModalVisible: false,
-            isTimeToSubmitAssignment: false,
+            generalModalMode: FormOption.ASSIGNMENT,
+            generalModalConfirmLoading: false,
+            generalModalVisible: false,
+            isTimeToSubmit: false,
             refreshFormTrigger: false
         }
     }
 
     private enableAssignmentAddingForm(): void {
-        this.setState({assignmentModalVisible: true})
+        this.setState({generalModalVisible: true, generalModalMode:FormOption.ASSIGNMENT});
     }
 
-    private enableSlideAddingForm(): void {
 
+    private enableSlideAddingForm(): void {
+        this.setState({generalModalVisible: true, generalModalMode:FormOption.SLIDE});
     }
 
     public render(): React.ReactNode {
@@ -65,49 +66,48 @@ export default class ReleasementManageContainer extends React.Component<IRelease
                         onSlideClick={this.enableSlideAddingForm.bind(this)}
                     />
                     <GeneralAddingModal
-                        mode={FormOption.ASSIGNMENT}
-                        title={"發佈作業"}
+                        mode={this.state.generalModalMode}
                         refreshFormTrigger={this.state.refreshFormTrigger}
                         releasement={this.props.releasement}
                         sendAssignment={this.props.sendAssignment}
-                        confirmLoading={this.state.assignmentModalConfirmLoading}
-                        visible={this.state.assignmentModalVisible}
+                        confirmLoading={this.state.generalModalConfirmLoading}
+                        visible={this.state.generalModalVisible}
 
                         // this is the trigger to submit the form submit
-                        isTimeToSubmit={this.state.isTimeToSubmitAssignment}
+                        isTimeToSubmit={this.state.isTimeToSubmit}
 
                         onOk={() => {
                             // to trigger the form submit
                             this.setState({
-                                isTimeToSubmitAssignment: true
+                                isTimeToSubmit: true
                             })
                         }}
 
                         onCancel={() => {
                             this.setState({
-                                assignmentModalVisible: false,
+                                generalModalVisible: false,
                                 refreshFormTrigger: !this.state.refreshFormTrigger
                             })
                         }}
 
                         onSendBefore={() => {
-                            this.setState({isTimeToSubmitAssignment: false, assignmentModalConfirmLoading: true})
+                            this.setState({isTimeToSubmit: false, generalModalConfirmLoading: true})
                         }}
 
                         onSendSuccess={(response: IAPIResponse<any>) => {
                             this.setState({
-                                isTimeToSubmitAssignment: false,
-                                assignmentModalVisible: false,
-                                assignmentModalConfirmLoading: false
+                                isTimeToSubmit: false,
+                                generalModalVisible: false,
+                                generalModalConfirmLoading: false
                             });
                             message.success(response.message);
                         }}
 
                         onSendFail={(response: IAPIResponse<any>) => {
                             this.setState({
-                                isTimeToSubmitAssignment: false,
-                                assignmentModalVisible: false,
-                                assignmentModalConfirmLoading: false,
+                                isTimeToSubmit: false,
+                                generalModalVisible: false,
+                                generalModalConfirmLoading: false,
                                 refreshFormTrigger: !this.state.refreshFormTrigger
                             });
                             message.success(response.message);
@@ -116,9 +116,9 @@ export default class ReleasementManageContainer extends React.Component<IRelease
                         onSendError={(e: any) => {
                             console.log(e);
                             this.setState({
-                                isTimeToSubmitAssignment: false,
-                                assignmentModalVisible: false,
-                                assignmentModalConfirmLoading: false,
+                                isTimeToSubmit: false,
+                                generalModalVisible: false,
+                                generalModalConfirmLoading: false,
                                 refreshFormTrigger: !this.state.refreshFormTrigger
                             });
                             message.error("發生未知錯誤，請稍候再試")

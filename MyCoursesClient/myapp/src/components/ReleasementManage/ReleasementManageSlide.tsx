@@ -13,7 +13,7 @@ export const ReleasementManageSlide: React.FunctionComponent<IReleasementManageS
                 課件
             </h1>
             {
-                props.editable ? (<Button htmlType={"button"} type={"primary"}>上傳課件</Button>) : ""
+                props.editable ? (<Button htmlType={"button"} type={"primary"} onClick={props.onClick}>上傳課件</Button>) : ""
             }
         </div>
     )

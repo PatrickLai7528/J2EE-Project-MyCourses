@@ -4,6 +4,7 @@ import {AssignmentAddingFormContainer} from "../AssignmentAddingForm/AssignmentA
 import {ISendAssignmentData} from "../../api/AssignmentAPI";
 import IAPIResponse from "../../api/IAPIResponse";
 import {IReleasement} from "../../types/entities";
+import {SlideAddingFormContainer} from "../SlideAddingForm/SlideAddingFormContainer";
 
 export enum FormOption {
     ASSIGNMENT, SLIDE
@@ -11,7 +12,8 @@ export enum FormOption {
 
 export interface IGeneralAddingModalProps {
     mode: FormOption
-    title: string
+
+
     releasement: IReleasement
     visible: boolean
     onOk: () => void
@@ -41,7 +43,9 @@ export const GeneralAddingModal: React.FunctionComponent<IGeneralAddingModalProp
     console.log(props);
     return (
         <Modal
-            title={props.title}
+            title={
+                props.mode === FormOption.ASSIGNMENT ? "發佈作業" : ""
+            }
             visible={props.visible}
             onOk={props.onOk}
             confirmLoading={props.confirmLoading}
@@ -52,7 +56,6 @@ export const GeneralAddingModal: React.FunctionComponent<IGeneralAddingModalProp
         >
             {
                 props.mode === FormOption.ASSIGNMENT ?
-
                     <AssignmentAddingFormContainer
                         refreshFormTrigger={props.refreshFormTrigger}
                         releasement={props.releasement}
@@ -63,6 +66,10 @@ export const GeneralAddingModal: React.FunctionComponent<IGeneralAddingModalProp
                         onSendSuccess={props.onSendSuccess}
                         onSendFail={props.onSendFail}
                     /> : ""
+            }
+            {
+                props.mode === FormOption.SLIDE ?
+                    <SlideAddingFormContainer/> : ""
             }
         </Modal>
     )
