@@ -22,4 +22,11 @@ public class DateUtils {
             throw new DateStringFormatException();
         }
     }
+
+    public static String toDateString(Date date) {
+        String pattern = "yyyy-MM-dd";
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+
+        return simpleDateFormat.format(date);
+    }
 }

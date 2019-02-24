@@ -57,11 +57,11 @@ public class TokenAspect {
     public Object doGenerateToken(ProceedingJoinPoint pjp) throws Throwable {
         try {
             Object[] args = pjp.getArgs();
-            ResponseEntity<APIResponse<Object>> response = (ResponseEntity<APIResponse<Object>>) pjp.proceed(args);
-            if (response.getBody().getCode() == 0) {
+            APIResponse<Object> response = (APIResponse<Object>) pjp.proceed(args);
+            if (response.getCode() == 0) {
                 // code == 0 means everything is ok
-                String token = JWTTokenUtils.sign((String) response.getBody().getPayload());
-                response.getBody().setPayload(token);
+                String token = JWTTokenUtils.sign((String) response.getPayload());
+                response.setPayload(token);
             }
             return response;
         } catch (Throwable throwable) {

@@ -56,11 +56,12 @@ export default class CourseAPI {
                 .then((response: any) => {
                     // remember to deal with the enums
                     let payload: ICourse[] = response.data.payload;
-                    for (let course of payload) {
-                        // @ts-ignore
-                        // here the enum approvalState is actually a string, so we need to make it right
-                        course.approvalState = toApprovalState(course.approvalState)
-                    }
+                    if (payload)
+                        for (let course of payload) {
+                            // @ts-ignore
+                            // here the enum approvalState is actually a string, so we need to make it right
+                            course.approvalState = toApprovalState(course.approvalState)
+                        }
                     resolve({
                         isSuccess: response.data.code === 0,
                         code: response.data.code,

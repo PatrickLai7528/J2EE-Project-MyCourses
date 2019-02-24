@@ -43,10 +43,12 @@ export default class SelectionAPI {
                     console.log(response);
                     // 處理枚舉類
                     let selectionList: any[] = response.data.payload;
-                    for (let selection of selectionList) {
-                        selection.selectionState = toSelectionState(selection.selectionState);
-                        selection.releasementEntity.approvalState = toApprovalState(selection.releasementEntity.approvalState);
-                        selection.releasementEntity.courseEntity.approvalState = toApprovalState(selection.releasementEntity.courseEntity.approvalState);
+                    if (selectionList) {
+                        for (let selection of selectionList) {
+                            selection.selectionState = toSelectionState(selection.selectionState);
+                            selection.releasementEntity.approvalState = toApprovalState(selection.releasementEntity.approvalState);
+                            selection.releasementEntity.courseEntity.approvalState = toApprovalState(selection.releasementEntity.courseEntity.approvalState);
+                        }
                     }
                     resolve({
                         isSuccess: response.data.code === 0,

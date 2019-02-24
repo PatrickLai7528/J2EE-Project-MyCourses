@@ -25,8 +25,10 @@ export default class ReleasementAPI {
                     console.log(response);
                     // 處理枚舉類
                     let payload: any = response.data.payload; // 其實是IReleasement類型，但枚舉類是個字符串
-                    for (let releasement of payload) {
-                        releasement.approvalState = toApprovalState(releasement.approvalState);
+                    if (payload) {
+                        for (let releasement of payload) {
+                            releasement.approvalState = toApprovalState(releasement.approvalState);
+                        }
                     }
                     resolve({
                         isSuccess: response.data.code === 0,
@@ -47,12 +49,14 @@ export default class ReleasementAPI {
             axios.get(NetworkSettings.getOpenNetworkIP() + "/releasement/rid/" + rid)
                 .then((response: any) => {
                     let payload: IReleasement = response.data.payload;
-                    // @ts-ignore
-                    // here the enum approvalState is actually a string, so we need to make it right
-                    payload.approvalState = toApprovalState(payload.approvalState);
-                    // @ts-ignore
-                    // same
-                    payload.courseEntity.approvalState = toApprovalState(payload.courseEntity.approvalState);
+                    if (payload) {
+                        // @ts-ignore
+                        // here the enum approvalState is actually a string, so we need to make it right
+                        payload.approvalState = toApprovalState(payload.approvalState);
+                        // @ts-ignore
+                        // same
+                        payload.courseEntity.approvalState = toApprovalState(payload.courseEntity.approvalState);
+                    }
                     resolve({
                         isSuccess: response.data.code === 0,
                         code: response.data.code,
@@ -73,14 +77,15 @@ export default class ReleasementAPI {
             axios.get(url)
                 .then((response: any) => {
                     let payload: IReleasement[] = response.data.payload;
-                    for (let item of payload) {
-                        // @ts-ignore
-                        // here the enum approvalState is actually a string, so we need to make it right
-                        item.approvalState = toApprovalState(item.approvalState);
-                        // @ts-ignore
-                        // here the enum approvalState is actually a string, so we need to make it right
-                        item.courseEntity.approvalState = toApprovalState(item.courseEntity.approvalState);
-                    }
+                    if (payload)
+                        for (let item of payload) {
+                            // @ts-ignore
+                            // here the enum approvalState is actually a string, so we need to make it right
+                            item.approvalState = toApprovalState(item.approvalState);
+                            // @ts-ignore
+                            // here the enum approvalState is actually a string, so we need to make it right
+                            item.courseEntity.approvalState = toApprovalState(item.courseEntity.approvalState);
+                        }
                     resolve({
                         isSuccess: response.data.code === 0,
                         code: response.data.code,

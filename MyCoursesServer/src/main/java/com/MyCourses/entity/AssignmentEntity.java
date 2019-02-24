@@ -7,6 +7,7 @@ package com.MyCourses.entity;
  * @ProjectName server
  */
 
+import com.MyCourses.entity.converter.DateConverter;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -31,6 +32,7 @@ public class AssignmentEntity implements Serializable {
     private String title;
 
     @Column(name = "ddl")
+    @Convert(converter = DateConverter.class)
     private Date ddl;
 
     @Column(name = "description")

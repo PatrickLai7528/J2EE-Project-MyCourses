@@ -51,6 +51,12 @@ export default class TeacherSider extends React.Component<ITeacherSiderProps, IT
 
                         }
                         {
+                            this.props.releasementList.length === 0 ?
+                                (
+                                    <Menu.Item disabled={true}>沒有數據</Menu.Item>
+                                ) : ""
+                        }
+                        {
                             this.props.releasementList.map((releasement: IReleasement) => {
                                 return (
                                     <Menu.Item key={releasement.rid}

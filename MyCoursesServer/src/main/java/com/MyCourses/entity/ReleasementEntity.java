@@ -8,6 +8,7 @@ package com.MyCourses.entity;
  */
 
 import com.MyCourses.entity.converter.ApprovalStateConverter;
+import com.MyCourses.entity.converter.DateConverter;
 import com.MyCourses.entity.enums.ApprovalState;
 import lombok.Data;
 
@@ -52,9 +53,11 @@ public class ReleasementEntity implements Serializable {
     private int repeatAfterNDay;
 
     @Column(name = "effective_time")
+    @Convert(converter = DateConverter.class)
     private Date effectiveTime;
 
     @Column(name = "dead_time")
+    @Convert(converter = DateConverter.class)
     private Date deadTime;
 
     @Column(name = "limit_number")
