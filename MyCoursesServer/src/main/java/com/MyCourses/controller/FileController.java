@@ -39,9 +39,22 @@ public class FileController {
     @PostMapping(value = "attachment/upload")
     @CrossOrigin(origins = "http://localhost:3000")
     @PleaseLog
-    public APIResponse<String> fileUpload(MultipartFile file) {
+    public APIResponse<String> attachmentUpload(MultipartFile file) {
         try {
             String fileName = fileService.uploadAttachment(file);
+            return ResponseUtils.ok("上傳成功", fileName);
+        } catch (IOException | FileEmptyException e) {
+            e.printStackTrace();
+            return ResponseUtils.error("上傳失敗", "");
+        }
+    }
+
+    @PostMapping(value = "slide/upload")
+    @CrossOrigin(origins = "http://localhost:3000")
+    @PleaseLog
+    public APIResponse<String> slideUpload(MultipartFile file) {
+        try {
+            String fileName = fileService.uploadSlide(file);
             return ResponseUtils.ok("上傳成功", fileName);
         } catch (IOException | FileEmptyException e) {
             e.printStackTrace();
@@ -57,20 +70,9 @@ public class FileController {
             "rename", required = false) String rename) {
 
         RenamableResource renamableResource = fileService.downloadAttachment(fileName, rename);
-
-        // fileName without path or folder
-//        fileName = "upload/attachment/" + fileName;
-//        ClassPathResource resource = new ClassPathResource(fileName);
         HttpHeaders headers = new HttpHeaders();
         headers.add("Cache-Control", "no-cache, no-store, must-revalidate");
-
-        // here can rename file
-        // only the name, without the file suffix
-//        String onlyName = resource.getFilename().split("\\.")[0];  // be careful, use \\. instead of .
-//        String fileSuffix = "." + resource.getFilename().split("\\.")[1];
-//        if (rename != null)
-//            onlyName = rename;
-        String name = "";
+        String name;
         if (renamableResource.isRenamed()) {
             name = renamableResource.getNewName();
         } else {

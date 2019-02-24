@@ -49,7 +49,7 @@ public class FileService implements IFileService {
         logger.info("文件的媒體類型為={}", file.getContentType());
         logger.info("文件的名字={}", file.getName());
         logger.info("文件的originName為={}", file.getOriginalFilename());
-        logger.info("保存位置={}", filePath + folderOfAttachment + file.getOriginalFilename());
+        logger.info("保存位)={}", filePath + fileNameWithFolder);
 //
 //        String randomSuffix = encryptService.encrypt(new Date().toString()).substring(0, 10);
 //        String fileName = "s" + randomSuffix + "-" + file.getOriginalFilename();
@@ -60,7 +60,7 @@ public class FileService implements IFileService {
 
     private String confustFileName(String originalFilename) {
         String randomSuffix = encryptService.encrypt(new Date().toString()).substring(0, 10);
-        String fileName = "s" + randomSuffix + "-" + originalFilename
+        String fileName = "s" + randomSuffix + "-" + originalFilename;
         return fileName;
     }
 

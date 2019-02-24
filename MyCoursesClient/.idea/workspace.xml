@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5e92ab2f-ebd7-408b-b8b8-3bef3f1dfbb2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/myapp/src/api/SlideAPI.ts" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/src/api/SlideAPI.ts" afterDir="false" />
-    </list>
+    <list default="true" id="5e92ab2f-ebd7-408b-b8b8-3bef3f1dfbb2" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -370,7 +368,7 @@
       <workItem from="1550577603296" duration="352000" />
       <workItem from="1550649304959" duration="11761000" />
       <workItem from="1550671228982" duration="1430000" />
-      <workItem from="1550739882034" duration="84734000" />
+      <workItem from="1550739882034" duration="84977000" />
     </task>
     <servers />
   </component>
@@ -392,7 +390,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="131073000" />
+    <option name="totallyTimeSpent" value="131316000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -405,7 +403,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24312897" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
