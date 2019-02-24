@@ -24,6 +24,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
+import java.net.URLEncoder;
 
 @RestController
 @RequestMapping("file")
@@ -53,8 +54,12 @@ public class FileController {
     @GetMapping("attachment/download")
     @CrossOrigin(origins = "http://localhost:3000")
     @PleaseLog
+
     public ResponseEntity downloadAttachment(@RequestParam(name = "fileName") String fileName, @RequestParam(name =
             "rename", required = false) String rename) {
+
+        // fileName without path or folder
+        fileName = "upload/attachment/" + fileName;
         ClassPathResource resource = new ClassPathResource(fileName);
         HttpHeaders headers = new HttpHeaders();
         headers.add("Cache-Control", "no-cache, no-store, must-revalidate");
@@ -65,7 +70,8 @@ public class FileController {
         String fileSuffix = "." + resource.getFilename().split("\\.")[1];
         if (rename != null)
             onlyName = rename;
-        headers.add("Content-Disposition", String.format("attachment; filename=\"%s\"", onlyName + fileSuffix));
+        headers.add("Content-Disposition", String.format("attachment; filename=\"%s\"",
+                URLEncoder.encode(onlyName + fileSuffix)));
         headers.add("Pragma", "no-cache");
         headers.add("Expires", "0");
         try {

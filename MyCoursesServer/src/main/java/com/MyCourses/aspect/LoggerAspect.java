@@ -55,7 +55,9 @@ public class LoggerAspect {
                 joinPoint.getSignature().getDeclaringTypeName() + "." + joinPoint.getSignature().getName());
 
         //參數
-        logger.info("args={}", joinPoint.getArgs());
+        Object[] args = joinPoint.getArgs();
+        for (Object arg : args)
+            logger.info("args={}", arg.toString());
     }
 
 //    @Before("studentLog()")

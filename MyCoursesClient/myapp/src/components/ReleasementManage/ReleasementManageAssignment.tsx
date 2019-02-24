@@ -2,6 +2,7 @@ import * as React from "react";
 import {Button, Icon, List} from "antd";
 import {IAssignment, IReleasement} from "../../types/entities";
 import {months} from "moment";
+import NetworkSettings from "../../setting/NetworkSettings";
 
 const moment = require("moment");
 
@@ -46,7 +47,14 @@ export const ReleasementManageAssignment: React.FunctionComponent<IReleasementMa
                                     <IconText type="check" text={"提交人數：" + assignment.submissionEntityList.length}/>,
                                     <IconText type="calendar"
                                               text={"截止日期：" + moment(assignment.ddl).format("YYYY-MM-DD")}/>,
-                                    <a><IconText type={"file"} text={"附件"}/></a>
+                                    <div>
+                                        {/* slideEntity is a optional value of assignment */}
+                                        {assignment.slideEntity ?
+                                            <a href={NetworkSettings.getOpenNetworkIP() + "/file/attachment/download?fileName=" + assignment.slideEntity.filePath + "&rename=附件-" + assignment.title}><IconText
+                                                type={"file"} text={"附件"}/></a>
+                                            :""
+                                        }
+                                    </div>
                                 ]}
                             >
                                 <List.Item.Meta
