@@ -15,4 +15,6 @@ public interface IFileService {
     String uploadAttachment(MultipartFile file) throws FileEmptyException, IOException;
 
     RenamableResource downloadAttachment(String fileName, String rename);
+
+    String uploadSlide(MultipartFile file) throws FileEmptyException, IOException;
 }        

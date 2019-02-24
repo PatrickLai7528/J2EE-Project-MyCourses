@@ -24,9 +24,13 @@ import java.util.Date;
 @Service
 public class FileService implements IFileService {
     private final static Logger logger = LoggerFactory.getLogger(VerifyService.class);
+
     private final static String filePath = "/Users/laikinmeng/Documents/GitHub/J2EE-Project-MyCourses/MyCoursesServer/src/main" +
             "/resources/";
+
     private final static String folderOfAttachment = "upload/attachment/";
+
+    private final static String folderOfSlide = "upload/slide/";
 
     private final IEncryptService encryptService;
 
@@ -35,8 +39,7 @@ public class FileService implements IFileService {
         this.encryptService = encryptService;
     }
 
-    @Override
-    public String uploadAttachment(MultipartFile file) throws FileEmptyException, IOException {
+    private void upload(MultipartFile file, String fileNameWithFolder) throws FileEmptyException, IOException {
         if (file.getSize() == 0) {
             throw new FileEmptyException();
         }
@@ -47,12 +50,33 @@ public class FileService implements IFileService {
         logger.info("文件的名字={}", file.getName());
         logger.info("文件的originName為={}", file.getOriginalFilename());
         logger.info("保存位置={}", filePath + folderOfAttachment + file.getOriginalFilename());
+//
+//        String randomSuffix = encryptService.encrypt(new Date().toString()).substring(0, 10);
+//        String fileName = "s" + randomSuffix + "-" + file.getOriginalFilename();
 
-        String randomSuffix = encryptService.encrypt(new Date().toString()).substring(0, 10);
-        String fileName = "s" + randomSuffix + "-" + file.getOriginalFilename();
-
-        File newFile = new File(filePath + folderOfAttachment + fileName);
+        File newFile = new File(fileNameWithFolder);
         file.transferTo(newFile);
+    }
+
+    private String confustFileName(String originalFilename) {
+        String randomSuffix = encryptService.encrypt(new Date().toString()).substring(0, 10);
+        String fileName = "s" + randomSuffix + "-" + originalFilename
+        return fileName;
+    }
+
+    @Override
+    public String uploadAttachment(MultipartFile file) throws FileEmptyException, IOException {
+        String fileName = confustFileName(file.getOriginalFilename());
+        // save files in separated folders
+        upload(file, filePath + folderOfAttachment + fileName);
+        return fileName;
+    }
+
+    @Override
+    public String uploadSlide(MultipartFile file) throws FileEmptyException, IOException {
+        String fileName = confustFileName(file.getOriginalFilename());
+        // save files in separated folders 
+        upload(file, filePath + folderOfSlide + fileName);
         return fileName;
     }
 
@@ -77,4 +101,6 @@ public class FileService implements IFileService {
         }
         return renamableResource;
     }
+
+
 }
