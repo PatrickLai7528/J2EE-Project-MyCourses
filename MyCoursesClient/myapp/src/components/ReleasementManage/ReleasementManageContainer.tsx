@@ -2,7 +2,7 @@ import * as React from "react";
 import {ReleasementManage} from "./ReleasementManage";
 import {UserType} from "../../api/UserAPI";
 import {IReleasement} from "../../types/entities";
-import {AssignmentAddingModal} from "../AssignmentAddingModal/AssignmentAddingModal";
+import {FormOption, GeneralAddingModal} from "../GeneralAddingModal/GeneralAddingModal";
 import {ISendAssignmentData} from "../../api/AssignmentAPI";
 import IAPIResponse from "../../api/IAPIResponse";
 import {message} from "antd";
@@ -64,7 +64,9 @@ export default class ReleasementManageContainer extends React.Component<IRelease
                         onAssignmentClick={this.enableAssignmentAddingForm.bind(this)}
                         onSlideClick={this.enableSlideAddingForm.bind(this)}
                     />
-                    <AssignmentAddingModal
+                    <GeneralAddingModal
+                        mode={FormOption.ASSIGNMENT}
+                        title={"發佈作業"}
                         refreshFormTrigger={this.state.refreshFormTrigger}
                         releasement={this.props.releasement}
                         sendAssignment={this.props.sendAssignment}

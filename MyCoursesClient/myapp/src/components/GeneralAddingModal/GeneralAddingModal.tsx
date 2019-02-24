@@ -5,7 +5,13 @@ import {ISendAssignmentData} from "../../api/AssignmentAPI";
 import IAPIResponse from "../../api/IAPIResponse";
 import {IReleasement} from "../../types/entities";
 
-export interface IAssignmentAddingModalProps {
+export enum FormOption {
+    ASSIGNMENT, SLIDE
+}
+
+export interface IGeneralAddingModalProps {
+    mode: FormOption
+    title: string
     releasement: IReleasement
     visible: boolean
     onOk: () => void
@@ -31,11 +37,11 @@ export interface IAssignmentAddingModalProps {
     onSendError: (e: any) => void
 }
 
-export const AssignmentAddingModal: React.FunctionComponent<IAssignmentAddingModalProps> = (props: IAssignmentAddingModalProps) => {
+export const GeneralAddingModal: React.FunctionComponent<IGeneralAddingModalProps> = (props: IGeneralAddingModalProps) => {
     console.log(props);
     return (
         <Modal
-            title="發佈作業"
+            title={props.title}
             visible={props.visible}
             onOk={props.onOk}
             confirmLoading={props.confirmLoading}
@@ -44,16 +50,20 @@ export const AssignmentAddingModal: React.FunctionComponent<IAssignmentAddingMod
             okText="確定"
             cancelText="取消"
         >
-            <AssignmentAddingFormContainer
-                refreshFormTrigger={props.refreshFormTrigger}
-                releasement={props.releasement}
-                isTimeToSubmit={props.isTimeToSubmit}
-                sendAssignment={props.sendAssignment}
-                onSendBefore={props.onSendBefore}
-                onSendError={props.onSendFail}
-                onSendSuccess={props.onSendSuccess}
-                onSendFail={props.onSendFail}
-            />
+            {
+                props.mode === FormOption.ASSIGNMENT ?
+
+                    <AssignmentAddingFormContainer
+                        refreshFormTrigger={props.refreshFormTrigger}
+                        releasement={props.releasement}
+                        isTimeToSubmit={props.isTimeToSubmit}
+                        sendAssignment={props.sendAssignment}
+                        onSendBefore={props.onSendBefore}
+                        onSendError={props.onSendFail}
+                        onSendSuccess={props.onSendSuccess}
+                        onSendFail={props.onSendFail}
+                    /> : ""
+            }
         </Modal>
     )
 };
