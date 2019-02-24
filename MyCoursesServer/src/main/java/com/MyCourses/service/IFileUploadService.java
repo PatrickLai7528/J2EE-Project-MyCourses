@@ -13,4 +13,6 @@ import java.io.IOException;
 
 public interface IFileUploadService {
     String uploadAttachment(MultipartFile file) throws FileEmptyException, IOException;
+
+    
 }
