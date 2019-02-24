@@ -21,7 +21,8 @@ export const ReleasementManage: React.FunctionComponent<IReleasementManageProps>
             <Content>
                 <ReleasementManageMessage/>
                 <Divider/>
-                <ReleasementManageSlide editable={props.editable} onClick={props.onSlideClick}/>
+                <ReleasementManageSlide editable={props.editable} onClick={props.onSlideClick}
+                                        releasement={props.releasement}/>
                 <Divider/>
                 <ReleasementManageAssignment releasement={props.releasement} editable={props.editable}
                                              onClick={props.onAssignmentClick}/>

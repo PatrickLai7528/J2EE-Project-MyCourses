@@ -32,9 +32,9 @@ export const ReleasementManageAssignment: React.FunctionComponent<IReleasementMa
             </h1>
             {
                 props.editable ? (
-                    <Button htmlType={"button"} type={"primary"} onClick={props.onClick}>發佈作業</Button>) : ""
+                    <Button style={{marginBottom: 24}} htmlType={"button"} type={"primary"} onClick={props.onClick}>發佈作業</Button>) : ""
             }
-            <div style={{marginTop: 24}}>
+            <div>
                 <List
                     dataSource={props.releasement.assignmentEntityList}
                     bordered={true}
