@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
+@RestController
 @RequestMapping("student")
 public class StudentController {
 
@@ -42,28 +42,28 @@ public class StudentController {
     @CrossOrigin(origins = "http://localhost:3000")
     @VerifyToken
     @PleaseLog
-    public ResponseEntity<APIResponse<List<StudentEntity>>> getAllStudents() {
+    public APIResponse<List<StudentEntity>> getAllStudents() {
         List<StudentEntity> list = studentService.getAllStudents();
-        return new ResponseEntity<>(ResponseUtils.ok("成功", list), HttpStatus.OK);
+        return ResponseUtils.ok("成功", list);
     }
 
 
     @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("registry/{code}")
     @PleaseLog
-    public ResponseEntity<APIResponse<Object>> registry(@RequestBody StudentEntity studentEntity, @PathVariable(name
+    public APIResponse<Object> registry(@RequestBody StudentEntity studentEntity, @PathVariable(name
             = "code") String code) {
         try {
             boolean isValid = verifyService.verify(studentEntity.getStudentEmail(), code);
             if (isValid) {
                 studentService.registry(studentEntity);
-                return new ResponseEntity<>(ResponseUtils.ok("注冊成功"), HttpStatus.OK);
+                return ResponseUtils.ok("注冊成功");
             } else {
-                return new ResponseEntity<>(ResponseUtils.notOk("驗證碼錯誤"), HttpStatus.OK);
+                return ResponseUtils.notOk("驗證碼錯誤");
             }
         } catch (StudentRepeatedException | VerificationException e) {
             e.printStackTrace();
-            return new ResponseEntity<>(ResponseUtils.error(e.getLocalizedMessage()), HttpStatus.INTERNAL_SERVER_ERROR);
+            return ResponseUtils.error(e.getLocalizedMessage());
         }
     }
 
@@ -72,26 +72,17 @@ public class StudentController {
     @PostMapping("login")
     @GenerateToken
     @PleaseLog
-    public ResponseEntity<APIResponse<Object>> logIn(@RequestBody StudentEntity studentEntity) {
+    public APIResponse<Object> logIn(@RequestBody StudentEntity studentEntity) {
         try {
             System.out.println(studentEntity);
             boolean flag = studentService.logIn(studentEntity);
             if (flag) {
-                return new ResponseEntity<>(
-                        ResponseUtils.ok("登錄成功", studentEntity.getStudentEmail()),
-                        HttpStatus.OK
-                );
+                return ResponseUtils.ok("登錄成功", studentEntity.getStudentEmail());
             } else {
-                return new ResponseEntity<>(
-                        ResponseUtils.notOk("登錄失敗"),
-                        HttpStatus.OK
-                );
+                return ResponseUtils.notOk("登錄失敗");
             }
         } catch (StudentNotExistException e) {
-            return new ResponseEntity<>(
-                    ResponseUtils.error(e.getLocalizedMessage()),
-                    HttpStatus.INTERNAL_SERVER_ERROR
-            );
+            return ResponseUtils.error(e.getLocalizedMessage());
         }
     }
 }

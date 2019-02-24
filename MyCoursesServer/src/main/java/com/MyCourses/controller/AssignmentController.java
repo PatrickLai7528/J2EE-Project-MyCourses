@@ -15,16 +15,11 @@ import com.MyCourses.utils.ResponseUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 
-@Controller
+@RestController
 @RequestMapping("assignment")
 public class AssignmentController {
     private final IAssignmentService assignmentService;
@@ -37,7 +32,7 @@ public class AssignmentController {
     @PostMapping("add")
     @PleaseLog
     @CrossOrigin(origins = "http://localhost:3000")
-    public ResponseEntity<APIResponse> addAssignment(
+    public APIResponse addAssignment(
             @RequestParam(name = "rid") Long rid,
             @RequestParam(name = "title") String title,
             @RequestParam(name = "desc") String desc,
@@ -46,15 +41,10 @@ public class AssignmentController {
         try {
             Date ddlDate = DateUtils.generateFrom(ddl);
             assignmentService.addAssignment(rid, title, desc, ddlDate);
-            return new ResponseEntity<>(
-                    ResponseUtils.ok("操作成功"),
-                    HttpStatus.OK
-            );
+            return ResponseUtils.ok("操作成功");
         } catch (ReleasementNotExistException | DateStringFormatException e) {
             e.printStackTrace();
-            return new ResponseEntity<>(
-                    ResponseUtils.error(e.getLocalizedMessage()), HttpStatus.INTERNAL_SERVER_ERROR
-            );
+            return ResponseUtils.error(e.getLocalizedMessage());
         }
     }
 }

@@ -28,7 +28,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Controller
+@RestController
 @RequestMapping("releasement")
 public class ReleasementController {
 
@@ -45,7 +45,7 @@ public class ReleasementController {
 //    @VerifyToken
     @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("add")
-    public ResponseEntity<APIResponse<Object>> release(
+    public APIResponse<Object> release(
             @RequestParam(name = "cid") Long cid,
             @RequestParam(name = "effectiveTime") String effectiveTime,
             @RequestParam(name = "deadTime") String deadTime,
@@ -68,71 +68,53 @@ public class ReleasementController {
             map.put(ReleaseConfig.END_MIN, endMin);
 
             courseService.release(cid, map);
-            return new ResponseEntity<>(
-                    ResponseUtils.ok("課程發佈成功"),
-                    HttpStatus.OK
-            );
+            return ResponseUtils.ok("課程發佈成功");
         } catch (UnexpectedReleaseConfig | CourseNotExistException e) {
             e.printStackTrace();
-            return new ResponseEntity<>(
-                    ResponseUtils.error(e.getLocalizedMessage()),
-                    HttpStatus.INTERNAL_SERVER_ERROR
-            );
+            return ResponseUtils.error(e.getLocalizedMessage());
         }
     }
 
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("available")
     @PleaseLog
-    public ResponseEntity<APIResponse<List<ReleasementEntity>>> getAllAvailableRelease() {
+    public APIResponse<List<ReleasementEntity>> getAllAvailableRelease() {
         List<ReleasementEntity> available = releasementService.getAvailable();
-        return new ResponseEntity<>(ResponseUtils.ok("操作成功", available), HttpStatus.OK);
+        return ResponseUtils.ok("操作成功", available);
     }
 
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("all")
     @PleaseLog
-    public ResponseEntity<APIResponse<List<ReleasementEntity>>> getAll() {
+    public APIResponse<List<ReleasementEntity>> getAll() {
         List<ReleasementEntity> all = releasementService.getAll();
-        return new ResponseEntity<>(ResponseUtils.ok("操作成功", all), HttpStatus.OK);
+        return ResponseUtils.ok("操作成功", all);
     }
 
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("of")
     @PleaseLog
-    public ResponseEntity<APIResponse<List<ReleasementEntity>>> getReleasementOf(
+    public APIResponse<List<ReleasementEntity>> getReleasementOf(
             @RequestParam(name = "teacherEmail") String teacherEmail) {
         try {
             List<ReleasementEntity> releasementEntityList = releasementService.getReleasementOf(teacherEmail);
-            return new ResponseEntity<>(
-                    ResponseUtils.ok("操作成功", releasementEntityList),
-                    HttpStatus.OK
-            );
+            return ResponseUtils.ok("操作成功", releasementEntityList);
         } catch (TeacherNotExistException e) {
             e.printStackTrace();
-            return new ResponseEntity(
-                    ResponseUtils.error(e.getLocalizedMessage()),
-                    HttpStatus.INTERNAL_SERVER_ERROR
-            );
+            return ResponseUtils.error(e.getLocalizedMessage(), null);
         }
     }
 
     @GetMapping("rid/{rid}")
     @PleaseLog
     @CrossOrigin("http://localhost:3000")
-    public ResponseEntity<APIResponse<ReleasementEntity>> getReleasementByRid(@PathVariable(name = "rid") Long rid) {
+    public APIResponse<ReleasementEntity> getReleasementByRid(@PathVariable(name = "rid") Long rid) {
         try {
             ReleasementEntity releasementEntity = releasementService.getReleasementByRid(rid);
-            return new ResponseEntity<>(
-                    ResponseUtils.ok("操作成功", releasementEntity),
-                    HttpStatus.OK
-            );
+            return ResponseUtils.ok("操作成功", releasementEntity);
         } catch (ReleasementNotExistException e) {
             e.printStackTrace();
-            return new ResponseEntity(
-                    ResponseUtils.error("操作失敗"),
-                    HttpStatus.INTERNAL_SERVER_ERROR
-            );
+            return ResponseUtils.error("操作失敗", null);
         }
     }
 

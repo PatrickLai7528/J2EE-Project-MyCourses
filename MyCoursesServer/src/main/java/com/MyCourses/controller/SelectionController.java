@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
+@RestController
 @RequestMapping("selection")
 public class SelectionController {
     private final ISelectionService selectionService;
@@ -33,7 +33,7 @@ public class SelectionController {
     @PleaseLog
     @PostMapping("select")
     @CrossOrigin(origins = "http://localhost:3000")
-    public ResponseEntity<APIResponse<Object>> select(@RequestParam(name = "rid") String rid,
+    public APIResponse<Object> select(@RequestParam(name = "rid") String rid,
                                                       @RequestParam(name = "studentEmail") String studentEmail) {
 //        String studentEmail = formData.getFirst("studentEmail");
 //        Long rid = Long.valueOf(formData.getFirst("rid"));
@@ -50,9 +50,9 @@ public class SelectionController {
                 default:
                     throw new Exception("should not be here");
             }
-            return new ResponseEntity<>(ResponseUtils.ok(message), HttpStatus.OK);
+            return ResponseUtils.ok(message);
         } catch (Exception e) {
-            return new ResponseEntity<>(ResponseUtils.error(e.getLocalizedMessage()), HttpStatus.INTERNAL_SERVER_ERROR);
+            return ResponseUtils.error(e.getLocalizedMessage());
         }
     }
 
@@ -60,10 +60,8 @@ public class SelectionController {
     @PleaseLog
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("of")
-    public ResponseEntity<APIResponse<List<SelectionEntity>>> getSelectionOf(@RequestParam(name = "studentEmail") String studentEmail) {
+    public APIResponse<List<SelectionEntity>> getSelectionOf(@RequestParam(name = "studentEmail") String studentEmail) {
         List<SelectionEntity> list = selectionService.getSelectionOf(studentEmail);
-        return new ResponseEntity<>(
-                ResponseUtils.ok("操作成功", list), HttpStatus.OK
-        );
+        return ResponseUtils.ok("操作成功", list);
     }
 }

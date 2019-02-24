@@ -1,6 +1,7 @@
 import * as React from "react";
 import {GetFieldDecoratorOptions} from "antd/lib/form/Form";
-import {DatePicker, Form, Input} from "antd";
+import {Button, DatePicker, Form, Icon, Input, Upload} from "antd";
+import TextArea from "antd/es/input/TextArea";
 import {IGeneralReleaseCourseFormItemProps} from "../ReleaseCourseForm/ReleaseCourseFormItem";
 
 export interface IGeneralAssignmentAddingFormItemProps {
@@ -37,8 +38,8 @@ export const DescriptionAssignmentAddingFormItem: React.FunctionComponent<IGener
                     }
                 ],
             })(
-                <Input placeholder="作業描述"
-                />
+                <TextArea placeholder="作業描述"
+                          autosize={{minRows: 1, maxRows: 6}}/>
             )}
         </Form.Item>
     )
@@ -65,18 +66,16 @@ export const DDLAssignmentAddingFormItem: React.FunctionComponent<IGeneralReleas
 export const AttachmentAssignmentAddingFormItem: React.FunctionComponent<IGeneralAssignmentAddingFormItemProps> = (props: IGeneralAssignmentAddingFormItemProps) => {
     return (
         <Form.Item
-            label="作業描述"
+            label="附件"
         >
-            123
-            {/*{props.getFieldDecorator('description', {*/}
-            {/*rules: [*/}
-            {/*{*/}
-            {/*required: true, message: '作業描述不能為空',*/}
-            {/*}*/}
-            {/*],*/}
-            {/*})(*/}
-            {/*<TextArea placeholder="作業描述" autosize={{minRows: 1, maxRows: 6}}/>*/}
-            {/*)}*/}
+            {props.getFieldDecorator('attachment')(
+                <Upload {...props}>
+                    <Button>
+                        <Icon type="upload"/> 點擊上傳
+                    </Button>
+                </Upload>
+            )}
+
         </Form.Item>
     )
 };

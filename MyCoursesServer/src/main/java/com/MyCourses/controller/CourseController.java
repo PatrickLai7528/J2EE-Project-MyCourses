@@ -21,13 +21,12 @@ import com.MyCourses.utils.ResponseUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collections;
 import java.util.List;
 
-@Controller
+@RestController
 @RequestMapping("course")
 public class CourseController {
     private final ICourseService courseService;
@@ -42,29 +41,20 @@ public class CourseController {
     @GetMapping("all")
     @PleaseLog
     @CrossOrigin(origins = "http://localhost:3000")
-    public ResponseEntity<APIResponse<List<CourseEntity>>> getAllCourses() {
-        return new ResponseEntity<>(
-                ResponseUtils.ok("操作成功", courseService.getAllCourses()),
-                HttpStatus.OK
-        );
+    public APIResponse<List<CourseEntity>> getAllCourses() {
+        return ResponseUtils.ok("操作成功", courseService.getAllCourses());
     }
 
     @GetMapping("of")
     @PleaseLog
     @CrossOrigin(origins = "http://localhost:3000")
-    public ResponseEntity<APIResponse<List<CourseEntity>>> getCoursesOf(@RequestParam(name = "teacherEmail") String teacherEmail) {
+    public APIResponse<List<CourseEntity>> getCoursesOf(@RequestParam(name = "teacherEmail") String teacherEmail) {
         try {
             List<CourseEntity> courseEntityList = courseService.getCoursesByTeacherEmail(teacherEmail);
-            return new ResponseEntity<>(
-                    ResponseUtils.ok("操作成功", courseEntityList), HttpStatus.OK
-            );
+            return ResponseUtils.ok("操作成功", courseEntityList);
         } catch (TeacherNotExistException e) {
             e.printStackTrace();
-            return new ResponseEntity<>(
-                    (APIResponse<List<CourseEntity>>) ResponseUtils.error(e.getLocalizedMessage(),
-                            Collections.EMPTY_LIST),
-                    HttpStatus.INTERNAL_SERVER_ERROR
-            );
+            return ResponseUtils.error(e.getLocalizedMessage(), null);
         }
     }
 
@@ -72,7 +62,7 @@ public class CourseController {
     @PostMapping("add")
     @PleaseLog
     @CrossOrigin(origins = "http://localhost:3000")
-    public ResponseEntity<APIResponse<Object>> addCourse(
+    public APIResponse<Object> addCourse(
             @RequestParam(name = "teacherEmail") String teacherEmail,
             @RequestParam(name = "courseName") String courseName
     ) {
@@ -82,15 +72,9 @@ public class CourseController {
             courseEntity.setTeacherEntity(teacherFound);
             courseEntity.setName(courseName);
             courseService.add(courseEntity);
-            return new ResponseEntity<>(
-                    ResponseUtils.ok("添加成功"),
-                    HttpStatus.OK
-            );
+            return ResponseUtils.ok("添加成功");
         } catch (CourseHasNoTeacherException | TeacherNotExistException e) {
-            return new ResponseEntity<>(
-                    ResponseUtils.error(e.getLocalizedMessage()),
-                    HttpStatus.INTERNAL_SERVER_ERROR
-            );
+            return ResponseUtils.error(e.getLocalizedMessage(), null);
         }
     }
 }

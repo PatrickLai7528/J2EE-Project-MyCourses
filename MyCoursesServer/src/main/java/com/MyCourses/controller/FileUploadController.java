@@ -6,32 +6,37 @@ package com.MyCourses.controller;/*
  * @ProjectName MyCoursesServer
  */
 
+import com.MyCourses.exceptions.FileEmptyException;
+import com.MyCourses.service.IFileUploadService;
+import com.MyCourses.utils.ResponseUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
 import java.io.IOException;
 
 @RestController
+@RequestMapping("file")
 public class FileUploadController {
 
-    @RequestMapping(value = "/upload", method = RequestMethod.POST)
-    public boolean fileUpload(MultipartFile file) throws IllegalStateException, IOException {
-        if (file.getSize() == 0) {
-            return false;
+    private final IFileUploadService fileUploadService;
+
+    @Autowired
+    public FileUploadController(IFileUploadService fileUploadService) {
+        this.fileUploadService = fileUploadService;
+    }
+
+
+    @RequestMapping(value = "attachment/upload", method = RequestMethod.POST)
+    public APIResponse<String> fileUpload(MultipartFile file) {
+        try {
+            String fileName = fileUploadService.uploadAttachment(file);
+            return ResponseUtils.ok("上傳成功", fileName);
+        } catch (IOException | FileEmptyException e ) {
+            e.printStackTrace();
+            return ResponseUtils.error("上傳失敗", "");
         }
-
-        System.err.println("文件是否为空 ： " + file.isEmpty());
-        System.err.println("文件的大小为 ：" + file.getSize());
-        System.err.println("文件的媒体类型为 ： " + file.getContentType());
-        System.err.println("文件的名字： " + file.getName());
-        System.err.println("文件的originName为： " + file.getOriginalFilename());
-
-        File newFile = new File("/Users/laikinmeng/Documents/GitHub/J2EE-Project-MyCourses/MyCoursesServer/src/main" +
-                "/resources/upload/" + file.getOriginalFilename());
-        file.transferTo(newFile);
-        return true;
     }
 }

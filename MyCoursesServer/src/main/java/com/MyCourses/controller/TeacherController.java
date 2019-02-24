@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
+@RestController
 @RequestMapping("teacher")
 public class TeacherController {
     private final ITeacherService teacherService;
@@ -30,41 +30,32 @@ public class TeacherController {
         this.verifyService = verifyService;
     }
 
-//    @GetMapping("article/{email}")
-//    public ResponseEntity<TeacherEntity> getTeacherByEmail(@PathVariable("email") String email) {
-//        TeacherEntity teacherEntity = teacherService.getEmail(email);
-//        return new ResponseEntity<>(teacherEntity, HttpStatus.OK);
-//    }
-
-
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("all")
     @VerifyToken
     @PleaseLog
-    public ResponseEntity<APIResponse<List<TeacherEntity>>> getAllTeachers() {
+    public APIResponse<List<TeacherEntity>> getAllTeachers() {
         List<TeacherEntity> list = teacherService.getAllTeachers();
-        return new ResponseEntity<>(ResponseUtils.ok("成功", list), HttpStatus.OK);
+        return ResponseUtils.ok("成功", list);
     }
 
 
     @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("registry/{code}")
     @PleaseLog
-    public ResponseEntity<APIResponse<Object>> registry(@RequestBody TeacherEntity teacherEntity, @PathVariable(name
+    public APIResponse<Object> registry(@RequestBody TeacherEntity teacherEntity, @PathVariable(name
             = "code") String code) {
         try {
             boolean isValid = verifyService.verify(teacherEntity.getTeacherEmail(), code);
             if (isValid) {
                 teacherService.registry(teacherEntity);
-                return new ResponseEntity<>(ResponseUtils.ok("注冊成功"), HttpStatus.OK);
+                return ResponseUtils.ok("注冊成功", null);
             } else
-                return new ResponseEntity<>(ResponseUtils.ok("驗證碼錯誤"), HttpStatus.OK);
+                return ResponseUtils.ok("驗證碼錯誤");
         } catch (TeacherRepeatedException | VerificationException e) {
             e.printStackTrace();
-            return new ResponseEntity<>(ResponseUtils.error(e.getLocalizedMessage()), HttpStatus.INTERNAL_SERVER_ERROR);
+            return ResponseUtils.error(e.getLocalizedMessage());
         }
-//        HttpHeaders headers = new HttpHeaders();
-//        headers.setLocation(builder.path("/teacherEntity/{id}").buildAndExpand(teacherEntity.getTeacherEmail()).toUri());
     }
 
 
@@ -72,36 +63,15 @@ public class TeacherController {
     @PostMapping("login")
     @GenerateToken
     @PleaseLog
-    public ResponseEntity<APIResponse<Object>> logIn(@RequestBody TeacherEntity teacherEntity) {
+    public APIResponse<Object> logIn(@RequestBody TeacherEntity teacherEntity) {
         try {
             boolean flag = teacherService.logIn(teacherEntity);
             if (flag)
-                return new ResponseEntity<>(
-                        ResponseUtils.ok("登錄成功"),
-                        HttpStatus.OK
-                );
+                return ResponseUtils.ok("登錄成功");
             else
-                return new ResponseEntity<>(
-                        ResponseUtils.notOk("登錄失敗"),
-                        HttpStatus.OK
-                );
+                return ResponseUtils.notOk("登錄失敗");
         } catch (TeacherNotExistException e) {
-            return new ResponseEntity<>(
-                    ResponseUtils.error(e.getLocalizedMessage()),
-                    HttpStatus.INTERNAL_SERVER_ERROR
-            );
+            return ResponseUtils.error(e.getLocalizedMessage());
         }
     }
-
-//    @PutMapping("article")
-//    public ResponseEntity<TeacherEntity> updateArticle(@RequestBody TeacherEntity teacherEntity) {
-//        teacherService.updateTeacher(teacherEntity);
-//        return new ResponseEntity<>(teacherEntity, HttpStatus.OK);
-//    }
-
-//    @DeleteMapping("article/{email}")
-//    public ResponseEntity<Void> deleteArticle(@PathVariable("email") String email) {
-//        teacherService.deleteTeacher(email);
-//        return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
-//    }
 } 

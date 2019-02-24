@@ -10,6 +10,7 @@ export interface IReleasementManageAssignmentProps {
 
 const Panel = Collapse.Panel;
 
+
 export const ReleasementManageAssignment: React.FunctionComponent<IReleasementManageAssignmentProps> = (props: IReleasementManageAssignmentProps) => {
     return (
         <div>
@@ -32,7 +33,7 @@ export const ReleasementManageAssignment: React.FunctionComponent<IReleasementMa
                         return (
                             <Panel key={String(assignment.assid)} header={assignment.title}>
                                 <p>
-                                    {assignment.description.replace("\n", "\n")}
+                                    {assignment.description}
                                 </p>
                             </Panel>
                         )
