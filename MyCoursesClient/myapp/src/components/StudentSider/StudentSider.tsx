@@ -47,6 +47,12 @@ const StudentSider: React.FunctionComponent<IStudentSiderProps> = (props: IStude
                             ) : ""
                     }
                     {
+                        props.selectionList.length === 0 ?
+                            (
+                                <Menu.Item disabled={true}>沒有數據</Menu.Item>
+                            ) : ""
+                    }
+                    {
                         props.selectionList.map((selection: ISelection) => {
                             return (
                                 <Menu.Item key={selection.slid}>

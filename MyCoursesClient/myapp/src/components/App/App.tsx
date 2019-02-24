@@ -10,11 +10,11 @@ import {UserType} from "../../api/UserAPI";
 import CourseAPI, {ISendReleasementData} from "../../api/CourseAPI";
 import IAPIResponse from "../../api/IAPIResponse";
 import {ICourse, IReleasement, ISelection} from "../../types/entities";
-import TeacherSider from "../TeacherSider/TeacherSider";
 import SelectionAPI from "../../api/SelectionAPI";
 import ReleasementAPI from "../../api/ReleasementAPI";
 import Cookies from "universal-cookie/es6";
 import AssignmentAPI, {ISendAssignmentData} from "../../api/AssignmentAPI";
+import {TeacherSider} from "../TeacherSider/TeacherSider";
 
 interface IAppState {
     userType: UserType
@@ -288,7 +288,7 @@ export default class App extends Component<IAppProps, IAppState> {
                     onSignUpFail={this.handleSignUpFail.bind(this)}
                     onSignUpError={this.handleSignUpError.bind(this)}
                 />
-                <Layout >
+                <Layout>
                     {
                         /**
                          *  default showing student sider
