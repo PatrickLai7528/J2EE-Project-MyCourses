@@ -83,7 +83,16 @@ public class FileService implements IFileService {
     @Override
     public RenamableResource downloadAttachment(String fileName, String rename) {
         String fileNameWithFolder = folderOfAttachment + fileName;
+        return download(fileNameWithFolder, rename);
+    }
 
+    @Override
+    public RenamableResource downloadSlide(String fileName, String rename) {
+        String fileNameWithFolder = folderOfSlide + fileName;
+        return download(fileNameWithFolder, rename);
+    }
+
+    private RenamableResource download(String fileNameWithFolder, String rename) {
         logger.info("download file = {}", fileNameWithFolder);
 
         ClassPathResource resource = new ClassPathResource(fileNameWithFolder);
@@ -101,6 +110,5 @@ public class FileService implements IFileService {
         }
         return renamableResource;
     }
-
 
 }

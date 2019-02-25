@@ -14,7 +14,11 @@ import java.io.IOException;
 public interface IFileService {
     String uploadAttachment(MultipartFile file) throws FileEmptyException, IOException;
 
+    String uploadSlide(MultipartFile file) throws FileEmptyException, IOException;
+
     RenamableResource downloadAttachment(String fileName, String rename);
 
-    String uploadSlide(MultipartFile file) throws FileEmptyException, IOException;
+    RenamableResource downloadSlide(String fileName, String rename);
+
+
 }        

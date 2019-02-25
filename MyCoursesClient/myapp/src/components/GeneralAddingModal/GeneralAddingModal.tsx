@@ -6,9 +6,10 @@ import IAPIResponse from "../../api/IAPIResponse";
 import {IReleasement} from "../../types/entities";
 import {SlideAddingFormContainer} from "../SlideAddingForm/SlideAddingFormContainer";
 import {ISendSlideData} from "../../api/SlideAPI";
+import {ForumAddingFormContainer} from "../ForumAddingForm/ForumAddingFormContainer";
 
 export enum FormOption {
-    ASSIGNMENT, SLIDE
+    ASSIGNMENT, SLIDE, FORUM
 }
 
 export interface IGeneralAddingModalProps {
@@ -22,7 +23,8 @@ export interface IGeneralAddingModalProps {
     confirmLoading: boolean
 
     isTimeToSubmitAssignment: boolean
-    isTimeToSubmitSlide:boolean
+    isTimeToSubmitSlide: boolean
+    isTimeToSubmitForum: boolean
 
     refreshFormTrigger: boolean
 
@@ -59,7 +61,8 @@ export const GeneralAddingModal: React.FunctionComponent<IGeneralAddingModalProp
         <Modal
             title={
                 props.mode === FormOption.ASSIGNMENT ? "發佈作業" :
-                    props.mode === FormOption.SLIDE ? "上傳課件" : ""
+                    props.mode === FormOption.SLIDE ? "上傳課件" :
+                        props.mode === FormOption.FORUM ? "發起討論" : ""
             }
             visible={props.visible}
             onOk={props.onOk}
@@ -94,6 +97,17 @@ export const GeneralAddingModal: React.FunctionComponent<IGeneralAddingModalProp
                         onSendSuccess={props.onSendSuccess}
                         onSendFail={props.onSendFail}
                     /> : ""
+            }
+            {
+                props.mode === FormOption.FORUM ?
+                    <ForumAddingFormContainer
+                        isTimeToSubmit={props.isTimeToSubmitForum}
+                        releasement={props.releasement}
+                        onSendBefore={props.onSendBefore}
+                        onSendSuccess={props.onSendSuccess}
+                        onSendFail={props.onSendFail}
+                        onSendError={props.onSendError}
+                        refreshFormTrigger={props.refreshFormTrigger}/> : ""
             }
         </Modal>
     )

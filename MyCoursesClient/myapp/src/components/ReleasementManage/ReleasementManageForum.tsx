@@ -4,11 +4,12 @@ import {IForum, IReleasement} from "../../types/entities";
 
 export interface IReleasementManageForumProps {
     releasement: IReleasement
+    onClick: () => void
 }
 
 export const ReleasementManageForum: React.FunctionComponent<IReleasementManageForumProps> = (props: IReleasementManageForumProps) => {
     return (
-        <Card title={"討論區"} style={{borderRadius: 10}} extra={<a>發起討論</a>}>
+        <Card title={"討論區"} style={{borderRadius: 10}} extra={<a onClick={props.onClick}>發起討論</a>}>
             {
                 !props.releasement.forumEntityList || props.releasement.forumEntityList.length === 0 ?
                     <Empty/>

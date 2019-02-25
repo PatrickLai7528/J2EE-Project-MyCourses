@@ -62,14 +62,7 @@ public class FileController {
         }
     }
 
-    @GetMapping("attachment/download")
-    @CrossOrigin(origins = "http://localhost:3000")
-    @PleaseLog
-
-    public ResponseEntity downloadAttachment(@RequestParam(name = "fileName") String fileName, @RequestParam(name =
-            "rename", required = false) String rename) {
-
-        RenamableResource renamableResource = fileService.downloadAttachment(fileName, rename);
+    private ResponseEntity download(RenamableResource renamableResource) {
         HttpHeaders headers = new HttpHeaders();
         headers.add("Cache-Control", "no-cache, no-store, must-revalidate");
         String name;
@@ -94,5 +87,23 @@ public class FileController {
             e.printStackTrace();
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+
+    @GetMapping("slide/download")
+    @CrossOrigin(origins = "http://localhost:3000")
+    @PleaseLog
+    public ResponseEntity downloadSlide(@RequestParam(name = "fileName") String fileName,
+                                        @RequestParam(name = "rename", required = false) String rename) {
+        RenamableResource renamableResource = fileService.downloadSlide(fileName, rename);
+        return download(renamableResource);
+    }
+
+    @GetMapping("attachment/download")
+    @CrossOrigin(origins = "http://localhost:3000")
+    @PleaseLog
+    public ResponseEntity downloadAttachment(@RequestParam(name = "fileName") String fileName, @RequestParam(name =
+            "rename", required = false) String rename) {
+        RenamableResource renamableResource = fileService.downloadAttachment(fileName, rename);
+        return download(renamableResource);
     }
 }

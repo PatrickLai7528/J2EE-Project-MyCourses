@@ -11,6 +11,7 @@ export interface IReleasementManageProps {
     editable: boolean
     onSlideClick: () => void
     onAssignmentClick: () => void
+    onForumClick: () => void
 }
 
 const {Content, Sider} = Layout;
@@ -31,7 +32,7 @@ export const ReleasementManage: React.FunctionComponent<IReleasementManageProps>
                 <Divider/>
             </Content>
             <Sider theme={"light"} style={{marginTop: 0, margin: 15, padding: 8, background: "#f0f2f5"}} width={250}>
-                <ReleasementManageForum releasement={props.releasement}/>
+                <ReleasementManageForum onClick={props.onForumClick} releasement={props.releasement}/>
             </Sider>
         </Layout>
     )

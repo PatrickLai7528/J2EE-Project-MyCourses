@@ -43,6 +43,7 @@ interface IReleasementManageContainerState {
 
     isTimeToSubmitAssignment: boolean
     isTimeToSubmitSlide: boolean
+    isTimeToSubmitForum: boolean
 
     refreshFormTrigger: boolean
 }
@@ -57,6 +58,7 @@ export default class ReleasementManageContainer extends React.Component<IRelease
             generalModalVisible: false,
             isTimeToSubmitAssignment: false,
             isTimeToSubmitSlide: false,
+            isTimeToSubmitForum: false,
             refreshFormTrigger: false
         }
     }
@@ -70,6 +72,10 @@ export default class ReleasementManageContainer extends React.Component<IRelease
         this.setState({generalModalVisible: true, generalModalMode: FormOption.SLIDE});
     }
 
+    private enableForumAddingForm(): void {
+        this.setState({generalModalVisible: true, generalModalMode: FormOption.FORUM});
+    }
+
     public render(): React.ReactNode {
         if (this.props.email && this.props.releasement)
             return (
@@ -79,6 +85,7 @@ export default class ReleasementManageContainer extends React.Component<IRelease
                         releasement={this.props.releasement}
                         onAssignmentClick={this.enableAssignmentAddingForm.bind(this)}
                         onSlideClick={this.enableSlideAddingForm.bind(this)}
+                        onForumClick={this.enableForumAddingForm.bind(this)}
                     />
                     <GeneralAddingModal
                         mode={this.state.generalModalMode}
@@ -94,6 +101,7 @@ export default class ReleasementManageContainer extends React.Component<IRelease
                         // these are the trigger to submit the form submit
                         isTimeToSubmitAssignment={this.state.isTimeToSubmitAssignment}
                         isTimeToSubmitSlide={this.state.isTimeToSubmitSlide}
+                        isTimeToSubmitForum={this.state.isTimeToSubmitForum}
 
                         onOk={() => {
                             // to trigger the form submit
@@ -103,6 +111,9 @@ export default class ReleasementManageContainer extends React.Component<IRelease
                                     break;
                                 case FormOption.SLIDE:
                                     this.setState({isTimeToSubmitSlide: true});
+                                    break;
+                                case FormOption.FORUM:
+                                    this.setState({isTimeToSubmitForum: true});
                                     break;
                             }
                         }}
@@ -124,6 +135,10 @@ export default class ReleasementManageContainer extends React.Component<IRelease
                                 case FormOption.SLIDE:
                                     this.setState({isTimeToSubmitSlide: false});
                                     break;
+                                case FormOption.FORUM:
+                                    this.setState({isTimeToSubmitForum: false});
+                                    break;
+
                             }
 
                             this.setState({generalModalConfirmLoading: true})
@@ -136,6 +151,9 @@ export default class ReleasementManageContainer extends React.Component<IRelease
                                     break;
                                 case FormOption.SLIDE:
                                     this.setState({isTimeToSubmitSlide: false});
+                                    break;
+                                case FormOption.FORUM:
+                                    this.setState({isTimeToSubmitForum: false});
                                     break;
                             }
                             this.setState({
@@ -153,6 +171,9 @@ export default class ReleasementManageContainer extends React.Component<IRelease
                                 case FormOption.SLIDE:
                                     this.setState({isTimeToSubmitSlide: false});
                                     break;
+                                case FormOption.FORUM:
+                                    this.setState({isTimeToSubmitForum: false});
+                                    break;
                             }
                             this.setState({
                                 generalModalVisible: false,
@@ -169,6 +190,9 @@ export default class ReleasementManageContainer extends React.Component<IRelease
                                     break;
                                 case FormOption.SLIDE:
                                     this.setState({isTimeToSubmitSlide: false});
+                                    break;
+                                case FormOption.FORUM:
+                                    this.setState({isTimeToSubmitForum: false});
                                     break;
                             }
                             console.log(e);

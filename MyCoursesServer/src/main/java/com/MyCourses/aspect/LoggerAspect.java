@@ -57,7 +57,8 @@ public class LoggerAspect {
         //參數
         Object[] args = joinPoint.getArgs();
         for (Object arg : args)
-            logger.info("args={}", arg.toString());
+            if (arg != null)
+                logger.info("args={}", arg.toString());
     }
 
 //    @Before("studentLog()")
