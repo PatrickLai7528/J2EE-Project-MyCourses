@@ -14,6 +14,7 @@ import {ISendReleasementData} from "../../api/CourseAPI";
 import ReleasementManageContainer from "../ReleasementManage/ReleasementManageContainer";
 import {ISendAssignmentData} from "../../api/AssignmentAPI";
 import {ISendSlideData} from "../../api/SlideAPI";
+import {ISendForumData} from "../../api/ForumAPI";
 
 export interface IMyContentProps {
     userType: UserType
@@ -91,6 +92,16 @@ export interface IMyContentProps {
      */
     sendSlide: (data: ISendSlideData, onBefore?: () => void, onSuccess?: (response: IAPIResponse<any>) => void, onFail?: (response: IAPIResponse<any>) => void, onError?: (e: any) => void) => void
 
+    /**
+     * send assignment callback from App.tsx
+     * @param data
+     * @param onBefore
+     * @param onSuccess
+     * @param onFail
+     * @param onError
+     */
+    sendForum: (data: ISendForumData, onBefore?: () => void, onSuccess?: (response: IAPIResponse<any>) => void, onFail?: (response: IAPIResponse<any>) => void, onError?: (e: any) => void) => void
+
 }
 
 
@@ -102,7 +113,7 @@ export default class MyContent extends Component<IMyContentProps, any> {
     render() {
         return (
             <Layout.Content
-                style={{ marginLeft: "80px", marginRight: "80px", marginTop: "20px"}}>
+                style={{marginLeft: "80px", marginRight: "80px", marginTop: "20px"}}>
                 <Switch>
                     <Route exact path="/setting" component={Setting}/>
                     <Route exact path="/releasement/all" component={() => {
@@ -123,6 +134,7 @@ export default class MyContent extends Component<IMyContentProps, any> {
                     <Route exact path="/releasement/manage" component={
                         () => {
                             return <ReleasementManageContainer
+                                sendForum={this.props.sendForum}
                                 sendSlide={this.props.sendSlide}
                                 sendAssignment={this.props.sendAssignment}
                                 userType={this.props.userType}

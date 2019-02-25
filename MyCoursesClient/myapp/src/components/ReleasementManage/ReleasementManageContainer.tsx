@@ -7,6 +7,7 @@ import {ISendAssignmentData} from "../../api/AssignmentAPI";
 import IAPIResponse from "../../api/IAPIResponse";
 import {message} from "antd";
 import {ISendSlideData} from "../../api/SlideAPI";
+import {ISendForumData} from "../../api/ForumAPI";
 
 export interface IReleasementManageContainerProps {
     userType: UserType
@@ -32,6 +33,16 @@ export interface IReleasementManageContainerProps {
      * @param onError
      */
     sendSlide: (data: ISendSlideData, onBefore?: () => void, onSuccess?: (response: IAPIResponse<any>) => void, onFail?: (response: IAPIResponse<any>) => void, onError?: (e: any) => void) => void
+
+    /**
+     * send assignment callback from App.tsx
+     * @param data
+     * @param onBefore
+     * @param onSuccess
+     * @param onFail
+     * @param onError
+     */
+    sendForum: (data: ISendForumData, onBefore?: () => void, onSuccess?: (response: IAPIResponse<any>) => void, onFail?: (response: IAPIResponse<any>) => void, onError?: (e: any) => void) => void
 
 }
 
@@ -88,12 +99,16 @@ export default class ReleasementManageContainer extends React.Component<IRelease
                         onForumClick={this.enableForumAddingForm.bind(this)}
                     />
                     <GeneralAddingModal
+                        userType={this.props.userType}
+                        email={this.props.email}
+
                         mode={this.state.generalModalMode}
                         refreshFormTrigger={this.state.refreshFormTrigger}
                         releasement={this.props.releasement}
 
                         sendAssignment={this.props.sendAssignment}
                         sendSlide={this.props.sendSlide}
+                        sendForum={this.props.sendForum}
 
                         confirmLoading={this.state.generalModalConfirmLoading}
                         visible={this.state.generalModalVisible}

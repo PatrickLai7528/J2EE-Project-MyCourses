@@ -16,6 +16,7 @@ import Cookies from "universal-cookie/es6";
 import AssignmentAPI, {ISendAssignmentData} from "../../api/AssignmentAPI";
 import {TeacherSider} from "../TeacherSider/TeacherSider";
 import SlideAPI, {ISendSlideData} from "../../api/SlideAPI";
+import ForumAPI, {ISendForumData} from "../../api/ForumAPI";
 
 interface IAppState {
     userType: UserType
@@ -239,6 +240,28 @@ export default class App extends Component<IAppProps, IAppState> {
             })
     }
 
+    private sendForum(data: ISendForumData,
+                      onBefore?: () => void,
+                      onSuccess?: (response: IAPIResponse<any>) => void,
+                      onFail?: (response: IAPIResponse<any>) => void,
+                      onError?: (e: any) => void) {
+        if (onBefore) onBefore();
+        ForumAPI.getInstance().sendForum(data)
+            .then((response: IAPIResponse<any>) => {
+                if (response.isSuccess) {
+                    if (onSuccess) onSuccess(response);
+                    // refresh assignment by fetching specific releasement
+                    this.getReleasementByRid(data.rid);
+                } else {
+                    if (onFail) onFail(response);
+                }
+            })
+            .catch((e: any) => {
+                console.log(e);
+                if (onError) onError(e);
+            })
+    }
+
     private sendSlide(data: ISendSlideData, onBefore?: () => void,
                       onSuccess?: (response: IAPIResponse<any>) => void,
                       onFail?: (response: IAPIResponse<any>) => void,
@@ -349,6 +372,7 @@ export default class App extends Component<IAppProps, IAppState> {
                             sendCourseSelection={this.sendCourseSelection.bind(this)}
                             sendAssignment={this.sendAssignment.bind(this)}
                             sendSlide={this.sendSlide.bind(this)}
+                            sendForum={this.sendForum.bind(this)}
                         />
                     </Layout>
                 </Layout>

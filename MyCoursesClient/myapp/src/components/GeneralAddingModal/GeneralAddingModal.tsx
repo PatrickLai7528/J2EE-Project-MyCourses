@@ -7,6 +7,8 @@ import {IReleasement} from "../../types/entities";
 import {SlideAddingFormContainer} from "../SlideAddingForm/SlideAddingFormContainer";
 import {ISendSlideData} from "../../api/SlideAPI";
 import {ForumAddingFormContainer} from "../ForumAddingForm/ForumAddingFormContainer";
+import {ISendForumData} from "../../api/ForumAPI";
+import {UserType} from "../../api/UserAPI";
 
 export enum FormOption {
     ASSIGNMENT, SLIDE, FORUM
@@ -15,6 +17,8 @@ export enum FormOption {
 export interface IGeneralAddingModalProps {
     mode: FormOption
 
+    userType: UserType
+    email: string
 
     releasement: IReleasement
     visible: boolean
@@ -47,6 +51,16 @@ export interface IGeneralAddingModalProps {
      * @param onError
      */
     sendSlide: (data: ISendSlideData, onBefore?: () => void, onSuccess?: (response: IAPIResponse<any>) => void, onFail?: (response: IAPIResponse<any>) => void, onError?: (e: any) => void) => void
+
+    /**
+     * send assignment callback from App.tsx
+     * @param data
+     * @param onBefore
+     * @param onSuccess
+     * @param onFail
+     * @param onError
+     */
+    sendForum: (data: ISendForumData, onBefore?: () => void, onSuccess?: (response: IAPIResponse<any>) => void, onFail?: (response: IAPIResponse<any>) => void, onError?: (e: any) => void) => void
 
 
     onSendBefore: () => void
@@ -101,6 +115,9 @@ export const GeneralAddingModal: React.FunctionComponent<IGeneralAddingModalProp
             {
                 props.mode === FormOption.FORUM ?
                     <ForumAddingFormContainer
+                        userType={props.userType}
+                        email={props.email}
+                        sendForum={props.sendForum}
                         isTimeToSubmit={props.isTimeToSubmitForum}
                         releasement={props.releasement}
                         onSendBefore={props.onSendBefore}

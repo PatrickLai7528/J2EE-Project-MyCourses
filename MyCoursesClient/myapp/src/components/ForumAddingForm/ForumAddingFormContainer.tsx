@@ -1,12 +1,16 @@
 import * as React from "react";
-import {AssignmentAddingForm, WrappedAssignmentAddingForm} from "../AssignmentAddingForm/AssignmentAddingForm";
-import {ISendAssignmentData} from "../../api/AssignmentAPI";
-import {toByteUnit} from "../../types/enums";
+import {AssignmentAddingForm} from "../AssignmentAddingForm/AssignmentAddingForm";
 import {IAssignmentAddingFormContainerProps} from "../AssignmentAddingForm/AssignmentAddingFormContainer";
 import {IReleasement} from "../../types/entities";
 import IAPIResponse from "../../api/IAPIResponse";
+import {ForumAddingForm, WrappedForumAddingForm} from "./ForumAddingForm";
+import {ISendForumData} from "../../api/ForumAPI";
+import {UserType} from "../../api/UserAPI";
 
 export interface IForumAddingFormContainerProps {
+    userType: UserType,
+    email: string
+
     isTimeToSubmit: boolean
 
     releasement: IReleasement
@@ -19,7 +23,7 @@ export interface IForumAddingFormContainerProps {
      * @param onFail
      * @param onError
      */
-    // sendAssignment: (data: ISendAssignmentData, onBefore?: () => void, onSuccess?: (response: IAPIResponse<any>) => void, onFail?: (response: IAPIResponse<any>) => void, onError?: (e: any) => void) => void
+    sendForum: (data: ISendForumData, onBefore?: () => void, onSuccess?: (response: IAPIResponse<any>) => void, onFail?: (response: IAPIResponse<any>) => void, onError?: (e: any) => void) => void
 
     onSendBefore: () => void
     onSendSuccess: (response: IAPIResponse<any>) => void
@@ -35,9 +39,9 @@ interface IForumAddingFormContainerState {
 
 
 export class ForumAddingFormContainer extends React.Component<IForumAddingFormContainerProps, IForumAddingFormContainerState> {
-    private form: AssignmentAddingForm | undefined;
+    private form: ForumAddingForm | undefined;
 
-    public constructor(props: IAssignmentAddingFormContainerProps) {
+    public constructor(props: IForumAddingFormContainerProps) {
         super(props);
     }
 
@@ -46,41 +50,35 @@ export class ForumAddingFormContainer extends React.Component<IForumAddingFormCo
             console.log(this.form.props.form);
             this.form.props.form.validateFields((err: any, values: any) => {
                     if (!err) {
-                        // let {title, description, ddl, fileSize, byteUnit, attachment} = values;
-                        // console.log(values);
-                        // description = description.replace("\n", "%0A");
-                        // const sendAssignmentData: ISendAssignmentData = {
-                        //     title,
-                        //     description,
-                        //     rid: this.props.releasement.rid,
-                        //     ddl: ddl.format("YYYY-MM-DD"),
-                        //     fileSize,
-                        //     byteUnit: toByteUnit(byteUnit),
-                        //     fileName: attachment
-                        // };
-                        // this.props.sendAssignment(sendAssignmentData,
-                        //     this.props.onSendBefore,
-                        //     this.props.onSendSuccess,
-                        //     this.props.onSendFail,
-                        //     this.props.onSendError
-                        // )
+                        let {topic} = values;
+                        const sendForumData: ISendForumData = {
+                            topic,
+                            rid: this.props.releasement.rid,
+                            questioner: this.props.email
+                        };
+                        this.props.sendForum(sendForumData,
+                            this.props.onSendBefore,
+                            this.props.onSendSuccess,
+                            this.props.onSendFail,
+                            this.props.onSendError
+                        )
                     }
                 }
             );
         }
     }
 
-    public componentWillReceiveProps(nextProps: Readonly<IAssignmentAddingFormContainerProps>, nextContext: any): void {
+    public componentWillReceiveProps(nextProps: Readonly<IForumAddingFormContainerProps>, nextContext: any): void {
         if (nextProps.isTimeToSubmit)
             this.submit();
     }
 
     public render(): React.ReactNode {
         return (
-            <WrappedAssignmentAddingForm resetTrigger={this.props.refreshFormTrigger}
-                                         wrappedComponentRef={(form: AssignmentAddingForm) => {
-                                             this.form = form;
-                                         }}/>
+            <WrappedForumAddingForm resetTrigger={this.props.refreshFormTrigger}
+                                    wrappedComponentRef={(form: ForumAddingForm) => {
+                                        this.form = form;
+                                    }}/>
         )
     }
 }
