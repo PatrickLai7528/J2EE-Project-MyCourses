@@ -53,6 +53,7 @@ public class ReleasementService implements IReleasementService {
         return available;
     }
 
+
     @Override
     public List<ReleasementEntity> getReleasementOf(String teacherEmail) throws TeacherNotExistException {
         if (teacherDAO.retrieveByEmail(teacherEmail) == null)

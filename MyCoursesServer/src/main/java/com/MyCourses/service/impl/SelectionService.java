@@ -11,8 +11,12 @@ import com.MyCourses.dao.ISelectionDAO;
 import com.MyCourses.dao.IStudentDAO;
 import com.MyCourses.entity.ReleasementEntity;
 import com.MyCourses.entity.SelectionEntity;
+import com.MyCourses.entity.TeacherEntity;
 import com.MyCourses.entity.enums.SelectionState;
 import com.MyCourses.entity.StudentEntity;
+import com.MyCourses.exceptions.ReleasementNotExistException;
+import com.MyCourses.exceptions.RepeatSelectCourseException;
+import com.MyCourses.exceptions.StudentNotExistException;
 import com.MyCourses.service.ISelectionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,10 +37,27 @@ public class SelectionService implements ISelectionService {
         this.studentDAO = studentDAO;
     }
 
+
+    private boolean isAlreadSelected(StudentEntity studentEntity, ReleasementEntity releasementEntity) {
+        List<SelectionEntity> selectionEntityList = selectionDAO.retrieveByReleasement(releasementEntity);
+        for (SelectionEntity selectionEntity : selectionEntityList) {
+            if (studentEntity.getStudentEmail().equals(selectionEntity.getStudentEntity().getStudentEmail()))
+                return true;
+        }
+        return false;
+    }
+
     @Override
-    public SelectionState select(String studentEmail, Long rid) {
+    public SelectionState select(String studentEmail, Long rid) throws ReleasementNotExistException, StudentNotExistException, RepeatSelectCourseException {
         StudentEntity studentEntity = studentDAO.retrieveByEmail(studentEmail);
         ReleasementEntity releasementEntity = releasementDAO.retrieveByRid(rid);
+
+        if (studentEntity == null)
+            throw new StudentNotExistException();
+        if (releasementEntity == null)
+            throw new ReleasementNotExistException();
+        if (isAlreadSelected(studentEntity, releasementEntity))
+            throw new RepeatSelectCourseException();
 
         List<SelectionEntity> selectionEntities = selectionDAO.retrieveByReleasement(releasementEntity);
         SelectionState selectionState = selectionEntities.size() > releasementEntity.getLimitNumber() ?

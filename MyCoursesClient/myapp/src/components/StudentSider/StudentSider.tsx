@@ -5,6 +5,8 @@ import {NavLink} from "react-router-dom";
 import {ISelection} from "../../types/entities";
 import {UserType} from "../../api/UserAPI";
 
+const moment = require("moment");
+
 export interface IStudentSiderProps {
     userType: UserType,
     email: string | undefined
@@ -56,7 +58,8 @@ const StudentSider: React.FunctionComponent<IStudentSiderProps> = (props: IStude
                         props.selectionList.map((selection: ISelection) => {
                             return (
                                 <Menu.Item key={selection.slid}>
-                                    <NavLink to={"/display/"}/>{selection.releasementEntity.courseEntity.name}
+                                    <NavLink
+                                        to={"/selection/display"}/>{moment(selection.releasementEntity.effectiveTime).format("YYYY-MM") + " " + selection.releasementEntity.courseEntity.name}
                                 </Menu.Item>)
                         })
                     }

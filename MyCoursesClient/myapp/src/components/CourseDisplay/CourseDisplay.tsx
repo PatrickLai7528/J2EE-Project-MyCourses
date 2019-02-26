@@ -1,6 +1,6 @@
 import * as React from "react";
 import {ICourse} from "../../types/entities";
-import {Button, Divider, Icon, Table, Tag} from "antd";
+import {Divider, Table, Tag} from "antd";
 import {ApprovalState, fromApprovalStateToChinese} from "../../types/enums";
 
 export interface ICourseWithKey extends ICourse {
@@ -40,8 +40,6 @@ const CourseDisplay: React.FunctionComponent<ICourseDisplayProps> = (props: ICou
         key: 'approvalState',
         width: 200,
         render: (state: ApprovalState, course: ICourse) => {
-            console.log(" in tblae");
-            console.log(course);
             let color: string = "";
             switch (state) {
                 case ApprovalState.APPROVED:

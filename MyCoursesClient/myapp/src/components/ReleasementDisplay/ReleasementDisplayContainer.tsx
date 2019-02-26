@@ -84,12 +84,15 @@ export default class ReleasementDisplayContainer extends React.Component<IReleam
                             };
                             let onSuccess = (response: IAPIResponse<any>) => {
                                 message.success(response.message);
+                                this.setState({isCourseSelectionSending: false})
                             };
                             let onFail = (response: IAPIResponse<any>) => {
                                 message.error(response.message);
+                                this.setState({isCourseSelectionSending: false})
                             };
                             let onError = (e: any) => {
                                 message.error("發生未知錯誤，請稍候再試");
+                                this.setState({isCourseSelectionSending: false})
                             };
                             this.props.sendCourseSelection(this.props.email, releasement.rid, onBefore, onSuccess, onFail, onError);
                             // this.props.sendCourseSelection(

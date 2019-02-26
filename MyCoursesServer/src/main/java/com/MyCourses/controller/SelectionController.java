@@ -9,6 +9,9 @@ package com.MyCourses.controller;/*
 import com.MyCourses.annotations.PleaseLog;
 import com.MyCourses.entity.SelectionEntity;
 import com.MyCourses.entity.enums.SelectionState;
+import com.MyCourses.exceptions.ReleasementNotExistException;
+import com.MyCourses.exceptions.RepeatSelectCourseException;
+import com.MyCourses.exceptions.StudentNotExistException;
 import com.MyCourses.service.ISelectionService;
 import com.MyCourses.utils.ResponseUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,12 +37,13 @@ public class SelectionController {
     @PostMapping("select")
     @CrossOrigin(origins = "http://localhost:3000")
     public APIResponse<Object> select(@RequestParam(name = "rid") String rid,
-                                                      @RequestParam(name = "studentEmail") String studentEmail) {
+                                      @RequestParam(name = "studentEmail") String studentEmail) {
 //        String studentEmail = formData.getFirst("studentEmail");
 //        Long rid = Long.valueOf(formData.getFirst("rid"));
-        SelectionState selectionState = selectionService.select(studentEmail, Long.valueOf(rid));
+
         try {
             String message;
+            SelectionState selectionState = selectionService.select(studentEmail, Long.valueOf(rid));
             switch (selectionState) {
                 case ADDED:
                     message = "選課成功";
@@ -48,10 +52,11 @@ public class SelectionController {
                     message = "超過選課人數，請等候抽籤";
                     break;
                 default:
-                    throw new Exception("should not be here");
+                    throw new IllegalStateException("should not be here");
             }
             return ResponseUtils.ok(message);
-        } catch (Exception e) {
+        } catch (RepeatSelectCourseException | ReleasementNotExistException | StudentNotExistException e) {
+            e.printStackTrace();
             return ResponseUtils.error(e.getLocalizedMessage());
         }
     }

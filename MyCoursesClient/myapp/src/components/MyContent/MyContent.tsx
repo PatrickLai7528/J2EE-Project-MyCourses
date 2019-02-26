@@ -16,6 +16,7 @@ import {ISendAssignmentData} from "../../api/AssignmentAPI";
 import {ISendSlideData} from "../../api/SlideAPI";
 import {ISendCommentData, ISendForumData} from "../../api/ForumAPI";
 import {ForumDisplayContainer} from "../ForumDisplay/ForumDisplayContainer";
+import {SelectionDisplayContainer} from "../SelectionDisplay/SelectionDisplayContainer";
 
 export interface IMyContentProps {
     userType: UserType
@@ -172,6 +173,11 @@ export default class MyContent extends Component<IMyContentProps, IMyContentStat
                                     email={this.props.email}
                                     releasement={this.props.managingReleasement}/>
                             return null;
+                        }
+                    }/>
+                    <Route exact path="/selection/display" component = {
+                        ()=>{
+                            return <SelectionDisplayContainer/>
                         }
                     }/>
                 </Switch>
