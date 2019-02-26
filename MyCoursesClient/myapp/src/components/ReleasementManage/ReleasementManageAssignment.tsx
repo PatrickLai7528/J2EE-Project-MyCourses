@@ -60,13 +60,13 @@ export const ReleasementManageAssignment: React.FunctionComponent<IReleasementMa
                                                         type={"file"} text={"附件"}/></a>
                                                     : ""
                                                 }
-                                            </div>
+                                            </div>,
+                                            <IconText type={"upload"} text={(<a>提交作業</a>)}/>
                                         ]}
                                     >
                                         <List.Item.Meta
                                             title={assignment.title}
                                             description={"大小限制：" + assignment.fileSize.size + " " + assignment.fileSize.unit}
-
                                         />
                                         {assignment.description}
                                     </List.Item>
@@ -75,45 +75,6 @@ export const ReleasementManageAssignment: React.FunctionComponent<IReleasementMa
                         />
                 }
             </div>
-            {/*{*/}
-            {/*props.releasement.assignmentEntityList*/
-            }
-            {/*&& props.releasement.assignmentEntityList.map((assignment: IAssignment) => {*/
-            }
-            {/*return (*/
-            }
-            {/*<List.Item>*/
-            }
-            {/*<span>描述：{assignment.description}</span>*/
-            }
-            {/*<span>作業大小：{assignment.fileSize.size + " " + assignment.fileSize.unit}</span>*/
-            }
-            {/*</List.Item>*/
-            }
-            {/*)*/
-            }
-            {/*})*/
-            }
-            {/*}*/
-            }
-            {/*<Panel header="This is panel header 1" key="1" style={customPanelStyle}>*/
-            }
-            {/*<p>{text}</p>*/
-            }
-            {/*</Panel>*/
-            }
-            {/*<Panel header="This is panel header 2" key="2" style={customPanelStyle}>*/
-            }
-            {/*<p>{text}</p>*/
-            }
-            {/*</Panel>*/
-            }
-            {/*<Panel header="This is panel header 3" key="3" style={customPanelStyle}>*/
-            }
-            {/*<p>{text}</p>*/
-            }
-            {/*</Panel>*/
-            }
         </div>
     )
 };

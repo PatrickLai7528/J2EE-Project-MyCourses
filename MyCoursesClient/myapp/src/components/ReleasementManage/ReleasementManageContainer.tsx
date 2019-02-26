@@ -13,7 +13,6 @@ export interface IReleasementManageContainerProps {
     userType: UserType
     email?: string
     releasement: IReleasement
-
     setDisplayingForum: (forum: IForum) => void
 
     /**
@@ -24,7 +23,7 @@ export interface IReleasementManageContainerProps {
      * @param onFail
      * @param onError
      */
-    sendAssignment: (data: ISendAssignmentData, onBefore?: () => void, onSuccess?: (response: IAPIResponse<any>) => void, onFail?: (response: IAPIResponse<any>) => void, onError?: (e: any) => void) => void
+    sendAssignment?: (data: ISendAssignmentData, onBefore?: () => void, onSuccess?: (response: IAPIResponse<any>) => void, onFail?: (response: IAPIResponse<any>) => void, onError?: (e: any) => void) => void
 
     /**
      * send assignment callback from App.tsx
@@ -34,7 +33,7 @@ export interface IReleasementManageContainerProps {
      * @param onFail
      * @param onError
      */
-    sendSlide: (data: ISendSlideData, onBefore?: () => void, onSuccess?: (response: IAPIResponse<any>) => void, onFail?: (response: IAPIResponse<any>) => void, onError?: (e: any) => void) => void
+    sendSlide?: (data: ISendSlideData, onBefore?: () => void, onSuccess?: (response: IAPIResponse<any>) => void, onFail?: (response: IAPIResponse<any>) => void, onError?: (e: any) => void) => void
 
     /**
      * send assignment callback from App.tsx
@@ -44,7 +43,7 @@ export interface IReleasementManageContainerProps {
      * @param onFail
      * @param onError
      */
-    sendForum: (data: ISendForumData, onBefore?: () => void, onSuccess?: (response: IAPIResponse<any>) => void, onFail?: (response: IAPIResponse<any>) => void, onError?: (e: any) => void) => void
+    sendForum?: (data: ISendForumData, onBefore?: () => void, onSuccess?: (response: IAPIResponse<any>) => void, onFail?: (response: IAPIResponse<any>) => void, onError?: (e: any) => void) => void
 
 }
 
@@ -90,7 +89,10 @@ export default class ReleasementManageContainer extends React.Component<IRelease
     }
 
     public render(): React.ReactNode {
-        if (this.props.email && this.props.releasement)
+        console.log(" find me")
+        console.log(this.props);
+        if (this.props.email && this.props.releasement) {
+            console.log("fuck you");
             return (
                 <div>
                     <ReleasementManage
@@ -110,9 +112,12 @@ export default class ReleasementManageContainer extends React.Component<IRelease
                         refreshFormTrigger={this.state.refreshFormTrigger}
                         releasement={this.props.releasement}
 
-                        sendAssignment={this.props.sendAssignment}
-                        sendSlide={this.props.sendSlide}
-                        sendForum={this.props.sendForum}
+                        sendAssignment={this.props.sendAssignment ? this.props.sendAssignment : () => {
+                        }}
+                        sendSlide={this.props.sendSlide ? this.props.sendSlide : () => {
+                        }}
+                        sendForum={this.props.sendForum ? this.props.sendForum : () => {
+                        }}
 
                         confirmLoading={this.state.generalModalConfirmLoading}
                         visible={this.state.generalModalVisible}
@@ -225,7 +230,7 @@ export default class ReleasementManageContainer extends React.Component<IRelease
                     />
                 </div>
             );
-        else
+        } else
             return null;
     }
 }

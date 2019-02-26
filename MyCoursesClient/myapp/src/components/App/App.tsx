@@ -36,6 +36,8 @@ interface IAppState {
     // for teacher to manage their released course
     managingReleasement?: IReleasement
 
+    displayingSelection?: ISelection
+
     displayingForum?: IForum
 }
 
@@ -326,6 +328,10 @@ export default class App extends Component<IAppProps, IAppState> {
         this.setState({managingReleasement: releasement})
     }
 
+    private handleSelectionClickFromStudentSider(selection: ISelection): void {
+        this.setState({displayingSelection: selection})
+    }
+
     private handleLogInSuccess(userType: UserType, email: string, token: string): void {
         this.setState({userType: userType, email: email});
 
@@ -389,6 +395,7 @@ export default class App extends Component<IAppProps, IAppState> {
                             :
                             (
                                 <StudentSider
+                                    onSelectionClick={this.handleSelectionClickFromStudentSider.bind(this)}
                                     userType={this.state.userType}
                                     email={this.state.email}
                                     selectionList={this.state.selectionList}
@@ -406,6 +413,7 @@ export default class App extends Component<IAppProps, IAppState> {
 
                             managingReleasement={this.state.managingReleasement}
                             displayingForum={this.state.displayingForum}
+                            displayingSelection={this.state.displayingSelection}
 
                             setDisplayingForum={this.setDisplayingForum.bind(this)}
 

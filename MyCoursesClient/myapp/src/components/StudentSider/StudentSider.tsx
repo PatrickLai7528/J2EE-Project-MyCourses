@@ -11,6 +11,8 @@ export interface IStudentSiderProps {
     userType: UserType,
     email: string | undefined
     selectionList: ISelection[]
+
+    onSelectionClick: (selection: ISelection) => void
 }
 
 // interface IStudentSiderState {
@@ -57,7 +59,11 @@ const StudentSider: React.FunctionComponent<IStudentSiderProps> = (props: IStude
                     {
                         props.selectionList.map((selection: ISelection) => {
                             return (
-                                <Menu.Item key={selection.slid}>
+                                <Menu.Item key={selection.slid}
+                                           onClick={() => {
+                                               props.onSelectionClick(selection)
+                                           }}
+                                >
                                     <NavLink
                                         to={"/selection/display"}/>{moment(selection.releasementEntity.effectiveTime).format("YYYY-MM") + " " + selection.releasementEntity.courseEntity.name}
                                 </Menu.Item>)

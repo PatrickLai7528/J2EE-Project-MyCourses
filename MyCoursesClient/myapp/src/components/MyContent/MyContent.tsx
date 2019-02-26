@@ -8,7 +8,7 @@ import Setting from "../Setting/Setting";
 import ReleasementDisplayContainer from "../ReleasementDisplay/ReleasementDisplayContainer";
 import {UserType} from "../../api/UserAPI";
 import CourseDisplayContainer from "../CourseDisplay/CourseDisplayContainer";
-import {ICourse, IForum, IReleasement} from "../../types/entities";
+import {ICourse, IForum, IReleasement, ISelection} from "../../types/entities";
 import IAPIResponse from "../../api/IAPIResponse";
 import {ISendReleasementData} from "../../api/CourseAPI";
 import ReleasementManageContainer from "../ReleasementManage/ReleasementManageContainer";
@@ -31,6 +31,8 @@ export interface IMyContentProps {
     managingReleasement?: IReleasement
 
     displayingForum?: IForum
+    displayingSelection?: ISelection
+
     setDisplayingForum: (forum: IForum) => void
     /**
      *
@@ -165,6 +167,7 @@ export default class MyContent extends Component<IMyContentProps, IMyContentStat
                         () => {
                             console.log("in forum route");
                             console.log(this.props);
+                            // from teacher
                             if (this.props.managingReleasement && this.props.displayingForum && this.props.email)
                                 return <ForumDisplayContainer
                                     sendComment={this.props.sendComment}
@@ -172,12 +175,28 @@ export default class MyContent extends Component<IMyContentProps, IMyContentStat
                                     userType={this.props.userType}
                                     email={this.props.email}
                                     releasement={this.props.managingReleasement}/>
+
+                            // from student
+                            if (this.props.displayingSelection && this.props.displayingForum && this.props.email)
+                                return <ForumDisplayContainer
+                                    sendComment={this.props.sendComment}
+                                    forum={this.props.displayingForum}
+                                    userType={this.props.userType}
+                                    email={this.props.email}
+                                    releasement={this.props.displayingSelection.releasementEntity}/>
                             return null;
                         }
                     }/>
-                    <Route exact path="/selection/display" component = {
-                        ()=>{
-                            return <SelectionDisplayContainer/>
+                    <Route exact path="/selection/display" component={
+                        () => {
+                            if (this.props.displayingSelection && this.props.email)
+                                return <SelectionDisplayContainer
+                                    setDisplayingForum={this.props.setDisplayingForum.bind(this)}
+                                    userType={this.props.userType}
+                                    email={this.props.email}
+                                    selection={this.props.displayingSelection}
+                                />;
+                            return null;
                         }
                     }/>
                 </Switch>
