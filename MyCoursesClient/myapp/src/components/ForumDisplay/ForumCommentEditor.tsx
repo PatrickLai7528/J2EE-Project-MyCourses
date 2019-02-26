@@ -6,27 +6,13 @@ import IAPIResponse from "../../api/IAPIResponse";
 import {UserType} from "../../api/UserAPI";
 import {IComment, IForum, IReleasement} from "../../types/entities";
 
-export const Editor = () => (
-    <div>
-        <Form.Item>
-            <TextArea rows={1}/>
-        </Form.Item>
-        <Form.Item>
-            <Button
-                htmlType="submit"
-                type="primary"
-            >
-                Add Comment
-            </Button>
-        </Form.Item>
-    </div>
-);
+export type BaseComment = "BaseComment";
 
 export interface IForumCommentEditorProps {
     userType: UserType
     email: string
     forum: IForum
-    comment: IComment
+    comment: IComment | BaseComment
     releasement: IReleasement
     /**
      * send Comment callback from App.tsx
@@ -37,7 +23,6 @@ export interface IForumCommentEditorProps {
      * @param onError
      */
     sendComment: (data: ISendCommentData, onBefore?: () => void, onSuccess?: (response: IAPIResponse<any>) => void, onFail?: (response: IAPIResponse<any>) => void, onError?: (e: any) => void) => void
-    hideEditor: () => void
 }
 
 interface IForumCommentEditorState {
@@ -57,15 +42,20 @@ export class ForumCommentEditor extends React.Component<IForumCommentEditorProps
     }
 
     private handleButtonClick(): void {
-        if (!this.state.content) return;
-        console.log(this.state);
-        const data: ISendCommentData = {
+        if (!this.state.content) {
+            message.warn("回覆不能為空");
+            return;
+        }
+        let data: ISendCommentData = {
             fid: this.props.forum.fid,
-            replyTo: this.props.comment.cmid,
             content: this.state.content,
             messageFrom: this.props.email,
             rid: this.props.releasement.rid
         };
+        if (this.props.comment !== "BaseComment") {
+            data.replyTo = this.props.comment.cmid;
+        }
+
         this.props.sendComment(data,
             // on before
             () => {
@@ -74,18 +64,17 @@ export class ForumCommentEditor extends React.Component<IForumCommentEditorProps
             // on success
             (response: IAPIResponse<any>) => {
                 message.success(response.message);
-                this.setState({confirmLoading: false, content: ""});
-                this.props.hideEditor();
+                // this.setState({confirmLoading: false, content: ""});
             },
             // on fail
             (response: IAPIResponse<any>) => {
                 message.warn(response.message);
-                this.setState({confirmLoading: false, content: ""});
+                // this.setState({confirmLoading: false, content: ""});
             },
             // on error
             (response: IAPIResponse<any>) => {
                 message.error(response.message);
-                this.setState({confirmLoading: false, content: ""});
+                // this.setState({confirmLoading: false, content: ""});
             }
         )
     }

@@ -1,11 +1,11 @@
 import * as React from "react";
 import {IComment, IForum, IReleasement} from "../../types/entities";
-import {Button, Card, Comment, Form} from "antd";
-import TextArea from "antd/lib/input/TextArea";
-import {ISendCommentData, ISendForumData} from "../../api/ForumAPI";
+import {Card, Empty} from "antd";
+import {ISendCommentData} from "../../api/ForumAPI";
 import IAPIResponse from "../../api/IAPIResponse";
 import {ForumComment} from "./ForumComment";
 import {UserType} from "../../api/UserAPI";
+import {ForumCommentEditor} from "./ForumCommentEditor";
 
 export interface IForumDisplayProps {
     forum: IForum
@@ -45,32 +45,53 @@ const showBelowComment = (commentList: IComment[] | undefined, props: IForumDisp
     )
 };
 
-export const ForumDisplay: React.FunctionComponent<IForumDisplayProps> = (props: IForumDisplayProps) => {
-    console.log("in forum display")
-    console.log(props);
-    return (
-        <Card title={props.forum.topic}>
-            {
-                props.forum.commentEntityList.map((comment: IComment) => {
-                    return (
-                        <div key={comment.cmid} style={{marginBottom: 5}}>
-                            <ForumComment
-                                comment={comment}
-                                userType={props.userType}
-                                email={props.email}
-                                forum={props.forum}
-                                releasement={props.releasement}
-                                sendComment={props.sendComment}
-                            >
-                                {
-                                    showBelowComment(comment.belowCommentList, props)
-                                }
-                                {/*<Editor/>*/}
-                            </ForumComment>
-                        </div>
-                    )
-                })
-            }
-        </Card>
-    )
+interface IForumDisplayState {
+    enableEditor: boolean
+}
+
+export class ForumDisplay extends React.Component<IForumDisplayProps, IForumDisplayState> {
+
+    public constructor(props: IForumDisplayProps) {
+        super(props);
+        this.state = {enableEditor: false}
+    }
+
+
+    public render(): React.ReactNode {
+        return (
+            <Card title={this.props.forum.topic} extra={<a onClick={() => this.setState({enableEditor: true})}>留言</a>}>
+                {
+                    this.props.forum.commentEntityList.map((comment: IComment) => {
+                        return (
+                            <div key={comment.cmid} style={{ marginBottom: 5}}>
+                                <ForumComment
+                                    comment={comment}
+                                    userType={this.props.userType}
+                                    email={this.props.email}
+                                    forum={this.props.forum}
+                                    releasement={this.props.releasement}
+                                    sendComment={this.props.sendComment}
+                                >
+                                    {
+                                        showBelowComment(comment.belowCommentList, this.props)
+                                    }
+                                    {/*<Editor/>*/}
+                                </ForumComment>
+                            </div>
+                        )
+                    })
+                }
+                {
+                    this.state.enableEditor ? <ForumCommentEditor
+                        userType={this.props.userType}
+                        email={this.props.email}
+                        forum={this.props.forum}
+                        comment={"BaseComment"}
+                        releasement={this.props.releasement}
+                        sendComment={this.props.sendComment}
+                        /> : ""
+                }
+            </Card>
+        )
+    }
 };

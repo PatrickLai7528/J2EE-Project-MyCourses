@@ -27,6 +27,7 @@ export interface IForumCommentProps {
 
 interface IForumCommentState {
     enabledEditor: boolean
+    showBelowComment: boolean
 }
 
 
@@ -34,7 +35,7 @@ export class ForumComment extends React.Component<IForumCommentProps, IForumComm
 
     public constructor(props: IForumCommentProps) {
         super(props);
-        this.state = {enabledEditor: false}
+        this.state = {enabledEditor: false, showBelowComment: true}
     }
 
     private getMessageFromEmail(comment: IComment): string {
@@ -46,11 +47,16 @@ export class ForumComment extends React.Component<IForumCommentProps, IForumComm
         return (
             <div style={{marginBottom: 5}}>
                 <Comment content={this.props.comment.content}
-                         actions={[
-                             <span onClick={() => this.setState({enabledEditor: !this.state.enabledEditor})}>
-                                 {this.state.enabledEditor ? "取消" : "回覆"}
-                             </span>
-                         ]}
+                         actions={
+                             [
+                                 <span onClick={() => this.setState({enabledEditor: !this.state.enabledEditor})}>
+                                    {this.state.enabledEditor ? "取消" : "回覆"}
+                                 </span>,
+                                 <span onClick={() => this.setState({showBelowComment: !this.state.showBelowComment})}>
+                                     {this.state.showBelowComment ? "隱藏回覆" : "查看回覆"}
+                                 </span>
+                             ]
+                         }
                          author={<a>來自: {this.getMessageFromEmail(this.props.comment)}</a>}
                 >{
                     this.state.enabledEditor ?
@@ -61,10 +67,11 @@ export class ForumComment extends React.Component<IForumCommentProps, IForumComm
                             forum={this.props.forum}
                             comment={this.props.comment}
                             releasement={this.props.releasement}
-                            hideEditor={() => this.setState({enabledEditor: false})}
                         /> : ""
                 }
-                    {this.props.children}
+                    {
+                        this.state.showBelowComment ? this.props.children : ""
+                    }
                 </Comment>
 
             </div>
