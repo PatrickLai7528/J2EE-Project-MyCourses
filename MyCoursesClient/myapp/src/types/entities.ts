@@ -50,12 +50,9 @@ export interface IFileSize {
 export interface IComment {
     cmid: number,
     content: number,
-    teacherMessageFrom?: ITeacher,
-    studentMessageFrom?: IStudent,
-
-    teacherReply?: ITeacher,
-    studentReply?: IStudent
-
+    messageFromTeacher?: ITeacher, // if exists, it means it commented by a teacher
+    messageFromStudent?: IStudent, // if exists, it means it commented by a student
+    belowCommentList?: IComment[]
 }
 
 export interface IForum {

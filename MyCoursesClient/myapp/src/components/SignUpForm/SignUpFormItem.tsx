@@ -36,11 +36,8 @@ export class NameFormItem extends React.Component<IGeneralFormItemProps> {
     }
 }
 
-export interface IPhoneNumberFormProps extends IGeneralFormItemProps {
-    areaCodeSelector: React.ReactNode
-}
 
-export class StudentNoFormItem extends React.Component<IPhoneNumberFormProps> {
+export class StudentNoFormItem extends React.Component<IGeneralFormItemProps> {
     public render(): React.ReactNode {
         return (
             <Form.Item
@@ -51,15 +48,15 @@ export class StudentNoFormItem extends React.Component<IPhoneNumberFormProps> {
                 {this.props.getFieldDecorator('number', {
                     rules: [
                         {
-                            required: true, message: 'Please input your studentNo!'
+                            required: true, message: '學號/職員號不能為空'
                         },
                         {
-                            whitespace: true, message: "StudentNo should not contain white space"
+                            whitespace: true, message: "學號/職員號不能為空"
                         }
                     ],
 
                 })(
-                    <Input addonBefore={this.props.areaCodeSelector} style={{width: '100%'}}
+                    <Input style={{width: '100%'}}
                            placeholder={this.props.placeholder}/>
                 )}
             </Form.Item>
@@ -73,7 +70,7 @@ export class StudentNoFormItem extends React.Component<IPhoneNumberFormProps> {
 
 export interface IVerifyCodeFormItemProps extends IGeneralFormItemProps {
     sendVerifyCodeAction: () => void;
-    isLoading:boolean
+    isLoading: boolean
 }
 
 export class VerifyCodeFormItem extends React.Component<IVerifyCodeFormItemProps> {
@@ -92,7 +89,8 @@ export class VerifyCodeFormItem extends React.Component<IVerifyCodeFormItemProps
                         )}
                     </Col>
                     <Col span={12}>
-                        <Button loading={this.props.isLoading} htmlType="button" onClick={this.props.sendVerifyCodeAction}>取得驗證碼</Button>
+                        <Button loading={this.props.isLoading} htmlType="button"
+                                onClick={this.props.sendVerifyCodeAction}>取得驗證碼</Button>
                     </Col>
                 </Row>
             </Form.Item>

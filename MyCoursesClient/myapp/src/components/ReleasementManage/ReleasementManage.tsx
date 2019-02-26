@@ -1,6 +1,6 @@
 import * as React from "react";
 import {Divider, Layout} from "antd";
-import {IReleasement} from "../../types/entities";
+import {IForum, IReleasement} from "../../types/entities";
 import {ReleasementManageMessage} from "./ReleasementManageMessage";
 import {ReleasementManageAssignment} from "./ReleasementManageAssignment";
 import {ReleasementManageSlide} from "./ReleasementManageSlide";
@@ -12,6 +12,8 @@ export interface IReleasementManageProps {
     onSlideClick: () => void
     onAssignmentClick: () => void
     onForumClick: () => void
+
+    setDisplayingForum: (forum: IForum) => void
 }
 
 const {Content, Sider} = Layout;
@@ -32,7 +34,8 @@ export const ReleasementManage: React.FunctionComponent<IReleasementManageProps>
                 <Divider/>
             </Content>
             <Sider theme={"light"} style={{marginTop: 0, margin: 15, padding: 8, background: "#f0f2f5"}} width={250}>
-                <ReleasementManageForum onClick={props.onForumClick} releasement={props.releasement}/>
+                <ReleasementManageForum setDisplayingForum={props.setDisplayingForum} onClick={props.onForumClick}
+                                        releasement={props.releasement}/>
             </Sider>
         </Layout>
     )

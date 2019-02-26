@@ -11,6 +11,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -29,26 +30,19 @@ public class CommentEntity implements Serializable {
     private String content;
 
 
-    /**
-     * 以下都是回覆誰
-     **/
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @MapKey(name = "teacher_reply")
-    private TeacherEntity teacherReply;
-
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @MapKey(name = "student_reply")
-    private StudentEntity studentReply;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @MapKey(name = "below_comment_id")
+    private List<CommentEntity> belowCommentList;
 
 
     /**
      * 以下都是來自誰
      **/
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @MapKey(name = "student_message_form")
-    private StudentEntity studentMessageFrom;
+    @MapKey(name = "message_form_student")
+    private StudentEntity messageFromStudent;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @MapKey(name = "teacher_message_form")
-    private TeacherEntity teacherMessageFrom;
+    private TeacherEntity messageFromTeacher;
 }

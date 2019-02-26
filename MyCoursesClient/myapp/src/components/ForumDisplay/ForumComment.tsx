@@ -1,0 +1,73 @@
+import * as React from "react";
+import {Comment} from "antd";
+import {IComment, IForum, IReleasement} from "../../types/entities";
+import {ForumCommentEditor} from "./ForumCommentEditor";
+import {UserType} from "../../api/UserAPI";
+import {ISendCommentData} from "../../api/ForumAPI";
+import IAPIResponse from "../../api/IAPIResponse";
+
+export interface IForumCommentProps {
+    comment: IComment
+    children?: React.ReactNode[]
+
+    userType: UserType
+    email: string
+    forum: IForum
+    releasement: IReleasement
+    /**
+     * send Comment callback from App.tsx
+     * @param data
+     * @param onBefore
+     * @param onSuccess
+     * @param onFail
+     * @param onError
+     */
+    sendComment: (data: ISendCommentData, onBefore?: () => void, onSuccess?: (response: IAPIResponse<any>) => void, onFail?: (response: IAPIResponse<any>) => void, onError?: (e: any) => void) => void
+}
+
+interface IForumCommentState {
+    enabledEditor: boolean
+}
+
+
+export class ForumComment extends React.Component<IForumCommentProps, IForumCommentState> {
+
+    public constructor(props: IForumCommentProps) {
+        super(props);
+        this.state = {enabledEditor: false}
+    }
+
+    private getMessageFromEmail(comment: IComment): string {
+        return comment.messageFromTeacher ? comment.messageFromTeacher.teacherEmail :
+            comment.messageFromStudent ? comment.messageFromStudent.studentEmail : ""
+    };
+
+    public render(): React.ReactNode {
+        return (
+            <div style={{marginBottom: 5}}>
+                <Comment content={this.props.comment.content}
+                         actions={[
+                             <span onClick={() => this.setState({enabledEditor: !this.state.enabledEditor})}>
+                                 {this.state.enabledEditor ? "取消" : "回覆"}
+                             </span>
+                         ]}
+                         author={<a>來自: {this.getMessageFromEmail(this.props.comment)}</a>}
+                >{
+                    this.state.enabledEditor ?
+                        <ForumCommentEditor
+                            sendComment={this.props.sendComment}
+                            email={this.props.email}
+                            userType={this.props.userType}
+                            forum={this.props.forum}
+                            comment={this.props.comment}
+                            releasement={this.props.releasement}
+                            hideEditor={() => this.setState({enabledEditor: false})}
+                        /> : ""
+                }
+                    {this.props.children}
+                </Comment>
+
+            </div>
+        )
+    }
+};

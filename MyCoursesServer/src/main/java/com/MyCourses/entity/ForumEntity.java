@@ -38,7 +38,7 @@ public class ForumEntity implements Serializable {
     private String topic;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "cmid")
+    @JoinColumn(name = "fid")
     private List<CommentEntity> commentEntityList;
 
 }

@@ -6,9 +6,12 @@ package com.MyCourses.service;/*
  * @ProjectName MyCoursesServer
  */
 
+import com.MyCourses.exceptions.ForumNotExistException;
 import com.MyCourses.exceptions.ReleasementNotExistException;
 
 public interface IForumService {
 
-    void addForum(String topic,String questioner, Long rid) throws ReleasementNotExistException;
+    void addForum(String topic, String questioner, Long rid) throws ReleasementNotExistException;
+
+    void comment(Long rid, Long fid, Long replyCommentId, String messageFrom, String content) throws ReleasementNotExistException, ForumNotExistException;
 }

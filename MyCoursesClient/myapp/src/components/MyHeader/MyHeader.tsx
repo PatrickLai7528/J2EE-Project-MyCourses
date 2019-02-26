@@ -15,7 +15,7 @@ export interface IMyHeaderProps {
      * @param userType
      * @param email
      */
-    onLogInSuccess: (userType: UserType, email: string, token:string) => void
+    onLogInSuccess: (userType: UserType, email: string, token: string) => void
 
     /**
      * called while login failed without error
@@ -74,9 +74,9 @@ export default class MyHeader extends Component<IMyHeaderProps, IMyHeaderState> 
             <Layout.Header>
                 <div className="header__box">
                     <div className="logo__box">
-                        <NavLink to={"/home"}>
-                            <img width={"150px"} src={logoUrl} alt={"logo"}/>
-                        </NavLink>
+                        {/*<NavLink to={"/home"}>*/}
+                        {/*<img width={"150px"} src={logoUrl} alt={"logo"}/>*/}
+                        {/*</NavLink>*/}
                     </div>
                     <div className="actions__box">
                         <Menu

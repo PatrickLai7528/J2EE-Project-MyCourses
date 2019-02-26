@@ -73,8 +73,7 @@ public class VerifyService implements IVerifyService {
     }
 
     private String getRandomVerifyCode(String email) {
-        String secretKey = "ujklajkldsajasio)(*&%";
-        String longCode = encryptService.encrypt(secretKey + email);
+        String longCode = encryptService.encrypt(new Date() + email);
         if (longCode.length() > 6)
             return longCode.substring(0, 6);
         return longCode;

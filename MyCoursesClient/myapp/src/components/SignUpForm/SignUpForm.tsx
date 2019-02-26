@@ -11,8 +11,6 @@ export interface ISignUpFormProps extends FormComponentProps {
 }
 
 interface ISignUpFormState {
-    areaCodeSelector: React.ReactNode | undefined
-    jobTypeOptions: string[] | undefined,
     email?: string
     isVerifyCodeLoading: boolean
 }
@@ -23,8 +21,6 @@ export class SignUpForm extends React.Component<ISignUpFormProps, ISignUpFormSta
     public constructor(props: ISignUpFormProps) {
         super(props);
         this.state = {
-            areaCodeSelector: undefined,
-            jobTypeOptions: undefined,
             isVerifyCodeLoading: false
         }
     }
@@ -46,28 +42,6 @@ export class SignUpForm extends React.Component<ISignUpFormProps, ISignUpFormSta
         callback();
     }
 
-    public async componentDidMount() {
-        const responseOfAreaCode: IAPIResponse <any>= await UserAPI.getInstance().getAreaCode();
-        if (responseOfAreaCode && responseOfAreaCode.isSuccess) {
-            const areaCodes = responseOfAreaCode.payload;
-            this.setState({
-                areaCodeSelector: (
-                    <Select defaultValue={areaCodes[0]} style={{width: 80}}>
-                        {
-                            areaCodes.map((areCode: string) => {
-                                return <Select.Option key={areCode} value={areCode}>{areCode}</Select.Option>
-                            })
-                        }
-                    </Select>
-                )
-            })
-        }
-        const responseOfJobType: IAPIResponse<any> = await UserAPI.getInstance().getJobTypeOptions();
-        if (responseOfJobType && responseOfJobType.isSuccess) {
-            const jobTypeOptions = responseOfJobType.payload; // be care of this
-            this.setState({jobTypeOptions: jobTypeOptions});
-        }
-    }
 
     public render(): React.ReactNode {
         const {getFieldDecorator} = this.props.form;
@@ -95,7 +69,7 @@ export class SignUpForm extends React.Component<ISignUpFormProps, ISignUpFormSta
                 </Form.Item>
                 <NameFormItem getFieldDecorator={getFieldDecorator}/>
                 <StudentNoFormItem getFieldDecorator={getFieldDecorator}
-                                   areaCodeSelector={this.state.areaCodeSelector}/>
+                                   />
                 <UserTypeFormItem getFieldDecorator={getFieldDecorator}/>
                 <Form.Item
                     style={{marginBottom: 0}}

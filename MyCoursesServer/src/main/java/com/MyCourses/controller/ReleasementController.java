@@ -17,6 +17,8 @@ import com.MyCourses.service.ICourseService;
 import com.MyCourses.service.IReleasementService;
 import com.MyCourses.service.ReleaseConfig;
 import com.MyCourses.utils.ResponseUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,6 +33,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("releasement")
 public class ReleasementController {
+    private final static Logger logger = LoggerFactory.getLogger(ReleasementController.class);
 
     private ICourseService courseService;
     private IReleasementService releasementService;
@@ -98,6 +101,7 @@ public class ReleasementController {
             @RequestParam(name = "teacherEmail") String teacherEmail) {
         try {
             List<ReleasementEntity> releasementEntityList = releasementService.getReleasementOf(teacherEmail);
+
             return ResponseUtils.ok("操作成功", releasementEntityList);
         } catch (TeacherNotExistException e) {
             e.printStackTrace();
@@ -110,7 +114,9 @@ public class ReleasementController {
     @CrossOrigin("http://localhost:3000")
     public APIResponse<ReleasementEntity> getReleasementByRid(@PathVariable(name = "rid") Long rid) {
         try {
+            logger.warn("開始處理按ID取Releasement的請求");
             ReleasementEntity releasementEntity = releasementService.getReleasementByRid(rid);
+            logger.warn("結束處理按ID取Releasement的請求");
             return ResponseUtils.ok("操作成功", releasementEntity);
         } catch (ReleasementNotExistException e) {
             e.printStackTrace();

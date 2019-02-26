@@ -1,7 +1,7 @@
 import * as React from "react";
 import {ReleasementManage} from "./ReleasementManage";
 import {UserType} from "../../api/UserAPI";
-import {IReleasement} from "../../types/entities";
+import {IForum, IReleasement} from "../../types/entities";
 import {FormOption, GeneralAddingModal} from "../GeneralAddingModal/GeneralAddingModal";
 import {ISendAssignmentData} from "../../api/AssignmentAPI";
 import IAPIResponse from "../../api/IAPIResponse";
@@ -12,7 +12,9 @@ import {ISendForumData} from "../../api/ForumAPI";
 export interface IReleasementManageContainerProps {
     userType: UserType
     email?: string
-    releasement?: IReleasement
+    releasement: IReleasement
+
+    setDisplayingForum: (forum: IForum) => void
 
     /**
      * send assignment callback from App.tsx
@@ -97,6 +99,8 @@ export default class ReleasementManageContainer extends React.Component<IRelease
                         onAssignmentClick={this.enableAssignmentAddingForm.bind(this)}
                         onSlideClick={this.enableSlideAddingForm.bind(this)}
                         onForumClick={this.enableForumAddingForm.bind(this)}
+
+                        setDisplayingForum={this.props.setDisplayingForum}
                     />
                     <GeneralAddingModal
                         userType={this.props.userType}

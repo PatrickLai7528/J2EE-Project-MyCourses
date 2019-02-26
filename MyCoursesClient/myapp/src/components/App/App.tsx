@@ -9,14 +9,14 @@ import MyHeader from "./../MyHeader/MyHeader";
 import {UserType} from "../../api/UserAPI";
 import CourseAPI, {ISendReleasementData} from "../../api/CourseAPI";
 import IAPIResponse from "../../api/IAPIResponse";
-import {ICourse, IReleasement, ISelection} from "../../types/entities";
+import {ICourse, IForum, IReleasement, ISelection} from "../../types/entities";
 import SelectionAPI from "../../api/SelectionAPI";
 import ReleasementAPI from "../../api/ReleasementAPI";
 import Cookies from "universal-cookie/es6";
 import AssignmentAPI, {ISendAssignmentData} from "../../api/AssignmentAPI";
 import {TeacherSider} from "../TeacherSider/TeacherSider";
 import SlideAPI, {ISendSlideData} from "../../api/SlideAPI";
-import ForumAPI, {ISendForumData} from "../../api/ForumAPI";
+import ForumAPI, {ISendCommentData, ISendForumData} from "../../api/ForumAPI";
 
 interface IAppState {
     userType: UserType
@@ -35,6 +35,8 @@ interface IAppState {
 
     // for teacher to manage their released course
     managingReleasement?: IReleasement
+
+    displayingForum?: IForum
 }
 
 // export interface ISendSelectionProps{
@@ -75,6 +77,9 @@ export default class App extends Component<IAppProps, IAppState> {
         this.getAllReleasement();
     }
 
+    private setDisplayingForum(forum: IForum): void {
+        this.setState({displayingForum: forum})
+    }
 
     private getCourseOf(teacherEmail: string): void {
         CourseAPI.getInstance().getCourseOf(teacherEmail)
@@ -204,11 +209,15 @@ export default class App extends Component<IAppProps, IAppState> {
             })
     }
 
-    private getReleasementByRid(rid: number): void {
+    private getReleasementByRid(rid: number, callback: () => void = () => {
+    }): void {
         ReleasementAPI.getInstance().getReleasementByRid(rid)
             .then((response: IAPIResponse<IReleasement>) => {
                 if (response.isSuccess) {
-                    this.setState({managingReleasement: response.payload})
+                    this.setState({managingReleasement: response.payload});
+                    callback();
+                    console.log("完成取得Releasemnet by id");
+                    console.log(this.state.managingReleasement);
                 } else {
                     message.error(response.message);
                 }
@@ -252,6 +261,36 @@ export default class App extends Component<IAppProps, IAppState> {
                     if (onSuccess) onSuccess(response);
                     // refresh assignment by fetching specific releasement
                     this.getReleasementByRid(data.rid);
+                } else {
+                    if (onFail) onFail(response);
+                }
+            })
+            .catch((e: any) => {
+                console.log(e);
+                if (onError) onError(e);
+            })
+    }
+
+    private sendComment(data: ISendCommentData, onBefore?: () => void,
+                        onSuccess?: (response: IAPIResponse<any>) => void,
+                        onFail?: (response: IAPIResponse<any>) => void,
+                        onError?: (e: any) => void) {
+        if (onBefore) onBefore();
+        ForumAPI.getInstance().sendComment(data)
+            .then((response: IAPIResponse<any>) => {
+                if (response.isSuccess) {
+                    // refresh by fetching specific releasement
+                    this.getReleasementByRid(data.rid, () => {
+                        this.state.managingReleasement && this.state.managingReleasement.forumEntityList ?
+                            this.state.managingReleasement.forumEntityList.forEach((forum: IForum) => {
+                                if (forum.fid === data.fid) {
+                                    this.setDisplayingForum(forum);
+                                }
+                            }) : "";
+                        if (onSuccess) onSuccess(response);
+                    });
+
+
                 } else {
                     if (onFail) onFail(response);
                 }
@@ -366,6 +405,9 @@ export default class App extends Component<IAppProps, IAppState> {
                             releasementList={this.state.releasementListOfStudent}
 
                             managingReleasement={this.state.managingReleasement}
+                            displayingForum={this.state.displayingForum}
+
+                            setDisplayingForum={this.setDisplayingForum.bind(this)}
 
                             sendAddCourse={this.sendAddCourse.bind(this)}
                             sendCourseRelease={this.sendCourseRelease.bind(this)}
@@ -373,6 +415,7 @@ export default class App extends Component<IAppProps, IAppState> {
                             sendAssignment={this.sendAssignment.bind(this)}
                             sendSlide={this.sendSlide.bind(this)}
                             sendForum={this.sendForum.bind(this)}
+                            sendComment={this.sendComment.bind(this)}
                         />
                     </Layout>
                 </Layout>

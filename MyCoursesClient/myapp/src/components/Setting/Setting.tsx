@@ -60,11 +60,11 @@ class UserProfileFrom extends React.Component<FormComponentProps, IUserProfileFr
                     getFieldDecorator={getFieldDecorator}
                     placeholder={userInfo ? userInfo.nickname : ""}
                 />
-                <StudentNoFormItem
-                    areaCodeSelector={areaCodeSelector ? areaCodeSelector : ""}
-                    getFieldDecorator={getFieldDecorator}
-                    placeholder={userInfo ? userInfo.phoneNumber : ""}
-                />
+                {/*<StudentNoFormItem*/}
+                    {/*areaCodeSelector={areaCodeSelector ? areaCodeSelector : ""}*/}
+                    {/*getFieldDecorator={getFieldDecorator}*/}
+                    {/*placeholder={userInfo ? userInfo.phoneNumber : ""}*/}
+                {/*/>*/}
                 {/*<JobTypeFormItem*/}
                 {/*jobTypeOptions={jobTypeOptions ? jobTypeOptions : []}*/}
                 {/*getFieldDecorator={getFieldDecorator}*/}

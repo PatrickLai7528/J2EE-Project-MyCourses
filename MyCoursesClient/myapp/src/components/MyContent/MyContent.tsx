@@ -8,13 +8,14 @@ import Setting from "../Setting/Setting";
 import ReleasementDisplayContainer from "../ReleasementDisplay/ReleasementDisplayContainer";
 import {UserType} from "../../api/UserAPI";
 import CourseDisplayContainer from "../CourseDisplay/CourseDisplayContainer";
-import {ICourse, IReleasement} from "../../types/entities";
+import {ICourse, IForum, IReleasement} from "../../types/entities";
 import IAPIResponse from "../../api/IAPIResponse";
 import {ISendReleasementData} from "../../api/CourseAPI";
 import ReleasementManageContainer from "../ReleasementManage/ReleasementManageContainer";
 import {ISendAssignmentData} from "../../api/AssignmentAPI";
 import {ISendSlideData} from "../../api/SlideAPI";
-import {ISendForumData} from "../../api/ForumAPI";
+import {ISendCommentData, ISendForumData} from "../../api/ForumAPI";
+import {ForumDisplayContainer} from "../ForumDisplay/ForumDisplayContainer";
 
 export interface IMyContentProps {
     userType: UserType
@@ -28,6 +29,8 @@ export interface IMyContentProps {
      */
     managingReleasement?: IReleasement
 
+    displayingForum?: IForum
+    setDisplayingForum: (forum: IForum) => void
     /**
      *
      * @param courseName
@@ -51,7 +54,6 @@ export interface IMyContentProps {
         onSuccess?: (response: IAPIResponse<any>) => void,
         onFail?: (response: IAPIResponse<any>) => void,
         onError?: (e: any) => void) => void
-
 
     /**
      *
@@ -102,13 +104,26 @@ export interface IMyContentProps {
      */
     sendForum: (data: ISendForumData, onBefore?: () => void, onSuccess?: (response: IAPIResponse<any>) => void, onFail?: (response: IAPIResponse<any>) => void, onError?: (e: any) => void) => void
 
+    /**
+     * send Comment callback from App.tsx
+     * @param data
+     * @param onBefore
+     * @param onSuccess
+     * @param onFail
+     * @param onError
+     */
+    sendComment: (data: ISendCommentData, onBefore?: () => void, onSuccess?: (response: IAPIResponse<any>) => void, onFail?: (response: IAPIResponse<any>) => void, onError?: (e: any) => void) => void
+
 }
 
+interface IMyContentState {
+}
 
-export default class MyContent extends Component<IMyContentProps, any> {
+export default class MyContent extends Component<IMyContentProps, IMyContentState> {
     public constructor(props: IMyContentProps) {
         super(props);
     }
+
 
     render() {
         return (
@@ -133,13 +148,30 @@ export default class MyContent extends Component<IMyContentProps, any> {
                     }}/>
                     <Route exact path="/releasement/manage" component={
                         () => {
-                            return <ReleasementManageContainer
-                                sendForum={this.props.sendForum}
-                                sendSlide={this.props.sendSlide}
-                                sendAssignment={this.props.sendAssignment}
-                                userType={this.props.userType}
-                                email={this.props.email}
-                                releasement={this.props.managingReleasement}/>
+                            if (this.props.managingReleasement)
+                                return <ReleasementManageContainer
+                                    setDisplayingForum={this.props.setDisplayingForum.bind(this)}
+                                    sendForum={this.props.sendForum}
+                                    sendSlide={this.props.sendSlide}
+                                    sendAssignment={this.props.sendAssignment}
+                                    userType={this.props.userType}
+                                    email={this.props.email}
+                                    releasement={this.props.managingReleasement}/>
+                            return null;
+                        }
+                    }/>
+                    <Route exact path="/forum" component={
+                        () => {
+                            console.log("in forum route");
+                            console.log(this.props);
+                            if (this.props.managingReleasement && this.props.displayingForum && this.props.email)
+                                return <ForumDisplayContainer
+                                    sendComment={this.props.sendComment}
+                                    forum={this.props.displayingForum}
+                                    userType={this.props.userType}
+                                    email={this.props.email}
+                                    releasement={this.props.managingReleasement}/>
+                            return null;
                         }
                     }/>
                 </Switch>

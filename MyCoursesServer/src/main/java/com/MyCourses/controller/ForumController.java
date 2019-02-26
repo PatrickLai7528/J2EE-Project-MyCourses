@@ -7,9 +7,13 @@ package com.MyCourses.controller;/*
  */
 
 import com.MyCourses.annotations.PleaseLog;
+import com.MyCourses.aspect.LoggerAspect;
+import com.MyCourses.exceptions.ForumNotExistException;
 import com.MyCourses.exceptions.ReleasementNotExistException;
 import com.MyCourses.service.IForumService;
 import com.MyCourses.utils.ResponseUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,6 +22,8 @@ import org.springframework.web.bind.annotation.*;
 public class ForumController {
 
     private final IForumService forumService;
+
+    private final static Logger logger = LoggerFactory.getLogger(ForumController.class);
 
     @Autowired
     public ForumController(IForumService forumService) {
@@ -36,6 +42,26 @@ public class ForumController {
         } catch (ReleasementNotExistException e) {
             e.printStackTrace();
             return ResponseUtils.notOk(e.getLocalizedMessage());
+        }
+    }
+
+    @PostMapping("comment")
+    @PleaseLog
+    @CrossOrigin(origins = "http://localhost:3000")
+    public APIResponse<Object> comment(@RequestParam(name = "fid") Long fid,
+                                       @RequestParam(name = "from") String messageFrom,
+                                       @RequestParam(name = "content") String content,
+                                       @RequestParam(name = "rid") Long rid,
+                                       @RequestParam(name = "replyTo", required = false) Long replyToCommentId
+    ) {
+        logger.warn("開始處理增加一個評論的請求");
+        try {
+            forumService.comment(rid, fid, replyToCommentId, messageFrom, content);
+            logger.warn("結束處理增加一個評論的請求");
+            return ResponseUtils.ok("操作成功");
+        } catch (ForumNotExistException | ReleasementNotExistException e) {
+            e.printStackTrace();
+            return ResponseUtils.error(e.getLocalizedMessage());
         }
     }
 }
