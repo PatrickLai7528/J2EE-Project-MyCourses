@@ -67,7 +67,7 @@ public class CourseService implements ICourseService {
             throw new CourseNotExistException();
 
         ReleasementEntity releasementEntity = new ReleasementEntity();
-
+        courseEntity.setIsReleased(true);
         try {
             releasementEntity.setApprovalState(ApprovalState.WAITING);
             releasementEntity.setCourseEntity(courseEntity);

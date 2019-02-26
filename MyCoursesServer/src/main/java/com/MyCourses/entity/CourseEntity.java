@@ -28,6 +28,9 @@ public class CourseEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long cid;
 
+    @Column(name = "released")
+    private Boolean isReleased;
+
     @Column(name = "name")
     private String name;
 

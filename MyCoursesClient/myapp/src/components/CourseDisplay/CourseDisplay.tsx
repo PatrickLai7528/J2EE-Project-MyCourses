@@ -11,6 +11,8 @@ export interface ICourseDisplayProps {
     courseList: ICourse[]
     okToRelease: (course: ICourse) => void
     notOkToRelease: (course: ICourse) => void
+    okToDelete: (course: ICourse) => void
+    notOkToDelete: (course: ICourse) => void
 }
 
 const toCourseWithKey = (courseList: ICourse[]): ICourseWithKey[] => {
@@ -36,8 +38,10 @@ const CourseDisplay: React.FunctionComponent<ICourseDisplayProps> = (props: ICou
         title: '狀態',
         dataIndex: 'approvalState',
         key: 'approvalState',
-        width: 150,
-        render: (state: ApprovalState) => {
+        width: 200,
+        render: (state: ApprovalState, course: ICourse) => {
+            console.log(" in tblae");
+            console.log(course);
             let color: string = "";
             switch (state) {
                 case ApprovalState.APPROVED:
@@ -52,7 +56,10 @@ const CourseDisplay: React.FunctionComponent<ICourseDisplayProps> = (props: ICou
                 default:
                     throw new Error("Unexpected Approval State");
             }
-            return (<Tag color={color} >{fromApprovalStateToChinese(state)}</Tag>)
+            return <span>
+                        <Tag color={color}>{fromApprovalStateToChinese(state)}</Tag>
+                        <Tag color={"#108ee9"}>{course.isReleased ? "已發佈" : "未發佈"}</Tag>
+                    </span>
         }
     }, {
         title: '操作',
@@ -60,22 +67,24 @@ const CourseDisplay: React.FunctionComponent<ICourseDisplayProps> = (props: ICou
         render: (text: string, course: ICourse) => {
             return (
                 <span>
-                <Button htmlType="button" onClick={() => {
-                    console.log(course);
+                <a onClick={() => {
+                    // console.log(course);
                     if (course.approvalState === ApprovalState.WAITING) {
                         props.notOkToRelease(course);
                     } else {
                         props.okToRelease(course);
                     }
                 }}>
-                    發佈
-                </Button>
+                    {course.isReleased ? "再次發佈" : "發佈"}
+                </a>
                 <Divider type="vertical"/>
-                 <a href="javascript:;">Delete</a>
-                 <Divider type="vertical"/>
-                 <a href="javascript:;" className="ant-dropdown-link">
-                   More actions <Icon type="down"/>
-                 </a>
+                 <a onClick={() => {
+                     if (course.approvalState === ApprovalState.APPROVED) {
+                         props.notOkToDelete(course);
+                     } else {
+                         props.okToDelete(course);
+                     }
+                 }}>刪除</a>
             </span>
             )
         },

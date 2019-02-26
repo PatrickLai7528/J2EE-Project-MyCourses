@@ -16,7 +16,7 @@ export interface ITeacherSiderProps {
 interface ITeacherSiderState {
 }
 
-export const TeacherSider : React.FunctionComponent<ITeacherSiderProps> = (props:ITeacherSiderProps)=>{
+export const TeacherSider: React.FunctionComponent<ITeacherSiderProps> = (props: ITeacherSiderProps) => {
     return (
         <Layout.Sider
             theme={"light"}
@@ -63,7 +63,7 @@ export const TeacherSider : React.FunctionComponent<ITeacherSiderProps> = (props
                                                props.onReleasementClick(releasement)
                                            }}>
                                     <NavLink to={"/releasement/manage"}>
-                                        {moment(releasement.effectiveTime).format("MM-DD") + " " + releasement.courseEntity.name}
+                                        {moment(releasement.effectiveTime).format("YYYY-MM") + " " + releasement.courseEntity.name}
                                     </NavLink>
                                 </Menu.Item>
                             )

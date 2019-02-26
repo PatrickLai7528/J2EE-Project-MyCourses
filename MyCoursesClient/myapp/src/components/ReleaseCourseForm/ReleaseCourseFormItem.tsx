@@ -54,7 +54,7 @@ export const StartTimeReleaseCourseFormItem: React.FunctionComponent<IGeneralRel
                     }
                 ],
             })(
-                <TimePicker format={"HH:mm"} placeholder="上課時間"/>
+                <TimePicker format={"HH:mm"} placeholder="上課時間" minuteStep={5}/>
             )}
         </Form.Item>
     )
@@ -72,7 +72,7 @@ export const EndTimeReleaseCourseFormItem: React.FunctionComponent<IGeneralRelea
                     }
                 ],
             })(
-                <TimePicker format={"HH:mm"} placeholder="下課時間"/>
+                <TimePicker format={"HH:mm"} placeholder="下課時間" minuteStep={5}/>
             )}
         </Form.Item>
     )

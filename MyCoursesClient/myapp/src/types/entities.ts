@@ -24,6 +24,7 @@ export interface ICourse {
     name: string,
     teacherEntity: ITeacher
     approvalState: ApprovalState,
+    isReleased: boolean
 }
 
 export interface IAssignment {
