@@ -6,6 +6,8 @@ import {UserType} from "../../api/UserAPI";
 import {ISendCommentData} from "../../api/ForumAPI";
 import IAPIResponse from "../../api/IAPIResponse";
 
+const moment = require("moment");
+
 export interface IForumCommentProps {
     comment: IComment
     children?: React.ReactNode[]
@@ -47,6 +49,7 @@ export class ForumComment extends React.Component<IForumCommentProps, IForumComm
         return (
             <div style={{marginBottom: 5}}>
                 <Comment content={this.props.comment.content}
+                         datetime={moment(this.props.comment.commentTime).calendar()}
                          actions={
                              [
                                  <span onClick={() => this.setState({enabledEditor: !this.state.enabledEditor})}>

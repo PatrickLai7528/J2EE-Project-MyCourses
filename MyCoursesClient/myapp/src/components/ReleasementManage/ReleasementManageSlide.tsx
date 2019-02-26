@@ -22,27 +22,6 @@ interface ICategorizedSlideFolder {
 }
 
 
-const categorySlide = (slideList: ISlide[]): ICategorizedSlideResult => {
-    let map: Map<string, ICategorizedSlideFolder> = new Map();
-    for (let slide of slideList) {
-        let categorizedSlideFolder = map.get(slide.title);
-        if (!categorizedSlideFolder)
-            categorizedSlideFolder = {name: slide.title, slideList: []};
-        categorizedSlideFolder.slideList.push(slide);
-        map.set(slide.title, categorizedSlideFolder);
-    }
-    console.log(map);
-    let ret: ICategorizedSlideResult = {categorySlideFolderList: []};
-    // for (let item of map) {
-    //     console.log(item);
-    //     ret.categorySlideFolderList.push(item.);
-    // }
-    map.forEach((value, key, map) => {
-        ret.categorySlideFolderList.push(value)
-    });
-    return ret;
-};
-
 interface IReleasementManageSlideState {
     checkedKeys: string[]; // must be the file name of slide
 }
@@ -55,9 +34,24 @@ export class ReleasementManageSlide extends React.Component<IReleasementManageSl
         }
     }
 
+    private categorizeSlide(slideList: ISlide[]): ICategorizedSlideResult {
+        let map: Map<string, ICategorizedSlideFolder> = new Map();
+        for (let slide of slideList) {
+            let categorizedSlideFolder = map.get(slide.title);
+            if (!categorizedSlideFolder)
+                categorizedSlideFolder = {name: slide.title, slideList: []};
+            categorizedSlideFolder.slideList.push(slide);
+            map.set(slide.title, categorizedSlideFolder);
+        }
+        console.log(map);
+        let ret: ICategorizedSlideResult = {categorySlideFolderList: []};
+        map.forEach((value, key, map) => {
+            ret.categorySlideFolderList.push(value)
+        });
+        return ret;
+    }
+
     public render(): React.ReactNode {
-        // @ts-ignore
-        // @ts-ignore
         return (
             <div>
                 <h1>
@@ -73,7 +67,20 @@ export class ReleasementManageSlide extends React.Component<IReleasementManageSl
                 {/*props.releasement.slideEntityList ?*/}
                 {/*categorySlide(props.releasement.slideEntityList) : ""*/}
                 {/*}*/}
-                <Card extra={<a>下載</a>}>
+                <Card extra={<a onClick={() => {
+                    if (!this.state.checkedKeys || this.state.checkedKeys.length === 0 || !this.props.releasement.slideEntityList) return;
+                    let list: string[] = [];
+                    for (let slide of this.props.releasement.slideEntityList) {
+                        if (this.state.checkedKeys.indexOf(slide.filePath) !== -1)
+                            list.push(slide.filePath);
+                    }
+                    console.log("in download");
+                    console.log(list);
+                    list.forEach((value: string) => {
+                        console.log("downloading " + value);
+                        window.open(NetworkSettings.getOpenNetworkIP() + "/file/slide/download?fileName=" + value)
+                    })
+                }}>下載</a>}>
                     {
                         !this.props.releasement.slideEntityList || this.props.releasement.slideEntityList.length === 0 ?
                             <Empty/>
@@ -83,18 +90,18 @@ export class ReleasementManageSlide extends React.Component<IReleasementManageSl
                                 defaultExpandAll={true}
                                 showLine={true}
                                 checkable={true}
-                                // // @ts-ignore
-                                // onCheck={(ck: string[]) => {
-                                //     const {checkedKeys} = this.state;
-                                //     ck.forEach((i => checkedKeys.push(i)));
-                                //     this.setState({checkedKeys: checkedKeys});
-                                //     console.log(this.state);
-                                // }}
+                                // @ts-ignore
+                                onCheck={(ck: string[]) => {
+                                    const {checkedKeys} = this.state;
+                                    ck.forEach((i => checkedKeys.push(i)));
+                                    this.setState({checkedKeys: checkedKeys});
+                                    console.log(this.state);
+                                }}
                             >
 
                                 {
                                     this.props.releasement.slideEntityList ?
-                                        categorySlide(this.props.releasement.slideEntityList).categorySlideFolderList
+                                        this.categorizeSlide(this.props.releasement.slideEntityList).categorySlideFolderList
                                             .map((folder: ICategorizedSlideFolder) => {
                                                 return (
                                                     <TreeNode key={folder.name} title={folder.name}>
@@ -115,13 +122,14 @@ export class ReleasementManageSlide extends React.Component<IReleasementManageSl
                             </Tree>
                     }
                 </Card>
-            </div>
+            </ div>
         )
     }
 }
 
 //
-// export const ReleasementManageSlide1: React.FunctionComponent<IReleasementManageSlideProps> = (props: IReleasementManageSlideProps) => {
+// export const ReleasementManageSlide1: React.FunctionComponent<IReleasementManageSlideProps> = (props:
+// IReleasementManageSlideProps) => {
 //     console.log("releasement");
 //     console.log(props);
 //     return (

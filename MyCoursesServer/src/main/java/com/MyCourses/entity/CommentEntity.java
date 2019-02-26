@@ -7,10 +7,13 @@ package com.MyCourses.entity;
  * @ProjectName server
  */
 
+import com.MyCourses.entity.converter.DateConverter;
+import com.MyCourses.entity.converter.DetailDateConverter;
 import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -28,6 +31,10 @@ public class CommentEntity implements Serializable {
 
     @Column(name = "content")
     private String content;
+
+    @Column(name = "comment_time")
+    @Convert(converter = DetailDateConverter.class)
+    private Date commentTime;
 
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)

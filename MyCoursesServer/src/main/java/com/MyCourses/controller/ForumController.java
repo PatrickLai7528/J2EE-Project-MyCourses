@@ -8,14 +8,18 @@ package com.MyCourses.controller;/*
 
 import com.MyCourses.annotations.PleaseLog;
 import com.MyCourses.aspect.LoggerAspect;
+import com.MyCourses.exceptions.DateStringFormatException;
 import com.MyCourses.exceptions.ForumNotExistException;
 import com.MyCourses.exceptions.ReleasementNotExistException;
 import com.MyCourses.service.IForumService;
+import com.MyCourses.utils.DateUtils;
 import com.MyCourses.utils.ResponseUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Date;
 
 @RestController
 @RequestMapping("forum")
@@ -52,12 +56,11 @@ public class ForumController {
                                        @RequestParam(name = "from") String messageFrom,
                                        @RequestParam(name = "content") String content,
                                        @RequestParam(name = "rid") Long rid,
-                                       @RequestParam(name = "replyTo", required = false) Long replyToCommentId
+                                       @RequestParam(name = "replyTo", required = false) Long replyToCommentId,
+                                       @RequestParam(name = "at") Long dateTime
     ) {
-        logger.warn("開始處理增加一個評論的請求");
         try {
-            forumService.comment(rid, fid, replyToCommentId, messageFrom, content);
-            logger.warn("結束處理增加一個評論的請求");
+            forumService.comment(rid, fid, replyToCommentId, messageFrom, content, new Date(dateTime));
             return ResponseUtils.ok("操作成功");
         } catch (ForumNotExistException | ReleasementNotExistException e) {
             e.printStackTrace();

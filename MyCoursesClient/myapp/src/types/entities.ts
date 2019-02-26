@@ -53,6 +53,7 @@ export interface IComment {
     messageFromTeacher?: ITeacher, // if exists, it means it commented by a teacher
     messageFromStudent?: IStudent, // if exists, it means it commented by a student
     belowCommentList?: IComment[]
+    commentTime: number;
 }
 
 export interface IForum {
