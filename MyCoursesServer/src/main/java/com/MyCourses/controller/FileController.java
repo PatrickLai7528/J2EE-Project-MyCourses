@@ -49,6 +49,19 @@ public class FileController {
         }
     }
 
+    @PostMapping(value = "submission/upload")
+    @CrossOrigin(origins = "http://localhost:3000")
+    @PleaseLog
+    public APIResponse<String> submissionUpload(MultipartFile file) {
+        try {
+            String fileName = fileService.uploadSubmission(file);
+            return ResponseUtils.ok("上傳成功", fileName);
+        } catch (IOException | FileEmptyException e) {
+            e.printStackTrace();
+            return ResponseUtils.error("上傳失敗", "");
+        }
+    }
+
     @PostMapping(value = "slide/upload")
     @CrossOrigin(origins = "http://localhost:3000")
     @PleaseLog
@@ -104,6 +117,15 @@ public class FileController {
     public ResponseEntity downloadAttachment(@RequestParam(name = "fileName") String fileName, @RequestParam(name =
             "rename", required = false) String rename) {
         RenamableResource renamableResource = fileService.downloadAttachment(fileName, rename);
+        return download(renamableResource);
+    }
+
+    @GetMapping("submission/download")
+    @CrossOrigin(origins = "http://localhost:3000")
+    @PleaseLog
+    public ResponseEntity downloadSubmission(@RequestParam(name = "fileName") String fileName, @RequestParam(name =
+            "rename", required = false) String rename) {
+        RenamableResource renamableResource = fileService.downloadSubmission(fileName, rename);
         return download(renamableResource);
     }
 }

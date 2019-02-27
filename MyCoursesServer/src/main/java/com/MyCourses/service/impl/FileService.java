@@ -32,6 +32,8 @@ public class FileService implements IFileService {
 
     private final static String folderOfSlide = "upload/slide/";
 
+    private final static String folderOfSubmission = "upload/submission/";
+
     private final IEncryptService encryptService;
 
     @Autowired
@@ -81,6 +83,13 @@ public class FileService implements IFileService {
     }
 
     @Override
+    public String uploadSubmission(MultipartFile file) throws FileEmptyException, IOException {
+        String fileName = confuseFileName(file.getOriginalFilename());
+        upload(file, filePath + folderOfSubmission + fileName);
+        return fileName;
+    }
+
+    @Override
     public RenamableResource downloadAttachment(String fileName, String rename) {
         String fileNameWithFolder = folderOfAttachment + fileName;
         return download(fileNameWithFolder, rename);
@@ -89,6 +98,12 @@ public class FileService implements IFileService {
     @Override
     public RenamableResource downloadSlide(String fileName, String rename) {
         String fileNameWithFolder = folderOfSlide + fileName;
+        return download(fileNameWithFolder, rename);
+    }
+
+    @Override
+    public RenamableResource downloadSubmission(String fileName, String rename) {
+        String fileNameWithFolder = folderOfSubmission + fileName;
         return download(fileNameWithFolder, rename);
     }
 
