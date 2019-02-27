@@ -8,23 +8,11 @@ import IAPIResponse from "../../api/IAPIResponse";
 import {message} from "antd";
 import {ISendSlideData} from "../../api/SlideAPI";
 import {ISendForumData} from "../../api/ForumAPI";
-import {ISendAssignmentProps, ISendSlideProps, UserStateProps} from "../App/GeneralProps";
+import {ISendAssignmentProps, ISendForumProps, ISendSlideProps, UserStateProps} from "../App/GeneralProps";
 
-export interface IReleasementManageContainerProps extends UserStateProps, ISendAssignmentProps, ISendSlideProps {
+export interface IReleasementManageContainerProps extends UserStateProps, ISendAssignmentProps, ISendSlideProps, ISendForumProps {
     releasement: IReleasement
     setDisplayingForum: (forum: IForum) => void
-
-
-    /**
-     * send assignment callback from App.tsx
-     * @param data
-     * @param onBefore
-     * @param onSuccess
-     * @param onFail
-     * @param onError
-     */
-    sendForum?: (data: ISendForumData, onBefore?: () => void, onSuccess?: (response: IAPIResponse<any>) => void, onFail?: (response: IAPIResponse<any>) => void, onError?: (e: any) => void) => void
-
 }
 
 interface IReleasementManageContainerState {
@@ -69,10 +57,7 @@ export default class ReleasementManageContainer extends React.Component<IRelease
     }
 
     public render(): React.ReactNode {
-        console.log(" find me")
-        console.log(this.props);
         if (this.props.email && this.props.releasement) {
-            console.log("fuck you");
             return (
                 <div>
                     <ReleasementManage

@@ -15,9 +15,9 @@ import {ISendSlideData} from "../../api/SlideAPI";
 import {ISendCommentData, ISendForumData} from "../../api/ForumAPI";
 import {ForumDisplayContainer} from "../ForumDisplay/ForumDisplayContainer";
 import {SelectionDisplayContainer} from "../SelectionDisplay/SelectionDisplayContainer";
-import {ISendAssignmentProps, ISendSlideProps, UserStateProps} from "../App/GeneralProps";
+import {ISendAssignmentProps, ISendForumProps, ISendSlideProps, UserStateProps} from "../App/GeneralProps";
 
-export interface IMyContentProps extends UserStateProps, ISendAssignmentProps, ISendSlideProps {
+export interface IMyContentProps extends UserStateProps, ISendAssignmentProps, ISendSlideProps, ISendForumProps {
     courseList: ICourse[]
     releasementList: IReleasement[]
 

@@ -6,23 +6,13 @@ import IAPIResponse from "../../api/IAPIResponse";
 import {ForumAddingForm, WrappedForumAddingForm} from "./ForumAddingForm";
 import {ISendForumData} from "../../api/ForumAPI";
 import {UserType} from "../../api/UserAPI";
-import {UserStateProps} from "../App/GeneralProps";
+import {ISendForumProps, UserStateProps} from "../App/GeneralProps";
 
-export interface IForumAddingFormContainerProps extends UserStateProps {
+export interface IForumAddingFormContainerProps extends UserStateProps, ISendForumProps {
 
     isTimeToSubmit: boolean
 
     releasement: IReleasement
-
-    /**
-     * send assignment callback from App.tsx
-     * @param data
-     * @param onBefore
-     * @param onSuccess
-     * @param onFail
-     * @param onError
-     */
-    sendForum: (data: ISendForumData, onBefore?: () => void, onSuccess?: (response: IAPIResponse<any>) => void, onFail?: (response: IAPIResponse<any>) => void, onError?: (e: any) => void) => void
 
     onSendBefore: () => void
     onSendSuccess: (response: IAPIResponse<any>) => void
