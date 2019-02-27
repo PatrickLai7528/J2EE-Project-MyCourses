@@ -57,7 +57,7 @@ public class ForumService implements IForumService {
 
         ForumEntity forumEntity = new ForumEntity();
         forumEntity.setTopic(topic);
-
+        forumEntity.setAddTime(new Date());
 
         if (teacherEntity != null) {
             forumEntity.setQuestionerTeacher(teacherEntity);
