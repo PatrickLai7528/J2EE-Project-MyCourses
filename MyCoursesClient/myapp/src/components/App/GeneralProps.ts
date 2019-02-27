@@ -3,7 +3,7 @@ import {ISendAssignmentData} from "../../api/AssignmentAPI";
 import IAPIResponse from "../../api/IAPIResponse";
 import {ISendSlideData} from "../../api/SlideAPI";
 import {ISendForumData} from "../../api/ForumAPI";
-import {ISendAddCourseData} from "../../api/CourseAPI";
+import {ISendAddCourseData, ISendReleasementData} from "../../api/CourseAPI";
 
 export interface UserStateProps {
     userType: UserType
@@ -58,4 +58,13 @@ export interface ISendAddCourseProps {
      * @param onError
      */
     sendAddCourse: (data: ISendAddCourseData, onBefore?: () => void, onSuccess?: (response: IAPIResponse<any>) => void, onFail?: (response: IAPIResponse<any>) => void, onError?: (e: any) => void) => void
+}
+
+export interface ISendCourseReleaseProps {
+    sendCourseRelease: (
+        data: ISendReleasementData,
+        onBefore?: () => void,
+        onSuccess?: (response: IAPIResponse<any>) => void,
+        onFail?: (response: IAPIResponse<any>) => void,
+        onError?: (e: any) => void) => void
 }

@@ -2,24 +2,14 @@ import * as React from "react";
 import CourseDisplay from "./CourseDisplay";
 import {Button, Divider, Icon, Input, message, Modal} from "antd";
 import {ICourse} from "../../types/entities";
-import {UserType} from "../../api/UserAPI";
 import IAPIResponse from "../../api/IAPIResponse";
 import {fromApprovalStateToChinese} from "../../types/enums";
 import ReleaseCourseFormContainer from "../ReleaseCourseForm/ReleaseCourseFormContainer";
-import {ISendAddCourseData, ISendReleasementData} from "../../api/CourseAPI";
-import {ISendAddCourseProps, UserStateProps} from "../App/GeneralProps";
+import {ISendAddCourseData} from "../../api/CourseAPI";
+import {ISendAddCourseProps, ISendCourseReleaseProps, UserStateProps} from "../App/GeneralProps";
 
-export interface ICourseDisplayContainerProps extends UserStateProps, ISendAddCourseProps {
-
+export interface ICourseDisplayContainerProps extends UserStateProps, ISendAddCourseProps, ISendCourseReleaseProps {
     courseList: ICourse[]
-
-    sendCourseRelease: (
-        data: ISendReleasementData,
-        onBefore?: () => void,
-        onSuccess?: (response: IAPIResponse<any>) => void,
-        onFail?: (response: IAPIResponse<any>) => void,
-        onError?: (e: any) => void) => void
-
 }
 
 interface ICourseDisplayContainerState {

@@ -16,7 +16,7 @@ import {ForumDisplayContainer} from "../ForumDisplay/ForumDisplayContainer";
 import {SelectionDisplayContainer} from "../SelectionDisplay/SelectionDisplayContainer";
 import {
     ISendAddCourseProps,
-    ISendAssignmentProps,
+    ISendAssignmentProps, ISendCourseReleaseProps,
     ISendForumProps,
     ISendSlideProps,
     UserStateProps
@@ -24,7 +24,7 @@ import {
 
 export interface IMyContentProps
     extends UserStateProps, ISendAssignmentProps,
-        ISendSlideProps, ISendForumProps,ISendAddCourseProps {
+        ISendSlideProps, ISendForumProps,ISendAddCourseProps, ISendCourseReleaseProps {
     courseList: ICourse[]
     releasementList: IReleasement[]
 
@@ -38,13 +38,6 @@ export interface IMyContentProps
     displayingSelection?: ISelection
 
     setDisplayingForum: (forum: IForum) => void
-
-    sendCourseRelease: (
-        data: ISendReleasementData,
-        onBefore?: () => void,
-        onSuccess?: (response: IAPIResponse<any>) => void,
-        onFail?: (response: IAPIResponse<any>) => void,
-        onError?: (e: any) => void) => void
 
     /**
      *
