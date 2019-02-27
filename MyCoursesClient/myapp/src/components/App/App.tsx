@@ -9,7 +9,7 @@ import {UserType} from "../../api/UserAPI";
 import CourseAPI, {ISendAddCourseData, ISendReleasementData} from "../../api/CourseAPI";
 import IAPIResponse from "../../api/IAPIResponse";
 import {ICourse, IForum, IReleasement, ISelection} from "../../types/entities";
-import SelectionAPI from "../../api/SelectionAPI";
+import SelectionAPI, {ISendSelectionData} from "../../api/SelectionAPI";
 import ReleasementAPI from "../../api/ReleasementAPI";
 import Cookies from "universal-cookie/es6";
 import AssignmentAPI, {ISendAssignmentData} from "../../api/AssignmentAPI";
@@ -149,9 +149,9 @@ export default class App extends Component<IAppProps, IAppState> {
             })
     }
 
-    private sendCourseSelection(email: string, rid: number, callback?: ISendActionCallback): void {
+    private sendCourseSelection(data:ISendSelectionData, callback?: ISendActionCallback): void {
         if (callback && callback.onBefore) callback.onBefore();
-        SelectionAPI.getInstance().sendSelection(email, String(rid))
+        SelectionAPI.getInstance().sendSelection(data)
             .then((response: IAPIResponse<any>) => {
                 if (response.isSuccess) {
                     if (callback && callback.onSuccess) callback.onSuccess(response);

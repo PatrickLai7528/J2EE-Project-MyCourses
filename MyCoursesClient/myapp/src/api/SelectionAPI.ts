@@ -4,6 +4,11 @@ import axios from "axios";
 import NetworkSettings from "../setting/NetworkSettings";
 import {toApprovalState, toSelectionState} from "../types/enums";
 
+export interface ISendSelectionData{
+    studentEmail:string,
+    rid:number
+}
+
 export default class SelectionAPI {
     private static instance: SelectionAPI;
 
@@ -16,10 +21,10 @@ export default class SelectionAPI {
         return SelectionAPI.instance;
     }
 
-    public sendSelection(studentEmail: string, rid: string): Promise<IAPIResponse<ISelection[]>> {
+    public sendSelection(data:ISendSelectionData): Promise<IAPIResponse<ISelection[]>> {
         return new Promise<IAPIResponse<ISelection[]>>((resolve, reject) => {
             const url: string = NetworkSettings.getOpenNetworkIP() + "/selection/select" +
-                "?rid=" + rid + "&studentEmail=" + studentEmail;
+                "?rid=" + data.rid + "&studentEmail=" + data.studentEmail;
             axios.post(url)
                 .then((response: any) => {
                     resolve({

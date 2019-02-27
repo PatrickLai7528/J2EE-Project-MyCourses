@@ -4,6 +4,7 @@ import IAPIResponse from "../../api/IAPIResponse";
 import {Divider, message} from "antd";
 import ReleasementDisplay from "./ReleasementDisplay";
 import {ISendCourseSelectionProps, UserStateProps} from "../App/GeneralProps";
+import {ISendSelectionData} from "../../api/SelectionAPI";
 
 export interface IReleasementDisplayContainerProps extends UserStateProps, ISendCourseSelectionProps {
     releasementList: IReleasement[]
@@ -52,7 +53,11 @@ export default class ReleasementDisplayContainer extends React.Component<IReleas
                                 message.error("發生未知錯誤，請稍候再試");
                                 this.setState({isCourseSelectionSending: false})
                             };
-                            this.props.sendCourseSelection(this.props.email, releasement.rid, {
+                            const data: ISendSelectionData = {
+                                studentEmail: this.props.email,
+                                rid: releasement.rid
+                            }
+                            this.props.sendCourseSelection(data, {
                                 onBefore,
                                 onSuccess,
                                 onFail,
@@ -60,8 +65,8 @@ export default class ReleasementDisplayContainer extends React.Component<IReleas
                             });
                         }
                     }}
-                        />
-                        </div>
-                        )
-                    }
-                }
+                />
+            </div>
+        )
+    }
+}
