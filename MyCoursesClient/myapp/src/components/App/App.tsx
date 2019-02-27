@@ -12,12 +12,13 @@ import {ICourse, IForum, IReleasement, ISelection} from "../../types/entities";
 import SelectionAPI, {ISendSelectionData} from "../../api/SelectionAPI";
 import ReleasementAPI from "../../api/ReleasementAPI";
 import Cookies from "universal-cookie/es6";
-import AssignmentAPI, {ISendAssignmentData} from "../../api/AssignmentAPI";
+import {ISendAssignmentData} from "../../api/AssignmentAPI";
 import {TeacherSider} from "../TeacherSider/TeacherSider";
-import SlideAPI, {ISendSlideData} from "../../api/SlideAPI";
-import ForumAPI, {ISendCommentData, ISendForumData} from "../../api/ForumAPI";
+import {ISendSlideData} from "../../api/SlideAPI";
+import {ISendCommentData, ISendForumData} from "../../api/ForumAPI";
 import {ISendActionCallback, UserStateProps} from "./GeneralProps";
 import {ContentRouter} from "../ContentRouter/ContentRouter";
+import {SendActionHandler} from "./SendActionHandler";
 
 interface IAppState extends UserStateProps {
     // for student sider
@@ -81,7 +82,8 @@ export default class App extends Component<IAppProps, IAppState> {
         this.setState({displayingForum: forum})
     }
 
-    private async getCourseOf(teacherEmail: string) {
+    private async getCourseOf(teacherEmail: string | undefined) {
+        if (!teacherEmail) return;
         try {
             const response: IAPIResponse<ICourse[]> = await CourseAPI.getInstance().getCourseOf(teacherEmail);
             if (response.isSuccess && response.payload) this.setState({courseList: response.payload});
@@ -90,7 +92,8 @@ export default class App extends Component<IAppProps, IAppState> {
         }
     }
 
-    private async getSelectionOf(studentEmail: string) {
+    private async getSelectionOf(studentEmail: string | undefined) {
+        if (!studentEmail) return;
         try {
             const response: IAPIResponse<ISelection[]> = await SelectionAPI.getInstance().getSelectionOf(studentEmail);
             if (response.isSuccess && response.payload) this.setState({selectionList: response.payload})
@@ -100,19 +103,19 @@ export default class App extends Component<IAppProps, IAppState> {
     }
 
 
-    private async sendAddCourse(data: ISendAddCourseData, callback?: ISendActionCallback) {
-        if (callback && callback.onBefore) callback.onBefore();
-        try {
-            const response: IAPIResponse<any> = await CourseAPI.getInstance().sendCourse(data);
-            if (response.isSuccess) {
-                if (callback && callback.onSuccess) callback.onSuccess(response);
-                if (this.state.email) this.getCourseOf(this.state.email)
-            } else if (callback && callback.onFail) callback.onFail(response);
-        } catch (e) {
-            console.log(e);
-            if (callback && callback.onError) callback.onError(e);
-        }
-    }
+    // private async sendAddCourse(data: ISendAddCourseData, callback?: ISendActionCallback) {
+    //     if (callback && callback.onBefore) callback.onBefore();
+    //     try {
+    //         const response: IAPIResponse<any> = await CourseAPI.getInstance().sendCourse(data);
+    //         if (response.isSuccess) {
+    //             if (callback && callback.onSuccess) callback.onSuccess(response);
+    //             if (this.state.email) this.getCourseOf(this.state.email)
+    //         } else if (callback && callback.onFail) callback.onFail(response);
+    //     } catch (e) {
+    //         console.log(e);
+    //         if (callback && callback.onError) callback.onError(e);
+    //     }
+    // }
 
     public getAllReleasement(): void {
         ReleasementAPI.getInstance().getAllReleasement()
@@ -130,46 +133,46 @@ export default class App extends Component<IAppProps, IAppState> {
             })
     }
 
-    private sendCourseRelease(data: ISendReleasementData, callback?: ISendActionCallback): void {
-        if (callback && callback.onBefore) callback.onBefore();
-        ReleasementAPI.getInstance().sendReleasement(data)
-            .then((response: IAPIResponse<any>) => {
-                if (response.isSuccess) {
-                    if (callback && callback.onSuccess) callback.onSuccess(response);
-                    // refresh teacher course table by fetching releasement
-                    if (this.state.email) this.getCourseOf(this.state.email);
-                } else {
-                    if (callback && callback.onFail)
-                        callback.onFail(response);
-                }
-            })
-            .catch((e: any) => {
-                if (callback && callback.onError)
-                    callback.onError(e);
-            })
-    }
+    // private sendCourseRelease(data: ISendReleasementData, callback?: ISendActionCallback): void {
+    //     if (callback && callback.onBefore) callback.onBefore();
+    //     ReleasementAPI.getInstance().sendReleasement(data)
+    //         .then((response: IAPIResponse<any>) => {
+    //             if (response.isSuccess) {
+    //                 if (callback && callback.onSuccess) callback.onSuccess(response);
+    //                 // refresh teacher course table by fetching releasement
+    //                 if (this.state.email) this.getCourseOf(this.state.email);
+    //             } else {
+    //                 if (callback && callback.onFail)
+    //                     callback.onFail(response);
+    //             }
+    //         })
+    //         .catch((e: any) => {
+    //             if (callback && callback.onError)
+    //                 callback.onError(e);
+    //         })
+    // }
 
-    private sendCourseSelection(data:ISendSelectionData, callback?: ISendActionCallback): void {
-        if (callback && callback.onBefore) callback.onBefore();
-        SelectionAPI.getInstance().sendSelection(data)
-            .then((response: IAPIResponse<any>) => {
-                if (response.isSuccess) {
-                    if (callback && callback.onSuccess) callback.onSuccess(response);
-                    // by fetching a selection of current student(email)
-                    // refresh the sider subitem
-                    if (this.state.email) this.getSelectionOf(this.state.email);
-                } else {
-                    if (callback && callback.onFail) callback.onFail(response);
-                }
-            })
-            .catch((e: any) => {
-                console.log(e);
-                if (callback && callback.onError) callback.onError(e);
-            })
-    }
+    // private sendCourseSelection(data:ISendSelectionData, callback?: ISendActionCallback): void {
+    //     if (callback && callback.onBefore) callback.onBefore();
+    //     SelectionAPI.getInstance().sendSelection(data)
+    //         .then((response: IAPIResponse<any>) => {
+    //             if (response.isSuccess) {
+    //                 if (callback && callback.onSuccess) callback.onSuccess(response);
+    //                 // by fetching a selection of current student(email)
+    //                 // refresh the sider subitem
+    //                 if (this.state.email) this.getSelectionOf(this.state.email);
+    //             } else {
+    //                 if (callback && callback.onFail) callback.onFail(response);
+    //             }
+    //         })
+    //         .catch((e: any) => {
+    //             console.log(e);
+    //             if (callback && callback.onError) callback.onError(e);
+    //         })
+    // }
 
-    private getReleasementOf(teacherEmail: string) {
-        console.log("refreshing");
+    private getReleasementOf(teacherEmail: string | undefined) {
+        if (!teacherEmail) return;
         ReleasementAPI.getInstance().getReleasementOf(teacherEmail)
             .then((response: IAPIResponse<IReleasement[]>) => {
                 if (response.isSuccess) {
@@ -204,84 +207,84 @@ export default class App extends Component<IAppProps, IAppState> {
             })
     }
 
-    public sendAssignment(data: ISendAssignmentData, callback?: ISendActionCallback): void {
-        if (callback && callback.onBefore) callback.onBefore();
-        AssignmentAPI.getInstance().sendAssignment(data)
-            .then((response: IAPIResponse<any>) => {
-                if (response.isSuccess) {
-                    if (callback && callback.onSuccess) callback.onSuccess(response);
-                    // refresh assignment by fetching specific releasement
-                    this.getReleasementByRid(data.rid);
-                } else {
-                    if (callback && callback.onFail) callback.onFail(response);
-                }
-            })
-            .catch((e: any) => {
-                console.log(e);
-                if (callback && callback.onError) callback.onError(e);
-            })
-    }
+    // public sendAssignment(data: ISendAssignmentData, callback?: ISendActionCallback): void {
+    //     if (callback && callback.onBefore) callback.onBefore();
+    //     AssignmentAPI.getInstance().sendAssignment(data)
+    //         .then((response: IAPIResponse<any>) => {
+    //             if (response.isSuccess) {
+    //                 if (callback && callback.onSuccess) callback.onSuccess(response);
+    //                 // refresh assignment by fetching specific releasement
+    //                 this.getReleasementByRid(data.rid);
+    //             } else {
+    //                 if (callback && callback.onFail) callback.onFail(response);
+    //             }
+    //         })
+    //         .catch((e: any) => {
+    //             console.log(e);
+    //             if (callback && callback.onError) callback.onError(e);
+    //         })
+    // }
 
-    private sendForum(data: ISendForumData, callback?: ISendActionCallback) {
-        if (callback && callback.onBefore) callback.onBefore();
-        ForumAPI.getInstance().sendForum(data)
-            .then((response: IAPIResponse<any>) => {
-                if (response.isSuccess) {
-                    if (callback && callback.onSuccess) callback.onSuccess(response);
-                    // refresh assignment by fetching specific releasement
-                    this.getReleasementByRid(data.rid);
-                } else {
-                    if (callback && callback.onFail) callback.onFail(response);
-                }
-            })
-            .catch((e: any) => {
-                console.log(e);
-                if (callback && callback.onError) callback.onError(e);
-            })
-    }
+    // private sendForum(data: ISendForumData, callback?: ISendActionCallback) {
+    //     if (callback && callback.onBefore) callback.onBefore();
+    //     ForumAPI.getInstance().sendForum(data)
+    //         .then((response: IAPIResponse<any>) => {
+    //             if (response.isSuccess) {
+    //                 if (callback && callback.onSuccess) callback.onSuccess(response);
+    //                 // refresh assignment by fetching specific releasement
+    //                 this.getReleasementByRid(data.rid);
+    //             } else {
+    //                 if (callback && callback.onFail) callback.onFail(response);
+    //             }
+    //         })
+    //         .catch((e: any) => {
+    //             console.log(e);
+    //             if (callback && callback.onError) callback.onError(e);
+    //         })
+    // }
 
-    private sendComment(data: ISendCommentData, callback?: ISendActionCallback): void {
-        if (callback && callback.onBefore) callback.onBefore();
-        ForumAPI.getInstance().sendComment(data)
-            .then((response: IAPIResponse<any>) => {
-                if (response.isSuccess) {
-                    // refresh by fetching specific releasement
-                    this.getReleasementByRid(data.rid, () => {
-                        this.state.managingReleasement && this.state.managingReleasement.forumEntityList ?
-                            this.state.managingReleasement.forumEntityList.forEach((forum: IForum) => {
-                                if (forum.fid === data.fid) {
-                                    this.setDisplayingForum(forum);
-                                }
-                            }) : "";
-                        if (callback && callback.onSuccess) callback.onSuccess(response);
-                    });
-                } else {
-                    if (callback && callback.onFail) callback.onFail(response);
-                }
-            })
-            .catch((e: any) => {
-                console.log(e);
-                if (callback && callback.onError) callback.onError(e);
-            })
-    }
+    // private sendComment(data: ISendCommentData, callback?: ISendActionCallback): void {
+    //     if (callback && callback.onBefore) callback.onBefore();
+    //     ForumAPI.getInstance().sendComment(data)
+    //         .then((response: IAPIResponse<any>) => {
+    //             if (response.isSuccess) {
+    //                 // refresh by fetching specific releasement
+    //                 this.getReleasementByRid(data.rid, () => {
+    //                     this.state.managingReleasement && this.state.managingReleasement.forumEntityList ?
+    //                         this.state.managingReleasement.forumEntityList.forEach((forum: IForum) => {
+    //                             if (forum.fid === data.fid) {
+    //                                 this.setDisplayingForum(forum);
+    //                             }
+    //                         }) : "";
+    //                     if (callback && callback.onSuccess) callback.onSuccess(response);
+    //                 });
+    //             } else {
+    //                 if (callback && callback.onFail) callback.onFail(response);
+    //             }
+    //         })
+    //         .catch((e: any) => {
+    //             console.log(e);
+    //             if (callback && callback.onError) callback.onError(e);
+    //         })
+    // }
 
-    private sendSlide(data: ISendSlideData, callback?:ISendActionCallback): void {
-        if (callback && callback.onBefore) callback.onBefore();
-        SlideAPI.getInstance().sendSlide(data)
-            .then((response: IAPIResponse<any>) => {
-                if (response.isSuccess) {
-                    if (callback && callback.onSuccess) callback.onSuccess(response);
-                    // refresh slide by fetching specific releasement
-                    this.getReleasementByRid(data.rid);
-                } else {
-                    if (callback && callback.onFail) callback.onFail(response);
-                }
-            })
-            .catch((e: any) => {
-                console.log(e);
-                if (callback && callback.onError) callback.onError(e);
-            })
-    }
+    // private sendSlide(data: ISendSlideData, callback?:ISendActionCallback): void {
+    //     if (callback && callback.onBefore) callback.onBefore();
+    //     SlideAPI.getInstance().sendSlide(data)
+    //         .then((response: IAPIResponse<any>) => {
+    //             if (response.isSuccess) {
+    //                 if (callback && callback.onSuccess) callback.onSuccess(response);
+    //                 // refresh slide by fetching specific releasement
+    //                 this.getReleasementByRid(data.rid);
+    //             } else {
+    //                 if (callback && callback.onFail) callback.onFail(response);
+    //             }
+    //         })
+    //         .catch((e: any) => {
+    //             console.log(e);
+    //             if (callback && callback.onError) callback.onError(e);
+    //         })
+    // }
 
     private handleReleaseClickFromTeacherSider(releasement: IReleasement): void {
         this.setState({managingReleasement: releasement})
@@ -376,13 +379,22 @@ export default class App extends Component<IAppProps, IAppState> {
 
                             setDisplayingForum={this.setDisplayingForum.bind(this)}
 
-                            sendAddCourse={this.sendAddCourse.bind(this)}
-                            sendCourseRelease={this.sendCourseRelease.bind(this)}
-                            sendCourseSelection={this.sendCourseSelection.bind(this)}
-                            sendAssignment={this.sendAssignment.bind(this)}
-                            sendSlide={this.sendSlide.bind(this)}
-                            sendForum={this.sendForum.bind(this)}
-                            sendComment={this.sendComment.bind(this)}
+                            sendAddCourse={(data: ISendAddCourseData, callback?: ISendActionCallback) => SendActionHandler.sendAddCourse(data, callback)(() => this.getCourseOf(this.state.email))}
+                            sendCourseRelease={(data: ISendReleasementData, callback?: ISendActionCallback) => SendActionHandler.sendCourseRelease(data, callback)(() => this.getReleasementOf(this.state.email))}
+                            sendCourseSelection={(data: ISendSelectionData, callback?: ISendActionCallback) => SendActionHandler.sendCourseSelection(data, callback)(() => this.getSelectionOf(this.state.email))}
+                            sendAssignment={(data: ISendAssignmentData, callback?: ISendActionCallback) => SendActionHandler.sendAssignment(data, callback)(() => this.getReleasementByRid(data.rid))}
+                            sendSlide={(data: ISendSlideData, callback?: ISendActionCallback) => SendActionHandler.sendSlide(data, callback)(() => this.getReleasementByRid(data.rid))}
+                            sendForum={(data: ISendForumData, callback?: ISendActionCallback) => SendActionHandler.sendForum(data, callback)(() => this.getReleasementByRid(data.rid))}
+                            sendComment={(data: ISendCommentData, callback?: ISendActionCallback) => SendActionHandler.sendComment(data, callback)(() => {
+                                this.getReleasementByRid(data.rid, () => {
+                                    this.state.managingReleasement && this.state.managingReleasement.forumEntityList ?
+                                        this.state.managingReleasement.forumEntityList.forEach((forum: IForum) => {
+                                            if (forum.fid === data.fid) {
+                                                this.setDisplayingForum(forum);
+                                            }
+                                        }) : "";
+                                });
+                            })}
                         />
                     </Layout>
                 </Layout>
