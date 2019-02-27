@@ -17,11 +17,9 @@ import AssignmentAPI, {ISendAssignmentData} from "../../api/AssignmentAPI";
 import {TeacherSider} from "../TeacherSider/TeacherSider";
 import SlideAPI, {ISendSlideData} from "../../api/SlideAPI";
 import ForumAPI, {ISendCommentData, ISendForumData} from "../../api/ForumAPI";
+import {UserStateProps} from "./GeneralProps";
 
-interface IAppState {
-    userType: UserType
-    email: string | undefined
-
+interface IAppState extends UserStateProps {
     // for student sider
     selectionList: ISelection[]
     courseList: ICourse[]

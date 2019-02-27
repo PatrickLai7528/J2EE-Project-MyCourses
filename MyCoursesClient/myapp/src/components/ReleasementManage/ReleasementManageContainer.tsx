@@ -8,8 +8,9 @@ import IAPIResponse from "../../api/IAPIResponse";
 import {message} from "antd";
 import {ISendSlideData} from "../../api/SlideAPI";
 import {ISendForumData} from "../../api/ForumAPI";
+import {UserStateProps} from "../App/GeneralProps";
 
-export interface IReleasementManageContainerProps {
+export interface IReleasementManageContainerProps extends UserStateProps {
     userType: UserType
     email?: string
     releasement: IReleasement

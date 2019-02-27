@@ -5,12 +5,11 @@ import {ISendCommentData} from "../../api/ForumAPI";
 import IAPIResponse from "../../api/IAPIResponse";
 import {UserType} from "../../api/UserAPI";
 import {IComment, IForum, IReleasement} from "../../types/entities";
+import {UserStateProps} from "../App/GeneralProps";
 
 export type BaseComment = "BaseComment";
 
-export interface IForumCommentEditorProps {
-    userType: UserType
-    email: string
+export interface IForumCommentEditorProps extends UserStateProps {
     forum: IForum
     comment: IComment | BaseComment
     releasement: IReleasement
@@ -46,6 +45,7 @@ export class ForumCommentEditor extends React.Component<IForumCommentEditorProps
             message.warn("回覆不能為空");
             return;
         }
+        if (!this.props.email) return;
         let data: ISendCommentData = {
             fid: this.props.forum.fid,
             content: this.state.content,

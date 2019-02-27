@@ -6,10 +6,9 @@ import IAPIResponse from "../../api/IAPIResponse";
 import {ForumAddingForm, WrappedForumAddingForm} from "./ForumAddingForm";
 import {ISendForumData} from "../../api/ForumAPI";
 import {UserType} from "../../api/UserAPI";
+import {UserStateProps} from "../App/GeneralProps";
 
-export interface IForumAddingFormContainerProps {
-    userType: UserType,
-    email: string
+export interface IForumAddingFormContainerProps extends UserStateProps {
 
     isTimeToSubmit: boolean
 
@@ -49,7 +48,7 @@ export class ForumAddingFormContainer extends React.Component<IForumAddingFormCo
         if (this.form) {
             console.log(this.form.props.form);
             this.form.props.form.validateFields((err: any, values: any) => {
-                    if (!err) {
+                    if (!err && this.props.email) {
                         let {topic} = values;
                         const sendForumData: ISendForumData = {
                             topic,

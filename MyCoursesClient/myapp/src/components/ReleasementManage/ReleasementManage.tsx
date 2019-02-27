@@ -19,7 +19,6 @@ export interface IReleasementManageProps {
 const {Content, Sider} = Layout;
 
 export const ReleasementManage: React.FunctionComponent<IReleasementManageProps> = (props: IReleasementManageProps) => {
-    console.log(props);
     return (
         <Layout>
             <Content>

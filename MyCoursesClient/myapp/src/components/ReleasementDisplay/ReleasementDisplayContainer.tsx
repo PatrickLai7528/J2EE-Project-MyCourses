@@ -1,16 +1,11 @@
 import * as React from "react";
-import {IReleasement, ISelection} from "../../types/entities";
+import {IReleasement} from "../../types/entities";
 import IAPIResponse from "../../api/IAPIResponse";
-import CourseAPI from "../../api/CourseAPI";
-import {Divider, message, Spin} from "antd";
+import {Divider, message} from "antd";
 import ReleasementDisplay from "./ReleasementDisplay";
-import {UserType} from "../../api/UserAPI";
-import SelectionAPI from "../../api/SelectionAPI";
-import ReleasementAPI from "../../api/ReleasementAPI";
+import {UserStateProps} from "../App/GeneralProps";
 
-export interface IReleamentDisplayContainerProps {
-    userType: UserType,
-    email: string | undefined
+export interface IReleasementDisplayContainerProps extends UserStateProps {
     releasementList: IReleasement[]
     /**
      *
@@ -34,8 +29,8 @@ interface IReleasementDisplayContainerState {
     isCourseSelectionSending: boolean
 }
 
-export default class ReleasementDisplayContainer extends React.Component<IReleamentDisplayContainerProps, IReleasementDisplayContainerState> {
-    public constructor(props: IReleamentDisplayContainerProps) {
+export default class ReleasementDisplayContainer extends React.Component<IReleasementDisplayContainerProps, IReleasementDisplayContainerState> {
+    public constructor(props: IReleasementDisplayContainerProps) {
         super(props);
         this.state = {
             // releasementListOfStudent: [],

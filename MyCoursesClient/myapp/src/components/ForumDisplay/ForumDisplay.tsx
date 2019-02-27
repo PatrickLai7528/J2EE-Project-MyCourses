@@ -6,11 +6,10 @@ import IAPIResponse from "../../api/IAPIResponse";
 import {ForumComment} from "./ForumComment";
 import {UserType} from "../../api/UserAPI";
 import {ForumCommentEditor} from "./ForumCommentEditor";
+import {UserStateProps} from "../App/GeneralProps";
 
-export interface IForumDisplayProps {
+export interface IForumDisplayProps extends UserStateProps {
     forum: IForum
-    userType: UserType
-    email: string
     releasement: IReleasement
     /**
      * send Comment callback from App.tsx
@@ -63,7 +62,7 @@ export class ForumDisplay extends React.Component<IForumDisplayProps, IForumDisp
                 {
                     this.props.forum.commentEntityList.map((comment: IComment) => {
                         return (
-                            <div key={comment.cmid} style={{ marginBottom: 5}}>
+                            <div key={comment.cmid} style={{marginBottom: 5}}>
                                 <ForumComment
                                     comment={comment}
                                     userType={this.props.userType}
@@ -89,7 +88,7 @@ export class ForumDisplay extends React.Component<IForumDisplayProps, IForumDisp
                         comment={"BaseComment"}
                         releasement={this.props.releasement}
                         sendComment={this.props.sendComment}
-                        /> : ""
+                    /> : ""
                 }
             </Card>
         )

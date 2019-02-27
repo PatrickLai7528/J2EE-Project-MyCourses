@@ -2,7 +2,7 @@ import * as React from "react";
 import {Divider, Form, Select} from "antd";
 import {FormComponentProps} from "antd/lib/form";
 import UserAPI, {IUserSimpleInfo} from "../../api/UserAPI";
-import {NameFormItem, StudentNoFormItem} from "../SignUpForm/SignUpFormItem";
+import {NameFormItem} from "../SignUpForm/SignUpFormItem";
 import IAPIResponse from "../../api/IAPIResponse";
 
 interface IUserProfileFromState {

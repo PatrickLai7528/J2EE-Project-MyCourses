@@ -3,10 +3,9 @@ import {Component} from "react";
 import './MyContent.css';
 import {Layout} from 'antd';
 // import CompetitionSimpleBlock from "./../CompetitionSimpleBlock/CompetitionSimpleBlock";
-import {Redirect, Route, Switch} from 'react-router-dom'
+import {Route, Switch} from 'react-router-dom'
 import Setting from "../Setting/Setting";
 import ReleasementDisplayContainer from "../ReleasementDisplay/ReleasementDisplayContainer";
-import {UserType} from "../../api/UserAPI";
 import CourseDisplayContainer from "../CourseDisplay/CourseDisplayContainer";
 import {ICourse, IForum, IReleasement, ISelection} from "../../types/entities";
 import IAPIResponse from "../../api/IAPIResponse";
@@ -17,10 +16,9 @@ import {ISendSlideData} from "../../api/SlideAPI";
 import {ISendCommentData, ISendForumData} from "../../api/ForumAPI";
 import {ForumDisplayContainer} from "../ForumDisplay/ForumDisplayContainer";
 import {SelectionDisplayContainer} from "../SelectionDisplay/SelectionDisplayContainer";
+import {UserStateProps} from "../App/GeneralProps";
 
-export interface IMyContentProps {
-    userType: UserType
-    email: string | undefined
+export interface IMyContentProps extends UserStateProps {
     courseList: ICourse[]
     releasementList: IReleasement[]
 

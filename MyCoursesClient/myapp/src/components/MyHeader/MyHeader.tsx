@@ -3,8 +3,6 @@ import {Component} from "react";
 import './MyHeader.css';
 import {Button, Layout, Menu} from 'antd';
 import LogInAndSignUpDrawer from "../LogInAndSignUpDrawer/LogInAndSignUpDrawer";
-import logoUrl from "../../images/ac_logo.jpg";
-import {NavLink} from "react-router-dom";
 import {UserType} from "../../api/UserAPI";
 
 export interface IMyHeaderProps {

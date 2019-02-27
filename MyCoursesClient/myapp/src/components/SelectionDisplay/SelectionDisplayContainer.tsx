@@ -1,12 +1,9 @@
 import * as React from "react";
 import {SelectionDisplay} from "./SelectionDisplay";
-import {UserType} from "../../api/UserAPI";
 import {IForum, ISelection} from "../../types/entities";
-import {Divider} from "antd";
+import {UserStateProps} from "../App/GeneralProps";
 
-export interface ISelectionDisplayContainerProps {
-    userType: UserType
-    email: string
+export interface ISelectionDisplayContainerProps extends UserStateProps {
 
     selection: ISelection
     setDisplayingForum: (forum: IForum) => void

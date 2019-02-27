@@ -5,10 +5,9 @@ import {IForum, IReleasement} from "../../types/entities";
 import {Divider} from "antd";
 import {ISendCommentData} from "../../api/ForumAPI";
 import IAPIResponse from "../../api/IAPIResponse";
+import {UserStateProps} from "../App/GeneralProps";
 
-export interface IForumDisplayContainerProps {
-    userType: UserType
-    email: string
+export interface IForumDisplayContainerProps extends UserStateProps{
     releasement: IReleasement
     forum: IForum
     /**

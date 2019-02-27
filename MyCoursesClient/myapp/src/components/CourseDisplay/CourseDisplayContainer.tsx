@@ -7,10 +7,10 @@ import IAPIResponse from "../../api/IAPIResponse";
 import {fromApprovalStateToChinese} from "../../types/enums";
 import ReleaseCourseFormContainer from "../ReleaseCourseForm/ReleaseCourseFormContainer";
 import {ISendReleasementData} from "../../api/CourseAPI";
+import {UserStateProps} from "../App/GeneralProps";
 
-export interface ICourseDisplayContainerProps {
-    userType: UserType
-    email?: string
+export interface ICourseDisplayContainerProps extends UserStateProps {
+
     courseList: ICourse[]
     /**
      *

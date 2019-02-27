@@ -5,15 +5,14 @@ import {ForumCommentEditor} from "./ForumCommentEditor";
 import {UserType} from "../../api/UserAPI";
 import {ISendCommentData} from "../../api/ForumAPI";
 import IAPIResponse from "../../api/IAPIResponse";
+import {UserStateProps} from "../App/GeneralProps";
 
 const moment = require("moment");
 
-export interface IForumCommentProps {
+export interface IForumCommentProps extends UserStateProps {
     comment: IComment
     children?: React.ReactNode[]
 
-    userType: UserType
-    email: string
     forum: IForum
     releasement: IReleasement
     /**
@@ -62,7 +61,7 @@ export class ForumComment extends React.Component<IForumCommentProps, IForumComm
                          }
                          author={<a>來自: {this.getMessageFromEmail(this.props.comment)}</a>}
                 >{
-                    this.state.enabledEditor ?
+                    this.state.enabledEditor && this.props.email ?
                         <ForumCommentEditor
                             sendComment={this.props.sendComment}
                             email={this.props.email}

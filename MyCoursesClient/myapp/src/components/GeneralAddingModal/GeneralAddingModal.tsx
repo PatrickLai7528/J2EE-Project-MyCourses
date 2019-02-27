@@ -9,12 +9,13 @@ import {ISendSlideData} from "../../api/SlideAPI";
 import {ForumAddingFormContainer} from "../ForumAddingForm/ForumAddingFormContainer";
 import {ISendForumData} from "../../api/ForumAPI";
 import {UserType} from "../../api/UserAPI";
+import {UserStateProps} from "../App/GeneralProps";
 
 export enum FormOption {
     ASSIGNMENT, SLIDE, FORUM, SUMBIT_ASSIGNMENT
 }
 
-export interface IGeneralAddingModalProps {
+export interface IGeneralAddingModalProps extends UserStateProps {
     mode: FormOption
 
     userType: UserType
