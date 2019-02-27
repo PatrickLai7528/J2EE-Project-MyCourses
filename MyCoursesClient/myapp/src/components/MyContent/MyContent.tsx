@@ -2,21 +2,19 @@ import * as React from "react";
 import {Component} from "react";
 import './MyContent.css';
 import {Layout} from 'antd';
-// import CompetitionSimpleBlock from "./../CompetitionSimpleBlock/CompetitionSimpleBlock";
 import {Route, Switch} from 'react-router-dom'
 import Setting from "../Setting/Setting";
 import ReleasementDisplayContainer from "../ReleasementDisplay/ReleasementDisplayContainer";
 import CourseDisplayContainer from "../CourseDisplay/CourseDisplayContainer";
 import {ICourse, IForum, IReleasement, ISelection} from "../../types/entities";
-import IAPIResponse from "../../api/IAPIResponse";
-import {ISendReleasementData} from "../../api/CourseAPI";
 import ReleasementManageContainer from "../ReleasementManage/ReleasementManageContainer";
-import {ISendCommentData, ISendForumData} from "../../api/ForumAPI";
 import {ForumDisplayContainer} from "../ForumDisplay/ForumDisplayContainer";
 import {SelectionDisplayContainer} from "../SelectionDisplay/SelectionDisplayContainer";
 import {
     ISendAddCourseProps,
-    ISendAssignmentProps, ISendCourseReleaseProps,
+    ISendAssignmentProps, ISendCommentProps,
+    ISendCourseReleaseProps,
+    ISendCourseSelectionProps,
     ISendForumProps,
     ISendSlideProps,
     UserStateProps
@@ -24,7 +22,8 @@ import {
 
 export interface IMyContentProps
     extends UserStateProps, ISendAssignmentProps,
-        ISendSlideProps, ISendForumProps,ISendAddCourseProps, ISendCourseReleaseProps {
+        ISendSlideProps, ISendForumProps, ISendAddCourseProps,
+        ISendCourseReleaseProps, ISendCourseSelectionProps, ISendCommentProps {
     courseList: ICourse[]
     releasementList: IReleasement[]
 
@@ -38,42 +37,6 @@ export interface IMyContentProps
     displayingSelection?: ISelection
 
     setDisplayingForum: (forum: IForum) => void
-
-    /**
-     *
-     * @param email
-     * @param rid
-     * @param onBefore
-     * @param onSuccess
-     * @param onFail
-     * @param onError
-     */
-    sendCourseSelection: (email: string, rid: number,
-                          onBefore?: () => void,
-                          onSuccess?: (response: IAPIResponse<any>) => void,
-                          onFail?: (response: IAPIResponse<any>) => void,
-                          onError?: (e: any) => void) => void
-
-
-    /**
-     * send assignment callback from App.tsx
-     * @param data
-     * @param onBefore
-     * @param onSuccess
-     * @param onFail
-     * @param onError
-     */
-    sendForum: (data: ISendForumData, onBefore?: () => void, onSuccess?: (response: IAPIResponse<any>) => void, onFail?: (response: IAPIResponse<any>) => void, onError?: (e: any) => void) => void
-
-    /**
-     * send Comment callback from App.tsx
-     * @param data
-     * @param onBefore
-     * @param onSuccess
-     * @param onFail
-     * @param onError
-     */
-    sendComment: (data: ISendCommentData, onBefore?: () => void, onSuccess?: (response: IAPIResponse<any>) => void, onFail?: (response: IAPIResponse<any>) => void, onError?: (e: any) => void) => void
 
 }
 

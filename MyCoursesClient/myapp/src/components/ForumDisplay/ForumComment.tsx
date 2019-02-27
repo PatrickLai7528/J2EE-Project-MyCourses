@@ -2,28 +2,16 @@ import * as React from "react";
 import {Comment} from "antd";
 import {IComment, IForum, IReleasement} from "../../types/entities";
 import {ForumCommentEditor} from "./ForumCommentEditor";
-import {UserType} from "../../api/UserAPI";
-import {ISendCommentData} from "../../api/ForumAPI";
-import IAPIResponse from "../../api/IAPIResponse";
-import {UserStateProps} from "../App/GeneralProps";
+import {ISendCommentProps, UserStateProps} from "../App/GeneralProps";
 
 const moment = require("moment");
 
-export interface IForumCommentProps extends UserStateProps {
+export interface IForumCommentProps extends UserStateProps, ISendCommentProps {
     comment: IComment
     children?: React.ReactNode[]
 
     forum: IForum
     releasement: IReleasement
-    /**
-     * send Comment callback from App.tsx
-     * @param data
-     * @param onBefore
-     * @param onSuccess
-     * @param onFail
-     * @param onError
-     */
-    sendComment: (data: ISendCommentData, onBefore?: () => void, onSuccess?: (response: IAPIResponse<any>) => void, onFail?: (response: IAPIResponse<any>) => void, onError?: (e: any) => void) => void
 }
 
 interface IForumCommentState {

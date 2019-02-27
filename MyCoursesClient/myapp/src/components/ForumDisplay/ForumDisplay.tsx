@@ -1,25 +1,13 @@
 import * as React from "react";
 import {IComment, IForum, IReleasement} from "../../types/entities";
-import {Card, Empty} from "antd";
-import {ISendCommentData} from "../../api/ForumAPI";
-import IAPIResponse from "../../api/IAPIResponse";
+import {Card} from "antd";
 import {ForumComment} from "./ForumComment";
-import {UserType} from "../../api/UserAPI";
 import {ForumCommentEditor} from "./ForumCommentEditor";
-import {UserStateProps} from "../App/GeneralProps";
+import {ISendCommentProps, UserStateProps} from "../App/GeneralProps";
 
-export interface IForumDisplayProps extends UserStateProps {
+export interface IForumDisplayProps extends UserStateProps, ISendCommentProps {
     forum: IForum
     releasement: IReleasement
-    /**
-     * send Comment callback from App.tsx
-     * @param data
-     * @param onBefore
-     * @param onSuccess
-     * @param onFail
-     * @param onError
-     */
-    sendComment: (data: ISendCommentData, onBefore?: () => void, onSuccess?: (response: IAPIResponse<any>) => void, onFail?: (response: IAPIResponse<any>) => void, onError?: (e: any) => void) => void
 }
 
 const showBelowComment = (commentList: IComment[] | undefined, props: IForumDisplayProps): React.ReactNode => {

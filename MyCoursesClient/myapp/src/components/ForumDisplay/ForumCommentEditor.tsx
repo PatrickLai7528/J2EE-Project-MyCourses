@@ -5,23 +5,14 @@ import {ISendCommentData} from "../../api/ForumAPI";
 import IAPIResponse from "../../api/IAPIResponse";
 import {UserType} from "../../api/UserAPI";
 import {IComment, IForum, IReleasement} from "../../types/entities";
-import {UserStateProps} from "../App/GeneralProps";
+import {ISendCommentProps, UserStateProps} from "../App/GeneralProps";
 
 export type BaseComment = "BaseComment";
 
-export interface IForumCommentEditorProps extends UserStateProps {
+export interface IForumCommentEditorProps extends UserStateProps, ISendCommentProps {
     forum: IForum
     comment: IComment | BaseComment
     releasement: IReleasement
-    /**
-     * send Comment callback from App.tsx
-     * @param data
-     * @param onBefore
-     * @param onSuccess
-     * @param onFail
-     * @param onError
-     */
-    sendComment: (data: ISendCommentData, onBefore?: () => void, onSuccess?: (response: IAPIResponse<any>) => void, onFail?: (response: IAPIResponse<any>) => void, onError?: (e: any) => void) => void
 }
 
 interface IForumCommentEditorState {
