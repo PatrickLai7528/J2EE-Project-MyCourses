@@ -1,7 +1,6 @@
 import * as React from "react";
 import {NavLink} from "react-router-dom";
 import {Icon, Layout, Menu} from "antd";
-import {UserType} from "../../api/UserAPI";
 import {IReleasement} from "../../types/entities";
 import {UserStateProps} from "../App/GeneralProps";
 
@@ -12,8 +11,6 @@ export interface ITeacherSiderProps extends UserStateProps {
     onReleasementClick: (releasement: IReleasement) => void;
 }
 
-interface ITeacherSiderState {
-}
 
 export const TeacherSider: React.FunctionComponent<ITeacherSiderProps> = (props: ITeacherSiderProps) => {
     return (
@@ -26,7 +23,6 @@ export const TeacherSider: React.FunctionComponent<ITeacherSiderProps> = (props:
             <Menu
                 mode="inline"
                 defaultOpenKeys={["types"]}
-                // style={{height: '100%', borderRight: 0}}
             >
                 <Menu.Item key={"calendar"}>
                     <NavLink exact={true} to="/calendar">

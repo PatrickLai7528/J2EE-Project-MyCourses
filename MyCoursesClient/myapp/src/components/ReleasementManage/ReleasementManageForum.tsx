@@ -10,7 +10,6 @@ export interface IReleasementManageForumProps {
 }
 
 export const ReleasementManageForum: React.FunctionComponent<IReleasementManageForumProps> = (props: IReleasementManageForumProps) => {
-    console.log(props);
     return (
         <Card title={"討論區"} style={{borderRadius: 10}} extra={<a onClick={props.onClick}>發起討論</a>}>
             {

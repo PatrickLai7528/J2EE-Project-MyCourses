@@ -174,27 +174,6 @@ export class AttachmentAssignmentAddingFormItem extends React.Component<IAttachm
     }
 }
 
-//
-// export const AttachmentAssignmentAddingFormItem: React.FunctionComponent<IGeneralAssignmentAddingFormItemProps> = (props: IGeneralAssignmentAddingFormItemProps) => {
-//     return (
-//         <Form.Item
-//             label="附件"
-//         >
-//             {props.getFieldDecorator('attachment')(
-//                 <Upload
-//                     beforeUpload={}
-//                 >
-//                     <Button>
-//                         <Icon type="upload"/> 點擊上傳
-//                     </Button>
-//                 </Upload>
-//             )}
-//
-//         </Form.Item>
-//     )
-// };
-
-
 export const ByteUnitAssignmentAddingFormItem: React.FunctionComponent<IGeneralAssignmentAddingFormItemProps> = (props: IGeneralAssignmentAddingFormItemProps) => {
     return (
         <Form.Item

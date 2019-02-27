@@ -50,18 +50,9 @@ export default class MyHeader extends Component<IMyHeaderProps, IMyHeaderState> 
     constructor(props: IMyHeaderProps) {
         super(props);
         this.state = {
-            // enableAddingDrawer: false,
             enabledLogInDrawer: false
         }
     }
-
-    // private openCompetitionAddingDrawer(): void {
-    //     this.setState({enableAddingDrawer: true})
-    // }
-
-    // private closeCompetitionAddingDrawer(): void {
-    //     this.setState({enableAddingDrawer: false});
-    // }
 
     private closeLogInDrawer(): void {
         this.setState({enabledLogInDrawer: false})
@@ -71,11 +62,6 @@ export default class MyHeader extends Component<IMyHeaderProps, IMyHeaderState> 
         return (
             <Layout.Header>
                 <div className="header__box">
-                    <div className="logo__box">
-                        {/*<NavLink to={"/home"}>*/}
-                        {/*<img width={"150px"} src={logoUrl} alt={"logo"}/>*/}
-                        {/*</NavLink>*/}
-                    </div>
                     <div className="actions__box">
                         <Menu
                             theme="dark"
@@ -83,12 +69,6 @@ export default class MyHeader extends Component<IMyHeaderProps, IMyHeaderState> 
                             style={{lineHeight: '64px', textAlign: "right"}}
                             selectable={false}
                         >
-                            {/*<Menu.Item key="1">*/}
-                            {/*<Button type="primary" icon="upload"*/}
-                            {/*onClick={this.openCompetitionAddingDrawer.bind(this)} htmlType={"button"}>*/}
-                            {/*發佈比賽*/}
-                            {/*</Button>*/}
-                            {/*</Menu.Item>*/}
                             <Menu.Item key="2">
                                 <Button type="primary" icon="login"
                                         onClick={() => {
@@ -100,13 +80,6 @@ export default class MyHeader extends Component<IMyHeaderProps, IMyHeaderState> 
                         </Menu>
                     </div>
                 </div>
-                {/*{*/}
-                {/*this.state.enableAddingDrawer ?*/}
-                {/*<CompetitionAddingDrawer*/}
-                {/*visible={this.state.enableAddingDrawer}*/}
-                {/*onClose={this.closeCompetitionAddingDrawer.bind(this)}*/}
-                {/*/> : ""*/}
-                {/*}*/}
                 {
                     this.state.enabledLogInDrawer ?
                         <LogInAndSignUpDrawer

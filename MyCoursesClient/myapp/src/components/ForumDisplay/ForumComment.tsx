@@ -27,7 +27,7 @@ export class ForumComment extends React.Component<IForumCommentProps, IForumComm
         this.state = {enabledEditor: false, showBelowComment: true}
     }
 
-    private getMessageFromEmail(comment: IComment): string {
+    private static getMessageFromEmail(comment: IComment): string {
         return comment.messageFromTeacher ? comment.messageFromTeacher.teacherEmail :
             comment.messageFromStudent ? comment.messageFromStudent.studentEmail : ""
     };
@@ -47,7 +47,7 @@ export class ForumComment extends React.Component<IForumCommentProps, IForumComm
                                  </span>
                              ]
                          }
-                         author={<a>來自: {this.getMessageFromEmail(this.props.comment)}</a>}
+                         author={<a>來自: {ForumComment.getMessageFromEmail(this.props.comment)}</a>}
                 >{
                     this.state.enabledEditor && this.props.email ?
                         <ForumCommentEditor

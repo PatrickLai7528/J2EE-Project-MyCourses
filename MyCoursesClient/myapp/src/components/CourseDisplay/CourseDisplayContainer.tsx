@@ -89,7 +89,6 @@ export default class CourseDisplayContainer extends React.Component<ICourseDispl
 
     public handleReleaseCourseOK(): void {
         this.setState({isTimeToSubmitReleaseCourse: true})
-        // this.setState({releaseCourseModalVisible: false})
     }
 
     public handleReleaseCourseCancel(): void {

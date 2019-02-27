@@ -20,8 +20,6 @@ export default class ReleasementDisplayContainer extends React.Component<IReleas
     public constructor(props: IReleasementDisplayContainerProps) {
         super(props);
         this.state = {
-            // releasementListOfStudent: [],
-            // isLoading: false,
             isCourseSelectionSending: false
         }
     }
@@ -56,7 +54,7 @@ export default class ReleasementDisplayContainer extends React.Component<IReleas
                             const data: ISendSelectionData = {
                                 studentEmail: this.props.email,
                                 rid: releasement.rid
-                            }
+                            };
                             this.props.sendCourseSelection(data, {
                                 onBefore,
                                 onSuccess,
