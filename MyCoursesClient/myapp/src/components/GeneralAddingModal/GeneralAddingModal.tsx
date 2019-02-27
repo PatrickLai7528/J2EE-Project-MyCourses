@@ -11,7 +11,7 @@ import {ISendForumData} from "../../api/ForumAPI";
 import {UserType} from "../../api/UserAPI";
 
 export enum FormOption {
-    ASSIGNMENT, SLIDE, FORUM
+    ASSIGNMENT, SLIDE, FORUM, SUMBIT_ASSIGNMENT
 }
 
 export interface IGeneralAddingModalProps {

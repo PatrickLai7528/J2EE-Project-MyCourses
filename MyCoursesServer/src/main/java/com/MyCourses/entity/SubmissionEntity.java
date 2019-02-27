@@ -6,9 +6,11 @@ package com.MyCourses.entity;/*
  * @ProjectName MyCoursesServer
  */
 
+import com.MyCourses.entity.converter.DetailDateConverter;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Data
 @Entity
@@ -16,6 +18,7 @@ import javax.persistence.*;
 public class SubmissionEntity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "smid")
     private Long smid;
 
@@ -25,4 +28,8 @@ public class SubmissionEntity {
 
     @Column(name = "file_path")
     private String filePath;
+
+    @Column(name = "submit_time")
+    @Convert(converter = DetailDateConverter.class)
+    private Date submitTime;
 }

@@ -3,7 +3,7 @@ import {Component} from "react";
 import './MyContent.css';
 import {Layout} from 'antd';
 // import CompetitionSimpleBlock from "./../CompetitionSimpleBlock/CompetitionSimpleBlock";
-import {Route, Switch} from 'react-router-dom'
+import {Redirect, Route, Switch} from 'react-router-dom'
 import Setting from "../Setting/Setting";
 import ReleasementDisplayContainer from "../ReleasementDisplay/ReleasementDisplayContainer";
 import {UserType} from "../../api/UserAPI";
