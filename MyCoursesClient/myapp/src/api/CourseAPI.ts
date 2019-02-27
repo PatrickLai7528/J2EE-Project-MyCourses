@@ -17,6 +17,11 @@ export interface ISendReleasementData {
     limitNumber: number
 }
 
+export interface ISendAddCourseData {
+    courseName: string,
+    teacherEmail: string
+}
+
 export default class CourseAPI {
     private static instance: CourseAPI;
 
@@ -29,12 +34,12 @@ export default class CourseAPI {
         return CourseAPI.instance;
     }
 
-    public sendCourse(courseName: string, teacherEmail: string): Promise<IAPIResponse<any>> {
+    public sendCourse(data: ISendAddCourseData): Promise<IAPIResponse<any>> {
         return new Promise<IAPIResponse<any>>((resolve, reject) => {
             const url: string =
                 NetworkSettings.getOpenNetworkIP()
-                + "/course/add?teacherEmail=" + teacherEmail
-                + "&courseName=" + courseName;
+                + "/course/add?teacherEmail=" + data.teacherEmail
+                + "&courseName=" + data.courseName;
             axios.post(url)
                 .then((response: any) => {
                     resolve({

@@ -6,28 +6,12 @@ import {UserType} from "../../api/UserAPI";
 import IAPIResponse from "../../api/IAPIResponse";
 import {fromApprovalStateToChinese} from "../../types/enums";
 import ReleaseCourseFormContainer from "../ReleaseCourseForm/ReleaseCourseFormContainer";
-import {ISendReleasementData} from "../../api/CourseAPI";
-import {UserStateProps} from "../App/GeneralProps";
+import {ISendAddCourseData, ISendReleasementData} from "../../api/CourseAPI";
+import {ISendAddCourseProps, UserStateProps} from "../App/GeneralProps";
 
-export interface ICourseDisplayContainerProps extends UserStateProps {
+export interface ICourseDisplayContainerProps extends UserStateProps, ISendAddCourseProps {
 
     courseList: ICourse[]
-    /**
-     *
-     * @param courseName
-     * @param email
-     * @param onBefore
-     * @param onSuccess
-     * @param onFail
-     * @param onError
-     */
-    sendAddCourse: (
-        courseName: string,
-        email: string,
-        onBefore?: () => void,
-        onSuccess?: (response: IAPIResponse<any>) => void,
-        onFail?: (response: IAPIResponse<any>) => void,
-        onError?: (e: any) => void) => void
 
     sendCourseRelease: (
         data: ISendReleasementData,
@@ -74,9 +58,12 @@ export default class CourseDisplayContainer extends React.Component<ICourseDispl
                 console.log("email 為空");
                 return;
             }
+            const data: ISendAddCourseData = {
+                courseName: this.state.addingCourseName,
+                teacherEmail: this.props.email
+            };
             this.props.sendAddCourse(
-                this.state.addingCourseName,
-                this.props.email,
+                data,
                 // onBefore
                 () => {
                     this.setState({addCourseConfirmLoading: true})

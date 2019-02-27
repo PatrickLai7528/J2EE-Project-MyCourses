@@ -7,7 +7,7 @@ import MyContent from "./../MyContent/MyContent";
 import StudentSider from "../StudentSider/StudentSider";
 import MyHeader from "./../MyHeader/MyHeader";
 import {UserType} from "../../api/UserAPI";
-import CourseAPI, {ISendReleasementData} from "../../api/CourseAPI";
+import CourseAPI, {ISendAddCourseData, ISendReleasementData} from "../../api/CourseAPI";
 import IAPIResponse from "../../api/IAPIResponse";
 import {ICourse, IForum, IReleasement, ISelection} from "../../types/entities";
 import SelectionAPI from "../../api/SelectionAPI";
@@ -109,12 +109,12 @@ export default class App extends Component<IAppProps, IAppState> {
     }
 
 
-    private sendAddCourse(courseName: string, email: string,
+    private sendAddCourse(data: ISendAddCourseData,
                           onBefore?: () => void,
                           onSuccess?: (response: IAPIResponse<any>) => void,
                           onFail?: (response: IAPIResponse<any>) => void, onError?: (e: any) => void) {
         if (onBefore) onBefore();
-        CourseAPI.getInstance().sendCourse(courseName, email)
+        CourseAPI.getInstance().sendCourse(data)
             .then((response: IAPIResponse<any>) => {
                 if (response.isSuccess) {
                     if (onSuccess)
@@ -123,7 +123,7 @@ export default class App extends Component<IAppProps, IAppState> {
                         this.getCourseOf(this.state.email)
                 } else if (onFail)
                     onFail(response);
-                this.getCourseOf(email);
+                this.getCourseOf(data.teacherEmail);
             })
             .catch((e: any) => {
                 console.log(e);
