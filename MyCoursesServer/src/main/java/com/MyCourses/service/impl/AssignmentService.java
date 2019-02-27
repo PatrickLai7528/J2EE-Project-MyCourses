@@ -46,6 +46,7 @@ public class AssignmentService implements IAssignmentService {
 
         SlideEntity slideEntity = new SlideEntity();
 
+        slideEntity.setUploadTime(new Date());
         slideEntity.setTitle("附件");
         slideEntity.setFilePath(fileName);
 
@@ -54,6 +55,7 @@ public class AssignmentService implements IAssignmentService {
         assignmentEntity.setDdl(ddl);
         assignmentEntity.setFileSize(fileSize);
         assignmentEntity.setSlideEntity(slideEntity);
+        assignmentEntity.setAddTime(new Date());
 
         List<AssignmentEntity> fromReleasement = releasementEntity.getAssignmentEntityList();
         if (fromReleasement == null)

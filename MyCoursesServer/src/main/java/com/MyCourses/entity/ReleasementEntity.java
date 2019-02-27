@@ -9,6 +9,7 @@ package com.MyCourses.entity;
 
 import com.MyCourses.entity.converter.ApprovalStateConverter;
 import com.MyCourses.entity.converter.DateConverter;
+import com.MyCourses.entity.converter.DetailDateConverter;
 import com.MyCourses.entity.enums.ApprovalState;
 import lombok.Data;
 
@@ -59,6 +60,10 @@ public class ReleasementEntity implements Serializable {
     @Column(name = "dead_time")
     @Convert(converter = DateConverter.class)
     private Date deadTime;
+
+    @Column(name = "release_time")
+    @Convert(converter = DetailDateConverter.class)
+    private Date releaseTime;
 
     @Column(name = "limit_number")
     private int limitNumber;

@@ -8,10 +8,12 @@ package com.MyCourses.entity;
  * @ProjectName server
  */
 
+import com.MyCourses.entity.converter.DetailDateConverter;
 import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -25,6 +27,11 @@ public class ForumEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "fid")
     private Long fid;
+
+    @Column(name = "add_time")
+    @Convert(converter = DetailDateConverter.class)
+    private Date addTime;
+
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "student_email")

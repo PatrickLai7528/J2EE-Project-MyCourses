@@ -9,11 +9,13 @@ package com.MyCourses.entity;
  */
 
 import com.MyCourses.entity.converter.ApprovalStateConverter;
+import com.MyCourses.entity.converter.DetailDateConverter;
 import com.MyCourses.entity.enums.ApprovalState;
 import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -30,6 +32,10 @@ public class CourseEntity implements Serializable {
 
     @Column(name = "released")
     private Boolean isReleased;
+
+    @Column(name = "add_time")
+    @Convert(converter = DetailDateConverter.class)
+    private Date addTime;
 
     @Column(name = "name")
     private String name;

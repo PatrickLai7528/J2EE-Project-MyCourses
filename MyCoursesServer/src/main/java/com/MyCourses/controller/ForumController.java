@@ -56,11 +56,10 @@ public class ForumController {
                                        @RequestParam(name = "from") String messageFrom,
                                        @RequestParam(name = "content") String content,
                                        @RequestParam(name = "rid") Long rid,
-                                       @RequestParam(name = "replyTo", required = false) Long replyToCommentId,
-                                       @RequestParam(name = "at") Long dateTime
+                                       @RequestParam(name = "replyTo", required = false) Long replyToCommentId
     ) {
         try {
-            forumService.comment(rid, fid, replyToCommentId, messageFrom, content, new Date(dateTime));
+            forumService.comment(rid, fid, replyToCommentId, messageFrom, content);
             return ResponseUtils.ok("操作成功");
         } catch (ForumNotExistException | ReleasementNotExistException e) {
             e.printStackTrace();

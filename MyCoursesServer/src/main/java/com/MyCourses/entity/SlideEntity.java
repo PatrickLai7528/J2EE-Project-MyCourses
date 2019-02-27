@@ -8,10 +8,12 @@ package com.MyCourses.entity;
  * @ProjectName server
  */
 
+import com.MyCourses.entity.converter.DetailDateConverter;
 import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Objects;
 
 @Entity
@@ -31,6 +33,11 @@ public class SlideEntity implements Serializable {
 
     @Column(name = "file_path")
     private String filePath;
+
+    @Column(name = "upload_time")
+    @Convert(converter = DetailDateConverter.class)
+    private Date uploadTime;
+
 //    private CourseEntity courseEntity;
 ////
 //    public SlideEntity() {

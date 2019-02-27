@@ -74,8 +74,7 @@ public class ForumService implements IForumService {
     }
 
     @Override
-    public void comment(Long rid, Long fid, Long replyToCommentId, String messageFrom, String content,
-                        Date commentTime) throws ForumNotExistException, ReleasementNotExistException {
+    public void comment(Long rid, Long fid, Long replyToCommentId, String messageFrom, String content) throws ForumNotExistException, ReleasementNotExistException {
         ReleasementEntity releasementEntity = releasementDAO.retrieveByRid(rid);
         if (releasementEntity == null)
             throw new ReleasementNotExistException();
@@ -95,7 +94,7 @@ public class ForumService implements IForumService {
                 if (messageFromStudent != null) commentEntity.setMessageFromStudent(messageFromStudent);
 
                 commentEntity.setContent(content);
-                commentEntity.setCommentTime(commentTime);
+                commentEntity.setCommentTime(new Date());
 
                 List<CommentEntity> commentEntityList = forumEntity.getCommentEntityList();
                 if (commentEntityList == null) commentEntityList = new ArrayList<>();

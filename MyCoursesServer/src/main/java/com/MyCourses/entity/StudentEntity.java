@@ -1,12 +1,11 @@
 package com.MyCourses.entity;
 
+import com.MyCourses.entity.converter.DetailDateConverter;
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 /*
  * @PackageName entity
@@ -22,12 +21,18 @@ import java.io.Serializable;
 public final class StudentEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
+
     @Id
     @Column(name = "student_email")
     private String studentEmail;
 
     @Column(name = "password")
     private String password;
+
+    @Column(name = "registry_time")
+    @Convert(converter = DetailDateConverter.class)
+    private Date registryTime;
+
 
     @Column(name = "name")
     private String name;

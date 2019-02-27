@@ -15,6 +15,7 @@ import com.MyCourses.service.IStudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -38,6 +39,7 @@ public class StudentService implements IStudentService {
     public void registry(StudentEntity studentEntity) throws StudentRepeatedException {
         if (studentDAO.exists(studentEntity))
             throw new StudentRepeatedException();
+        studentEntity.setRegistryTime(new Date());
         studentEntity.setPassword(encryptService.encrypt(studentEntity.getPassword()));
         studentDAO.create(studentEntity);
     }

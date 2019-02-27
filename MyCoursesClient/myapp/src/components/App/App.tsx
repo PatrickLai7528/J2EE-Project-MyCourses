@@ -121,6 +121,8 @@ export default class App extends Component<IAppProps, IAppState> {
                 if (response.isSuccess) {
                     if (onSuccess)
                         onSuccess(response);
+                    if (this.state.email)
+                        this.getCourseOf(this.state.email)
                 } else if (onFail)
                     onFail(response);
                 this.getCourseOf(email);
@@ -158,8 +160,8 @@ export default class App extends Component<IAppProps, IAppState> {
             .then((response: IAPIResponse<any>) => {
                 if (response.isSuccess) {
                     if (onSuccess) onSuccess(response);
-                    // refresh teacher sider by fetching releasement
-                    if (this.state.email) this.getReleasementOf(this.state.email);
+                    // refresh teacher course table by fetching releasement
+                    if (this.state.email) this.getCourseOf(this.state.email);
                 } else {
                     if (onFail)
                         onFail(response);

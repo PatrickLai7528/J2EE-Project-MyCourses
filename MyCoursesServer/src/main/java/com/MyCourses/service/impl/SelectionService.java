@@ -11,7 +11,6 @@ import com.MyCourses.dao.ISelectionDAO;
 import com.MyCourses.dao.IStudentDAO;
 import com.MyCourses.entity.ReleasementEntity;
 import com.MyCourses.entity.SelectionEntity;
-import com.MyCourses.entity.TeacherEntity;
 import com.MyCourses.entity.enums.SelectionState;
 import com.MyCourses.entity.StudentEntity;
 import com.MyCourses.exceptions.ReleasementNotExistException;
@@ -21,6 +20,7 @@ import com.MyCourses.service.ISelectionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -38,7 +38,7 @@ public class SelectionService implements ISelectionService {
     }
 
 
-    private boolean isAlreadSelected(StudentEntity studentEntity, ReleasementEntity releasementEntity) {
+    private boolean isAlreadySelected(StudentEntity studentEntity, ReleasementEntity releasementEntity) {
         List<SelectionEntity> selectionEntityList = selectionDAO.retrieveByReleasement(releasementEntity);
         for (SelectionEntity selectionEntity : selectionEntityList) {
             if (studentEntity.getStudentEmail().equals(selectionEntity.getStudentEntity().getStudentEmail()))
@@ -56,7 +56,7 @@ public class SelectionService implements ISelectionService {
             throw new StudentNotExistException();
         if (releasementEntity == null)
             throw new ReleasementNotExistException();
-        if (isAlreadSelected(studentEntity, releasementEntity))
+        if (isAlreadySelected(studentEntity, releasementEntity))
             throw new RepeatSelectCourseException();
 
         List<SelectionEntity> selectionEntities = selectionDAO.retrieveByReleasement(releasementEntity);
@@ -66,6 +66,7 @@ public class SelectionService implements ISelectionService {
         selectionEntity.setStudentEntity(studentEntity);
         selectionEntity.setReleasementEntity(releasementEntity);
         selectionEntity.setSelectionState(selectionState);
+        selectionEntity.setSelectTime(new Date());
         selectionDAO.create(selectionEntity);
         return selectionState;
     }

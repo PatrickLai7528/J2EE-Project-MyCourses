@@ -36,7 +36,6 @@ export default class ForumAPI {
                 "?rid=" + data.rid +
                 "&from=" + data.messageFrom +
                 "&fid=" + data.fid +
-                "&at=" + new Date().getTime() +
                 "&content=" + data.content + (data.replyTo ? "&replyTo=" + data.replyTo : "");
             axios.post(url)
                 .then((response: any) => {

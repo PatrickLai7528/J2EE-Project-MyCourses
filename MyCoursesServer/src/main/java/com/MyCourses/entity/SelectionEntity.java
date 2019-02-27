@@ -6,12 +6,14 @@ package com.MyCourses.entity;/*
  * @ProjectName MyCoursesServer
  */
 
+import com.MyCourses.entity.converter.DetailDateConverter;
 import com.MyCourses.entity.converter.SelectionStateConverter;
 import com.MyCourses.entity.enums.SelectionState;
 import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 @Entity
 @Table(name = "selection_entity")
@@ -24,6 +26,10 @@ public class SelectionEntity implements Serializable {
     @Column(name = "slid")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long slid;
+
+    @Column(name = "select_time")
+    @Convert(converter = DetailDateConverter.class)
+    private Date selectTime;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "rid")

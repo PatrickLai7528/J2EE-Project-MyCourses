@@ -1,5 +1,6 @@
 package com.MyCourses.service.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import com.MyCourses.entity.TeacherEntity;
@@ -40,6 +41,7 @@ public class TeacherService implements ITeacherService {
         if (teacherDAO.exist(teacherEntity))
             throw new TeacherRepeatedException();
 
+        teacherEntity.setRegistryTime(new Date());
         teacherEntity.setPassword(encryptService.encrypt(teacherEntity.getPassword()));
         teacherDAO.create(teacherEntity);
     }

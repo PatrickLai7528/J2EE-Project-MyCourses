@@ -8,6 +8,7 @@ package com.MyCourses.entity;
  */
 
 import com.MyCourses.entity.converter.DateConverter;
+import com.MyCourses.entity.converter.DetailDateConverter;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -29,6 +30,10 @@ public class AssignmentEntity implements Serializable {
 
     @Column(name = "title")
     private String title;
+
+    @Column(name = "add_time")
+    @Convert(converter = DetailDateConverter.class)
+    private Date addTime;
 
     @Embedded
     private FileSize fileSize;

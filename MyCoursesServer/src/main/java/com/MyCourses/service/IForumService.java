@@ -16,5 +16,5 @@ public interface IForumService {
 
     void addForum(String topic, String questioner, Long rid) throws ReleasementNotExistException;
 
-    void comment(Long rid, Long fid, Long replyCommentId, String messageFrom, String content, Date commentTime) throws ReleasementNotExistException, ForumNotExistException;
+    void comment(Long rid, Long fid, Long replyCommentId, String messageFrom, String content) throws ReleasementNotExistException, ForumNotExistException;
 }

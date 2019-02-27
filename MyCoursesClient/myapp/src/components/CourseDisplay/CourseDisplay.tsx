@@ -56,7 +56,7 @@ const CourseDisplay: React.FunctionComponent<ICourseDisplayProps> = (props: ICou
             }
             return <span>
                         <Tag color={color}>{fromApprovalStateToChinese(state)}</Tag>
-                        <Tag color={"#108ee9"}>{course.isReleased ? "已發佈" : "未發佈"}</Tag>
+                        <Tag color={course.isReleased ? "#f50" : "#108ee9"}>{course.isReleased ? "已發佈" : "未發佈"}</Tag>
                     </span>
         }
     }, {

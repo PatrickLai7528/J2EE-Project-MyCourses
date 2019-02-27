@@ -10,6 +10,7 @@ export interface IStudent {
     password: string,
     studentNo: string,
     name: string
+    registryTime: number
 }
 
 export interface ITeacher {
@@ -17,6 +18,7 @@ export interface ITeacher {
     name: string,
     password: string,
     teacherNo: string
+    registry: number
 }
 
 export interface ICourse {
@@ -25,6 +27,7 @@ export interface ICourse {
     teacherEntity: ITeacher
     approvalState: ApprovalState,
     isReleased: boolean
+    releasedTime: number
 }
 
 export interface IAssignment {
@@ -35,12 +38,14 @@ export interface IAssignment {
     fileSize: IFileSize
     slideEntity: ISlide
     submissionEntityList: ISubmission[]
+    addTime: number
 }
 
 export interface ISubmission {
     smid: number,
     studentEntity: IStudent[],
     filePath: string
+    submitTime: number
 }
 
 export interface IFileSize {
@@ -63,6 +68,7 @@ export interface IForum {
     commentEntityList: IComment[]
     questionerTeacher?: ITeacher,
     questionerStudent?: IStudent
+    addTime: number
 }
 
 export interface IReportCard {
@@ -81,16 +87,19 @@ export interface ISelection {
     releasementEntity: IReleasement,
     studentEntity: IStudent,
     selectionState: SelectionState
+    selectTime: number
 }
 
 export interface ISlide {
     sid: number,
     title: string,
     filePath: string
+    uploadTime: number
 }
 
 export interface IReleasement {
     rid: number,
+    releaseTime: number
     approvalState: ApprovalState,
     courseEntity: ICourse,
     reportCardEntity?: IReportCard,

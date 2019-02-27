@@ -24,6 +24,7 @@ import com.MyCourses.utils.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -57,6 +58,8 @@ public class CourseService implements ICourseService {
         if (courseEntity.getTeacherEntity() == null)
             throw new CourseHasNoTeacherException();
         courseEntity.setApprovalState(ApprovalState.WAITING);
+        courseEntity.setIsReleased(false);
+        courseEntity.setAddTime(new Date());
         courseDAO.create(courseEntity);
     }
 
@@ -69,6 +72,7 @@ public class CourseService implements ICourseService {
         ReleasementEntity releasementEntity = new ReleasementEntity();
         courseEntity.setIsReleased(true);
         try {
+            releasementEntity.setReleaseTime(new Date());
             releasementEntity.setApprovalState(ApprovalState.WAITING);
             releasementEntity.setCourseEntity(courseEntity);
             releasementEntity.setStartMin(Integer.parseInt(config.get(ReleaseConfig.START_MIN)));
