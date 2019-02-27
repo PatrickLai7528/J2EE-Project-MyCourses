@@ -102,21 +102,6 @@ export default class App extends Component<IAppProps, IAppState> {
         }
     }
 
-
-    // private async sendAddCourse(data: ISendAddCourseData, callback?: ISendActionCallback) {
-    //     if (callback && callback.onBefore) callback.onBefore();
-    //     try {
-    //         const response: IAPIResponse<any> = await CourseAPI.getInstance().sendCourse(data);
-    //         if (response.isSuccess) {
-    //             if (callback && callback.onSuccess) callback.onSuccess(response);
-    //             if (this.state.email) this.getCourseOf(this.state.email)
-    //         } else if (callback && callback.onFail) callback.onFail(response);
-    //     } catch (e) {
-    //         console.log(e);
-    //         if (callback && callback.onError) callback.onError(e);
-    //     }
-    // }
-
     public getAllReleasement(): void {
         ReleasementAPI.getInstance().getAllReleasement()
             .then((response: IAPIResponse<IReleasement[]>) => {
@@ -132,44 +117,6 @@ export default class App extends Component<IAppProps, IAppState> {
                 message.error("發生未知錯誤，請稍候再試");
             })
     }
-
-    // private sendCourseRelease(data: ISendReleasementData, callback?: ISendActionCallback): void {
-    //     if (callback && callback.onBefore) callback.onBefore();
-    //     ReleasementAPI.getInstance().sendReleasement(data)
-    //         .then((response: IAPIResponse<any>) => {
-    //             if (response.isSuccess) {
-    //                 if (callback && callback.onSuccess) callback.onSuccess(response);
-    //                 // refresh teacher course table by fetching releasement
-    //                 if (this.state.email) this.getCourseOf(this.state.email);
-    //             } else {
-    //                 if (callback && callback.onFail)
-    //                     callback.onFail(response);
-    //             }
-    //         })
-    //         .catch((e: any) => {
-    //             if (callback && callback.onError)
-    //                 callback.onError(e);
-    //         })
-    // }
-
-    // private sendCourseSelection(data:ISendSelectionData, callback?: ISendActionCallback): void {
-    //     if (callback && callback.onBefore) callback.onBefore();
-    //     SelectionAPI.getInstance().sendSelection(data)
-    //         .then((response: IAPIResponse<any>) => {
-    //             if (response.isSuccess) {
-    //                 if (callback && callback.onSuccess) callback.onSuccess(response);
-    //                 // by fetching a selection of current student(email)
-    //                 // refresh the sider subitem
-    //                 if (this.state.email) this.getSelectionOf(this.state.email);
-    //             } else {
-    //                 if (callback && callback.onFail) callback.onFail(response);
-    //             }
-    //         })
-    //         .catch((e: any) => {
-    //             console.log(e);
-    //             if (callback && callback.onError) callback.onError(e);
-    //         })
-    // }
 
     private getReleasementOf(teacherEmail: string | undefined) {
         if (!teacherEmail) return;
@@ -188,7 +135,7 @@ export default class App extends Component<IAppProps, IAppState> {
             })
     }
 
-    private getReleasementByRid(rid: number, callback: () => void = () => {
+    private refreshManagingReleasementByRid(rid: number, callback: () => void = () => {
     }): void {
         ReleasementAPI.getInstance().getReleasementByRid(rid)
             .then((response: IAPIResponse<IReleasement>) => {
@@ -206,85 +153,6 @@ export default class App extends Component<IAppProps, IAppState> {
                 message.error("發生未知錯誤，請稍候再試")
             })
     }
-
-    // public sendAssignment(data: ISendAssignmentData, callback?: ISendActionCallback): void {
-    //     if (callback && callback.onBefore) callback.onBefore();
-    //     AssignmentAPI.getInstance().sendAssignment(data)
-    //         .then((response: IAPIResponse<any>) => {
-    //             if (response.isSuccess) {
-    //                 if (callback && callback.onSuccess) callback.onSuccess(response);
-    //                 // refresh assignment by fetching specific releasement
-    //                 this.getReleasementByRid(data.rid);
-    //             } else {
-    //                 if (callback && callback.onFail) callback.onFail(response);
-    //             }
-    //         })
-    //         .catch((e: any) => {
-    //             console.log(e);
-    //             if (callback && callback.onError) callback.onError(e);
-    //         })
-    // }
-
-    // private sendForum(data: ISendForumData, callback?: ISendActionCallback) {
-    //     if (callback && callback.onBefore) callback.onBefore();
-    //     ForumAPI.getInstance().sendForum(data)
-    //         .then((response: IAPIResponse<any>) => {
-    //             if (response.isSuccess) {
-    //                 if (callback && callback.onSuccess) callback.onSuccess(response);
-    //                 // refresh assignment by fetching specific releasement
-    //                 this.getReleasementByRid(data.rid);
-    //             } else {
-    //                 if (callback && callback.onFail) callback.onFail(response);
-    //             }
-    //         })
-    //         .catch((e: any) => {
-    //             console.log(e);
-    //             if (callback && callback.onError) callback.onError(e);
-    //         })
-    // }
-
-    // private sendComment(data: ISendCommentData, callback?: ISendActionCallback): void {
-    //     if (callback && callback.onBefore) callback.onBefore();
-    //     ForumAPI.getInstance().sendComment(data)
-    //         .then((response: IAPIResponse<any>) => {
-    //             if (response.isSuccess) {
-    //                 // refresh by fetching specific releasement
-    //                 this.getReleasementByRid(data.rid, () => {
-    //                     this.state.managingReleasement && this.state.managingReleasement.forumEntityList ?
-    //                         this.state.managingReleasement.forumEntityList.forEach((forum: IForum) => {
-    //                             if (forum.fid === data.fid) {
-    //                                 this.setDisplayingForum(forum);
-    //                             }
-    //                         }) : "";
-    //                     if (callback && callback.onSuccess) callback.onSuccess(response);
-    //                 });
-    //             } else {
-    //                 if (callback && callback.onFail) callback.onFail(response);
-    //             }
-    //         })
-    //         .catch((e: any) => {
-    //             console.log(e);
-    //             if (callback && callback.onError) callback.onError(e);
-    //         })
-    // }
-
-    // private sendSlide(data: ISendSlideData, callback?:ISendActionCallback): void {
-    //     if (callback && callback.onBefore) callback.onBefore();
-    //     SlideAPI.getInstance().sendSlide(data)
-    //         .then((response: IAPIResponse<any>) => {
-    //             if (response.isSuccess) {
-    //                 if (callback && callback.onSuccess) callback.onSuccess(response);
-    //                 // refresh slide by fetching specific releasement
-    //                 this.getReleasementByRid(data.rid);
-    //             } else {
-    //                 if (callback && callback.onFail) callback.onFail(response);
-    //             }
-    //         })
-    //         .catch((e: any) => {
-    //             console.log(e);
-    //             if (callback && callback.onError) callback.onError(e);
-    //         })
-    // }
 
     private handleReleaseClickFromTeacherSider(releasement: IReleasement): void {
         this.setState({managingReleasement: releasement})
@@ -382,11 +250,11 @@ export default class App extends Component<IAppProps, IAppState> {
                             sendAddCourse={(data: ISendAddCourseData, callback?: ISendActionCallback) => SendActionHandler.sendAddCourse(data, callback)(() => this.getCourseOf(this.state.email))}
                             sendCourseRelease={(data: ISendReleasementData, callback?: ISendActionCallback) => SendActionHandler.sendCourseRelease(data, callback)(() => this.getReleasementOf(this.state.email))}
                             sendCourseSelection={(data: ISendSelectionData, callback?: ISendActionCallback) => SendActionHandler.sendCourseSelection(data, callback)(() => this.getSelectionOf(this.state.email))}
-                            sendAssignment={(data: ISendAssignmentData, callback?: ISendActionCallback) => SendActionHandler.sendAssignment(data, callback)(() => this.getReleasementByRid(data.rid))}
-                            sendSlide={(data: ISendSlideData, callback?: ISendActionCallback) => SendActionHandler.sendSlide(data, callback)(() => this.getReleasementByRid(data.rid))}
-                            sendForum={(data: ISendForumData, callback?: ISendActionCallback) => SendActionHandler.sendForum(data, callback)(() => this.getReleasementByRid(data.rid))}
+                            sendAssignment={(data: ISendAssignmentData, callback?: ISendActionCallback) => SendActionHandler.sendAssignment(data, callback)(() => this.refreshManagingReleasementByRid(data.rid))}
+                            sendSlide={(data: ISendSlideData, callback?: ISendActionCallback) => SendActionHandler.sendSlide(data, callback)(() => this.refreshManagingReleasementByRid(data.rid))}
+                            sendForum={(data: ISendForumData, callback?: ISendActionCallback) => SendActionHandler.sendForum(data, callback)(() => this.refreshManagingReleasementByRid(data.rid))}
                             sendComment={(data: ISendCommentData, callback?: ISendActionCallback) => SendActionHandler.sendComment(data, callback)(() => {
-                                this.getReleasementByRid(data.rid, () => {
+                                this.refreshManagingReleasementByRid(data.rid, () => {
                                     this.state.managingReleasement && this.state.managingReleasement.forumEntityList ?
                                         this.state.managingReleasement.forumEntityList.forEach((forum: IForum) => {
                                             if (forum.fid === data.fid) {
