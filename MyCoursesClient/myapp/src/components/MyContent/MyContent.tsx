@@ -11,14 +11,13 @@ import {ICourse, IForum, IReleasement, ISelection} from "../../types/entities";
 import IAPIResponse from "../../api/IAPIResponse";
 import {ISendReleasementData} from "../../api/CourseAPI";
 import ReleasementManageContainer from "../ReleasementManage/ReleasementManageContainer";
-import {ISendAssignmentData} from "../../api/AssignmentAPI";
 import {ISendSlideData} from "../../api/SlideAPI";
 import {ISendCommentData, ISendForumData} from "../../api/ForumAPI";
 import {ForumDisplayContainer} from "../ForumDisplay/ForumDisplayContainer";
 import {SelectionDisplayContainer} from "../SelectionDisplay/SelectionDisplayContainer";
-import {ISendAssignmentProps, UserStateProps} from "../App/GeneralProps";
+import {ISendAssignmentProps, ISendSlideProps, UserStateProps} from "../App/GeneralProps";
 
-export interface IMyContentProps extends UserStateProps, ISendAssignmentProps{
+export interface IMyContentProps extends UserStateProps, ISendAssignmentProps, ISendSlideProps {
     courseList: ICourse[]
     releasementList: IReleasement[]
 
@@ -71,15 +70,6 @@ export interface IMyContentProps extends UserStateProps, ISendAssignmentProps{
                           onFail?: (response: IAPIResponse<any>) => void,
                           onError?: (e: any) => void) => void
 
-    /**
-     * send assignment callback from App.tsx
-     * @param data
-     * @param onBefore
-     * @param onSuccess
-     * @param onFail
-     * @param onError
-     */
-    sendSlide: (data: ISendSlideData, onBefore?: () => void, onSuccess?: (response: IAPIResponse<any>) => void, onFail?: (response: IAPIResponse<any>) => void, onError?: (e: any) => void) => void
 
     /**
      * send assignment callback from App.tsx

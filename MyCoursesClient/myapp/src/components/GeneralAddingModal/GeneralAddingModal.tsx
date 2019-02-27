@@ -9,13 +9,13 @@ import {ISendSlideData} from "../../api/SlideAPI";
 import {ForumAddingFormContainer} from "../ForumAddingForm/ForumAddingFormContainer";
 import {ISendForumData} from "../../api/ForumAPI";
 import {UserType} from "../../api/UserAPI";
-import {ISendAssignmentProps, UserStateProps} from "../App/GeneralProps";
+import {ISendAssignmentProps, ISendSlideProps, UserStateProps} from "../App/GeneralProps";
 
 export enum FormOption {
     ASSIGNMENT, SLIDE, FORUM, SUMBIT_ASSIGNMENT
 }
 
-export interface IGeneralAddingModalProps extends UserStateProps, ISendAssignmentProps {
+export interface IGeneralAddingModalProps extends UserStateProps, ISendAssignmentProps, ISendSlideProps {
     mode: FormOption
 
     releasement: IReleasement
@@ -29,17 +29,6 @@ export interface IGeneralAddingModalProps extends UserStateProps, ISendAssignmen
     isTimeToSubmitForum: boolean
 
     refreshFormTrigger: boolean
-
-
-    /**
-     * send assignment callback from App.tsx
-     * @param data
-     * @param onBefore
-     * @param onSuccess
-     * @param onFail
-     * @param onError
-     */
-    sendSlide: (data: ISendSlideData, onBefore?: () => void, onSuccess?: (response: IAPIResponse<any>) => void, onFail?: (response: IAPIResponse<any>) => void, onError?: (e: any) => void) => void
 
     /**
      * send assignment callback from App.tsx

@@ -3,21 +3,12 @@ import {SlideAddingForm, WrappedSlideAddingForm} from "./SlideAddingForm";
 import {IReleasement} from "../../types/entities";
 import IAPIResponse from "../../api/IAPIResponse";
 import {ISendSlideData} from "../../api/SlideAPI";
+import {ISendSlideProps} from "../App/GeneralProps";
 
-export interface ISlideAddingFormContainerProps {
+export interface ISlideAddingFormContainerProps extends ISendSlideProps {
     isTimeToSubmit: boolean
 
     releasement: IReleasement
-
-    /**
-     * send assignment callback from App.tsx
-     * @param data
-     * @param onBefore
-     * @param onSuccess
-     * @param onFail
-     * @param onError
-     */
-    sendSlide: (data: ISendSlideData, onBefore?: () => void, onSuccess?: (response: IAPIResponse<any>) => void, onFail?: (response: IAPIResponse<any>) => void, onError?: (e: any) => void) => void
 
     onSendBefore: () => void
     onSendSuccess: (response: IAPIResponse<any>) => void
@@ -33,11 +24,10 @@ interface ISlideAddingFormContainerState {
 
 export class SlideAddingFormContainer extends React.Component<ISlideAddingFormContainerProps, ISlideAddingFormContainerState> {
     private form: SlideAddingForm | undefined;
+
     public constructor(props: ISlideAddingFormContainerProps) {
         super(props);
     }
-
-
 
 
     private submit(): void {
@@ -45,7 +35,7 @@ export class SlideAddingFormContainer extends React.Component<ISlideAddingFormCo
             console.log(this.form.props.form);
             this.form.props.form.validateFields((err: any, values: any) => {
                     if (!err) {
-                        let {title,slide} = values;
+                        let {title, slide} = values;
                         console.log(values);
                         const sendAssignmentData: ISendSlideData = {
                             title,
@@ -72,9 +62,9 @@ export class SlideAddingFormContainer extends React.Component<ISlideAddingFormCo
     public render(): React.ReactNode {
         return (
             <WrappedSlideAddingForm resetTrigger={this.props.refreshFormTrigger}
-                                         wrappedComponentRef={(form: SlideAddingForm) => {
-                                             this.form = form;
-                                         }}/>
+                                    wrappedComponentRef={(form: SlideAddingForm) => {
+                                        this.form = form;
+                                    }}/>
         )
     }
 }
