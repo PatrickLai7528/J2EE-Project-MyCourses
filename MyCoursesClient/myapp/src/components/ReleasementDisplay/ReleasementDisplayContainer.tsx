@@ -52,11 +52,16 @@ export default class ReleasementDisplayContainer extends React.Component<IReleas
                                 message.error("發生未知錯誤，請稍候再試");
                                 this.setState({isCourseSelectionSending: false})
                             };
-                            this.props.sendCourseSelection(this.props.email, releasement.rid, onBefore, onSuccess, onFail, onError);
+                            this.props.sendCourseSelection(this.props.email, releasement.rid, {
+                                onBefore,
+                                onSuccess,
+                                onFail,
+                                onError
+                            });
                         }
                     }}
-                />
-            </div>
-        )
-    }
-}
+                        />
+                        </div>
+                        )
+                    }
+                }

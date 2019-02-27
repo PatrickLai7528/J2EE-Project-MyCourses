@@ -47,25 +47,26 @@ export class ForumCommentEditor extends React.Component<IForumCommentEditorProps
             data.replyTo = this.props.comment.cmid;
         }
 
-        this.props.sendComment(data,
-            // on before
-            () => {
-                this.setState({confirmLoading: true})
-            },
-            // on success
-            (response: IAPIResponse<any>) => {
-                message.success(response.message);
-                // this.setState({confirmLoading: false, content: ""});
-            },
-            // on fail
-            (response: IAPIResponse<any>) => {
-                message.warn(response.message);
-                // this.setState({confirmLoading: false, content: ""});
-            },
-            // on error
-            (response: IAPIResponse<any>) => {
-                message.error(response.message);
-                // this.setState({confirmLoading: false, content: ""});
+        this.props.sendComment(data, {
+                // on before
+                onBefore: () => {
+                    this.setState({confirmLoading: true})
+                },
+                // on success
+                onSuccess: (response: IAPIResponse<any>) => {
+                    message.success(response.message);
+                    // this.setState({confirmLoading: false, content: ""});
+                },
+                // on fail
+                onFail: (response: IAPIResponse<any>) => {
+                    message.warn(response.message);
+                    // this.setState({confirmLoading: false, content: ""});
+                },
+                // on error
+                onError: (response: IAPIResponse<any>) => {
+                    message.error(response.message);
+                    // this.setState({confirmLoading: false, content: ""});
+                }
             }
         )
     }

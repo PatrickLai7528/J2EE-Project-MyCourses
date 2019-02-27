@@ -42,11 +42,12 @@ export class SlideAddingFormContainer extends React.Component<ISlideAddingFormCo
                             rid: this.props.releasement.rid,
                             fileName: slide
                         };
-                        this.props.sendSlide(sendAssignmentData,
-                            this.props.onSendBefore,
-                            this.props.onSendSuccess,
-                            this.props.onSendFail,
-                            this.props.onSendError
+                        this.props.sendSlide(sendAssignmentData, {
+                                onBefore: this.props.onSendBefore,
+                                onSuccess: this.props.onSendSuccess,
+                                onFail: this.props.onSendFail,
+                                onError: this.props.onSendError
+                            }
                         )
                     }
                 }

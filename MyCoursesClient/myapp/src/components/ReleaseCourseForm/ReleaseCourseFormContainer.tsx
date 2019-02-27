@@ -44,10 +44,12 @@ export default class ReleaseCourseFormContainer extends React.Component<IRelease
                             limitNumber: limitNumber
                         };
                         this.props.sendCourseRelease(sendReleaseData,
-                            this.props.onReleaseBefore,
-                            this.props.onReleaseSuccess,
-                            this.props.onReleaseFail,
-                            this.props.onReleaseError
+                            {
+                                onBefore: this.props.onReleaseBefore,
+                                onSuccess: this.props.onReleaseSuccess,
+                                onFail: this.props.onReleaseFail,
+                                onError: this.props.onReleaseError
+                            }
                         )
                     }
                 }

@@ -46,10 +46,12 @@ export class ForumAddingFormContainer extends React.Component<IForumAddingFormCo
                             questioner: this.props.email
                         };
                         this.props.sendForum(sendForumData,
-                            this.props.onSendBefore,
-                            this.props.onSendSuccess,
-                            this.props.onSendFail,
-                            this.props.onSendError
+                            {
+                                onBefore: this.props.onSendBefore,
+                                onSuccess: this.props.onSendSuccess,
+                                onFail: this.props.onSendFail,
+                                onError: this.props.onSendError
+                            }
                         )
                     }
                 }

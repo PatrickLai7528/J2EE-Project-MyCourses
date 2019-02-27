@@ -10,86 +10,38 @@ export interface UserStateProps {
     email?: string
 }
 
+export interface ISendActionCallback {
+    onBefore?: () => void,
+    onSuccess?: (response: IAPIResponse<any>) => void,
+    onFail?: (response: IAPIResponse<any>) => void,
+    onError?: (e: any) => void
+}
+
 export interface ISendAssignmentProps {
-    /**
-     * send assignment callback
-     * @param data
-     * @param onBefore
-     * @param onSuccess
-     * @param onFail
-     * @param onError
-     */
-    sendAssignment: (data: ISendAssignmentData, onBefore?: () => void, onSuccess?: (response: IAPIResponse<any>) => void, onFail?: (response: IAPIResponse<any>) => void, onError?: (e: any) => void) => void
+    sendAssignment: (data: ISendAssignmentData, callback?: ISendActionCallback) => void
 }
 
 
 export interface ISendSlideProps {
-    /**
-     * send assignment callback
-     * @param data
-     * @param onBefore
-     * @param onSuccess
-     * @param onFail
-     * @param onError
-     */
-    sendSlide: (data: ISendSlideData, onBefore?: () => void, onSuccess?: (response: IAPIResponse<any>) => void, onFail?: (response: IAPIResponse<any>) => void, onError?: (e: any) => void) => void
+    sendSlide: (data: ISendSlideData, callback?: ISendActionCallback) => void
 }
 
 export interface ISendForumProps {
-    /**
-     * send assignment callback from App.tsx
-     * @param data
-     * @param onBefore
-     * @param onSuccess
-     * @param onFail
-     * @param onError
-     */
-    sendForum: (data: ISendForumData, onBefore?: () => void, onSuccess?: (response: IAPIResponse<any>) => void, onFail?: (response: IAPIResponse<any>) => void, onError?: (e: any) => void) => void
+    sendForum: (data: ISendForumData, callback?: ISendActionCallback) => void
 }
 
 export interface ISendAddCourseProps {
-    /**
-     *
-     * @param courseName
-     * @param email
-     * @param onBefore
-     * @param onSuccess
-     * @param onFail
-     * @param onError
-     */
-    sendAddCourse: (data: ISendAddCourseData, onBefore?: () => void, onSuccess?: (response: IAPIResponse<any>) => void, onFail?: (response: IAPIResponse<any>) => void, onError?: (e: any) => void) => void
+    sendAddCourse: (data: ISendAddCourseData, callback?: ISendActionCallback) => void
 }
 
 export interface ISendCourseReleaseProps {
-    sendCourseRelease: (
-        data: ISendReleasementData,
-        onBefore?: () => void,
-        onSuccess?: (response: IAPIResponse<any>) => void,
-        onFail?: (response: IAPIResponse<any>) => void,
-        onError?: (e: any) => void) => void
+    sendCourseRelease: (data: ISendReleasementData, callback?: ISendActionCallback) => void
 }
 
-export interface ISendCourseSelectionProps{
-    /**
-     *
-     * @param email
-     * @param rid
-     * @param onBefore
-     * @param onSuccess
-     * @param onFail
-     * @param onError
-     */
-    sendCourseSelection: (email: string, rid: number, onBefore?: () => void, onSuccess?: (response: IAPIResponse<any>) => void, onFail?: (response: IAPIResponse<any>) => void, onError?: (e: any) => void) => void
+export interface ISendCourseSelectionProps {
+    sendCourseSelection: (email: string, rid: number, callback?: ISendActionCallback) => void
 }
 
-export interface ISendCommentProps{
-    /**
-     * send Comment callback from App.tsx
-     * @param data
-     * @param onBefore
-     * @param onSuccess
-     * @param onFail
-     * @param onError
-     */
-    sendComment: (data: ISendCommentData, onBefore?: () => void, onSuccess?: (response: IAPIResponse<any>) => void, onFail?: (response: IAPIResponse<any>) => void, onError?: (e: any) => void) => void
+export interface ISendCommentProps {
+    sendComment: (data: ISendCommentData, callback?: ISendActionCallback) => void
 }

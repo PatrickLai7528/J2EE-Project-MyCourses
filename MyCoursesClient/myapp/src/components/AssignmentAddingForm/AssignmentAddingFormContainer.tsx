@@ -46,11 +46,12 @@ export class AssignmentAddingFormContainer extends React.Component<IAssignmentAd
                             fileName: attachment
                         };
                         this.props.sendAssignment(sendAssignmentData,
-                            this.props.onSendBefore,
-                            this.props.onSendSuccess,
-                            this.props.onSendFail,
-                            this.props.onSendError
-                        )
+                            {
+                                onBefore: this.props.onSendBefore,
+                                onSuccess: this.props.onSendSuccess,
+                                onFail: this.props.onSendFail,
+                                onError: this.props.onSendError
+                            })
                     }
                 }
             );

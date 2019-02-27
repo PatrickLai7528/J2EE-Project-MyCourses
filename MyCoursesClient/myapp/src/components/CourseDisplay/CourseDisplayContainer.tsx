@@ -54,27 +54,30 @@ export default class CourseDisplayContainer extends React.Component<ICourseDispl
             };
             this.props.sendAddCourse(
                 data,
-                // onBefore
-                () => {
-                    this.setState({addCourseConfirmLoading: true})
-                },
-                // onSuccess
-                (response: IAPIResponse<any>) => {
-                    message.success(response.message)
-                    this.setState({addCourseConfirmLoading: false});
-                    this.setState({addCourseModalVisible: false});
-                },
-                // onFail
-                (response: IAPIResponse<any>) => {
-                    message.error(response.message);
-                    this.setState({addCourseConfirmLoading: false});
-                    this.setState({addCourseModalVisible: false});
-                },
-                // onError
-                (e: any) => {
-                    message.error("發生未知錯誤，請稍候再試");
-                    this.setState({addCourseConfirmLoading: false});
-                    this.setState({addCourseModalVisible: false});
+                {
+                    // onBefore
+                    onBefore: () => {
+                        this.setState({addCourseConfirmLoading: true})
+                    }
+                    ,
+                    // onSuccess
+                    onSuccess: (response: IAPIResponse<any>) => {
+                        message.success(response.message)
+                        this.setState({addCourseConfirmLoading: false});
+                        this.setState({addCourseModalVisible: false});
+                    },
+                    // onFail
+                    onFail: (response: IAPIResponse<any>) => {
+                        message.error(response.message);
+                        this.setState({addCourseConfirmLoading: false});
+                        this.setState({addCourseModalVisible: false});
+                    },
+                    // onError
+                    onError: (e: any) => {
+                        message.error("發生未知錯誤，請稍候再試");
+                        this.setState({addCourseConfirmLoading: false});
+                        this.setState({addCourseModalVisible: false});
+                    }
                 }
             )
         }
