@@ -3,7 +3,6 @@ import {Component} from "react";
 import './App.css';
 import {Layout, message} from 'antd';
 
-import MyContent from "./../MyContent/MyContent";
 import StudentSider from "../StudentSider/StudentSider";
 import MyHeader from "./../MyHeader/MyHeader";
 import {UserType} from "../../api/UserAPI";
@@ -18,6 +17,7 @@ import {TeacherSider} from "../TeacherSider/TeacherSider";
 import SlideAPI, {ISendSlideData} from "../../api/SlideAPI";
 import ForumAPI, {ISendCommentData, ISendForumData} from "../../api/ForumAPI";
 import {UserStateProps} from "./GeneralProps";
+import {ContentRouter} from "../ContentRouter/ContentRouter";
 
 interface IAppState extends UserStateProps {
     // for student sider
@@ -404,7 +404,7 @@ export default class App extends Component<IAppProps, IAppState> {
                     }
 
                     <Layout>
-                        <MyContent
+                        <ContentRouter
                             userType={this.state.userType}
                             email={this.state.email}
 
