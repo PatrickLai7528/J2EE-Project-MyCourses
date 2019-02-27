@@ -4,27 +4,17 @@ import {ISendAssignmentData} from "../../api/AssignmentAPI";
 import IAPIResponse from "../../api/IAPIResponse";
 import {IReleasement} from "../../types/entities";
 import {toByteUnit} from "../../types/enums";
+import {ISendAssignmentProps} from "../App/GeneralProps";
 
-export interface IAssignmentAddingFormContainerProps {
+export interface IAssignmentAddingFormContainerProps extends ISendAssignmentProps {
     isTimeToSubmit: boolean
 
     releasement: IReleasement
-
-    /**
-     * send assignment callback from App.tsx
-     * @param data
-     * @param onBefore
-     * @param onSuccess
-     * @param onFail
-     * @param onError
-     */
-    sendAssignment: (data: ISendAssignmentData, onBefore?: () => void, onSuccess?: (response: IAPIResponse<any>) => void, onFail?: (response: IAPIResponse<any>) => void, onError?: (e: any) => void) => void
 
     onSendBefore: () => void
     onSendSuccess: (response: IAPIResponse<any>) => void
     onSendFail: (response: IAPIResponse<any>) => void
     onSendError: (e: any) => void
-
     refreshFormTrigger: boolean
 }
 

@@ -13,12 +13,12 @@ export interface ISelectionDisplayProps extends UserStateProps {
 export const SelectionDisplay: React.FunctionComponent<ISelectionDisplayProps> = (props: ISelectionDisplayProps) => {
     return (
         <div>
-            <ReleasementManageContainer
-                userType={props.userType}
-                email={props.email}
-                releasement={props.selection.releasementEntity}
-                setDisplayingForum={props.setDisplayingForum}
-            />
+            {/*<ReleasementManageContainer*/}
+            {/*userType={props.userType}*/}
+            {/*email={props.email}*/}
+            {/*releasement={props.selection.releasementEntity}*/}
+            {/*setDisplayingForum={props.setDisplayingForum}*/}
+            {/*/>*/}
         </div>
     )
 }

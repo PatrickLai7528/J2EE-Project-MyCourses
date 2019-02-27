@@ -8,23 +8,12 @@ import IAPIResponse from "../../api/IAPIResponse";
 import {message} from "antd";
 import {ISendSlideData} from "../../api/SlideAPI";
 import {ISendForumData} from "../../api/ForumAPI";
-import {UserStateProps} from "../App/GeneralProps";
+import {ISendAssignmentProps, UserStateProps} from "../App/GeneralProps";
 
-export interface IReleasementManageContainerProps extends UserStateProps {
-    userType: UserType
-    email?: string
+export interface IReleasementManageContainerProps extends UserStateProps, ISendAssignmentProps {
     releasement: IReleasement
     setDisplayingForum: (forum: IForum) => void
 
-    /**
-     * send assignment callback from App.tsx
-     * @param data
-     * @param onBefore
-     * @param onSuccess
-     * @param onFail
-     * @param onError
-     */
-    sendAssignment?: (data: ISendAssignmentData, onBefore?: () => void, onSuccess?: (response: IAPIResponse<any>) => void, onFail?: (response: IAPIResponse<any>) => void, onError?: (e: any) => void) => void
 
     /**
      * send assignment callback from App.tsx
