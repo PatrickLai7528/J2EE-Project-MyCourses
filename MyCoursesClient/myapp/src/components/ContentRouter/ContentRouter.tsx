@@ -1,14 +1,8 @@
 import * as React from "react";
 import './ContentRouter.css';
 import {Layout} from 'antd';
-import {Route, Switch} from 'react-router-dom'
-import Setting from "../Setting/Setting";
-import ReleasementDisplayContainer from "../ReleasementDisplay/ReleasementDisplayContainer";
-import CourseDisplayContainer from "../CourseDisplay/CourseDisplayContainer";
+import {Switch} from 'react-router-dom'
 import {ICourse, IForum, IReleasement, ISelection} from "../../types/entities";
-import ReleasementManageContainer from "../ReleasementManage/ReleasementManageContainer";
-import {ForumDisplayContainer} from "../ForumDisplay/ForumDisplayContainer";
-import {SelectionDisplayContainer} from "../SelectionDisplay/SelectionDisplayContainer";
 import {
     ISendAddCourseProps,
     ISendAssignmentProps,
@@ -19,10 +13,10 @@ import {
     ISendSlideProps,
     UserStateProps
 } from "../App/GeneralProps";
-import {UserType} from "../../api/UserAPI";
 import {VisitorContentRouter} from "./VisitorContentRouter";
 import {TeacherContentRouter} from "./TeacherContentRouter";
 import {StudentContentRouter} from "./StudentContentRouter";
+import {AppContext} from "../App/App";
 
 export interface IContentRouterProps
     extends UserStateProps, ISendAssignmentProps,

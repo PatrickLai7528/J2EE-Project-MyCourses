@@ -2,6 +2,8 @@ import * as React from "react";
 import {ICourse} from "../../types/entities";
 import {Divider, Table, Tag} from "antd";
 import {ApprovalState, fromApprovalStateToChinese} from "../../types/enums";
+import {AppContext} from "../App/App";
+import {IAppContext} from "../../store/AppContext";
 
 export interface ICourseWithKey extends ICourse {
     key: number
@@ -87,13 +89,20 @@ const CourseDisplay: React.FunctionComponent<ICourseDisplayProps> = (props: ICou
             )
         },
     }];
-
     return (
-        <div>
-            <Table
-                bordered={true}
-                columns={columns} dataSource={toCourseWithKey(props.courseList)}/>
-        </div>
+        <AppContext.Consumer>
+            {(value: IAppContext) => {
+                console.log(value);
+                return (
+                    <div>
+                        <Table
+                            bordered={true}
+                            columns={columns} dataSource={toCourseWithKey(props.courseList)}/>
+                    </div>
+                )
+            }
+            }
+        </AppContext.Consumer>
     )
 };
 

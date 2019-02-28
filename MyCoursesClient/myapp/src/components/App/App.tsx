@@ -1,5 +1,5 @@
 import * as React from "react";
-import {Component} from "react";
+import {Component, Context} from "react";
 import './App.css';
 import {Layout, message} from 'antd';
 
@@ -19,6 +19,9 @@ import {ISendCommentData, ISendForumData} from "../../api/ForumAPI";
 import {ISendActionCallback, UserStateProps} from "./GeneralProps";
 import {ContentRouter} from "../ContentRouter/ContentRouter";
 import {SendActionHandler} from "./SendActionHandler";
+import {defaultAppContext, IAppContext} from "../../store/AppContext";
+
+export const AppContext: Context<IAppContext> = React.createContext(defaultAppContext);
 
 interface IAppState extends UserStateProps {
     // for student sider
@@ -198,75 +201,77 @@ export default class App extends Component<IAppProps, IAppState> {
 
     public render(): React.ReactNode {
         return (
-            <Layout>
-                <MyHeader
-                    onLogInSuccess={this.handleLogInSuccess.bind(this)}
-                    onLogInFail={this.handleLogInFail.bind(this)}
-                    onLogInError={this.handleLogInError.bind(this)}
-
-                    onSignUpSuccess={this.handleSignUpSuccess.bind(this)}
-                    onSignUpFail={this.handleSignUpFail.bind(this)}
-                    onSignUpError={this.handleSignUpError.bind(this)}
-                />
+            <AppContext.Provider value={defaultAppContext}>
                 <Layout>
-                    {
-                        /**
-                         *  default showing student sider
-                         */
-                        this.state.userType === "teacher" ?
-                            (
-                                <TeacherSider
-                                    onReleasementClick={this.handleReleaseClickFromTeacherSider.bind(this)}
-                                    userType={this.state.userType}
-                                    email={this.state.email}
-                                    releasementList={this.state.releasementListOfTeacher}
-                                />
-                            )
-                            :
-                            (
-                                <StudentSider
-                                    onSelectionClick={this.handleSelectionClickFromStudentSider.bind(this)}
-                                    userType={this.state.userType}
-                                    email={this.state.email}
-                                    selectionList={this.state.selectionList}
-                                />
-                            )
-                    }
+                    <MyHeader
+                        onLogInSuccess={this.handleLogInSuccess.bind(this)}
+                        onLogInFail={this.handleLogInFail.bind(this)}
+                        onLogInError={this.handleLogInError.bind(this)}
 
+                        onSignUpSuccess={this.handleSignUpSuccess.bind(this)}
+                        onSignUpFail={this.handleSignUpFail.bind(this)}
+                        onSignUpError={this.handleSignUpError.bind(this)}
+                    />
                     <Layout>
-                        <ContentRouter
-                            userType={this.state.userType}
-                            email={this.state.email}
+                        {
+                            /**
+                             *  default showing student sider
+                             */
+                            this.state.userType === "teacher" ?
+                                (
+                                    <TeacherSider
+                                        onReleasementClick={this.handleReleaseClickFromTeacherSider.bind(this)}
+                                        userType={this.state.userType}
+                                        email={this.state.email}
+                                        releasementList={this.state.releasementListOfTeacher}
+                                    />
+                                )
+                                :
+                                (
+                                    <StudentSider
+                                        onSelectionClick={this.handleSelectionClickFromStudentSider.bind(this)}
+                                        userType={this.state.userType}
+                                        email={this.state.email}
+                                        selectionList={this.state.selectionList}
+                                    />
+                                )
+                        }
 
-                            courseList={this.state.courseList}
-                            releasementList={this.state.releasementListOfStudent}
+                        <Layout>
+                            <ContentRouter
+                                userType={this.state.userType}
+                                email={this.state.email}
 
-                            managingReleasement={this.state.managingReleasement}
-                            displayingForum={this.state.displayingForum}
-                            displayingSelection={this.state.displayingSelection}
+                                courseList={this.state.courseList}
+                                releasementList={this.state.releasementListOfStudent}
 
-                            setDisplayingForum={this.setDisplayingForum.bind(this)}
+                                managingReleasement={this.state.managingReleasement}
+                                displayingForum={this.state.displayingForum}
+                                displayingSelection={this.state.displayingSelection}
 
-                            sendAddCourse={(data: ISendAddCourseData, callback?: ISendActionCallback) => SendActionHandler.sendAddCourse(data, callback)(() => this.getCourseOf(this.state.email))}
-                            sendCourseRelease={(data: ISendReleasementData, callback?: ISendActionCallback) => SendActionHandler.sendCourseRelease(data, callback)(() => this.getReleasementOf(this.state.email))}
-                            sendCourseSelection={(data: ISendSelectionData, callback?: ISendActionCallback) => SendActionHandler.sendCourseSelection(data, callback)(() => this.getSelectionOf(this.state.email))}
-                            sendAssignment={(data: ISendAssignmentData, callback?: ISendActionCallback) => SendActionHandler.sendAssignment(data, callback)(() => this.refreshManagingReleasementByRid(data.rid))}
-                            sendSlide={(data: ISendSlideData, callback?: ISendActionCallback) => SendActionHandler.sendSlide(data, callback)(() => this.refreshManagingReleasementByRid(data.rid))}
-                            sendForum={(data: ISendForumData, callback?: ISendActionCallback) => SendActionHandler.sendForum(data, callback)(() => this.refreshManagingReleasementByRid(data.rid))}
-                            sendComment={(data: ISendCommentData, callback?: ISendActionCallback) => SendActionHandler.sendComment(data, callback)(() => {
-                                this.refreshManagingReleasementByRid(data.rid, () => {
-                                    this.state.managingReleasement && this.state.managingReleasement.forumEntityList ?
-                                        this.state.managingReleasement.forumEntityList.forEach((forum: IForum) => {
-                                            if (forum.fid === data.fid) {
-                                                this.setDisplayingForum(forum);
-                                            }
-                                        }) : "";
-                                });
-                            })}
-                        />
+                                setDisplayingForum={this.setDisplayingForum.bind(this)}
+
+                                sendAddCourse={(data: ISendAddCourseData, callback?: ISendActionCallback) => SendActionHandler.sendAddCourse(data, callback)(() => this.getCourseOf(this.state.email))}
+                                sendCourseRelease={(data: ISendReleasementData, callback?: ISendActionCallback) => SendActionHandler.sendCourseRelease(data, callback)(() => this.getReleasementOf(this.state.email))}
+                                sendCourseSelection={(data: ISendSelectionData, callback?: ISendActionCallback) => SendActionHandler.sendCourseSelection(data, callback)(() => this.getSelectionOf(this.state.email))}
+                                sendAssignment={(data: ISendAssignmentData, callback?: ISendActionCallback) => SendActionHandler.sendAssignment(data, callback)(() => this.refreshManagingReleasementByRid(data.rid))}
+                                sendSlide={(data: ISendSlideData, callback?: ISendActionCallback) => SendActionHandler.sendSlide(data, callback)(() => this.refreshManagingReleasementByRid(data.rid))}
+                                sendForum={(data: ISendForumData, callback?: ISendActionCallback) => SendActionHandler.sendForum(data, callback)(() => this.refreshManagingReleasementByRid(data.rid))}
+                                sendComment={(data: ISendCommentData, callback?: ISendActionCallback) => SendActionHandler.sendComment(data, callback)(() => {
+                                    this.refreshManagingReleasementByRid(data.rid, () => {
+                                        this.state.managingReleasement && this.state.managingReleasement.forumEntityList ?
+                                            this.state.managingReleasement.forumEntityList.forEach((forum: IForum) => {
+                                                if (forum.fid === data.fid) {
+                                                    this.setDisplayingForum(forum);
+                                                }
+                                            }) : "";
+                                    });
+                                })}
+                            />
+                        </Layout>
                     </Layout>
                 </Layout>
-            </Layout>
+            </AppContext.Provider>
         );
     }
 }

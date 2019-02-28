@@ -184,7 +184,6 @@ export default class ReleasementManageContainer extends React.Component<IRelease
                                     this.setState({isTimeToSubmitForum: false});
                                     break;
                             }
-                            console.log(e);
                             this.setState({
                                 generalModalVisible: false,
                                 generalModalConfirmLoading: false,
