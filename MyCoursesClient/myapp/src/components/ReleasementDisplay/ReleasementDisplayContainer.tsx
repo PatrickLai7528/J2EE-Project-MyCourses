@@ -5,7 +5,7 @@ import {Divider, message} from "antd";
 import ReleasementDisplay from "./ReleasementDisplay";
 import {ISendCourseSelectionProps, UserStateProps} from "../App/GeneralProps";
 import {ISendSelectionData} from "../../api/SelectionAPI";
-import {AppContext} from "../App/App";
+import {AppContextConsumer} from "../App/App";
 import {IAppContext} from "../../store/AppContext";
 
 export interface IReleasementDisplayContainerProps extends UserStateProps, ISendCourseSelectionProps {
@@ -28,7 +28,7 @@ export default class ReleasementDisplayContainer extends React.Component<IReleas
 
     public render(): React.ReactNode {
         return (
-            <AppContext.Consumer>
+            <AppContextConsumer>
                 {
                     (props: IAppContext) => {
                         console.log("in releasement display");
@@ -69,19 +69,12 @@ export default class ReleasementDisplayContainer extends React.Component<IReleas
                                         }}
                                         {...props.forStudent}
                                         isCourseSelectionSending={this.state.isCourseSelectionSending}/>
-                                    {/*<ReleasementDisplay*/}
-                                    {/*isCourseSelectionSending={this.state.isCourseSelectionSending}*/}
-                                    {/*releasementList={this.props.releasementList}*/}
-                                    {/*sendSelectAction={(releasement: IReleasement) => {*/}
-                                    {/**/}
-                                    {/*}}*/}
-                                    {/*/>*/}
                                 </div>
                             )
                         }
                     }
                 }
-            </AppContext.Consumer>
+            </AppContextConsumer>
         )
     }
 }

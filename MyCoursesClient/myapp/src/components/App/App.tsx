@@ -289,35 +289,7 @@ export default class App extends Component<IAppProps, IAppState> {
                         }
 
                         <Layout>
-                            <ContentRouter
-                                userType={this.state.userType}
-                                email={this.state.email}
-
-                                courseList={this.state.courseList}
-                                releasementList={this.state.releasementListOfStudent}
-
-                                managingReleasement={this.state.managingReleasement}
-                                displayingForum={this.state.displayingForum}
-                                displayingSelection={this.state.displayingSelection}
-
-                                setDisplayingForum={this.setDisplayingForum.bind(this)}
-
-                                sendAddCourse={(data: ISendAddCourseData, callback?: ISendActionCallback) => SendActionHandler.sendAddCourse(data, callback)(() => this.getCourseOf(this.state.email))}
-                                sendCourseRelease={(data: ISendReleasementData, callback?: ISendActionCallback) => SendActionHandler.sendCourseRelease(data, callback)(() => this.getReleasementOf(this.state.email))}
-                                sendCourseSelection={(data: ISendSelectionData, callback?: ISendActionCallback) => SendActionHandler.sendCourseSelection(data, callback)(() => this.getSelectionOf(this.state.email))}
-                                sendSlide={(data: ISendSlideData, callback?: ISendActionCallback) => SendActionHandler.sendSlide(data, callback)(() => this.refreshManagingReleasementByRid(data.rid))}
-                                sendForum={(data: ISendForumData, callback?: ISendActionCallback) => SendActionHandler.sendForum(data, callback)(() => this.refreshManagingReleasementByRid(data.rid))}
-                                sendComment={(data: ISendCommentData, callback?: ISendActionCallback) => SendActionHandler.sendComment(data, callback)(() => {
-                                    this.refreshManagingReleasementByRid(data.rid, () => {
-                                        this.state.managingReleasement && this.state.managingReleasement.forumEntityList ?
-                                            this.state.managingReleasement.forumEntityList.forEach((forum: IForum) => {
-                                                if (forum.fid === data.fid) {
-                                                    this.setDisplayingForum(forum);
-                                                }
-                                            }) : "";
-                                    });
-                                })}
-                            />
+                            <ContentRouter/>
                         </Layout>
                     </Layout>
                 </Layout>

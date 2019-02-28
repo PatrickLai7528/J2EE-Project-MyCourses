@@ -1,15 +1,6 @@
 import * as React from "react";
 import {Route} from "react-router";
 import ReleasementManageContainer from "../ReleasementManage/ReleasementManageContainer";
-import {
-    ISendAddCourseProps,
-    ISendAssignmentProps,
-    ISendCommentProps, ISendCourseReleaseProps,
-    ISendForumProps,
-    ISendSlideProps,
-    UserStateProps
-} from "../App/GeneralProps";
-import {ICourse, IForum, IReleasement} from "../../types/entities";
 import {ForumDisplayContainer} from "../ForumDisplay/ForumDisplayContainer";
 import CourseDisplayContainer from "../CourseDisplay/CourseDisplayContainer";
 import {AppContextConsumer} from "../App/App";

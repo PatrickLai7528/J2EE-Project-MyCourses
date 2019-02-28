@@ -2,8 +2,8 @@ import * as React from "react";
 import {ICourse} from "../../types/entities";
 import {Divider, Table, Tag} from "antd";
 import {ApprovalState, fromApprovalStateToChinese} from "../../types/enums";
-import {AppContext} from "../App/App";
 import {IAppContext} from "../../store/AppContext";
+import {AppContextConsumer} from "../App/App";
 
 export interface ICourseWithKey extends ICourse {
     key: number
@@ -90,7 +90,7 @@ const CourseDisplay: React.FunctionComponent<ICourseDisplayProps> = (props: ICou
         },
     }];
     return (
-        <AppContext.Consumer>
+        <AppContextConsumer>
             {(value: IAppContext) => {
                 console.log(value);
                 return (
@@ -102,7 +102,7 @@ const CourseDisplay: React.FunctionComponent<ICourseDisplayProps> = (props: ICou
                 )
             }
             }
-        </AppContext.Consumer>
+        </AppContextConsumer>
     )
 };
 
