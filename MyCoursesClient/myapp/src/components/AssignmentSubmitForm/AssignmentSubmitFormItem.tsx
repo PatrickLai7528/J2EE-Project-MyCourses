@@ -1,45 +1,26 @@
 import * as React from "react";
 import {GetFieldDecoratorOptions, ValidationRule} from "antd/lib/form/Form";
-import {Button, Icon, message, Tooltip, Upload, Form, Input} from "antd";
-import {} from "antd/lib/form";
-import SlideAPI from "../../api/SlideAPI";
+import {Button, Form, Icon, Input, message, Tooltip, Upload} from "antd";
+import AssignmentAPI from "../../api/AssignmentAPI";
 import IAPIResponse from "../../api/IAPIResponse";
+import {IGeneralAssignmentAddingFormItemProps} from "../AssignmentAddingForm/AssignmentAddingFormItem";
 
-export interface IGeneralSlideAddingFormItemProps {
+export interface IGeneralAssignmentSubmitFormItemProps {
     getFieldDecorator<T extends Object = {}>(id: keyof T, options?: GetFieldDecoratorOptions): (node: React.ReactNode) => React.ReactNode;
 }
-
-export const TitleSlideAddingFormItem: React.FunctionComponent<IGeneralSlideAddingFormItemProps> = (props: IGeneralSlideAddingFormItemProps) => {
-    return (
-        <Form.Item
-            label="標題"
-        >
-            {props.getFieldDecorator('title', {
-                rules: [
-                    {
-                        required: true, message: '標題不能為空',
-                    }
-                ],
-            })(
-                <Input placeholder={"標題"}/>
-            )}
-        </Form.Item>
-    )
-};
-
-export interface IUploadSlideAddingFormItemProps extends IGeneralSlideAddingFormItemProps {
+export interface IAssignmentSubmitFormItemProps extends IGeneralAssignmentSubmitFormItemProps {
     setFieldsValue(obj: Object): void
 }
 
-export interface IUploadSlideAddingFormItemState {
+interface IAssignmentSubmitFormItemState {
     fileList: any[]
     uploading: boolean
     isUploaded: boolean
 }
 
-export class UploadSlideAddingFormItem extends React.Component<IUploadSlideAddingFormItemProps, IUploadSlideAddingFormItemState> {
+export class AttachmentAssignmentAddingFormItem extends React.Component<IAssignmentSubmitFormItemProps, IAssignmentSubmitFormItemState> {
 
-    public constructor(props: IUploadSlideAddingFormItemProps) {
+    public constructor(props: IAssignmentSubmitFormItemProps) {
         super(props);
         this.state = {
             fileList: [],
@@ -50,7 +31,7 @@ export class UploadSlideAddingFormItem extends React.Component<IUploadSlideAddin
 
     private beforeUpload(file: any): boolean {
         if (this.state.fileList.length != 0) {
-            message.warn("只能逐次上傳課件");
+            message.warn("只能上傳一個附件");
         } else {
             const {fileList} = this.state;
             fileList.push(file);
@@ -66,14 +47,13 @@ export class UploadSlideAddingFormItem extends React.Component<IUploadSlideAddin
             formData.append('file', file);
         });
         this.setState({uploading: true});
-        SlideAPI.getInstance().uploadSlide(formData)
+        AssignmentAPI.getInstance().uploadAttachment(formData)
             .then((response: IAPIResponse<string>) => {
                 if (response.isSuccess) {
                     message.success(response.message);
-                    this.setState({isUploaded: true});
+                    this.setState({isUploaded: true})
                     if (response.payload)
-                    // "slide" should be the same as FieldDecorator key
-                        this.props.setFieldsValue({slide: response.payload})
+                        this.props.setFieldsValue({attachment: response.payload})
                 } else {
                     message.error(response.message)
                 }
@@ -103,9 +83,9 @@ export class UploadSlideAddingFormItem extends React.Component<IUploadSlideAddin
     public render(): React.ReactNode {
         return (
             <Form.Item
-                label="課件"
+                label="作業"
             >
-                {this.props.getFieldDecorator('slide', {
+                {this.props.getFieldDecorator('assignment', {
                     rules: [
                         {
                             validator: this.validateIsUpload.bind(this)

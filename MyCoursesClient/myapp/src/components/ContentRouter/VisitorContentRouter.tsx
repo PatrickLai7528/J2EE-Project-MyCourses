@@ -1,28 +1,21 @@
 import * as React from "react";
 import {Route} from "react-router";
 import ReleasementDisplayContainer from "../ReleasementDisplay/ReleasementDisplayContainer";
-import {AppContextConsumer} from "../App/App";
-import {IAppContext} from "../../store/AppContext";
+import {ISendCourseSelectionProps, UserStateProps} from "../App/GeneralProps";
+import {IReleasement} from "../../types/entities";
 
-export const VisitorContentRouter: React.FunctionComponent = () => {
+export interface IVisitorContentRouterProps extends ISendCourseSelectionProps, UserStateProps {
+    releasementList: IReleasement[]
+}
+
+
+export const VisitorContentRouter: React.FunctionComponent<IVisitorContentRouterProps> = (props: IVisitorContentRouterProps) => {
     return (
-        <AppContextConsumer>
-            {
-                (props: IAppContext) => {
-                    if (props.forVisitor) {
-                        const {releasementList} = props.forVisitor;
-                        return (
-                            <Route exact path="/releasement/all" component={() => {
-                                return <ReleasementDisplayContainer
-                                    sendCourseSelection={props.sendCourseSelection}
-                                    releasementList={releasementList}
-                                    userType={props.userType} email={undefined}/>
-                            }}/>
-                        )
-                    }
-                }
-            }
-
-        </AppContextConsumer>
+        <Route exact path="/releasement/all" component={() => {
+            return <ReleasementDisplayContainer
+                sendCourseSelection={props.sendCourseSelection}
+                releasementList={props.releasementList}
+                userType={props.userType} email={props.email}/>
+        }}/>
     )
 }

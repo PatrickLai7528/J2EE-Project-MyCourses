@@ -6,37 +6,39 @@ import LogInAndSignUpDrawer from "../LogInAndSignUpDrawer/LogInAndSignUpDrawer";
 import {UserType} from "../../api/UserAPI";
 
 export interface IMyHeaderProps {
-    // /**
-    //  * called while login success without error
-    //  * @param userType
-    //  * @param email
-    //  */
-    // onLogInSuccess: (userType: UserType, email: string, token: string) => void
-    //
-    // /**
-    //  * called while login failed without error
-    //  */
-    // onLogInFail: () => void
-    //
-    // /**
-    //  * called while login failed with error
-    //  */
-    // onLogInError: () => void
-    //
-    // /**
-    //  * call while sign up success without error
-    //  */
-    // onSignUpSuccess: () => void
-    //
-    // /**
-    //  * call while sign up fail without error
-    //  */
-    // onSignUpFail: () => void
-    //
-    // /**
-    //  * call while sign up fail with error
-    //  */
-    // onSignUpError: () => void
+    // userType: UserType
+    // email?: string
+    /**
+     * called while login success without error
+     * @param userType
+     * @param email
+     */
+    onLogInSuccess: (userType: UserType, email: string, token: string) => void
+
+    /**
+     * called while login failed without error
+     */
+    onLogInFail: () => void
+
+    /**
+     * called while login failed with error
+     */
+    onLogInError: () => void
+
+    /**
+     * call while sign up success without error
+     */
+    onSignUpSuccess: () => void
+
+    /**
+     * call while sign up fail without error
+     */
+    onSignUpFail: () => void
+
+    /**
+     * call while sign up fail with error
+     */
+    onSignUpError: () => void
 }
 
 interface IMyHeaderState {
@@ -81,9 +83,18 @@ export default class MyHeader extends Component<IMyHeaderProps, IMyHeaderState> 
                 {
                     this.state.enabledLogInDrawer ?
                         <LogInAndSignUpDrawer
+
+                            onLogInSuccess={this.props.onLogInSuccess}
+                            onLogInFail={this.props.onLogInFail}
+                            onLogInError={this.props.onLogInError}
+
+                            onSignUpSuccess={this.props.onSignUpSuccess}
+                            onSignUpFail={this.props.onSignUpFail}
+                            onSignUpError={this.props.onSignUpError}
+
                             visible={this.state.enabledLogInDrawer}
                             onClose={this.closeLogInDrawer.bind(this)}
-                         /> : ""
+                        /> : ""
                 }
             </Layout.Header>
         );
