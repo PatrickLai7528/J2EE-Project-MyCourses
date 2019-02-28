@@ -16,14 +16,40 @@ import {ISendAssignmentData} from "../../api/AssignmentAPI";
 import {TeacherSider} from "../TeacherSider/TeacherSider";
 import {ISendSlideData} from "../../api/SlideAPI";
 import {ISendCommentData, ISendForumData} from "../../api/ForumAPI";
-import {ISendActionCallback, UserStateProps} from "./GeneralProps";
+import {
+    ISendActionCallback,
+    ISendAddCourseProps,
+    ISendAssignmentProps, ISendCommentProps,
+    ISendCourseReleaseProps, ISendCourseSelectionProps, ISendForumProps, ISendSlideProps,
+    UserStateProps
+} from "./GeneralProps";
 import {ContentRouter} from "../ContentRouter/ContentRouter";
 import {SendActionHandler} from "./SendActionHandler";
-import {defaultAppContext, IAppContext} from "../../store/AppContext";
+import {IAppContext} from "../../store/AppContext";
 
-export const AppContext: Context<IAppContext> = React.createContext(defaultAppContext);
+const defaultAppContext: IAppContext = {
+    userType: "visitor",
+    sendSlide: (data: ISendSlideData, callback?: ISendActionCallback) => {
+    },
+    sendAddCourse: (data: ISendAddCourseData, callback?: ISendActionCallback) => {
+    },
+    sendAssignment: (data: ISendAssignmentData, callback?: ISendActionCallback) => {
+    },
+    sendComment: (data: ISendCommentData, callback?: ISendActionCallback) => {
+    },
+    sendCourseRelease: (data: ISendReleasementData, callback?: ISendActionCallback) => {
+    },
+    sendCourseSelection: (data: ISendSelectionData, callback?: ISendActionCallback) => {
+    },
+    sendForum: (data: ISendForumData, callback?: ISendActionCallback) => {
+    },
+};
 
-interface IAppState extends UserStateProps {
+const AppContext: Context<IAppContext> = React.createContext(defaultAppContext);
+
+export const AppContextConsumer = AppContext.Consumer;
+
+interface IAppState extends UserStateProps, ISendSlideProps, ISendAssignmentProps, ISendAddCourseProps, ISendCourseReleaseProps, ISendCourseSelectionProps, ISendForumProps, ISendCommentProps {
     // for student sider
     selectionList: ISelection[]
     courseList: ICourse[]
@@ -63,7 +89,23 @@ export default class App extends Component<IAppProps, IAppState> {
             selectionList: [],
             courseList: [],
             releasementListOfStudent: [],
-            releasementListOfTeacher: []
+            releasementListOfTeacher: [],
+            sendSlide: (data: ISendSlideData, callback?: ISendActionCallback) => SendActionHandler.sendSlide(data, callback)(() => this.refreshManagingReleasementByRid(data.rid)),
+            sendCourseSelection: (data: ISendSelectionData, callback?: ISendActionCallback) => SendActionHandler.sendCourseSelection(data, callback)(() => this.getSelectionOf(this.state.email)),
+            sendForum: (data: ISendForumData, callback?: ISendActionCallback) => SendActionHandler.sendForum(data, callback)(() => this.refreshManagingReleasementByRid(data.rid)),
+            sendCourseRelease: (data: ISendReleasementData, callback?: ISendActionCallback) => SendActionHandler.sendCourseRelease(data, callback)(() => this.getReleasementOf(this.state.email)),
+            sendComment: (data: ISendCommentData, callback?: ISendActionCallback) => SendActionHandler.sendComment(data, callback)(() => {
+                this.refreshManagingReleasementByRid(data.rid, () => {
+                    this.state.managingReleasement && this.state.managingReleasement.forumEntityList ?
+                        this.state.managingReleasement.forumEntityList.forEach((forum: IForum) => {
+                            if (forum.fid === data.fid) {
+                                this.setDisplayingForum(forum);
+                            }
+                        }) : "";
+                });
+            }),
+            sendAssignment: (data: ISendAssignmentData, callback?: ISendActionCallback) => SendActionHandler.sendAssignment(data, callback)(() => this.refreshManagingReleasementByRid(data.rid)),
+            sendAddCourse: (data: ISendAddCourseData, callback?: ISendActionCallback) => SendActionHandler.sendAddCourse(data, callback)(() => this.getCourseOf(this.state.email))
         }
     }
 
@@ -200,6 +242,15 @@ export default class App extends Component<IAppProps, IAppState> {
 
 
     public render(): React.ReactNode {
+        const {releasementListOfStudent} = this.state;
+        defaultAppContext.userType = this.state.userType;
+        defaultAppContext.sendCourseSelection = (data: ISendSelectionData, callback?: ISendActionCallback) => SendActionHandler.sendCourseSelection(data, callback)(() => this.getSelectionOf(this.state.email));
+        if (this.state.email)
+            defaultAppContext.forStudent = {
+                email: this.state.email,
+                setDisplayingForum: this.setDisplayingForum.bind(this),
+                releasementList: releasementListOfStudent
+            };
         return (
             <AppContext.Provider value={defaultAppContext}>
                 <Layout>
@@ -254,7 +305,6 @@ export default class App extends Component<IAppProps, IAppState> {
                                 sendAddCourse={(data: ISendAddCourseData, callback?: ISendActionCallback) => SendActionHandler.sendAddCourse(data, callback)(() => this.getCourseOf(this.state.email))}
                                 sendCourseRelease={(data: ISendReleasementData, callback?: ISendActionCallback) => SendActionHandler.sendCourseRelease(data, callback)(() => this.getReleasementOf(this.state.email))}
                                 sendCourseSelection={(data: ISendSelectionData, callback?: ISendActionCallback) => SendActionHandler.sendCourseSelection(data, callback)(() => this.getSelectionOf(this.state.email))}
-                                sendAssignment={(data: ISendAssignmentData, callback?: ISendActionCallback) => SendActionHandler.sendAssignment(data, callback)(() => this.refreshManagingReleasementByRid(data.rid))}
                                 sendSlide={(data: ISendSlideData, callback?: ISendActionCallback) => SendActionHandler.sendSlide(data, callback)(() => this.refreshManagingReleasementByRid(data.rid))}
                                 sendForum={(data: ISendForumData, callback?: ISendActionCallback) => SendActionHandler.sendForum(data, callback)(() => this.refreshManagingReleasementByRid(data.rid))}
                                 sendComment={(data: ISendCommentData, callback?: ISendActionCallback) => SendActionHandler.sendComment(data, callback)(() => {

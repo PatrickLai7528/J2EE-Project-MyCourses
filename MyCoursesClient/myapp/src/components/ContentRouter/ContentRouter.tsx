@@ -16,7 +16,6 @@ import {
 import {VisitorContentRouter} from "./VisitorContentRouter";
 import {TeacherContentRouter} from "./TeacherContentRouter";
 import {StudentContentRouter} from "./StudentContentRouter";
-import {AppContext} from "../App/App";
 
 export interface IContentRouterProps
     extends UserStateProps, ISendAssignmentProps,
@@ -45,7 +44,7 @@ const switchRouteDependOnUserType = (props: IContentRouterProps): React.ReactNod
         case "teacher":
             return <Switch><TeacherContentRouter {...props}/></Switch>;
         case "student":
-            return <Switch><StudentContentRouter {...props}/></Switch>;
+            return <Switch><StudentContentRouter/></Switch>;
     }
 };
 

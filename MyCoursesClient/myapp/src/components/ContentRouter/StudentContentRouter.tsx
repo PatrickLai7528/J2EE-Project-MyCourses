@@ -1,52 +1,59 @@
 import * as React from "react";
 import {Route} from "react-router";
 import ReleasementDisplayContainer from "../ReleasementDisplay/ReleasementDisplayContainer";
-import {ISendCommentProps, ISendCourseSelectionProps, UserStateProps} from "../App/GeneralProps";
-import {IForum, IReleasement, ISelection} from "../../types/entities";
 import {ForumDisplayContainer} from "../ForumDisplay/ForumDisplayContainer";
 import {SelectionDisplayContainer} from "../SelectionDisplay/SelectionDisplayContainer";
+import {AppContextConsumer} from "../App/App";
+import {IAppContext} from "../../store/AppContext";
 
-export interface IStudentContentRouterProps extends UserStateProps, ISendCourseSelectionProps, ISendCommentProps {
-    releasementList: IReleasement[]
-    displayingSelection?: ISelection
-    displayingForum?: IForum
 
-    setDisplayingForum: (forum: IForum) => void
-}
-
-export const StudentContentRouter: React.FunctionComponent<IStudentContentRouterProps> = (props: IStudentContentRouterProps) => {
+export const StudentContentRouter: React.FunctionComponent = () => {
     return (
-        <div>
-            <Route exact path="/releasement/all" component={() => {
-                return <ReleasementDisplayContainer
-                    sendCourseSelection={props.sendCourseSelection}
-                    releasementList={props.releasementList}
-                    userType={props.userType} email={props.email}/>
-            }}/>
-            <Route exact path="/forum" component={
-                () => {
-                    if (props.displayingSelection && props.displayingForum && props.email)
-                        return <ForumDisplayContainer
-                            sendComment={props.sendComment}
-                            forum={props.displayingForum}
-                            userType={props.userType}
-                            email={props.email}
-                            releasement={props.displayingSelection.releasementEntity}/>
-                    return null;
+        <AppContextConsumer>
+            {
+                (props: IAppContext) => {
+                    console.log("in student router");
+                    console.log(props);
+                    if (props.forStudent) {
+                        const {releasementList, email, displayingForum, displayingSelection, setDisplayingForum} = props.forStudent
+                        return (
+                            <div>
+                                <Route exact path="/releasement/all" component={() => {
+                                    return <ReleasementDisplayContainer
+                                        sendCourseSelection={props.sendCourseSelection}
+                                        releasementList={releasementList}
+                                        userType={props.userType} email={email}/>
+                                }}/>
+                                {
+                                    displayingForum && displayingSelection ? <Route exact path="/forum" component={
+                                        () => {
+                                            return <ForumDisplayContainer
+                                                sendComment={props.sendComment}
+                                                forum={displayingForum}
+                                                userType={props.userType}
+                                                email={email}
+                                                releasement={displayingSelection.releasementEntity}/>
+                                        }
+                                    }/> : ""
+                                }
+                                {
+                                    displayingSelection ? <Route exact path="/selection/display" component={
+                                        () => {
+                                            return <SelectionDisplayContainer
+                                                setDisplayingForum={setDisplayingForum}
+                                                userType={props.userType}
+                                                email={email}
+                                                selection={displayingSelection}
+                                            />;
+                                        }
+                                    }/> : ""
+                                }
+
+                            </div>
+                        )
+                    }
                 }
-            }/>
-            <Route exact path="/selection/display" component={
-                () => {
-                    if (props.displayingSelection && props.email)
-                        return <SelectionDisplayContainer
-                            setDisplayingForum={props.setDisplayingForum}
-                            userType={props.userType}
-                            email={props.email}
-                            selection={props.displayingSelection}
-                        />;
-                    return null;
-                }
-            }/>
-        </div>
+            }
+        </AppContextConsumer>
     )
-}
+};

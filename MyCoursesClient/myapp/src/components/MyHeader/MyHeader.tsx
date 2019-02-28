@@ -4,8 +4,6 @@ import './MyHeader.css';
 import {Button, Layout, Menu} from 'antd';
 import LogInAndSignUpDrawer from "../LogInAndSignUpDrawer/LogInAndSignUpDrawer";
 import {UserType} from "../../api/UserAPI";
-import {AppContext} from "../App/App";
-import {IAppContext} from "../../store/AppContext";
 
 export interface IMyHeaderProps {
     // userType: UserType
@@ -62,52 +60,43 @@ export default class MyHeader extends Component<IMyHeaderProps, IMyHeaderState> 
 
     render() {
         return (
-            <AppContext.Consumer>
+            <Layout.Header>
+                <div className="header__box">
+                    <div className="actions__box">
+                        <Menu
+                            theme="dark"
+                            mode="horizontal"
+                            style={{lineHeight: '64px', textAlign: "right"}}
+                            selectable={false}
+                        >
+                            <Menu.Item key="2">
+                                <Button type="primary" icon="login"
+                                        onClick={() => {
+                                            this.setState({enabledLogInDrawer: true})
+                                        }} htmlType={"button"}>
+                                    登入
+                                </Button>
+                            </Menu.Item>
+                        </Menu>
+                    </div>
+                </div>
                 {
-                    (props: IAppContext) => {
-                        console.log(props);
-                        return (
-                            <Layout.Header>
-                                <div className="header__box">
-                                    <div className="actions__box">
-                                        <Menu
-                                            theme="dark"
-                                            mode="horizontal"
-                                            style={{lineHeight: '64px', textAlign: "right"}}
-                                            selectable={false}
-                                        >
-                                            <Menu.Item key="2">
-                                                <Button type="primary" icon="login"
-                                                        onClick={() => {
-                                                            this.setState({enabledLogInDrawer: true})
-                                                        }} htmlType={"button"}>
-                                                    登入
-                                                </Button>
-                                            </Menu.Item>
-                                        </Menu>
-                                    </div>
-                                </div>
-                                {
-                                    this.state.enabledLogInDrawer ?
-                                        <LogInAndSignUpDrawer
+                    this.state.enabledLogInDrawer ?
+                        <LogInAndSignUpDrawer
 
-                                            onLogInSuccess={this.props.onLogInSuccess}
-                                            onLogInFail={this.props.onLogInFail}
-                                            onLogInError={this.props.onLogInError}
+                            onLogInSuccess={this.props.onLogInSuccess}
+                            onLogInFail={this.props.onLogInFail}
+                            onLogInError={this.props.onLogInError}
 
-                                            onSignUpSuccess={this.props.onSignUpSuccess}
-                                            onSignUpFail={this.props.onSignUpFail}
-                                            onSignUpError={this.props.onSignUpError}
+                            onSignUpSuccess={this.props.onSignUpSuccess}
+                            onSignUpFail={this.props.onSignUpFail}
+                            onSignUpError={this.props.onSignUpError}
 
-                                            visible={this.state.enabledLogInDrawer}
-                                            onClose={this.closeLogInDrawer.bind(this)}
-                                        /> : ""
-                                }
-                            </Layout.Header>
-                        )
-                    }
+                            visible={this.state.enabledLogInDrawer}
+                            onClose={this.closeLogInDrawer.bind(this)}
+                        /> : ""
                 }
-            </AppContext.Consumer>
+            </Layout.Header>
         );
     }
 }
