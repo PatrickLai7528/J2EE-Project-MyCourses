@@ -2,14 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b7acb967-7f4e-4e76-a68d-ff398a1380be" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/WithContext/WithContext.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/reducers/NavigateReducer.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/reducers/StudentReducer.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/reducers/TeacherReducer.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../MyCoursesClient/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesClient/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/App/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/App/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/ContentRouter/ContentRouter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/ContentRouter/ContentRouter.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/ContentRouter/StudentContentRouter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/ContentRouter/StudentContentRouter.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/ContentRouter/TeacherContentRouter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/ContentRouter/TeacherContentRouter.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/LogInAndSignUpDrawer/LogInAndSignUpDrawer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/LogInAndSignUpDrawer/LogInAndSignUpDrawer.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/MyHeader/MyHeader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/MyHeader/MyHeader.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/StudentSider/StudentSider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/StudentSider/StudentSider.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/TeacherSider/TeacherSider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/TeacherSider/TeacherSider.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/store/AppContext.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/store/AppContext.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyCoursesClient/myapp/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesClient/myapp/tsconfig.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />

@@ -15,7 +15,7 @@ export const StudentContentRouter: React.FunctionComponent = () => {
                     console.log("in student router");
                     console.log(props);
                     if (props.forStudent) {
-                        const {releasementList, email, displayingForum, displayingSelection, setDisplayingForum} = props.forStudent
+                        const {releasementList, email, displayingForum, displayingSelection} = props.forStudent
                         return (
                             <div>
                                 <Route exact path="/releasement/all" component={() => {
@@ -40,7 +40,8 @@ export const StudentContentRouter: React.FunctionComponent = () => {
                                     displayingSelection ? <Route exact path="/selection/display" component={
                                         () => {
                                             return <SelectionDisplayContainer
-                                                setDisplayingForum={setDisplayingForum}
+                                                setDisplayingForum={() => {
+                                                }}
                                                 userType={props.userType}
                                                 email={email}
                                                 selection={displayingSelection}

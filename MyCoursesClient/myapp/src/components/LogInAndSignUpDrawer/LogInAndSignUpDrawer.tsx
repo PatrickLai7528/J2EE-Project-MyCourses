@@ -4,42 +4,50 @@ import WrappedLogInForm, {LogInForm} from "../LogInForm/LogInForm";
 import WrappedSignUpForm, {SignUpForm} from "../SignUpForm/SignUpForm";
 import UserAPI, {UserType} from "../../api/UserAPI";
 import IAPIResponse from "../../api/IAPIResponse";
+import {AppContextConsumer} from "../App/App";
+import {IAppContext} from "../../store/AppContext";
+import {StudentReducer} from "../../reducers/StudentReducer";
+import ReleasementAPI from "../../api/ReleasementAPI";
+import {ICourse, IReleasement} from "../../types/entities";
+import {TeacherReducer} from "../../reducers/TeacherReducer";
+import CourseAPI from "../../api/CourseAPI";
+import Cookies from "universal-cookie/es6";
 
 export interface ILogInAndSignUpProps {
     visible: boolean
     onClose: () => void
-
-    /**
-     * called while login success without error
-     * @param userType
-     * @param email
-     */
-    onLogInSuccess: (userType: UserType, email: string, token: string) => void
-
-    /**
-     * called while login failed without error
-     */
-    onLogInFail: () => void
-
-    /**
-     * called while login failed with error
-     */
-    onLogInError: () => void
-
-    /**
-     * call while sign up success without error
-     */
-    onSignUpSuccess: () => void
-
-    /**
-     * call while sign up fail without error
-     */
-    onSignUpFail: () => void
-
-    /**
-     * call while sign up fail with error
-     */
-    onSignUpError: () => void
+    //
+    // /**
+    //  * called while login success without error
+    //  * @param userType
+    //  * @param email
+    //  */
+    // onLogInSuccess: (userType: UserType, email: string, token: string) => void
+    //
+    // /**
+    //  * called while login failed without error
+    //  */
+    // onLogInFail: () => void
+    //
+    // /**
+    //  * called while login failed with error
+    //  */
+    // onLogInError: () => void
+    //
+    // /**
+    //  * call while sign up success without error
+    //  */
+    // onSignUpSuccess: () => void
+    //
+    // /**
+    //  * call while sign up fail without error
+    //  */
+    // onSignUpFail: () => void
+    //
+    // /**
+    //  * call while sign up fail with error
+    //  */
+    // onSignUpError: () => void
 }
 
 enum Mode {
@@ -65,37 +73,73 @@ export default class LogInAndSignUpDrawer extends React.Component<ILogInAndSignU
         }
     }
 
-    private submitLogin(): void {
+    private submitLogin(context: IAppContext): void {
         if (this.logInForm) {
             console.log(this.logInForm.props.form);
-            this.logInForm.props.form.validateFields((err: any, values: any) => {
+            this.logInForm.props.form.validateFields(async (err: any, values: any) => {
                     if (!err) {
                         this.setState({isSubmitting: true});
                         // console.log(values);
                         const {email, password, userType} = values;
                         const loginData = {email, password, userType};
-                        UserAPI.getInstance().postLogin(loginData).then((response: IAPIResponse<any>) => {
-                            console.log(response);
-                            if (response.isSuccess) {
-                                message.success(response.message);
-                                this.props.onLogInSuccess(userType, email, response.payload);
-                                // DataStore.getInstance()
-                                //     .put("userType", userType);
-                                // if (userType === "student")
-                                //     DataStore.getInstance().put("studentEmail", email);
-                                // if (userType === "teacher")
-                                //     DataStore.getInstance().put("teacherEmail", email);
-                            } else {
-                                this.props.onLogInFail();
-                                message.error(response.message);
+
+                        try {
+                            const responseOfLogin: IAPIResponse<any> = await UserAPI.getInstance().postLogin(loginData);
+                            if (responseOfLogin.isSuccess && responseOfLogin.payload) {
+                                const cookie: Cookies = new Cookies();
+                                cookie.remove("token");
+                                cookie.remove("userType");
+                                cookie.remove("email");
+
+                                cookie.set("token", responseOfLogin.payload);
+                                cookie.set("userType", userType);
+                                cookie.set("email", email);
+                                message.success(responseOfLogin.message);
+                                if (userType === "student") {
+                                    const responseOfReleasement: IAPIResponse<IReleasement[]> = await ReleasementAPI.getInstance().getAllReleasement();
+                                    if (responseOfReleasement.isSuccess && responseOfReleasement.payload) {
+                                        context.superRefresh(StudentReducer.studentLogInSuccess(context, {
+                                            email,
+                                            releasementList: responseOfReleasement.payload
+                                        }))
+                                    }
+                                } else {
+                                    // teacher
+                                    const responseOfReleasement: IAPIResponse<IReleasement[]> = await ReleasementAPI.getInstance().getReleasementOf(email);
+                                    const responseOfCourse: IAPIResponse<ICourse[]> = await CourseAPI.getInstance().getCourseOf(email);
+                                    if (responseOfReleasement.isSuccess && responseOfReleasement.payload
+                                        && responseOfCourse.isSuccess && responseOfCourse.payload)
+                                        context.superRefresh(TeacherReducer.teacherLogInSuccess(context, {
+                                            email,
+                                            releasementList: responseOfReleasement.payload,
+                                            courseList: responseOfCourse.payload
+                                        }));
+                                }
+
+                                this.setState({isSubmitting: false});
+                                this.props.onClose();
                             }
+                        } catch (e) {
                             this.setState({isSubmitting: false});
-                            this.props.onClose();
-                        }).catch((e: any) => {
-                            console.log(e);
-                            this.props.onLogInError();
-                            this.setState({isSubmitting: false});
-                        });
+                        }
+                        // UserAPI.getInstance().postLogin(loginData).then(async (response: IAPIResponse<any>) => {
+                        //     console.log(response);
+                        //     if (response.isSuccess) {
+                        //         message.success(response.message);
+                        //         if (userType === "student"){}
+                        //         else // teacher
+                        //             context.superRefresh;
+                        //     } else {
+                        //         // this.props.onLogInFail();
+                        //         message.error(response.message);
+                        //     }
+                        // this.setState({isSubmitting: false});
+                        // this.props.onClose();
+                        // }).catch((e: any) => {
+                        //     console.log(e);
+                        // this.props.onLogInError();
+                        // this.setState({isSubmitting: false});
+                        // });
                     } else {
                     }
                 }
@@ -115,17 +159,17 @@ export default class LogInAndSignUpDrawer extends React.Component<ILogInAndSignU
                             console.log(response);
                             if (response.isSuccess) {
                                 message.success(response.message);
-                                this.props.onSignUpSuccess();
+                                // this.props.onSignUpSuccess();
                             } else {
                                 message.error(response.message);
-                                this.props.onSignUpFail();
+                                // this.props.onSignUpFail();
                             }
                             this.setState({logInOrSignUp: Mode.LOG_IN});
                             this.setState({isSubmitting: false});
                         }).catch(e => {
                             console.log(e);
                             this.setState({isSubmitting: false});
-                            this.props.onSignUpError();
+                            // this.props.onSignUpError();
                         });
                     }
                 }
@@ -135,12 +179,12 @@ export default class LogInAndSignUpDrawer extends React.Component<ILogInAndSignU
 
     }
 
-    private submit(): void {
+    private submit(context: IAppContext): void {
         if (this.state.isSubmitting)
             return;
         switch (this.state.logInOrSignUp) {
             case Mode.LOG_IN:
-                this.submitLogin();
+                this.submitLogin(context);
                 break;
             case Mode.SIGN_UP:
                 this.submitSignUp();
@@ -151,8 +195,7 @@ export default class LogInAndSignUpDrawer extends React.Component<ILogInAndSignU
     }
 
     private switchMode(): void {
-        if (this.state.logInOrSignUp === Mode.LOG_IN
-        ) {
+        if (this.state.logInOrSignUp === Mode.LOG_IN) {
             this.setState({logInOrSignUp: Mode.SIGN_UP});
         } else {
             this.setState({logInOrSignUp: Mode.LOG_IN});
@@ -161,62 +204,70 @@ export default class LogInAndSignUpDrawer extends React.Component<ILogInAndSignU
 
     public render(): React.ReactNode {
         return (
-            <div>
-                <Drawer
-                    title={
-                        this.state.logInOrSignUp === Mode.LOG_IN ? "登錄" : "註冊"
+            <AppContextConsumer>
+                {
+                    (props: IAppContext) => {
+                        return (
+                            <div>
+                                <Drawer
+                                    title={
+                                        this.state.logInOrSignUp === Mode.LOG_IN ? "登錄" : "註冊"
+                                    }
+                                    width={480}
+                                    placement={"right"}
+                                    onClose={this.props.onClose}
+                                    maskClosable={false}
+                                    visible={this.state.visible}
+                                    style={{
+                                        height: 'calc(100% - 40px)',
+                                        overflow: 'auto',
+                                        paddingBottom: 53,
+                                    }}
+                                >
+                                    <Spin spinning={this.state.isSubmitting}>
+                                        {
+
+                                            this.state.logInOrSignUp === Mode.LOG_IN ?
+                                                <WrappedLogInForm wrappedComponentRef={(form: LogInForm) => {
+                                                    this.logInForm = form;
+                                                }}/>
+                                                :
+                                                <WrappedSignUpForm wrappedComponentRef={(form: SignUpForm) => {
+                                                    this.signUpForm = form;
+                                                }}/>
+
+                                        }
+                                    </Spin>
+                                    < div
+                                        style={{
+                                            position: 'absolute',
+                                            bottom: 0,
+                                            width: '100%',
+                                            borderTop: '1px solid #e8e8e8',
+                                            padding: '10px 16px',
+                                            textAlign: 'right',
+                                            left: 0,
+                                            background: '#fff',
+                                            borderRadius: '0 0 4px 4px',
+                                            zIndex: 2
+                                        }}
+                                    >
+                                        <Button
+                                            type="primary"
+                                            htmlType="button"
+                                            onClick={this.switchMode.bind(this)}>
+                                            {this.state.logInOrSignUp === Mode.LOG_IN ? "馬上註冊" : "已有帳戶"}
+                                        </Button>
+                                        <Button htmlType="button" onClick={() => this.submit(props)}
+                                                style={{marginLeft: "15px"}}
+                                                type="primary">{this.state.logInOrSignUp === Mode.LOG_IN ? "登入" : "註冊"}</Button>
+                                    </div>
+                                </Drawer>
+                            </div>
+                        )
                     }
-                    width={480}
-                    placement={"right"}
-                    onClose={this.props.onClose}
-                    maskClosable={false}
-                    visible={this.state.visible}
-                    style={{
-                        height: 'calc(100% - 40px)',
-                        overflow: 'auto',
-                        paddingBottom: 53,
-                    }}
-                >
-                    <Spin spinning={this.state.isSubmitting}>
-                        {
-
-                            this.state.logInOrSignUp === Mode.LOG_IN ?
-                                <WrappedLogInForm wrappedComponentRef={(form: LogInForm) => {
-                                    this.logInForm = form;
-                                }}/>
-                                :
-                                <WrappedSignUpForm wrappedComponentRef={(form: SignUpForm) => {
-                                    this.signUpForm = form;
-                                }}/>
-
-                        }
-                    </Spin>
-                    < div
-                        style={{
-                            position: 'absolute',
-                            bottom: 0,
-                            width: '100%',
-                            borderTop: '1px solid #e8e8e8',
-                            padding: '10px 16px',
-                            textAlign: 'right',
-                            left: 0,
-                            background: '#fff',
-                            borderRadius: '0 0 4px 4px',
-                            zIndex: 2
-                        }}
-                    >
-                        <Button
-                            type="primary"
-                            htmlType="button"
-                            onClick={this.switchMode.bind(this)}>
-                            {this.state.logInOrSignUp === Mode.LOG_IN ? "馬上註冊" : "已有帳戶"}
-                        </Button>
-                        <Button htmlType="button" onClick={this.submit.bind(this)}
-                                style={{marginLeft: "15px"}}
-                                type="primary">{this.state.logInOrSignUp === Mode.LOG_IN ? "登入" : "註冊"}</Button>
-                    </div>
-                </Drawer>
-            </div>
+                }
+            </AppContextConsumer>
         )
     }
 }

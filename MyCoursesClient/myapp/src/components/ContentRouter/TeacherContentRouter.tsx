@@ -15,13 +15,14 @@ export const TeacherContentRouter: React.FunctionComponent = () => {
                     console.log("in teacher router");
                     console.log(props);
                     if (props.forTeacher) {
-                        const {email, setDisplayingForum, courseList, displayingForum, managingReleasement, releasementList} = props.forTeacher;
+                        const {email, courseList, displayingForum, managingReleasement, releasementList} = props.forTeacher;
                         return (
                             <div>
                                 <Route exact path="/releasement/manage" component={
                                     () => {
                                         return managingReleasement ? <ReleasementManageContainer
-                                            setDisplayingForum={setDisplayingForum}
+                                            setDisplayingForum={() => {
+                                            }}
                                             sendForum={props.sendForum}
                                             sendSlide={props.sendSlide}
                                             sendAssignment={props.sendAssignment}
