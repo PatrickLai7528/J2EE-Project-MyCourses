@@ -36,7 +36,7 @@ import VisitorSider from "../VisitorSider/VisitorSider";
 //     setDisplayingForum: (forum: IForum) => void
 // }
 
-export interface IAppForStudentState extends ISendCourseSelectionProps, ISendCommentProps {
+export interface IAppForStudentState extends ISendCourseSelectionProps, ISendCommentProps, ISendForumProps {
     displayingSelection?: ISelection
     selectionList?: ISelection[]
     email: string
@@ -441,7 +441,8 @@ export default class App extends Component<IAppProps, IAppState> {
                         })
                     },
                     sendComment: this.sendComment.bind(this),
-                    sendCourseSelection: this.sendCourseSelection.bind(this)
+                    sendCourseSelection: this.sendCourseSelection.bind(this),
+                    sendForum: this.sendForum.bind(this)
                 }
             })
             console.log(this.state);

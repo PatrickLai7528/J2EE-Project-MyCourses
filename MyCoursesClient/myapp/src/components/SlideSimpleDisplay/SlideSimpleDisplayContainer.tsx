@@ -1,14 +1,12 @@
 import * as React from "react";
-import {SlideDisplay} from "./SlideDisplay";
+import {SlideSimpleDisplay} from "./SlideSimpleDisplay";
 import {UserType} from "../../api/UserAPI";
 import {IAppForStudentState, IAppForTeacherState} from "../App/App";
 import {ISlide} from "../../types/entities";
 import {Button} from "antd";
 import {SlideAddingModal} from "../SlideAddingModal/SlideAddingModal";
-import {AssignmentAddingFormContainer} from "../AssignmentAddingForm/AssignmentAddingFormContainer";
-import {AssignmentAddingModal} from "../AssignmentAddingModal/AssignmentAddingModal";
 import {SlideAddingFormContainer} from "../SlideAddingForm/SlideAddingFormContainer";
-import {ISendActionCallback, ISendSlideProps} from "../App/GeneralProps";
+import {ISendActionCallback} from "../App/GeneralProps";
 import {ISendSlideData} from "../../api/SlideAPI";
 
 export interface ISlideDisplayContainerProps {
@@ -23,7 +21,7 @@ interface ISlideDisplayContainerState {
     confirmLoading: boolean
 }
 
-export class SlideDisplayContainer extends React.Component<ISlideDisplayContainerProps, ISlideDisplayContainerState> {
+export class SlideSimpleDisplayContainer extends React.Component<ISlideDisplayContainerProps, ISlideDisplayContainerState> {
     public constructor(props: ISlideDisplayContainerProps) {
         super(props);
         this.state = {
@@ -36,7 +34,7 @@ export class SlideDisplayContainer extends React.Component<ISlideDisplayContaine
     public render(): React.ReactNode {
         return (
             <div>
-                <SlideDisplay slideList={this.getSlideList()} addSlideButton={this.getAddSlideButton()}/>
+                <SlideSimpleDisplay slideList={this.getSlideList()} addSlideButton={this.getAddSlideButton()}/>
                 <SlideAddingModal
                     visible={this.state.modalVisible}
                     onOk={() => this.setState({submitForm: true})}

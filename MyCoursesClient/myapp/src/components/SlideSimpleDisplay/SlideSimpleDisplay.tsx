@@ -25,7 +25,7 @@ interface ICategorizedSlideFolder {
 }
 
 
-export class SlideDisplay extends React.Component<ISlideDisplayProps, ISlideDisplayState> {
+export class SlideSimpleDisplay extends React.Component<ISlideDisplayProps, ISlideDisplayState> {
     public constructor(props: ISlideDisplayProps) {
         super(props);
         this.state = {

@@ -11,7 +11,7 @@ import {ISendForumProps, UserStateProps} from "../App/GeneralProps";
 export interface IForumAddingFormContainerProps extends UserStateProps, ISendForumProps {
 
     isTimeToSubmit: boolean
-
+    email:string
     releasement: IReleasement
 
     onSendBefore: () => void
@@ -19,7 +19,6 @@ export interface IForumAddingFormContainerProps extends UserStateProps, ISendFor
     onSendFail: (response: IAPIResponse<any>) => void
     onSendError: (e: any) => void
 
-    refreshFormTrigger: boolean
 }
 
 interface IForumAddingFormContainerState {
@@ -36,9 +35,8 @@ export class ForumAddingFormContainer extends React.Component<IForumAddingFormCo
 
     private submit(): void {
         if (this.form) {
-            console.log(this.form.props.form);
             this.form.props.form.validateFields((err: any, values: any) => {
-                    if (!err && this.props.email) {
+                    if (!err) {
                         let {topic} = values;
                         const sendForumData: ISendForumData = {
                             topic,
@@ -66,10 +64,10 @@ export class ForumAddingFormContainer extends React.Component<IForumAddingFormCo
 
     public render(): React.ReactNode {
         return (
-            <WrappedForumAddingForm resetTrigger={this.props.refreshFormTrigger}
-                                    wrappedComponentRef={(form: ForumAddingForm) => {
-                                        this.form = form;
-                                    }}/>
+            <WrappedForumAddingForm
+                wrappedComponentRef={(form: ForumAddingForm) => {
+                    this.form = form;
+                }}/>
         )
     }
 }

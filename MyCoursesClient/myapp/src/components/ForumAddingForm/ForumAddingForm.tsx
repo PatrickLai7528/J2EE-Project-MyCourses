@@ -4,7 +4,6 @@ import {FormComponentProps} from "antd/lib/form";
 import {TitleForumAddingFormItem} from "./ForumAddingFormItem";
 
 export interface IForumAddingFormProps extends FormComponentProps {
-    resetTrigger: boolean
 }
 
 interface IForumAddingFormState {
@@ -17,11 +16,6 @@ export class ForumAddingForm extends React.Component<IForumAddingFormProps, IFor
         this.state = {}
     }
 
-    public componentWillReceiveProps(nextProps: Readonly<IForumAddingFormProps>, nextContext: any): void {
-        if (nextProps.resetTrigger != this.props.resetTrigger) {
-            this.props.form.resetFields();
-        }
-    }
 
     public render(): React.ReactNode {
         const {getFieldDecorator, setFieldsValue} = this.props.form;

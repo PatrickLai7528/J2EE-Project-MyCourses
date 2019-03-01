@@ -4,8 +4,9 @@ import {UserType} from "../../api/UserAPI";
 import {IForum, IReleasement} from "../../types/entities";
 import {FormOption} from "../GeneralAddingModal/GeneralAddingModal";
 import {IAppForStudentState, IAppForTeacherState} from "../App/App";
-import {AssignmentDisplayContainer} from "../AssignmentDisplay/AssignmentDisplayContainer";
-import {SlideDisplayContainer} from "../SlideDisplay/SlideDisplayContainer";
+import {AssignmentSimpleDisplayContainer} from "../AssignmentSimpleDisplay/AssignmentSimpleDisplayContainer";
+import {SlideSimpleDisplayContainer} from "../SlideSimpleDisplay/SlideSimpleDisplayContainer";
+import {ForumSimpleDisplayContainer} from "../ForumSimpleDisplay/ForumSimpleDisplayContainer";
 
 export interface IReleasementManageContainerProps {
     forTeacher?: IAppForTeacherState
@@ -72,10 +73,11 @@ export default class ReleasementManageContainer extends React.Component<IRelease
         if (email && releasement && setDisplayingForum) {
             return (
                 <div>
-                    <AssignmentDisplayContainer userType={userType} forTeacher={this.props.forTeacher}
-                                                forStudent={this.props.forStudent}/>
-                    <SlideDisplayContainer userType={userType} forStudent={this.props.forStudent}
-                                           forTeacher={this.props.forTeacher}/>
+                    <ForumSimpleDisplayContainer userType={userType} forStudent={forStudent} forTeacher={forTeacher}/>
+                    <AssignmentSimpleDisplayContainer userType={userType} forTeacher={this.props.forTeacher}
+                                                      forStudent={this.props.forStudent}/>
+                    <SlideSimpleDisplayContainer userType={userType} forStudent={this.props.forStudent}
+                                                 forTeacher={this.props.forTeacher}/>
                     <ReleasementManage
                         editable={this.props.userType === "teacher"}
                         releasement={releasement}

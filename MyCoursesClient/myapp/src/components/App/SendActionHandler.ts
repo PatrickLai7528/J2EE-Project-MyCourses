@@ -1,15 +1,11 @@
 import {ISendActionCallback} from "./GeneralProps";
 import IAPIResponse from "../../api/IAPIResponse";
 import SlideAPI, {ISendSlideData} from "../../api/SlideAPI";
-import {ISendCommentData, ISendForumData} from "../../api/ForumAPI";
-import ForumAPI from "../../api/ForumAPI";
-import {ISendAssignmentData} from "../../api/AssignmentAPI";
-import AssignmentAPI from "../../api/AssignmentAPI";
-import {ISendSelectionData} from "../../api/SelectionAPI";
-import SelectionAPI from "../../api/SelectionAPI";
+import ForumAPI, {ISendCommentData, ISendForumData} from "../../api/ForumAPI";
+import AssignmentAPI, {ISendAssignmentData} from "../../api/AssignmentAPI";
+import SelectionAPI, {ISendSelectionData} from "../../api/SelectionAPI";
 import CourseAPI, {ISendAddCourseData, ISendReleasementData} from "../../api/CourseAPI";
 import ReleasementAPI from "../../api/ReleasementAPI";
-import {IForum} from "../../types/entities";
 
 
 export class SendActionHandler {

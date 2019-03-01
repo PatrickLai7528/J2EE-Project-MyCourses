@@ -25,7 +25,7 @@ const IconText: React.FunctionComponent<IIconTextProps> = (props: IIconTextProps
   </span>
 );
 
-export const AssignmentDisplay: React.FunctionComponent<IAssignmentDisplayProps> = (props: IAssignmentDisplayProps) => {
+export const AssignmentSimpleDisplay: React.FunctionComponent<IAssignmentDisplayProps> = (props: IAssignmentDisplayProps) => {
 
 
     return (

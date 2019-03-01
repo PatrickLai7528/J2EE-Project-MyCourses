@@ -1,7 +1,7 @@
 import * as React from "react";
 import {UserType} from "../../api/UserAPI";
 import {IAppForStudentState, IAppForTeacherState} from "../App/App";
-import {AssignmentDisplay} from "./AssignmentDisplay";
+import {AssignmentSimpleDisplay} from "./AssignmentSimpleDisplay";
 import {IAssignment, IReleasement} from "../../types/entities";
 import {Button} from "antd";
 import {AssignmentAddingModal} from "../AssignmentAddingModal/AssignmentAddingModal";
@@ -22,7 +22,7 @@ interface IAssignmentDisplayContainerState {
     submitForm: boolean
 }
 
-export class AssignmentDisplayContainer extends React.Component<IAssignmentDisplayContainerProps, IAssignmentDisplayContainerState> {
+export class AssignmentSimpleDisplayContainer extends React.Component<IAssignmentDisplayContainerProps, IAssignmentDisplayContainerState> {
 
     public constructor(props: IAssignmentDisplayContainerProps) {
         super(props);
@@ -73,8 +73,8 @@ export class AssignmentDisplayContainer extends React.Component<IAssignmentDispl
     public render(): React.ReactNode {
         return (
             <div>
-                <AssignmentDisplay assignmentList={this.getAssignmentFrom()}
-                                   addAssignmentButton={this.getAddAssignmentButton()}/>
+                <AssignmentSimpleDisplay assignmentList={this.getAssignmentFrom()}
+                                         addAssignmentButton={this.getAddAssignmentButton()}/>
                 <AssignmentAddingModal
                     visible={this.state.modalVisible}
                     onOk={() => this.setState({submitForm: true})}
@@ -100,7 +100,8 @@ export class AssignmentDisplayContainer extends React.Component<IAssignmentDispl
                             modalVisible: false,
                             confirmLoading: false
                         })}
-                        sendAssignment={this.getSendAssignment()}/>
+                        sendAssignment={this.getSendAssignment()}
+                    />
                 </AssignmentAddingModal>
             </div>
         )
