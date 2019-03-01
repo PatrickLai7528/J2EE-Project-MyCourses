@@ -2,6 +2,8 @@ import IAPIResponse from "./IAPIResponse";
 import NetworkSettings from "../setting/NetworkSettings";
 import axios from "axios";
 import {ByteUnit, fromByteUnitToString} from "../types/enums";
+import {IReleasement} from "../types/entities";
+import {EnumUtils} from "../utils/EnumUtils";
 
 export interface ISendAssignmentData {
     title: string,
@@ -47,8 +49,8 @@ export default class AssignmentAPI {
         })
     }
 
-    public sendAssignment(data: ISendAssignmentData): Promise<IAPIResponse<any>> {
-        return new Promise<IAPIResponse<any>>((resolve, reject) => {
+    public sendAssignment(data: ISendAssignmentData): Promise<IAPIResponse<IReleasement>> {
+        return new Promise<IAPIResponse<IReleasement>>((resolve, reject) => {
             const url: string = NetworkSettings.getOpenNetworkIP() + "/assignment/add" +
                 "?title=" + data.title +
                 "&desc=" + data.description +
@@ -59,11 +61,12 @@ export default class AssignmentAPI {
                 "&fileName=" + data.fileName;
             axios.post(url)
                 .then((response: any) => {
+                    const releasement:IReleasement = EnumUtils.changeStringToReleasementEnum(response.data.payload);
                     resolve({
                         isSuccess: response.data.code === 0,
                         code: response.data.code,
                         message: response.data.message,
-                        payload: response.data.payload
+                        payload: releasement
                     })
                 })
                 .catch((e: any) => {

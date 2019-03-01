@@ -1,7 +1,8 @@
 import IAPIResponse from "./IAPIResponse";
 import axios from "axios";
 import NetworkSettings from "../setting/NetworkSettings";
-import {any} from "prop-types";
+import {IReleasement} from "../types/entities";
+import {EnumUtils} from "../utils/EnumUtils";
 
 export interface ISendSlideData {
     rid: number
@@ -13,7 +14,7 @@ export default class SlideAPI {
 
     private static instance: SlideAPI;
 
-    private constructor() {
+    private constructor() { 
     }
 
     public static getInstance(): SlideAPI {
@@ -22,19 +23,20 @@ export default class SlideAPI {
         return this.instance;
     }
 
-    public sendSlide(data: ISendSlideData): Promise<IAPIResponse<any>> {
-        return new Promise<IAPIResponse<any>>((resolve, reject) => {
+    public sendSlide(data: ISendSlideData): Promise<IAPIResponse<IReleasement>> {
+        return new Promise<IAPIResponse<IReleasement>>((resolve, reject) => {
             const url: string = NetworkSettings.getOpenNetworkIP() + "/slide/add" +
                 "?rid=" + data.rid +
                 "&fileName=" + data.fileName +
                 "&title=" + data.title;
             axios.post(url)
                 .then((response: any) => {
+                    const releasement:IReleasement = EnumUtils.changeStringToReleasementEnum(response.data.payload);
                     resolve({
                         isSuccess: response.data.code === 0,
                         code: response.data.code,
                         message: response.data.message,
-                        payload: response.data.payload
+                        payload: releasement
                     })
                 })
                 .catch((e: any) => {

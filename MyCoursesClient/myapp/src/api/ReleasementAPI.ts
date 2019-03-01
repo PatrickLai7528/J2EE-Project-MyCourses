@@ -4,6 +4,7 @@ import axios from "axios";
 import NetworkSettings from "../setting/NetworkSettings";
 import {toApprovalState} from "../types/enums";
 import {ISendReleasementData} from "./CourseAPI";
+import {EnumUtils} from "../utils/EnumUtils";
 
 export default class ReleasementAPI {
 
@@ -76,20 +77,11 @@ export default class ReleasementAPI {
                 "?teacherEmail=" + teacherEmail;
             axios.get(url)
                 .then((response: any) => {
-                    let payload: IReleasement[] = response.data.payload;
-                    if (payload)
-                        for (let item of payload) {
-                            // @ts-ignore
-                            // here the enum approvalState is actually a string, so we need to make it right
-                            item.approvalState = toApprovalState(item.approvalState);
-                            // @ts-ignore
-                            // here the enum approvalState is actually a string, so we need to make it right
-                            item.courseEntity.approvalState = toApprovalState(item.courseEntity.approvalState);
-                        }
+                    const releasementList: IReleasement[] = EnumUtils.changeStringsToReleasementEnums(response.data.payload);
                     resolve({
                         isSuccess: response.data.code === 0,
                         code: response.data.code,
-                        payload: payload,
+                        payload: releasementList,
                         message: response.data.message
                     })
                 })
@@ -97,8 +89,8 @@ export default class ReleasementAPI {
     }
 
 
-    public sendReleasement(data: ISendReleasementData): Promise<IAPIResponse<any>> {
-        return new Promise<IAPIResponse<any>>((resolve, reject) => {
+    public sendReleasement(data: ISendReleasementData): Promise<IAPIResponse<IReleasement[]>> {
+        return new Promise<IAPIResponse<IReleasement[]>>((resolve, reject) => {
             const url =
                 NetworkSettings.getOpenNetworkIP() + "/releasement/add?" +
                 "cid=" + data.cid +
@@ -112,11 +104,12 @@ export default class ReleasementAPI {
                 "&limitNumber=" + data.limitNumber;
             axios.post(url)
                 .then((response: any) => {
+                    const releasementList: IReleasement[] = EnumUtils.changeStringsToReleasementEnums(response.data.payload);
                     resolve({
                         isSuccess: response.data.code === 0,
                         code: response.data.code,
                         message: response.data.message,
-                        payload: response.data.payload
+                        payload: releasementList
                     })
                 })
                 .catch((e: any) => {

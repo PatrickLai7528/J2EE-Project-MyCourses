@@ -3,6 +3,7 @@ import IAPIResponse from "./IAPIResponse";
 import NetworkSettings from "../setting/NetworkSettings";
 import {ICourse} from "../types/entities";
 import {toApprovalState} from "../types/enums";
+import {EnumUtils} from "../utils/EnumUtils";
 
 
 export interface ISendReleasementData {
@@ -34,19 +35,20 @@ export default class CourseAPI {
         return CourseAPI.instance;
     }
 
-    public sendCourse(data: ISendAddCourseData): Promise<IAPIResponse<any>> {
-        return new Promise<IAPIResponse<any>>((resolve, reject) => {
+    public sendCourse(data: ISendAddCourseData): Promise<IAPIResponse<ICourse[]>> {
+        return new Promise<IAPIResponse<ICourse[]>>((resolve, reject) => {
             const url: string =
                 NetworkSettings.getOpenNetworkIP()
                 + "/course/add?teacherEmail=" + data.teacherEmail
                 + "&courseName=" + data.courseName;
             axios.post(url)
                 .then((response: any) => {
+                    const courseList: ICourse[] = EnumUtils.changeStringsToCourseEnums(response.data.payload);
                     resolve({
                         isSuccess: response.data.code === 0,
                         code: response.data.code,
                         message: response.data.message,
-                        payload: response.data.payload
+                        payload: courseList
                     })
                 })
                 .catch((e: any) => {

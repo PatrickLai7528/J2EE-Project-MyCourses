@@ -3,6 +3,7 @@ import {ISelection} from "../types/entities";
 import axios from "axios";
 import NetworkSettings from "../setting/NetworkSettings";
 import {toApprovalState, toSelectionState} from "../types/enums";
+import {EnumUtils} from "../utils/EnumUtils";
 
 export interface ISendSelectionData{
     studentEmail:string,
@@ -27,11 +28,12 @@ export default class SelectionAPI {
                 "?rid=" + data.rid + "&studentEmail=" + data.studentEmail;
             axios.post(url)
                 .then((response: any) => {
+                    const selectionList:ISelection[] = EnumUtils.changeStringsToSelectionEnums(response.data.payload);
                     resolve({
                         isSuccess: response.data.code === 0,
                         code: response.data.code,
                         message: response.data.message,
-                        payload: response.data.payload
+                        payload: selectionList
                     })
                 })
                 .catch((e: any) => {
