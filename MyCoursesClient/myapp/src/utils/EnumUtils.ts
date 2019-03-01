@@ -1,14 +1,15 @@
 import {ICourse, IReleasement, ISelection} from "../types/entities";
 import {toApprovalState} from "../types/enums";
+import {release} from "os";
 
 export class EnumUtils {
     public static changeStringToReleasementEnum(releasement: IReleasement): IReleasement {
         // @ts-ignore
         // here the enum approvalState is actually a string, so we need to make it right
-        releasement.approvalState = toApprovalState(item.approvalState);
+        releasement.approvalState = toApprovalState(releasement.approvalState);
         // @ts-ignore
         // here the enum approvalState is actually a string, so we need to make it right
-        releasement.courseEntity.approvalState = toApprovalState(item.courseEntity.approvalState);
+        releasement.courseEntity.approvalState = toApprovalState(releasement.courseEntity.approvalState);
         return releasement;
     }
 
@@ -40,8 +41,8 @@ export class EnumUtils {
         return courseList;
     }
 
-    public static changeStringsToSelectionEnums(selectionList:ISelection[]):ISelection[]{
-        for(let selection of selectionList){
+    public static changeStringsToSelectionEnums(selectionList: ISelection[]): ISelection[] {
+        for (let selection of selectionList) {
             selection.releasementEntity = this.changeStringToReleasementEnum(selection.releasementEntity);
         }
         return selectionList;

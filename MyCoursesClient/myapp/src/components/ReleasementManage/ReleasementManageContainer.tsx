@@ -4,6 +4,7 @@ import {UserType} from "../../api/UserAPI";
 import {IForum, IReleasement} from "../../types/entities";
 import {FormOption} from "../GeneralAddingModal/GeneralAddingModal";
 import {IAppForStudentState, IAppForTeacherState} from "../App/App";
+import {AssignmentDisplayContainer} from "../AssignmentDisplay/AssignmentDisplayContainer";
 
 export interface IReleasementManageContainerProps {
     forTeacher?: IAppForTeacherState
@@ -70,6 +71,8 @@ export default class ReleasementManageContainer extends React.Component<IRelease
         if (email && releasement && setDisplayingForum) {
             return (
                 <div>
+                    <AssignmentDisplayContainer userType={userType} forTeacher={this.props.forTeacher}
+                                                forStudent={this.props.forStudent}/>
                     <ReleasementManage
                         editable={this.props.userType === "teacher"}
                         releasement={releasement}

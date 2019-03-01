@@ -52,46 +52,46 @@ export const GeneralAddingModal: React.FunctionComponent<IGeneralAddingModalProp
             okText="確定"
             cancelText="取消"
         >
-            {
-                props.mode === FormOption.ASSIGNMENT ?
-                    <AssignmentAddingFormContainer
-                        refreshFormTrigger={props.refreshFormTrigger}
-                        releasement={props.releasement}
-                        isTimeToSubmit={props.isTimeToSubmitAssignment}
-                        sendAssignment={props.sendAssignment}
-                        onSendBefore={props.onSendBefore}
-                        onSendError={props.onSendFail}
-                        onSendSuccess={props.onSendSuccess}
-                        onSendFail={props.onSendFail}
-                    /> : ""
-            }
-            {
-                props.mode === FormOption.SLIDE ?
-                    <SlideAddingFormContainer
-                        sendSlide={props.sendSlide}
-                        refreshFormTrigger={props.refreshFormTrigger}
-                        releasement={props.releasement}
-                        isTimeToSubmit={props.isTimeToSubmitSlide}
-                        onSendBefore={props.onSendBefore}
-                        onSendError={props.onSendError}
-                        onSendSuccess={props.onSendSuccess}
-                        onSendFail={props.onSendFail}
-                    /> : ""
-            }
-            {
-                props.mode === FormOption.FORUM ?
-                    <ForumAddingFormContainer
-                        userType={props.userType}
-                        email={props.email}
-                        sendForum={props.sendForum}
-                        isTimeToSubmit={props.isTimeToSubmitForum}
-                        releasement={props.releasement}
-                        onSendBefore={props.onSendBefore}
-                        onSendSuccess={props.onSendSuccess}
-                        onSendFail={props.onSendFail}
-                        onSendError={props.onSendError}
-                        refreshFormTrigger={props.refreshFormTrigger}/> : ""
-            }
+            {/*{*/}
+                {/*props.mode === FormOption.ASSIGNMENT ?*/}
+                    {/*<AssignmentAddingFormContainer*/}
+                        {/*refreshFormTrigger={props.refreshFormTrigger}*/}
+                        {/*releasement={props.releasement}*/}
+                        {/*isTimeToSubmit={props.isTimeToSubmitAssignment}*/}
+                        {/*sendAssignment={props.sendAssignment}*/}
+                        {/*onSendBefore={props.onSendBefore}*/}
+                        {/*onSendError={props.onSendFail}*/}
+                        {/*onSendSuccess={props.onSendSuccess}*/}
+                        {/*onSendFail={props.onSendFail}*/}
+                    {/*/> : ""*/}
+            {/*}*/}
+            {/*{*/}
+                {/*props.mode === FormOption.SLIDE ?*/}
+                    {/*<SlideAddingFormContainer*/}
+                        {/*sendSlide={props.sendSlide}*/}
+                        {/*refreshFormTrigger={props.refreshFormTrigger}*/}
+                        {/*releasement={props.releasement}*/}
+                        {/*isTimeToSubmit={props.isTimeToSubmitSlide}*/}
+                        {/*onSendBefore={props.onSendBefore}*/}
+                        {/*onSendError={props.onSendError}*/}
+                        {/*onSendSuccess={props.onSendSuccess}*/}
+                        {/*onSendFail={props.onSendFail}*/}
+                    {/*/> : ""*/}
+            {/*}*/}
+            {/*{*/}
+                {/*props.mode === FormOption.FORUM ?*/}
+                    {/*<ForumAddingFormContainer*/}
+                        {/*userType={props.userType}*/}
+                        {/*email={props.email}*/}
+                        {/*sendForum={props.sendForum}*/}
+                        {/*isTimeToSubmit={props.isTimeToSubmitForum}*/}
+                        {/*releasement={props.releasement}*/}
+                        {/*onSendBefore={props.onSendBefore}*/}
+                        {/*onSendSuccess={props.onSendSuccess}*/}
+                        {/*onSendFail={props.onSendFail}*/}
+                        {/*onSendError={props.onSendError}*/}
+                        {/*refreshFormTrigger={props.refreshFormTrigger}/> : ""*/}
+            {/*}*/}
         </Modal>
     )
 };

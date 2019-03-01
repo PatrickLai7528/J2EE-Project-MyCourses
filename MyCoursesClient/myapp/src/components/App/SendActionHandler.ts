@@ -18,7 +18,6 @@ export class SendActionHandler {
             if (callback && callback.onBefore) callback.onBefore();
             try {
                 const response: IAPIResponse<any> = await fetchFromAPI();
-                console.log(response);
                 if (response.isSuccess) {
                     if (callback && callback.onSuccess) callback.onSuccess(response);
                 } else if (callback && callback.onFail) callback.onFail(response);

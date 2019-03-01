@@ -278,6 +278,8 @@ export default class App extends Component<IAppProps, IAppState> {
 
     private sendAssignment(data: ISendAssignmentData, callback?: ISendActionCallback): void {
         const doAfter: (payload: any) => void = (payload: IReleasement) => {
+            console.log("after send assignment")
+            console.log(payload);
             this.state.userType === "teacher" && this.state.forTeacher &&
             this.setState({
                 forTeacher: {

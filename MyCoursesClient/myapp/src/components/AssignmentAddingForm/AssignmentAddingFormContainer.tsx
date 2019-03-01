@@ -15,7 +15,6 @@ export interface IAssignmentAddingFormContainerProps extends ISendAssignmentProp
     onSendSuccess: (response: IAPIResponse<any>) => void
     onSendFail: (response: IAPIResponse<any>) => void
     onSendError: (e: any) => void
-    refreshFormTrigger: boolean
 }
 
 interface IAssignmentAddingFormContainerState {
@@ -65,10 +64,10 @@ export class AssignmentAddingFormContainer extends React.Component<IAssignmentAd
 
     public render(): React.ReactNode {
         return (
-            <WrappedAssignmentAddingForm resetTrigger={this.props.refreshFormTrigger}
-                                         wrappedComponentRef={(form: AssignmentAddingForm) => {
-                                             this.form = form;
-                                         }}/>
+            <WrappedAssignmentAddingForm
+                wrappedComponentRef={(form: AssignmentAddingForm) => {
+                    this.form = form;
+                }}/>
         )
     }
 }

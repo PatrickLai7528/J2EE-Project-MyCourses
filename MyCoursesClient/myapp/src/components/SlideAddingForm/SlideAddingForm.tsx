@@ -1,7 +1,6 @@
 import * as React from "react";
 import {FormComponentProps} from "antd/lib/form";
 import {Form} from "antd";
-import {IAssignmentAddingFormProps} from "../AssignmentAddingForm/AssignmentAddingForm";
 import {TitleSlideAddingFormItem, UploadSlideAddingFormItem} from "./SlideAddingFormItem";
 
 export interface ISlideAddingFormProps extends FormComponentProps {
@@ -17,7 +16,7 @@ export class SlideAddingForm extends React.Component<ISlideAddingFormProps, ISli
         super(props);
     }
 
-    public componentWillReceiveProps(nextProps: Readonly<IAssignmentAddingFormProps>, nextContext: any): void {
+    public componentWillReceiveProps(nextProps: Readonly<ISlideAddingFormProps>, nextContext: any): void {
         if (nextProps.resetTrigger != this.props.resetTrigger) {
             this.props.form.resetFields();
         }

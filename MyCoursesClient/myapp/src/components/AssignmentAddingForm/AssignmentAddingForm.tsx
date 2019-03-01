@@ -11,7 +11,6 @@ import {
 import {FormComponentProps} from "antd/lib/form";
 
 export interface IAssignmentAddingFormProps extends FormComponentProps {
-    resetTrigger: boolean
 }
 
 interface IAssignmentAddingFormState {
@@ -24,11 +23,6 @@ export class AssignmentAddingForm extends React.Component<IAssignmentAddingFormP
         this.state = {}
     }
 
-    public componentWillReceiveProps(nextProps: Readonly<IAssignmentAddingFormProps>, nextContext: any): void {
-        if (nextProps.resetTrigger != this.props.resetTrigger) {
-            this.props.form.resetFields();
-        }
-    }
 
     public render(): React.ReactNode {
         const {getFieldDecorator, setFieldsValue} = this.props.form;
