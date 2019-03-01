@@ -18,14 +18,18 @@ export const TeacherContentRouter: React.FunctionComponent<ITeacherContentRouter
             <Route exact path="/releasement/manage" component={
                 () => {
                     if (props.forTeacher.managingReleasement)
-                        return <ReleasementManageContainer
-                            setDisplayingForum={props.forTeacher.setDisplayingForum}
-                            sendForum={props.forTeacher.sendForum}
-                            sendSlide={props.forTeacher.sendSlide}
-                            sendAssignment={props.forTeacher.sendAssignment}
-                            userType={props.userType}
-                            email={props.forTeacher.email}
-                            releasement={props.forTeacher.managingReleasement}/>
+                        return (
+                            <ReleasementManageContainer
+                                forTeacher={props.forTeacher}
+                                userType={props.userType}
+                                // setDisplayingForum={props.forTeacher.setDisplayingForum}
+                                // sendForum={props.forTeacher.sendForum}
+                                // sendSlide={props.forTeacher.sendSlide}
+                                // sendAssignment={props.forTeacher.sendAssignment}
+                                // userType={props.userType}
+                                // releasement={props.forTeacher.managingReleasement}
+                            />
+                        )
                     return null;
                 }
             }/>
@@ -34,8 +38,8 @@ export const TeacherContentRouter: React.FunctionComponent<ITeacherContentRouter
                     if (props.forTeacher.managingReleasement && props.forTeacher.displayingForum)
                         return (
                             <ForumDisplayContainer
-                               userType={props.userType}
-                               forTeacher={props.forTeacher}
+                                userType={props.userType}
+                                forTeacher={props.forTeacher}
                             />
                         );
                     return null;

@@ -89,7 +89,6 @@ export default class UserAPI {
 
         return new Promise<IAPIResponse<any>>((resolve, reject) => {
             axios.post(NetworkSettings.getOpenNetworkIP() + url, JSON.stringify(realSignUpData), {headers: {"Content-Type": "application/json"}}).then((response: any) => {
-                console.log(response);
                 resolve({
                     isSuccess: response.data.code === 0,
                     code: response.data.code,
@@ -104,8 +103,6 @@ export default class UserAPI {
     }
 
     public postLogin(loginData: ILoginData): Promise<IAPIResponse<any>> {
-        console.log("log in data");
-        console.log(loginData);
         let url: string = "";
         const {email, password} = loginData;
         let realLogInData: any;
@@ -128,7 +125,6 @@ export default class UserAPI {
 
         return new Promise<IAPIResponse<any>>((resolve, rejects) => {
             axios.post(NetworkSettings.getOpenNetworkIP() + url, JSON.stringify(realLogInData), {headers: {"Content-Type": "application/json"}}).then((response: any) => {
-                console.log(response);
                 resolve({
                     code: response.data.code,
                     isSuccess: response.data.code === 0,

@@ -25,6 +25,9 @@ export class LogInForm extends React.Component<FormComponentProps> {
                             rules: [
                                 {
                                     required: true, message: 'Please input your email!'
+                                },
+                                {
+                                    type: 'email', message: 'The input is not valid E-mail!',
                                 }
                             ],
                         }
@@ -62,5 +65,4 @@ export class LogInForm extends React.Component<FormComponentProps> {
     }
 }
 
-const WrappedLogInForm = Form.create()(LogInForm);
-export default WrappedLogInForm;
+export const WrappedLogInForm = Form.create()(LogInForm);

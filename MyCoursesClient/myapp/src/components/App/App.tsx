@@ -210,6 +210,7 @@ export default class App extends Component<IAppProps, IAppState> {
     // }
 
     private async handleVisitorCome() {
+        console.log("visitor come");
         const response: IAPIResponse<IReleasement[]> = await ReleasementAPI.getInstance().getAllReleasement();
         if (response.isSuccess && response.payload)
             this.setState({
@@ -218,19 +219,23 @@ export default class App extends Component<IAppProps, IAppState> {
                     releasementList: response.payload
                 }
             })
+        console.log(this.state);
     }
 
 
     private handleLogInSuccess(userType: UserType, email: string, token: string): void {
-
+        console.log("handling log in");
         const cookie: Cookies = new Cookies();
         cookie.remove("token");
         cookie.remove("userType");
         cookie.remove("email");
 
-        userType === "student" ? this.handleStudentLogIn(email) : "";
-        userType === "teacher" ? this.handleTeacherLogIn(email) : "";
-        userType === "visitor" ? this.handleVisitorCome() : ""
+        if (userType === "student")
+            this.handleStudentLogIn(email);
+        if (userType === "teacher")
+            this.handleTeacherLogIn(email);
+        if (userType === "visitor")
+            this.handleVisitorCome();
 
         cookie.set("token", token);
         cookie.set("userType", userType);
@@ -348,6 +353,7 @@ export default class App extends Component<IAppProps, IAppState> {
     }
 
     private async handleTeacherLogIn(teacherEmail: string) {
+        console.log("teacher log in");
         try {
             let courseList: ICourse[] = [];
             let releasementList: IReleasement[] = [];
@@ -363,7 +369,7 @@ export default class App extends Component<IAppProps, IAppState> {
             } else {
                 message.error(responseOfReleasement.message)
             }
-            this.state.forTeacher && this.setState({
+            this.setState({
                 userType: "teacher",
                 forStudent: undefined,
                 forVisitor: undefined,
@@ -387,7 +393,8 @@ export default class App extends Component<IAppProps, IAppState> {
                     sendCourseRelease: this.sendCourseRelease.bind(this),
                     sendForum: this.sendForum.bind(this)
                 }
-            })
+            });
+            console.log(this.state);
         } catch (e) {
             console.log(e);
             message.error("初始化老師失敗，請稍候再試")
@@ -395,6 +402,7 @@ export default class App extends Component<IAppProps, IAppState> {
     }
 
     private async handleStudentLogIn(studentEmail: string) {
+        console.log("student log in");
         try {
             let releasementList: IReleasement[] = [];
             let selectionList: ISelection[] = []; // use empty list for default
@@ -432,6 +440,7 @@ export default class App extends Component<IAppProps, IAppState> {
                     sendCourseSelection: this.sendCourseSelection.bind(this)
                 }
             })
+            console.log(this.state);
         } catch (e) {
             console.log(e);
             message.error("初始化學生數據失敗，請稍候再試");

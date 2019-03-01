@@ -1,6 +1,6 @@
 import * as React from "react";
 import {Button, Drawer, message, Spin} from "antd";
-import WrappedLogInForm, {LogInForm} from "../LogInForm/LogInForm";
+import {LogInForm, WrappedLogInForm} from "../LogInForm/LogInForm";
 import WrappedSignUpForm, {SignUpForm} from "../SignUpForm/SignUpForm";
 import UserAPI, {UserType} from "../../api/UserAPI";
 import IAPIResponse from "../../api/IAPIResponse";
@@ -67,7 +67,7 @@ export default class LogInAndSignUpDrawer extends React.Component<ILogInAndSignU
 
     private submitLogin(): void {
         if (this.logInForm) {
-            console.log(this.logInForm.props.form);
+            // console.log(this.logInForm.props.form);
             this.logInForm.props.form.validateFields((err: any, values: any) => {
                     if (!err) {
                         this.setState({isSubmitting: true});
@@ -75,8 +75,10 @@ export default class LogInAndSignUpDrawer extends React.Component<ILogInAndSignU
                         const {email, password, userType} = values;
                         const loginData = {email, password, userType};
                         UserAPI.getInstance().postLogin(loginData).then((response: IAPIResponse<any>) => {
-                            console.log(response);
+                            // console.log(response);
                             if (response.isSuccess) {
+                                console.log("log in response");
+                                console.log(response);
                                 message.success(response.message);
                                 this.props.onLogInSuccess(userType, email, response.payload);
                                 // DataStore.getInstance()
@@ -108,7 +110,7 @@ export default class LogInAndSignUpDrawer extends React.Component<ILogInAndSignU
             this.signUpForm.props.form.validateFields((err: any, values: any) => {
                     if (!err) {
                         this.setState({isSubmitting: true});
-                        console.log(values);
+                        // console.log(values);
                         const {email, password, number, name, userType, verifyCode} = values;
                         const signUpData = {email, password, number, name, userType, verifyCode};
                         UserAPI.getInstance().postSignUp(signUpData).then((response: IAPIResponse<any>) => {
