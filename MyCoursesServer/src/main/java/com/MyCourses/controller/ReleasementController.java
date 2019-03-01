@@ -8,6 +8,7 @@ package com.MyCourses.controller;
  */
 
 import com.MyCourses.annotations.PleaseLog;
+import com.MyCourses.entity.CourseEntity;
 import com.MyCourses.entity.ReleasementEntity;
 import com.MyCourses.exceptions.CourseNotExistException;
 import com.MyCourses.exceptions.ReleasementNotExistException;
@@ -48,7 +49,7 @@ public class ReleasementController {
 //    @VerifyToken
     @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("add")
-    public APIResponse<Object> release(
+    public APIResponse<List<ReleasementEntity>> release(
             @RequestParam(name = "cid") Long cid,
             @RequestParam(name = "effectiveTime") String effectiveTime,
             @RequestParam(name = "deadTime") String deadTime,
@@ -69,12 +70,14 @@ public class ReleasementController {
             map.put(ReleaseConfig.START_MIN, startMin);
             map.put(ReleaseConfig.END_HOUR, endHour);
             map.put(ReleaseConfig.END_MIN, endMin);
-
+            CourseEntity courseEntity = courseService.findByCid(cid);
+            List<ReleasementEntity> releasementEntityList =
+                    releasementService.getReleasementOf(courseEntity.getTeacherEntity().getTeacherEmail());
             courseService.release(cid, map);
-            return ResponseUtils.ok("課程發佈成功");
-        } catch (UnexpectedReleaseConfig | CourseNotExistException e) {
+            return ResponseUtils.ok("課程發佈成功", releasementEntityList);
+        } catch (UnexpectedReleaseConfig | CourseNotExistException | TeacherNotExistException e) {
             e.printStackTrace();
-            return ResponseUtils.error(e.getLocalizedMessage());
+            return ResponseUtils.error(e.getLocalizedMessage(),null);
         }
     }
 

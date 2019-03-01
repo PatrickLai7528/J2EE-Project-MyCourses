@@ -15,6 +15,7 @@ import com.MyCourses.entity.enums.SelectionState;
 import com.MyCourses.entity.StudentEntity;
 import com.MyCourses.exceptions.ReleasementNotExistException;
 import com.MyCourses.exceptions.RepeatSelectCourseException;
+import com.MyCourses.exceptions.SelectionNotExistException;
 import com.MyCourses.exceptions.StudentNotExistException;
 import com.MyCourses.service.ISelectionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -75,5 +76,13 @@ public class SelectionService implements ISelectionService {
     public List<SelectionEntity> getSelectionOf(String studentEmail) {
         StudentEntity studentEntity = studentDAO.retrieveByEmail(studentEmail);
         return selectionDAO.retrieveByStudent(studentEntity);
+    }
+
+    @Override
+    public SelectionEntity getSelectionBySlid(Long slid) throws SelectionNotExistException {
+        SelectionEntity selectionEntity = selectionDAO.retrieveBySlid(slid);
+        if(selectionEntity == null)
+            throw new SelectionNotExistException();
+        return selectionEntity;
     }
 }

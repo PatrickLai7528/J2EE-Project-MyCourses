@@ -36,8 +36,8 @@ public class SelectionController {
     @PleaseLog
     @PostMapping("select")
     @CrossOrigin(origins = "http://localhost:3000")
-    public APIResponse<Object> select(@RequestParam(name = "rid") String rid,
-                                      @RequestParam(name = "studentEmail") String studentEmail) {
+    public APIResponse<List<SelectionEntity>> select(@RequestParam(name = "rid") String rid,
+                                                     @RequestParam(name = "studentEmail") String studentEmail) {
 //        String studentEmail = formData.getFirst("studentEmail");
 //        Long rid = Long.valueOf(formData.getFirst("rid"));
 
@@ -54,10 +54,11 @@ public class SelectionController {
                 default:
                     throw new IllegalStateException("should not be here");
             }
-            return ResponseUtils.ok(message);
+            List<SelectionEntity> selectionEntityList = selectionService.getSelectionOf(studentEmail);
+            return ResponseUtils.ok(message, selectionEntityList);
         } catch (RepeatSelectCourseException | ReleasementNotExistException | StudentNotExistException e) {
             e.printStackTrace();
-            return ResponseUtils.error(e.getLocalizedMessage());
+            return ResponseUtils.error(e.getLocalizedMessage(), null);
         }
     }
 

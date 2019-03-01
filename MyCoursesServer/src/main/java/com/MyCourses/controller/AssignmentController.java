@@ -7,9 +7,13 @@ package com.MyCourses.controller;/*
  */
 
 import com.MyCourses.annotations.PleaseLog;
+import com.MyCourses.entity.ReleasementEntity;
+import com.MyCourses.entity.SelectionEntity;
 import com.MyCourses.entity.enums.ByteUnit;
 import com.MyCourses.exceptions.*;
 import com.MyCourses.service.IAssignmentService;
+import com.MyCourses.service.IReleasementService;
+import com.MyCourses.service.ISelectionService;
 import com.MyCourses.service.ISubmissionService;
 import com.MyCourses.utils.DateUtils;
 import com.MyCourses.utils.ResponseUtils;
@@ -23,18 +27,22 @@ import java.util.Date;
 public class AssignmentController {
     private final IAssignmentService assignmentService;
     private final ISubmissionService submissionService;
+    private final IReleasementService releasementService;
+    private final ISelectionService selectionService;
 
     @Autowired
-    public AssignmentController(IAssignmentService assignmentService, ISubmissionService submissionService) {
+    public AssignmentController(IAssignmentService assignmentService, ISubmissionService submissionService, IReleasementService releasementService, ISelectionService selectionService) {
         this.assignmentService = assignmentService;
         this.submissionService = submissionService;
+        this.releasementService = releasementService;
+        this.selectionService = selectionService;
     }
 
 
     @PostMapping("add")
     @PleaseLog
     @CrossOrigin(origins = "http://localhost:3000")
-    public APIResponse addAssignmentOf(
+    public APIResponse<ReleasementEntity> addAssignmentOf(
             @RequestParam(name = "rid") Long rid,
             @RequestParam(name = "title") String title,
             @RequestParam(name = "desc") String desc,
@@ -46,17 +54,18 @@ public class AssignmentController {
         try {
             Date ddlDate = DateUtils.generateFrom(ddl);
             assignmentService.addAssignment(rid, title, desc, ddlDate, size, ByteUnit.fromString(unit), fileName);
-            return ResponseUtils.ok("操作成功");
+            ReleasementEntity releasementEntity = releasementService.getReleasementByRid(rid) ;
+            return ResponseUtils.ok("操作成功", releasementEntity);
         } catch (ReleasementNotExistException | DateStringFormatException e) {
             e.printStackTrace();
-            return ResponseUtils.error(e.getLocalizedMessage());
+            return ResponseUtils.error(e.getLocalizedMessage(), null);
         }
     }
 
     @PostMapping("submit")
     @PleaseLog
     @CrossOrigin(origins = "http://localhost:3000")
-    public APIResponse submitAssignment(
+    public APIResponse<SelectionEntity> submitAssignment(
             @RequestParam(name = "slid") Long selectionId,
             @RequestParam(name = "assid") Long assignmentId,
             @RequestParam(name = "email") String studentEmail,
@@ -64,10 +73,11 @@ public class AssignmentController {
     ) {
         try {
             submissionService.submitAssignment(studentEmail, selectionId, assignmentId, filePath);
-            return ResponseUtils.ok("操作成功");
+            SelectionEntity selectionEntity = selectionService.getSelectionBySlid(selectionId);
+            return ResponseUtils.ok("操作成功", selectionEntity);
         } catch (StudentNotExistException | SelectionNotExistException | AssignmentNotExistException e) {
             e.printStackTrace();
-            return ResponseUtils.error(e.getLocalizedMessage());
+            return ResponseUtils.error(e.getLocalizedMessage(), null);
         }
     }
 }

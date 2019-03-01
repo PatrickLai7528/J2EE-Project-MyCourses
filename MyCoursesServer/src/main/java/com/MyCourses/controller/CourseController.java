@@ -62,7 +62,7 @@ public class CourseController {
     @PostMapping("add")
     @PleaseLog
     @CrossOrigin(origins = "http://localhost:3000")
-    public APIResponse<Object> addCourse(
+    public APIResponse<List<CourseEntity>> addCourse(
             @RequestParam(name = "teacherEmail") String teacherEmail,
             @RequestParam(name = "courseName") String courseName
     ) {
@@ -72,7 +72,8 @@ public class CourseController {
             courseEntity.setTeacherEntity(teacherFound);
             courseEntity.setName(courseName);
             courseService.add(courseEntity);
-            return ResponseUtils.ok("添加成功");
+            List<CourseEntity> courseEntityList = courseService.getCoursesByTeacherEmail(teacherEmail);
+            return ResponseUtils.ok("添加成功", courseEntityList);
         } catch (CourseHasNoTeacherException | TeacherNotExistException e) {
             return ResponseUtils.error(e.getLocalizedMessage(), null);
         }
