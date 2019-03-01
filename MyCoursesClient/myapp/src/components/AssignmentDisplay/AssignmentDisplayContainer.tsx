@@ -77,14 +77,14 @@ export class AssignmentDisplayContainer extends React.Component<IAssignmentDispl
                                    addAssignmentButton={this.getAddAssignmentButton()}/>
                 <AssignmentAddingModal
                     visible={this.state.modalVisible}
-                    onOk={() => this.setState({confirmLoading: true, submitForm: true})}
+                    onOk={() => this.setState({submitForm: true})}
                     onCancel={() => this.setState({confirmLoading: false, submitForm: false, modalVisible: false})}
                     confirmLoading={this.state.confirmLoading}
                 >
                     <AssignmentAddingFormContainer
                         isTimeToSubmit={this.state.submitForm}
                         releasement={this.getReleasement()}
-                        onSendBefore={() => this.setState({submitForm: false})}
+                        onSendBefore={() => this.setState({submitForm: false, confirmLoading: true})}
                         onSendSuccess={() => this.setState({
                             submitForm: false,
                             modalVisible: false,

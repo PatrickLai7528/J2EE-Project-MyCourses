@@ -15,7 +15,6 @@ export interface ISlideAddingFormContainerProps extends ISendSlideProps {
     onSendFail: (response: IAPIResponse<any>) => void
     onSendError: (e: any) => void
 
-    refreshFormTrigger: boolean
 }
 
 interface ISlideAddingFormContainerState {
@@ -62,10 +61,10 @@ export class SlideAddingFormContainer extends React.Component<ISlideAddingFormCo
 
     public render(): React.ReactNode {
         return (
-            <WrappedSlideAddingForm resetTrigger={this.props.refreshFormTrigger}
-                                    wrappedComponentRef={(form: SlideAddingForm) => {
-                                        this.form = form;
-                                    }}/>
+            <WrappedSlideAddingForm
+                wrappedComponentRef={(form: SlideAddingForm) => {
+                    this.form = form;
+                }}/>
         )
     }
 }

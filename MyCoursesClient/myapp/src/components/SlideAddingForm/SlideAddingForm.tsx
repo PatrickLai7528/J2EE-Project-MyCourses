@@ -4,7 +4,6 @@ import {Form} from "antd";
 import {TitleSlideAddingFormItem, UploadSlideAddingFormItem} from "./SlideAddingFormItem";
 
 export interface ISlideAddingFormProps extends FormComponentProps {
-    resetTrigger: boolean
 }
 
 interface ISlideAddingFormState {
@@ -16,11 +15,6 @@ export class SlideAddingForm extends React.Component<ISlideAddingFormProps, ISli
         super(props);
     }
 
-    public componentWillReceiveProps(nextProps: Readonly<ISlideAddingFormProps>, nextContext: any): void {
-        if (nextProps.resetTrigger != this.props.resetTrigger) {
-            this.props.form.resetFields();
-        }
-    }
 
     public render(): React.ReactNode {
         const {getFieldDecorator, setFieldsValue} = this.props.form;
@@ -29,10 +23,11 @@ export class SlideAddingForm extends React.Component<ISlideAddingFormProps, ISli
                 hideRequiredMark={true}
                 layout={"horizontal"}
             >
-               <TitleSlideAddingFormItem getFieldDecorator={getFieldDecorator}/>
-               <UploadSlideAddingFormItem setFieldsValue={setFieldsValue} getFieldDecorator={getFieldDecorator}/>
+                <TitleSlideAddingFormItem getFieldDecorator={getFieldDecorator}/>
+                <UploadSlideAddingFormItem setFieldsValue={setFieldsValue} getFieldDecorator={getFieldDecorator}/>
             </Form>
         )
     }
 }
+
 export const WrappedSlideAddingForm = Form.create()(SlideAddingForm);
