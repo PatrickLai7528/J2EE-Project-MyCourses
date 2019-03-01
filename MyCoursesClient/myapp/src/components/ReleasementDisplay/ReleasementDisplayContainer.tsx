@@ -3,11 +3,16 @@ import {IReleasement} from "../../types/entities";
 import IAPIResponse from "../../api/IAPIResponse";
 import {Divider, message} from "antd";
 import ReleasementDisplay from "./ReleasementDisplay";
-import {ISendCourseSelectionProps, UserStateProps} from "../App/GeneralProps";
 import {ISendSelectionData} from "../../api/SelectionAPI";
+import {IAppForStudentState, IAppForVisitorState} from "../App/App";
+import {UserType} from "../../api/UserAPI";
+import {release} from "os";
 
-export interface IReleasementDisplayContainerProps extends UserStateProps, ISendCourseSelectionProps {
-    releasementList: IReleasement[]
+export interface IReleasementDisplayContainerProps {
+    // releasementList: IReleasement[]
+    userType: UserType
+    forVisitor?: IAppForVisitorState
+    forStudent?: IAppForStudentState
 }
 
 interface IReleasementDisplayContainerState {
@@ -25,15 +30,20 @@ export default class ReleasementDisplayContainer extends React.Component<IReleas
     }
 
     public render(): React.ReactNode {
+        let releasementList: IReleasement [] = [];
+        if (this.props.forStudent)
+            releasementList = this.props.forStudent.releasementList;
+        else if (this.props.forVisitor)
+            releasementList = this.props.forVisitor.releasementList;
         return (
             <div>
                 <h1>所有課程</h1>
                 <Divider/>
                 <ReleasementDisplay
                     isCourseSelectionSending={this.state.isCourseSelectionSending}
-                    releasementList={this.props.releasementList}
+                    releasementList={releasementList}
                     sendSelectAction={(releasement: IReleasement) => {
-                        if (!(this.props.userType === "student") || !this.props.email) {
+                        if (this.props.userType === "visitor" || !this.props.forStudent) {
                             message.error("請先登錄");
                         } else {
                             let onBefore = () => {
@@ -48,14 +58,15 @@ export default class ReleasementDisplayContainer extends React.Component<IReleas
                                 this.setState({isCourseSelectionSending: false})
                             };
                             let onError = (e: any) => {
+                                console.log(e);
                                 message.error("發生未知錯誤，請稍候再試");
                                 this.setState({isCourseSelectionSending: false})
                             };
                             const data: ISendSelectionData = {
-                                studentEmail: this.props.email,
+                                studentEmail: this.props.forStudent.email,
                                 rid: releasement.rid
                             };
-                            this.props.sendCourseSelection(data, {
+                            this.props.forStudent.sendCourseSelection(data, {
                                 onBefore,
                                 onSuccess,
                                 onFail,

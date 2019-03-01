@@ -1,57 +1,45 @@
 import * as React from "react";
 import './ContentRouter.css';
 import {Layout} from 'antd';
-import {Route, Switch} from 'react-router-dom'
-import Setting from "../Setting/Setting";
-import ReleasementDisplayContainer from "../ReleasementDisplay/ReleasementDisplayContainer";
-import CourseDisplayContainer from "../CourseDisplay/CourseDisplayContainer";
-import {ICourse, IForum, IReleasement, ISelection} from "../../types/entities";
-import ReleasementManageContainer from "../ReleasementManage/ReleasementManageContainer";
-import {ForumDisplayContainer} from "../ForumDisplay/ForumDisplayContainer";
-import {SelectionDisplayContainer} from "../SelectionDisplay/SelectionDisplayContainer";
-import {
-    ISendAddCourseProps,
-    ISendAssignmentProps,
-    ISendCommentProps,
-    ISendCourseReleaseProps,
-    ISendCourseSelectionProps,
-    ISendForumProps,
-    ISendSlideProps,
-    UserStateProps
-} from "../App/GeneralProps";
-import {UserType} from "../../api/UserAPI";
+import {Switch} from 'react-router-dom'
 import {VisitorContentRouter} from "./VisitorContentRouter";
 import {TeacherContentRouter} from "./TeacherContentRouter";
 import {StudentContentRouter} from "./StudentContentRouter";
+import {UserType} from "../../api/UserAPI";
+import {IAppForStudentState, IAppForTeacherState, IAppForVisitorState} from "../App/App";
 
-export interface IContentRouterProps
-    extends UserStateProps, ISendAssignmentProps,
-        ISendSlideProps, ISendForumProps, ISendAddCourseProps,
-        ISendCourseReleaseProps, ISendCourseSelectionProps, ISendCommentProps {
-    courseList: ICourse[]
-    releasementList: IReleasement[]
-
-    /**
-     * for teacher, while teacher sider click a releasement,
-     * this releasement will be passed from App.tsx
-     */
-    managingReleasement?: IReleasement
-
-    displayingForum?: IForum
-    displayingSelection?: ISelection
-
-    setDisplayingForum: (forum: IForum) => void
+export interface IContentRouterProps {
+    userType: UserType
+    forStudent?: IAppForStudentState
+    forTeacher?: IAppForTeacherState
+    forVisitor?: IAppForVisitorState
+    // courseList: ICourse[]
+    // releasementList: IReleasement[]
+    //
+    // /**
+    //  * for teacher, while teacher sider click a releasement,
+    //  * this releasement will be passed from App.tsx
+    //  */
+    // managingReleasement?: IReleasement
+    //
+    // displayingForum?: IForum
+    // displayingSelection?: ISelection
+    //
+    // setDisplayingForum: (forum: IForum) => void
 
 }
 
 const switchRouteDependOnUserType = (props: IContentRouterProps): React.ReactNode => {
     switch (props.userType) {
         case "visitor":
-            return <Switch><VisitorContentRouter {...props}/></Switch>;
+            return props.forVisitor &&
+               <Switch><VisitorContentRouter userType={props.userType} forVisitor={props.forVisitor}/></Switch>;
         case "teacher":
-            return <Switch><TeacherContentRouter {...props}/></Switch>;
+            return props.forTeacher &&
+               <Switch><TeacherContentRouter userType={props.userType} forTeacher={props.forTeacher}/></Switch>;
         case "student":
-            return <Switch><StudentContentRouter {...props}/></Switch>;
+            return props.forStudent &&
+               <Switch><StudentContentRouter userType={props.userType} forStudent={props.forStudent}/></Switch>;
     }
 };
 

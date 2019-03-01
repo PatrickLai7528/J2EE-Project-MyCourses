@@ -1,28 +1,23 @@
 import * as React from "react";
 import {SelectionDisplay} from "./SelectionDisplay";
-import {IForum, ISelection} from "../../types/entities";
 import {UserStateProps} from "../App/GeneralProps";
+import {IAppForStudentState} from "../App/App";
+import {UserType} from "../../api/UserAPI";
 
 export interface ISelectionDisplayContainerProps extends UserStateProps {
-
-    selection: ISelection
-    setDisplayingForum: (forum: IForum) => void
+    forStudent: IAppForStudentState
+    userType: UserType
 }
 
-interface ISelectionDisplayContainerState {
 
-}
-
-export class SelectionDisplayContainer extends React.Component<ISelectionDisplayContainerProps, ISelectionDisplayContainerState> {
-    public render(): React.ReactNode {
-        console.log(this.props)
+export const SelectionDisplayContainer: React.FunctionComponent<ISelectionDisplayContainerProps> = (props: ISelectionDisplayContainerProps) => {
+    if (props.forStudent.displayingSelection)
         return (
-            <div>
-                <SelectionDisplay userType={this.props.userType} email={this.props.email}
-                                  selection={this.props.selection}
-                                  setDisplayingForum={this.props.setDisplayingForum}
-                />
-            </div>
-        )
-    }
-}
+            <SelectionDisplay userType={props.userType} email={props.forStudent.email}
+                              selection={props.forStudent.displayingSelection}
+                              setDisplayingForum={props.forStudent.setDisplayingForum}
+            />
+        );
+    else
+        return null;
+};

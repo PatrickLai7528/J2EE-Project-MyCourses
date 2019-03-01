@@ -7,9 +7,12 @@ import {fromApprovalStateToChinese} from "../../types/enums";
 import ReleaseCourseFormContainer from "../ReleaseCourseForm/ReleaseCourseFormContainer";
 import {ISendAddCourseData} from "../../api/CourseAPI";
 import {ISendAddCourseProps, ISendCourseReleaseProps, UserStateProps} from "../App/GeneralProps";
+import {UserType} from "../../api/UserAPI";
+import {IAppForTeacherState} from "../App/App";
 
-export interface ICourseDisplayContainerProps extends UserStateProps, ISendAddCourseProps, ISendCourseReleaseProps {
-    courseList: ICourse[]
+export interface ICourseDisplayContainerProps {
+    userType: UserType
+    forTeacher: IAppForTeacherState
 }
 
 interface ICourseDisplayContainerState {
@@ -44,15 +47,15 @@ export default class CourseDisplayContainer extends React.Component<ICourseDispl
         if (!this.state.addingCourseName) {
             message.warn("課程名稱不能為空");
         } else {
-            if (!this.props.email) {
+            if (!this.props.forTeacher.email) {
                 console.log("email 為空");
                 return;
             }
             const data: ISendAddCourseData = {
                 courseName: this.state.addingCourseName,
-                teacherEmail: this.props.email
+                teacherEmail: this.props.forTeacher.email
             };
-            this.props.sendAddCourse(
+            this.props.forTeacher.sendAddCourse(
                 data,
                 {
                     // onBefore
@@ -96,7 +99,7 @@ export default class CourseDisplayContainer extends React.Component<ICourseDispl
     }
 
     public render(): React.ReactNode {
-        console.log(this.props.courseList);
+        console.log(this.props);
         return (
             <div>
                 <h1>
@@ -110,7 +113,7 @@ export default class CourseDisplayContainer extends React.Component<ICourseDispl
                     onClick={this.openAddCourseModal.bind(this)}
                 >創建課程</Button>
                 <CourseDisplay
-                    courseList={this.props.courseList}
+                    courseList={this.props.forTeacher.courseList}
                     okToRelease={(course: ICourse) => {
                         this.setState({
                             releasingCourse: course,
@@ -161,7 +164,7 @@ export default class CourseDisplayContainer extends React.Component<ICourseDispl
                             <ReleaseCourseFormContainer
                                 course={this.state.releasingCourse}
                                 isTimeToSubmit={this.state.isTimeToSubmitReleaseCourse}
-                                sendCourseRelease={this.props.sendCourseRelease}
+                                sendCourseRelease={this.props.forTeacher.sendCourseRelease}
                                 onReleaseBefore={() => {
                                     this.setState({
                                         isTimeToSubmitReleaseCourse: false,

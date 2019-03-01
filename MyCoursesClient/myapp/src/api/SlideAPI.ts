@@ -14,7 +14,7 @@ export default class SlideAPI {
 
     private static instance: SlideAPI;
 
-    private constructor() { 
+    private constructor() {
     }
 
     public static getInstance(): SlideAPI {

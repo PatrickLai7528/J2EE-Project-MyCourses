@@ -13,16 +13,15 @@ import {IForum} from "../../types/entities";
 
 
 export class SendActionHandler {
-    private static sendAction(fetchFromAPI: () => Promise<IAPIResponse<any>>, callback?: ISendActionCallback): (doAfter: () => void) => void {
-        return async (doAfter: () => void) => {
+    private static sendAction(fetchFromAPI: () => Promise<IAPIResponse<any>>, callback?: ISendActionCallback): (doAfter: (payload: any) => void) => void {
+        return async (doAfter: (payload: any) => void) => {
             if (callback && callback.onBefore) callback.onBefore();
             try {
                 const response: IAPIResponse<any> = await fetchFromAPI();
                 if (response.isSuccess) {
                     if (callback && callback.onSuccess) callback.onSuccess(response);
                 } else if (callback && callback.onFail) callback.onFail(response);
-
-                doAfter();
+                doAfter(response.payload);
             } catch (e) {
                 console.log(e);
                 if (callback && callback.onError) callback.onError(e);
@@ -30,14 +29,14 @@ export class SendActionHandler {
         };
     }
 
-    public static sendSlide(data: ISendSlideData, callback?: ISendActionCallback): (doAfter: () => void) => void {
+    public static sendSlide(data: ISendSlideData, callback?: ISendActionCallback): (doAfter: (payload: any) => void) => void {
         return this.sendAction(
             async () => {
                 return await SlideAPI.getInstance().sendSlide(data)
             }, callback);
     }
 
-    public static sendForum(data: ISendForumData, callback?: ISendActionCallback): (doAfter: () => void) => void {
+    public static sendForum(data: ISendForumData, callback?: ISendActionCallback): (doAfter: (payload: any) => void) => void {
         return this.sendAction(
             async () => {
                 return await ForumAPI.getInstance().sendForum(data);
@@ -45,28 +44,28 @@ export class SendActionHandler {
     }
 
 
-    public static sendAssignment(data: ISendAssignmentData, callback?: ISendActionCallback): (doAfter: () => void) => void {
+    public static sendAssignment(data: ISendAssignmentData, callback?: ISendActionCallback): (doAfter: (payload:any) => void) => void {
         return this.sendAction(
             async () => {
                 return await AssignmentAPI.getInstance().sendAssignment(data);
             }, callback);
     }
 
-    public static sendCourseSelection(data: ISendSelectionData, callback?: ISendActionCallback): (doAfter: () => void) => void {
+    public static sendCourseSelection(data: ISendSelectionData, callback?: ISendActionCallback): (doAfter: (payload: any) => void) => void {
         return this.sendAction(
             async () => {
                 return await SelectionAPI.getInstance().sendSelection(data);
             }, callback);
     }
 
-    public static sendCourseRelease(data: ISendReleasementData, callback?: ISendActionCallback): (doAfter: () => void) => void {
+    public static sendCourseRelease(data: ISendReleasementData, callback?: ISendActionCallback): (doAfter: (payload: any) => void) => void {
         return this.sendAction(
             async () => {
                 return await ReleasementAPI.getInstance().sendReleasement(data);
             }, callback);
     }
 
-    public static sendAddCourse(data: ISendAddCourseData, callback?: ISendActionCallback): (doAfter: () => void) => void {
+    public static sendAddCourse(data: ISendAddCourseData, callback?: ISendActionCallback): (doAfter: (payload: any) => void) => void {
         return this.sendAction(
             async () => {
                 return await CourseAPI.getInstance().sendCourse(data);
@@ -74,7 +73,7 @@ export class SendActionHandler {
     }
 
 
-    public static sendComment(data: ISendCommentData, callback?: ISendActionCallback): (doAfter: () => void) => void {
+    public static sendComment(data: ISendCommentData, callback?: ISendActionCallback): (doAfter: (payload: any) => void) => void {
         return this.sendAction(
             async () => {
                 return await ForumAPI.getInstance().sendComment(data);

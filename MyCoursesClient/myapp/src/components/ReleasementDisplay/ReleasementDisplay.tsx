@@ -40,6 +40,6 @@ const ReleasementDisplay: React.FunctionComponent<ICourseDisplayProps> = (props:
             }
         </div>
     )
-}
+};
 
 export default ReleasementDisplay;

@@ -3,7 +3,6 @@ import './StudentSider.css';
 import {Icon, Layout, Menu} from 'antd';
 import {NavLink} from "react-router-dom";
 import {ISelection} from "../../types/entities";
-import {UserType} from "../../api/UserAPI";
 import {UserStateProps} from "../App/GeneralProps";
 
 const moment = require("moment");
