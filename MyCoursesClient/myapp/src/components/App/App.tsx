@@ -315,6 +315,7 @@ export default class App extends Component<IAppProps, IAppState> {
 
     private sendCourseRelease(data: ISendReleasementData, callback?: ISendActionCallback): void {
         const doAfter: (payload: any) => void = (payload: IReleasement[]) => {
+            console.log(payload);
             this.state.userType === "teacher" && this.state.forTeacher &&
             this.setState({
                 forTeacher: {
@@ -322,6 +323,7 @@ export default class App extends Component<IAppProps, IAppState> {
                     releasementList: payload
                 }
             })
+            console.log(this.state);
         };
         SendActionHandler.sendCourseRelease(data, callback)(doAfter);
     }

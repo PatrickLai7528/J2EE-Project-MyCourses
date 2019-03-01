@@ -36,15 +36,6 @@ export const TeacherSider: React.FunctionComponent<ITeacherSiderProps> = (props:
                 </Menu.Item>
                 <Menu.SubMenu key="types" title={<span><Icon type="profile"/>已發佈課程</span>}>
                     {
-                        !props.email || props.userType !== "teacher" ?
-                            (
-                                <Menu.Item disabled={true}>
-                                    尚未登入
-                                </Menu.Item>
-                            ) : ""
-
-                    }
-                    {
                         props.releasementList.length === 0 ?
                             (
                                 <Menu.Item disabled={true}>沒有數據</Menu.Item>

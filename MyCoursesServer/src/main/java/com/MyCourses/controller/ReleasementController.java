@@ -70,10 +70,11 @@ public class ReleasementController {
             map.put(ReleaseConfig.START_MIN, startMin);
             map.put(ReleaseConfig.END_HOUR, endHour);
             map.put(ReleaseConfig.END_MIN, endMin);
+            courseService.release(cid, map);
             CourseEntity courseEntity = courseService.findByCid(cid);
             List<ReleasementEntity> releasementEntityList =
                     releasementService.getReleasementOf(courseEntity.getTeacherEntity().getTeacherEmail());
-            courseService.release(cid, map);
+
             return ResponseUtils.ok("課程發佈成功", releasementEntityList);
         } catch (UnexpectedReleaseConfig | CourseNotExistException | TeacherNotExistException e) {
             e.printStackTrace();

@@ -38,14 +38,6 @@ const StudentSider: React.FunctionComponent<IStudentSiderProps> = (props: IStude
                 </Menu.Item>
                 <Menu.SubMenu key="types" title={<span><Icon type="profile"/>已選課程</span>}>
                     {
-                        !props.email || props.userType !== "student" ?
-                            (
-                                <Menu.Item disabled={true}>
-                                    尚未登入
-                                </Menu.Item>
-                            ) : ""
-                    }
-                    {
                         props.selectionList.length === 0 ?
                             (
                                 <Menu.Item disabled={true}>沒有數據</Menu.Item>
