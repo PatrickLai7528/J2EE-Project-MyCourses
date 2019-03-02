@@ -2,7 +2,7 @@ import IAPIResponse from "./IAPIResponse";
 import NetworkSettings from "../setting/NetworkSettings";
 import axios from "axios";
 import {any} from "prop-types";
-import {IReleasement} from "../types/entities";
+import {IForum, IReleasement} from "../types/entities";
 import {EnumUtils} from "../utils/EnumUtils";
 
 export interface ISendForumData {
@@ -31,9 +31,9 @@ export default class ForumAPI {
         return this.instance;
     }
 
-    public sendComment(data: ISendCommentData): Promise<IAPIResponse<IReleasement>> {
+    public sendComment(data: ISendCommentData): Promise<IAPIResponse<IForum>> {
         console.log(data);
-        return new Promise<IAPIResponse<IReleasement>>((resolve, reject) => {
+        return new Promise<IAPIResponse<IForum>>((resolve, reject) => {
             const url: string = NetworkSettings.getOpenNetworkIP() + "/forum/comment" +
                 "?rid=" + data.rid +
                 "&from=" + data.messageFrom +
@@ -41,13 +41,11 @@ export default class ForumAPI {
                 "&content=" + data.content + (data.replyTo ? "&replyTo=" + data.replyTo : "");
             axios.post(url)
                 .then((response: any) => {
-                    let releasement: IReleasement = response.data.payload;
-                    releasement = EnumUtils.changeStringToReleasementEnum(response.data.payload)
                     resolve({
                         isSuccess: response.data.code === 0,
                         code: response.data.code,
                         message: response.data.message,
-                        payload: releasement
+                        payload: response.data.payload
                     })
                 })
                 .catch((e: any) => {

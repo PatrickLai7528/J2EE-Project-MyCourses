@@ -40,6 +40,14 @@ public class ForumService implements IForumService {
     }
 
     @Override
+    public ForumEntity retrieveByFid(Long fid) throws ForumNotExistException {
+        ForumEntity forumEntity = forumDAO.retrieveByFid(fid);
+        if (forumEntity == null)
+            throw new ForumNotExistException();
+        return forumEntity;
+    }
+
+    @Override
     public void addForum(String topic, String questioner, Long rid) throws ReleasementNotExistException {
         ReleasementEntity releasementEntity = releasementDAO.retrieveByRid(rid);
         if (releasementEntity == null) throw new ReleasementNotExistException();

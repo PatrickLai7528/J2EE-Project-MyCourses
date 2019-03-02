@@ -7,6 +7,7 @@ package com.MyCourses.controller;/*
  */
 
 import com.MyCourses.annotations.PleaseLog;
+import com.MyCourses.entity.ForumEntity;
 import com.MyCourses.entity.ReleasementEntity;
 import com.MyCourses.exceptions.ForumNotExistException;
 import com.MyCourses.exceptions.ReleasementNotExistException;
@@ -49,16 +50,16 @@ public class ForumController {
     @PostMapping("comment")
     @PleaseLog
     @CrossOrigin(origins = "http://localhost:3000")
-    public APIResponse<ReleasementEntity> comment(@RequestParam(name = "fid") Long fid,
-                                       @RequestParam(name = "from") String messageFrom,
-                                       @RequestParam(name = "content") String content,
-                                       @RequestParam(name = "rid") Long rid,
-                                       @RequestParam(name = "replyTo", required = false) Long replyToCommentId
+    public APIResponse<ForumEntity> comment(@RequestParam(name = "fid") Long fid,
+                                            @RequestParam(name = "from") String messageFrom,
+                                            @RequestParam(name = "content") String content,
+                                            @RequestParam(name = "rid") Long rid,
+                                            @RequestParam(name = "replyTo", required = false) Long replyToCommentId
     ) {
         try {
             forumService.comment(rid, fid, replyToCommentId, messageFrom, content);
-            ReleasementEntity releasementEntity = releasementService.getReleasementByRid(rid);
-            return ResponseUtils.ok("操作成功", releasementEntity);
+            ForumEntity forumEntity = forumService.retrieveByFid(fid);
+            return ResponseUtils.ok("操作成功", forumEntity);
         } catch (ForumNotExistException | ReleasementNotExistException e) {
             e.printStackTrace();
             return ResponseUtils.error(e.getLocalizedMessage(), null);

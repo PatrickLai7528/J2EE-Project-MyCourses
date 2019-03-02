@@ -3,7 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="b7acb967-7f4e-4e76-a68d-ff398a1380be" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../MyCoursesClient/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesClient/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/ReleasementManage/ReleasementManageContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/ReleasementManage/ReleasementManageContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/App/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/App/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/ForumDisplay/ForumCommentEditor.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/ForumDisplay/ForumCommentEditor.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/ForumDisplay/ForumDisplayContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/ForumDisplay/ForumDisplayContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/MyCourses/controller/ForumController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/MyCourses/controller/ForumController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/MyCourses/service/IForumService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/MyCourses/service/IForumService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/MyCourses/service/impl/ForumService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/MyCourses/service/impl/ForumService.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -55,18 +61,6 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/MyCourses/controller/AssignmentController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="438">
-              <caret line="75" column="93" selection-start-line="75" selection-start-column="93" selection-end-line="75" selection-end-column="93" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/MyCourses/controller/CourseController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="928">
@@ -75,20 +69,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/MyCourses/controller/FileController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="664">
-              <caret line="129" column="5" selection-start-line="129" selection-start-column="5" selection-end-line="129" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/MyCourses/controller/ForumController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="668">
-              <caret line="63" column="68" selection-start-line="63" selection-start-column="68" selection-end-line="63" selection-end-column="68" />
+            <state relative-caret-position="294">
+              <caret line="61" column="55" selection-start-line="61" selection-start-column="55" selection-end-line="61" selection-end-column="55" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -96,10 +81,43 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/MyCourses/dao/IForumDAO.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="163">
+              <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/MyCourses/service/IForumService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="299">
+              <caret line="17" column="46" selection-start-line="17" selection-start-column="46" selection-end-line="17" selection-end-column="46" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/MyCourses/service/impl/ForumService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="377">
+              <caret line="46" column="27" selection-start-line="46" selection-start-column="27" selection-end-line="46" selection-end-column="27" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/MyCourses/controller/ReleasementController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="253">
+            <state relative-caret-position="-830">
               <caret line="73" column="12" selection-start-line="73" selection-start-column="12" selection-end-line="73" selection-end-column="12" />
             </state>
           </provider>
@@ -137,15 +155,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-402">
               <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/MyCourses/controller/APIResponse.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -198,12 +207,10 @@
         <option value="$PROJECT_DIR$/src/main/java/com/MyCourses/entity/SelectionEntity.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/MyCourses/entity/ReleasementEntity.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/MyCourses/service/impl/AssignmentService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/MyCourses/service/IForumService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/MyCourses/service/impl/SlideService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/MyCourses/service/impl/StudentService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/MyCourses/service/impl/TeacherService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/MyCourses/service/impl/CourseService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/MyCourses/service/impl/ForumService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/MyCourses/service/IFileService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/MyCourses/controller/FileController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/MyCourses/service/impl/FileService.java" />
@@ -215,10 +222,12 @@
         <option value="$PROJECT_DIR$/src/main/java/com/MyCourses/service/impl/SelectionService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/MyCourses/controller/AssignmentController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/MyCourses/controller/CourseController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/MyCourses/controller/ForumController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/MyCourses/controller/SelectionController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/MyCourses/controller/SlideController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/MyCourses/controller/ReleasementController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/MyCourses/service/IForumService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/MyCourses/service/impl/ForumService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/MyCourses/controller/ForumController.java" />
       </list>
     </option>
   </component>
@@ -290,6 +299,15 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="MyCourses" type="462c0819:PsiDirectoryNode" />
+              <item name="dao" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MyCoursesServer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MyCoursesServer" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="MyCourses" type="462c0819:PsiDirectoryNode" />
               <item name="service" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -317,7 +335,7 @@
     <property name="RequestMappingsPanelWidth2" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551494635197" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551497215916" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers" value="true" />
@@ -482,7 +500,7 @@
       <workItem from="1551105331877" duration="10191000" />
       <workItem from="1551232100251" duration="11290000" />
       <workItem from="1551313034194" duration="518000" />
-      <workItem from="1551402700925" duration="2952000" />
+      <workItem from="1551402700925" duration="3588000" />
     </task>
     <servers />
   </component>
@@ -519,12 +537,13 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="109603000" />
+    <option name="totallyTimeSpent" value="110239000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.27152777" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27152777" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Persistence" order="3" side_tool="true" />
@@ -550,7 +569,7 @@
       <window_info anchor="bottom" id="Spring" order="14" />
       <window_info anchor="bottom" id="Database Changes" order="15" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="16" />
-      <window_info active="true" anchor="bottom" id="Run Dashboard" order="17" visible="true" weight="0.36886227" />
+      <window_info anchor="bottom" id="Run Dashboard" order="17" visible="true" weight="0.36886227" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -580,18 +599,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/MyCourses/entity/converter/DetailDateConverter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="24" column="38" selection-start-line="24" selection-start-column="38" selection-end-line="24" selection-end-column="38" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#563#564#0" expanded="true" />
-            <element signature="e#620#621#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/MyCourses/service/ICourseService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="576">
@@ -714,16 +721,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/MyCourses/service/IForumService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="347">
-          <caret line="18" column="92" selection-start-line="18" selection-start-column="92" selection-end-line="18" selection-end-column="92" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/MyCourses/service/impl/MailService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="205">
@@ -795,16 +792,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/MyCourses/dao/IAssignmentDAO.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/MyCourses/dao/impl/AssignmentDAO.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/MyCourses/service/impl/ForumService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="720">
-          <caret line="43" selection-start-line="43" selection-end-line="43" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/MyCourses/entity/AssignmentEntity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="984">
@@ -915,16 +902,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/MyCourses/controller/ForumController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="668">
-          <caret line="63" column="68" selection-start-line="63" selection-start-column="68" selection-end-line="63" selection-end-column="68" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/MyCourses/controller/CourseController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="928">
@@ -962,8 +939,45 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/MyCourses/controller/ReleasementController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
+        <state relative-caret-position="-830">
           <caret line="73" column="12" selection-start-line="73" selection-start-column="12" selection-end-line="73" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/MyCourses/dao/IForumDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="163">
+          <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/MyCourses/service/IForumService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="17" column="46" selection-start-line="17" selection-start-column="46" selection-end-line="17" selection-end-column="46" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/MyCourses/service/impl/ForumService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="377">
+          <caret line="46" column="27" selection-start-line="46" selection-start-column="27" selection-end-line="46" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/MyCourses/controller/ForumController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="61" column="55" selection-start-line="61" selection-start-column="55" selection-end-line="61" selection-end-column="55" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

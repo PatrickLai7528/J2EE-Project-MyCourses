@@ -72,6 +72,7 @@ export class ForumCommentEditor extends React.Component<IForumCommentEditorProps
     }
 
     public render(): React.ReactNode {
+        console.log(this.props);
         return (
             <div>
                 <Form.Item>

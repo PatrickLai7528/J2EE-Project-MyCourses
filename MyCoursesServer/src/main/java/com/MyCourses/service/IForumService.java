@@ -6,6 +6,7 @@ package com.MyCourses.service;/*
  * @ProjectName MyCoursesServer
  */
 
+import com.MyCourses.entity.ForumEntity;
 import com.MyCourses.exceptions.ForumNotExistException;
 import com.MyCourses.exceptions.ReleasementNotExistException;
 
@@ -13,6 +14,8 @@ import java.util.Date;
 
 
 public interface IForumService {
+
+    ForumEntity retrieveByFid(Long fid) throws ForumNotExistException;
 
     void addForum(String topic, String questioner, Long rid) throws ReleasementNotExistException;
 

@@ -292,12 +292,15 @@ export default class App extends Component<IAppProps, IAppState> {
     }
 
     private sendComment(data: ISendCommentData, callback?: ISendActionCallback): void {
-        const doAfter: (payload: any) => void = (payload: IReleasement) => {
+        const doAfter: (payload: any) => void = (payload: IForum) => {
+            console.warn(" in do after of send comment ");
+            console.log("here is the payload");
+            console.warn(payload);
             this.state.userType === "teacher" && this.state.forTeacher &&
             this.setState({
                 forTeacher: {
                     ...this.state.forTeacher,
-                    managingReleasement: payload
+                    displayingForum: {...payload}
                 }
             });
             this.state.userType === "student" && this.state.forStudent &&
@@ -305,12 +308,10 @@ export default class App extends Component<IAppProps, IAppState> {
             this.setState({
                 forStudent: {
                     ...this.state.forStudent,
-                    displayingSelection: {
-                        ...this.state.forStudent.displayingSelection,
-                        releasementEntity: payload
-                    }
+                    displayingForum: {...payload}
                 }
             })
+            console.log(this.state);
         };
         SendActionHandler.sendComment(data, callback)(doAfter);
     }
