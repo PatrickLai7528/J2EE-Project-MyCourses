@@ -18,6 +18,9 @@ import com.MyCourses.utils.ResponseUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 @RestController
@@ -70,11 +73,12 @@ public class SelectionController {
 
     @PleaseLog
     @CrossOrigin(origins = "http://localhost:3000")
-    @PostMapping("broadcast")
-    public APIResponse<Object> broadCastEmailToSelector(@RequestParam(name = "rid") Long rid,
+    @PostMapping("broadcast/{rid}")
+    public APIResponse<Object> broadCastEmailToSelector(@PathVariable(name = "rid") Long rid,
                                                         @RequestBody String content) {
         try {
-            selectionService.broadCastEmailToSelector(rid, content);
+            selectionService.broadCastEmailToSelector(rid,
+                    URLDecoder.decode(content, StandardCharsets.UTF_8).replace("=", ""));
             return ResponseUtils.ok("發送成功");
         } catch (MailSendingException e) {
             e.printStackTrace();
