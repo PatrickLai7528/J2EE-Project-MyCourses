@@ -156,11 +156,25 @@ export class AssignmentSimpleDisplayContainer extends React.Component<IAssignmen
             const assignmentList: IAssignment[] = this.getAssignmentList();
             let ret: React.ReactNode[] = [];
             for (let assignment of assignmentList) {
-                ret[assignment.assid] = (
-                    <a onClick={() => {
-                        this.setState({modalVisible: true, form: "SUBMIT", submittingAssignment: assignment})
-                    }}><IconText type={"upload"} text={"提交作業"}/></a>
-                )
+                let submitted: boolean = false;
+
+                // check this student is submitted this assignment or not
+                for (let submission of assignment.submissionEntityList) {
+                    if (submission.studentEntity.studentEmail === this.props.forStudent.email) {
+                        submitted = true
+                    }
+                }
+
+                // submitted cannot submit again
+                if (submitted) {
+                    ret[assignment.assid] = <IconText type={"upload"} text={"已經提交"}/>
+                } else {
+                    ret[assignment.assid] = (
+                        <a onClick={() => {
+                            this.setState({modalVisible: true, form: "SUBMIT", submittingAssignment: assignment})
+                        }}><IconText type={"upload"} text={"提交作業"}/></a>
+                    )
+                }
             }
             return ret;
         } else return []
@@ -190,9 +204,9 @@ export class AssignmentSimpleDisplayContainer extends React.Component<IAssignmen
         throw new Error();
     }
 
-    private getSelection():ISelection {
+    private getSelection(): ISelection {
         const {userType, forStudent} = this.props;
-        if(userType === "student" && forStudent && forStudent.displayingSelection)
+        if (userType === "student" && forStudent && forStudent.displayingSelection)
             return forStudent.displayingSelection;
 
         throw new Error();

@@ -2,15 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5e92ab2f-ebd7-408b-b8b8-3bef3f1dfbb2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/myapp/src/api/AssignmentAPI.ts" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/src/api/AssignmentAPI.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapp/src/components/App/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/src/components/App/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapp/src/components/App/GeneralProps.ts" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/src/components/App/GeneralProps.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapp/src/components/App/SendActionHandler.ts" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/src/components/App/SendActionHandler.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapp/src/components/AssignmentAddingModal/AssignmentAddingModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/src/components/AssignmentAddingModal/AssignmentAddingModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myapp/src/components/AssignmentSimpleDisplay/AssignmentSimpleDisplayContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/src/components/AssignmentSimpleDisplay/AssignmentSimpleDisplayContainer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapp/src/components/AssignmentSubmitForm/AssignmentSubmitForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/src/components/AssignmentSubmitForm/AssignmentSubmitForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapp/src/components/AssignmentSubmitForm/AssignmentSubmitFormContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/src/components/AssignmentSubmitForm/AssignmentSubmitFormContainer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapp/src/components/AssignmentSubmitForm/AssignmentSubmitFormItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/src/components/AssignmentSubmitForm/AssignmentSubmitFormItem.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myapp/src/types/entities.ts" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/src/types/entities.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyCoursesServer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesServer/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -35,25 +30,13 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/myapp/src/api/AssignmentAPI.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="110">
+            <state relative-caret-position="-2264">
               <caret line="38" column="88" lean-forward="true" selection-start-line="38" selection-start-column="88" selection-end-line="38" selection-end-column="88" />
               <folding>
                 <element signature="e#0#42#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/myapp/src/components/App/App.tsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-833">
-              <caret line="457" column="57" selection-start-line="457" selection-start-column="57" selection-end-line="457" selection-end-column="57" />
-              <folding>
-                <element signature="e#0#31#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -71,14 +54,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/myapp/src/components/AssignmentSimpleDisplay/AssignmentSimpleDisplayContainer.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="94" column="40" selection-start-line="94" selection-start-column="40" selection-end-line="94" selection-end-column="40" />
+            <state relative-caret-position="252">
+              <caret line="171" selection-start-line="171" selection-end-line="171" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/myapp/src/types/entities.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="45" column="27" selection-start-line="45" selection-start-column="27" selection-end-line="45" selection-end-column="27" />
             </state>
           </provider>
         </entry>
@@ -163,7 +155,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/myapp/src/components/ContentRouter/ContentRouter.tsx" />
         <option value="$PROJECT_DIR$/myapp/src/components/ReleasementManage/ReleasementManageAssignment.tsx" />
         <option value="$PROJECT_DIR$/myapp/src/components/ContentRouter/TeacherContentRouter.tsx" />
         <option value="$PROJECT_DIR$/myapp/src/api/UserAPI.ts" />
@@ -211,9 +202,10 @@
         <option value="$PROJECT_DIR$/myapp/src/components/App/GeneralProps.ts" />
         <option value="$PROJECT_DIR$/myapp/src/components/AssignmentSubmitForm/AssignmentSubmitFormItem.tsx" />
         <option value="$PROJECT_DIR$/myapp/src/components/AssignmentAddingModal/AssignmentAddingModal.tsx" />
-        <option value="$PROJECT_DIR$/myapp/src/components/AssignmentSimpleDisplay/AssignmentSimpleDisplayContainer.tsx" />
         <option value="$PROJECT_DIR$/myapp/src/components/AssignmentSubmitForm/AssignmentSubmitFormContainer.tsx" />
         <option value="$PROJECT_DIR$/myapp/src/api/AssignmentAPI.ts" />
+        <option value="$PROJECT_DIR$/myapp/src/types/entities.ts" />
+        <option value="$PROJECT_DIR$/myapp/src/components/AssignmentSimpleDisplay/AssignmentSimpleDisplayContainer.tsx" />
       </list>
     </option>
   </component>
@@ -251,13 +243,6 @@
               <item name="MyCoursesClient" type="462c0819:PsiDirectoryNode" />
               <item name="myapp" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MyCoursesClient" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MyCoursesClient" type="462c0819:PsiDirectoryNode" />
-              <item name="myapp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -265,32 +250,7 @@
               <item name="MyCoursesClient" type="462c0819:PsiDirectoryNode" />
               <item name="myapp" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="App" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MyCoursesClient" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MyCoursesClient" type="462c0819:PsiDirectoryNode" />
-              <item name="myapp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="AssignmentAddingForm" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MyCoursesClient" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MyCoursesClient" type="462c0819:PsiDirectoryNode" />
-              <item name="myapp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="AssignmentAddingModal" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MyCoursesClient" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MyCoursesClient" type="462c0819:PsiDirectoryNode" />
-              <item name="myapp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="AssignmentSimpleDisplay" type="462c0819:PsiDirectoryNode" />
+              <item name="types" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="MyCoursesClient" type="b2602c69:ProjectViewProjectNode" />
@@ -391,7 +351,7 @@
       <workItem from="1551105293817" duration="24726000" />
       <workItem from="1551232093669" duration="3592000" />
       <workItem from="1551371844423" duration="216000" />
-      <workItem from="1551403931541" duration="38958000" />
+      <workItem from="1551403931541" duration="39841000" />
     </task>
     <servers />
   </component>
@@ -413,7 +373,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="237052000" />
+    <option name="totallyTimeSpent" value="237935000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -426,7 +386,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24312897" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -452,16 +411,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/myapp/src/components/SignUpForm/SignUpForm.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="54" column="32" lean-forward="true" selection-start-line="54" selection-start-column="32" selection-end-line="57" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/myapp/src/api/UserAPI.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-29">
@@ -916,16 +865,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/myapp/src/components/AssignmentSimpleDisplay/AssignmentSimpleDisplayContainer.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="94" column="40" selection-start-line="94" selection-start-column="40" selection-end-line="94" selection-end-column="40" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/myapp/src/components/AssignmentSubmitForm/AssignmentSubmitFormContainer.tsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="248">
@@ -938,10 +877,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/myapp/src/api/AssignmentAPI.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
+        <state relative-caret-position="-2264">
           <caret line="38" column="88" lean-forward="true" selection-start-line="38" selection-start-column="88" selection-end-line="38" selection-end-column="88" />
           <folding>
             <element signature="e#0#42#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myapp/src/types/entities.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="45" column="27" selection-start-line="45" selection-start-column="27" selection-end-line="45" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myapp/src/components/AssignmentSimpleDisplay/AssignmentSimpleDisplayContainer.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="171" selection-start-line="171" selection-end-line="171" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
           </folding>
         </state>
       </provider>

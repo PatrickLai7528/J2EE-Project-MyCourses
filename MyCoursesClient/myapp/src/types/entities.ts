@@ -43,7 +43,7 @@ export interface IAssignment {
 
 export interface ISubmission {
     smid: number,
-    studentEntity: IStudent[],
+    studentEntity: IStudent,
     filePath: string
     submitTime: number
 }
