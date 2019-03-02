@@ -77,8 +77,6 @@ export default class LogInAndSignUpDrawer extends React.Component<ILogInAndSignU
                         UserAPI.getInstance().postLogin(loginData).then((response: IAPIResponse<any>) => {
                             // console.log(response);
                             if (response.isSuccess) {
-                                console.log("log in response");
-                                console.log(response);
                                 message.success(response.message);
                                 this.props.onLogInSuccess(userType, email, response.payload);
                                 // DataStore.getInstance()
@@ -114,7 +112,6 @@ export default class LogInAndSignUpDrawer extends React.Component<ILogInAndSignU
                         const {email, password, number, name, userType, verifyCode} = values;
                         const signUpData = {email, password, number, name, userType, verifyCode};
                         UserAPI.getInstance().postSignUp(signUpData).then((response: IAPIResponse<any>) => {
-                            console.log(response);
                             if (response.isSuccess) {
                                 message.success(response.message);
                                 this.props.onSignUpSuccess();

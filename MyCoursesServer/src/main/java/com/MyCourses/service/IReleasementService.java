@@ -20,4 +20,5 @@ public interface IReleasementService {
     List<ReleasementEntity> getReleasementOf(String teacherEmail) throws TeacherNotExistException;
 
     ReleasementEntity getReleasementByRid(Long rid) throws ReleasementNotExistException;
+
 }

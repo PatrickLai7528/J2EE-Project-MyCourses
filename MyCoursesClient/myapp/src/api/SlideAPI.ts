@@ -56,7 +56,6 @@ export default class SlideAPI {
     }
 
     public uploadSlide(formData: FormData): Promise<IAPIResponse<string>> {
-        console.log(formData);
         return new Promise<IAPIResponse<string>>((resolve, reject) => {
             axios.post(NetworkSettings.getOpenNetworkIP() + "/file/slide/upload",
                 formData,

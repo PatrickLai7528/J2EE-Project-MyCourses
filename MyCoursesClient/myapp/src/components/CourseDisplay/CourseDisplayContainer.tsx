@@ -99,7 +99,6 @@ export default class CourseDisplayContainer extends React.Component<ICourseDispl
     }
 
     public render(): React.ReactNode {
-        console.log(this.props);
         return (
             <div>
                 <h1>

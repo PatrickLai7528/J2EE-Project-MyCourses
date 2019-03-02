@@ -8,10 +8,7 @@ package com.MyCourses.service;/*
 
 import com.MyCourses.entity.SelectionEntity;
 import com.MyCourses.entity.enums.SelectionState;
-import com.MyCourses.exceptions.ReleasementNotExistException;
-import com.MyCourses.exceptions.RepeatSelectCourseException;
-import com.MyCourses.exceptions.SelectionNotExistException;
-import com.MyCourses.exceptions.StudentNotExistException;
+import com.MyCourses.exceptions.*;
 
 import java.util.List;
 
@@ -21,4 +18,6 @@ public interface ISelectionService {
     List<SelectionEntity> getSelectionOf(String studentEmail);
 
     SelectionEntity getSelectionBySlid(Long slid) throws SelectionNotExistException;
+
+    void broadCastEmailToSelector(Long releasementId, String content) throws MailSendingException;
 }

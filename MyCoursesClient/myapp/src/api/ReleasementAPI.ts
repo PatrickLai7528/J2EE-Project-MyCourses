@@ -23,7 +23,6 @@ export default class ReleasementAPI {
         return new Promise<IAPIResponse<IReleasement[]>>((resolve, reject) => {
             axios.get(NetworkSettings.getOpenNetworkIP() + "/releasement/all")
                 .then((response: any) => {
-                    console.log(response);
                     // 處理枚舉類
                     let payload: any = response.data.payload; // 其實是IReleasement類型，但枚舉類是個字符串
                     if (payload) {

@@ -41,30 +41,6 @@ export default class UserAPI {
     private constructor() {
     }
 
-    public getAreaCode(): Promise<IAPIResponse<any>> {
-        return new Promise<IAPIResponse<any>>((resolve, reject) => {
-            axios.get(NetworkSettings.getOpenNetworkIP() + "/user/signup/areacodeoptions/").then((response: any) => {
-                console.log(response);
-                // resolve({isSuccess: true, resultBody: response.data});
-            }).catch((e: any) => {
-                console.log(e);
-                reject(e);
-            })
-        });
-    }
-
-    public getJobTypeOptions(): Promise<IAPIResponse<any>> {
-        return new Promise<IAPIResponse<any>>((resolve, reject) => {
-            axios.get(NetworkSettings.getOpenNetworkIP() + "/user/signup/jobtypeoptions/").then((response: any) => {
-                console.log(response);
-                // resolve({isSuccess: true, resultBody: response.data});
-            }).catch((e: any) => {
-                console.log(e);
-                reject(e);
-            })
-        })
-    }
-
     public postSignUp(signUpData: ISignUpData): Promise<IAPIResponse<any>> {
         let url: string = "";
         const {email, password, number, name, verifyCode} = signUpData;
@@ -138,21 +114,6 @@ export default class UserAPI {
         })
     }
 
-    public getSimpleUserInfo(): Promise<IAPIResponse<any>> {
-        return new Promise<IAPIResponse<any>>((resolve, reject) => {
-            axios.get(NetworkSettings.getOpenNetworkIP() + "/user/info/simple/", {withCredentials: true}).then((response: any) => {
-                resolve({
-                    isSuccess: response.data.code === 0,
-                    code: response.data.code,
-                    message: response.data.message,
-                    payload: response.data.payload
-                });
-            }).catch((e: any) => {
-                console.log(e);
-                reject(e);
-            })
-        })
-    }
 
     public sendVerifyCode(email: string): Promise<IAPIResponse<any>> {
         return new Promise<IAPIResponse<any>>((resolve, reject) => {

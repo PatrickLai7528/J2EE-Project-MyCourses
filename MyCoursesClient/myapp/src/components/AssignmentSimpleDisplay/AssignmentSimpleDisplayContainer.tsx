@@ -1,7 +1,7 @@
 import * as React from "react";
 import {UserType} from "../../api/UserAPI";
 import {IAppForStudentState, IAppForTeacherState} from "../App/App";
-import {AssignmentSimpleDisplay, IconText} from "./AssignmentSimpleDisplay";
+import {AssignmentSimpleDisplay} from "./AssignmentSimpleDisplay";
 import {IAssignment, IReleasement, ISelection} from "../../types/entities";
 import {Button} from "antd";
 import {AssignmentAddingModal} from "../AssignmentAddingModal/AssignmentAddingModal";
@@ -9,6 +9,7 @@ import {AssignmentAddingFormContainer} from "../AssignmentAddingForm/AssignmentA
 import {ISendAssignmentData, ISendSubmissionData} from "../../api/AssignmentAPI";
 import {ISendActionCallback, ISendSubmissionProps} from "../App/GeneralProps";
 import {AssignmentSubmitFormContainer} from "../AssignmentSubmitForm/AssignmentSubmitFormContainer";
+import {IconText} from "../IconText/IconText";
 
 export interface IAssignmentDisplayContainerProps {
     userType: UserType

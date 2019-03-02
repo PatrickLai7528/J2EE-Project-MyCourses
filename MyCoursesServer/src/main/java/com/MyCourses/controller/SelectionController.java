@@ -9,16 +9,13 @@ package com.MyCourses.controller;/*
 import com.MyCourses.annotations.PleaseLog;
 import com.MyCourses.entity.SelectionEntity;
 import com.MyCourses.entity.enums.SelectionState;
+import com.MyCourses.exceptions.MailSendingException;
 import com.MyCourses.exceptions.ReleasementNotExistException;
 import com.MyCourses.exceptions.RepeatSelectCourseException;
 import com.MyCourses.exceptions.StudentNotExistException;
 import com.MyCourses.service.ISelectionService;
 import com.MyCourses.utils.ResponseUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -69,5 +66,19 @@ public class SelectionController {
     public APIResponse<List<SelectionEntity>> getSelectionOf(@RequestParam(name = "studentEmail") String studentEmail) {
         List<SelectionEntity> list = selectionService.getSelectionOf(studentEmail);
         return ResponseUtils.ok("操作成功", list);
+    }
+
+    @PleaseLog
+    @CrossOrigin(origins = "http://localhost:3000")
+    @PostMapping("broadcast")
+    public APIResponse<Object> broadCastEmailToSelector(@RequestParam(name = "rid") Long rid,
+                                                        @RequestBody String content) {
+        try {
+            selectionService.broadCastEmailToSelector(rid, content);
+            return ResponseUtils.ok("發送成功");
+        } catch (MailSendingException e) {
+            e.printStackTrace();
+            return ResponseUtils.error(e.getLocalizedMessage());
+        }
     }
 }

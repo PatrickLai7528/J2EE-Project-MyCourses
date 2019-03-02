@@ -13,11 +13,11 @@ import com.MyCourses.entity.ReleasementEntity;
 import com.MyCourses.entity.SelectionEntity;
 import com.MyCourses.entity.enums.SelectionState;
 import com.MyCourses.entity.StudentEntity;
-import com.MyCourses.exceptions.ReleasementNotExistException;
-import com.MyCourses.exceptions.RepeatSelectCourseException;
-import com.MyCourses.exceptions.SelectionNotExistException;
-import com.MyCourses.exceptions.StudentNotExistException;
+import com.MyCourses.exceptions.*;
+import com.MyCourses.service.IMailService;
 import com.MyCourses.service.ISelectionService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,14 +28,19 @@ import java.util.List;
 public class SelectionService implements ISelectionService {
 
     private final ISelectionDAO selectionDAO;
-    private IReleasementDAO releasementDAO;
-    private IStudentDAO studentDAO;
+    private final IReleasementDAO releasementDAO;
+    private final IStudentDAO studentDAO;
+    private final IMailService mailService;
+
+    private final static Logger logger = LoggerFactory.getLogger(VerifyService.class);
+
 
     @Autowired
-    public SelectionService(ISelectionDAO selectionDAO, IReleasementDAO releasementDAO, IStudentDAO studentDAO) {
+    public SelectionService(ISelectionDAO selectionDAO, IReleasementDAO releasementDAO, IStudentDAO studentDAO, IMailService mailService) {
         this.selectionDAO = selectionDAO;
         this.releasementDAO = releasementDAO;
         this.studentDAO = studentDAO;
+        this.mailService = mailService;
     }
 
 
@@ -81,8 +86,25 @@ public class SelectionService implements ISelectionService {
     @Override
     public SelectionEntity getSelectionBySlid(Long slid) throws SelectionNotExistException {
         SelectionEntity selectionEntity = selectionDAO.retrieveBySlid(slid);
-        if(selectionEntity == null)
+        if (selectionEntity == null)
             throw new SelectionNotExistException();
         return selectionEntity;
+    }
+
+    @Override
+    public void broadCastEmailToSelector(Long releasementId, String content) throws MailSendingException {
+        ReleasementEntity releasementEntity = releasementDAO.retrieveByRid(releasementId);
+        List<SelectionEntity> selectionEntityList = selectionDAO.retrieveByReleasement(releasementEntity);
+        for (SelectionEntity selectionEntity : selectionEntityList) {
+            String subject =
+                    releasementEntity.getCourseEntity().getName() + " 群發郵件";
+            String studentEmail = selectionEntity.getStudentEntity().getStudentEmail();
+            String wrappedContent = content +
+                    "\n教師聯系方式：" + releasementEntity.getCourseEntity().getTeacherEntity().getTeacherEmail() +
+                    "\n教師：" + releasementEntity.getCourseEntity().getTeacherEntity().getName();
+            mailService.sendSimpleMail(studentEmail, subject, wrappedContent);
+            logger.info("已發送郵件至 {}", studentEmail);
+            logger.info("郵件內容為 {}", wrappedContent);
+        }
     }
 }

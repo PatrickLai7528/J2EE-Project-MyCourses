@@ -1,8 +1,7 @@
 import * as React from "react";
 import {ISlide} from "../../types/entities";
-import {Button, Card, Empty, Tree} from "antd";
+import {Card, Empty, Tree} from "antd";
 import NetworkSettings from "../../setting/NetworkSettings";
-import {IReleasementManageSlideProps} from "../ReleasementManage/ReleasementManageSlide";
 
 export interface ISlideDisplayProps {
     addSlideButton?: React.ReactNode
@@ -42,7 +41,6 @@ export class SlideSimpleDisplay extends React.Component<ISlideDisplayProps, ISli
             categorizedSlideFolder.slideList.push(slide);
             map.set(slide.title, categorizedSlideFolder);
         }
-        console.log(map);
         let ret: ICategorizedSlideResult = {categorySlideFolderList: []};
         map.forEach((value, key, map) => {
             ret.categorySlideFolderList.push(value)

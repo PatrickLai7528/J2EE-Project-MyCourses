@@ -55,7 +55,6 @@ export default class SelectionAPI {
         return new Promise<IAPIResponse<ISelection[]>>((resolve, reject) => {
             axios.get(NetworkSettings.getOpenNetworkIP() + "/selection/of?studentEmail=" + studentEmail)
                 .then((response: any) => {
-                    console.log(response);
                     // 處理枚舉類
                     let selectionList: any[] = response.data.payload;
                     if (selectionList) {

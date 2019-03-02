@@ -1,16 +1,13 @@
 import * as React from "react";
-import {ReleasementManage} from "./ReleasementManage";
 import {UserType} from "../../api/UserAPI";
 import {IForum, IReleasement} from "../../types/entities";
-import {FormOption} from "../GeneralAddingModal/GeneralAddingModal";
 import {IAppForStudentState, IAppForTeacherState} from "../App/App";
 import {AssignmentSimpleDisplayContainer} from "../AssignmentSimpleDisplay/AssignmentSimpleDisplayContainer";
 import {SlideSimpleDisplayContainer} from "../SlideSimpleDisplay/SlideSimpleDisplayContainer";
 import {ForumSimpleDisplayContainer} from "../ForumSimpleDisplay/ForumSimpleDisplayContainer";
 import {Divider, Layout} from "antd";
 import {ReleasementManageMessage} from "./ReleasementManageMessage";
-import {ReleasementManageSlide} from "./ReleasementManageSlide";
-import {ReleasementManageForum} from "./ReleasementManageForum";
+import {ReleasementOperationForTeacherContainer} from "../ReleasementOperationForTeacher/ReleasementOperationForTeacherContainer";
 
 export interface IReleasementManageContainerProps {
     forTeacher?: IAppForTeacherState
@@ -19,45 +16,14 @@ export interface IReleasementManageContainerProps {
 }
 
 interface IReleasementManageContainerState {
-    generalModalMode: FormOption
-    generalModalVisible: boolean
-    generalModalConfirmLoading: boolean
-
-
-    isTimeToSubmitAssignment: boolean
-    isTimeToSubmitSlide: boolean
-    isTimeToSubmitForum: boolean
-
-    refreshFormTrigger: boolean
 }
 
 export default class ReleasementManageContainer extends React.Component<IReleasementManageContainerProps, IReleasementManageContainerState> {
 
     public constructor(props: IReleasementManageContainerProps) {
         super(props);
-        this.state = {
-            generalModalMode: FormOption.ASSIGNMENT,
-            generalModalConfirmLoading: false,
-            generalModalVisible: false,
-            isTimeToSubmitAssignment: false,
-            isTimeToSubmitSlide: false,
-            isTimeToSubmitForum: false,
-            refreshFormTrigger: false
-        }
     }
 
-    private enableAssignmentAddingForm(): void {
-        this.setState({generalModalVisible: true, generalModalMode: FormOption.ASSIGNMENT});
-    }
-
-
-    private enableSlideAddingForm(): void {
-        this.setState({generalModalVisible: true, generalModalMode: FormOption.SLIDE});
-    }
-
-    private enableForumAddingForm(): void {
-        this.setState({generalModalVisible: true, generalModalMode: FormOption.FORUM});
-    }
 
     public render(): React.ReactNode {
         const {userType, forTeacher, forStudent} = this.props;
@@ -83,161 +49,35 @@ export default class ReleasementManageContainer extends React.Component<IRelease
                             <Divider/>
                             <ReleasementManageMessage/>
                             <Divider/>
-                            <SlideSimpleDisplayContainer userType={userType}
-                                                         forTeacher={forTeacher} forStudent={forStudent}
+                            <SlideSimpleDisplayContainer
+                                userType={userType}
+                                forTeacher={forTeacher} forStudent={forStudent}
                             />
                             <Divider/>
-                            <AssignmentSimpleDisplayContainer userType={userType} forStudent={forStudent}
-                                                              forTeacher={forTeacher}/>
-                            {/*<ReleasementManageAssignment releasement={props.releasement} editable={props.editable}*/}
-                            {/*onClick={props.onAssignmentClick}/>*/}
+                            <AssignmentSimpleDisplayContainer
+                                userType={userType} forStudent={forStudent}
+                                forTeacher={forTeacher}/>
                             <Divider/>
                         </Layout.Content>
                         <Layout.Sider theme={"light"}
                                       style={{marginTop: 0, margin: 15, padding: 8, background: "#f0f2f5"}} width={250}>
-                            {/*<ReleasementManageForum setDisplayingForum={props.setDisplayingForum}*/}
-                            {/*onClick={props.onForumClick}*/}
-                            {/*releasement={props.releasement}/>*/}
+                            {
+                                this.showOperation()
+                            }
                             <ForumSimpleDisplayContainer userType={userType} forTeacher={forTeacher}
                                                          forStudent={forStudent}/>
                         </Layout.Sider>
                     </Layout>
-                    {/*<ReleasementManage*/}
-                    {/*editable={this.props.userType === "teacher"}*/}
-                    {/*releasement={releasement}*/}
-                    {/*onAssignmentClick={this.enableAssignmentAddingForm.bind(this)}*/}
-                    {/*onSlideClick={this.enableSlideAddingForm.bind(this)}*/}
-                    {/*onForumClick={this.enableForumAddingForm.bind(this)}*/}
-
-                    {/*setDisplayingForum={setDisplayingForum}*/}
-                    {/*/>*/}
-                    {/*<GeneralAddingModal*/}
-                    {/*userType={this.props.userType}*/}
-                    {/*email={this.props.email}*/}
-
-                    {/*mode={this.state.generalModalMode}*/}
-                    {/*refreshFormTrigger={this.state.refreshFormTrigger}*/}
-                    {/*releasement={this.props.releasement}*/}
-
-                    {/*sendAssignment={this.props.sendAssignment ? this.props.sendAssignment : () => {*/}
-                    {/*}}*/}
-                    {/*sendSlide={this.props.sendSlide ? this.props.sendSlide : () => {*/}
-                    {/*}}*/}
-                    {/*sendForum={this.props.sendForum ? this.props.sendForum : () => {*/}
-                    {/*}}*/}
-
-                    {/*confirmLoading={this.state.generalModalConfirmLoading}*/}
-                    {/*visible={this.state.generalModalVisible}*/}
-
-                    {/*// these are the trigger to submit the form submit*/}
-                    {/*isTimeToSubmitAssignment={this.state.isTimeToSubmitAssignment}*/}
-                    {/*isTimeToSubmitSlide={this.state.isTimeToSubmitSlide}*/}
-                    {/*isTimeToSubmitForum={this.state.isTimeToSubmitForum}*/}
-
-                    {/*onOk={() => {*/}
-                    {/*// to trigger the form submit*/}
-                    {/*switch (this.state.generalModalMode) {*/}
-                    {/*case FormOption.ASSIGNMENT:*/}
-                    {/*this.setState({isTimeToSubmitAssignment: true});*/}
-                    {/*break;*/}
-                    {/*case FormOption.SLIDE:*/}
-                    {/*this.setState({isTimeToSubmitSlide: true});*/}
-                    {/*break;*/}
-                    {/*case FormOption.FORUM:*/}
-                    {/*this.setState({isTimeToSubmitForum: true});*/}
-                    {/*break;*/}
-                    {/*}*/}
-                    {/*}}*/}
-
-                    {/*onCancel={() => {*/}
-                    {/*this.setState({*/}
-                    {/*generalModalVisible: false,*/}
-                    {/*refreshFormTrigger: !this.state.refreshFormTrigger*/}
-                    {/*})*/}
-                    {/*}}*/}
-
-                    {/*onSendBefore={() => {*/}
-                    {/*// should set false here*/}
-                    {/*// otherwise it will submit again and again*/}
-                    {/*switch (this.state.generalModalMode) {*/}
-                    {/*case FormOption.ASSIGNMENT:*/}
-                    {/*this.setState({isTimeToSubmitAssignment: false});*/}
-                    {/*break;*/}
-                    {/*case FormOption.SLIDE:*/}
-                    {/*this.setState({isTimeToSubmitSlide: false});*/}
-                    {/*break;*/}
-                    {/*case FormOption.FORUM:*/}
-                    {/*this.setState({isTimeToSubmitForum: false});*/}
-                    {/*break;*/}
-
-                    {/*}*/}
-
-                    {/*this.setState({generalModalConfirmLoading: true})*/}
-                    {/*}}*/}
-
-                    {/*onSendSuccess={(response: IAPIResponse<any>) => {*/}
-                    {/*switch (this.state.generalModalMode) {*/}
-                    {/*case FormOption.ASSIGNMENT:*/}
-                    {/*this.setState({isTimeToSubmitAssignment: false});*/}
-                    {/*break;*/}
-                    {/*case FormOption.SLIDE:*/}
-                    {/*this.setState({isTimeToSubmitSlide: false});*/}
-                    {/*break;*/}
-                    {/*case FormOption.FORUM:*/}
-                    {/*this.setState({isTimeToSubmitForum: false});*/}
-                    {/*break;*/}
-                    {/*}*/}
-                    {/*this.setState({*/}
-                    {/*generalModalVisible: false,*/}
-                    {/*generalModalConfirmLoading: false*/}
-                    {/*});*/}
-                    {/*message.success(response.message);*/}
-                    {/*}}*/}
-
-                    {/*onSendFail={(response: IAPIResponse<any>) => {*/}
-                    {/*switch (this.state.generalModalMode) {*/}
-                    {/*case FormOption.ASSIGNMENT:*/}
-                    {/*this.setState({isTimeToSubmitAssignment: false});*/}
-                    {/*break;*/}
-                    {/*case FormOption.SLIDE:*/}
-                    {/*this.setState({isTimeToSubmitSlide: false});*/}
-                    {/*break;*/}
-                    {/*case FormOption.FORUM:*/}
-                    {/*this.setState({isTimeToSubmitForum: false});*/}
-                    {/*break;*/}
-                    {/*}*/}
-                    {/*this.setState({*/}
-                    {/*generalModalVisible: false,*/}
-                    {/*generalModalConfirmLoading: false,*/}
-                    {/*refreshFormTrigger: !this.state.refreshFormTrigger*/}
-                    {/*});*/}
-                    {/*message.success(response.message);*/}
-                    {/*}}*/}
-
-                    {/*onSendError={(e: any) => {*/}
-                    {/*switch (this.state.generalModalMode) {*/}
-                    {/*case FormOption.ASSIGNMENT:*/}
-                    {/*this.setState({isTimeToSubmitAssignment: false});*/}
-                    {/*break;*/}
-                    {/*case FormOption.SLIDE:*/}
-                    {/*this.setState({isTimeToSubmitSlide: false});*/}
-                    {/*break;*/}
-                    {/*case FormOption.FORUM:*/}
-                    {/*this.setState({isTimeToSubmitForum: false});*/}
-                    {/*break;*/}
-                    {/*}*/}
-                    {/*console.log(e);*/}
-                    {/*this.setState({*/}
-                    {/*generalModalVisible: false,*/}
-                    {/*generalModalConfirmLoading: false,*/}
-                    {/*refreshFormTrigger: !this.state.refreshFormTrigger*/}
-                    {/*});*/}
-                    {/*message.error("發生未知錯誤，請稍候再試")*/}
-                    {/*}}*/}
-                    {/*/>*/}
                 </div>
             );
         } else
             return null;
+    }
+
+    private showOperation(): React.ReactNode {
+        const {userType, forTeacher} = this.props;
+        if (userType === "teacher" && forTeacher) {
+            return <ReleasementOperationForTeacherContainer userType={userType} forTeacher={forTeacher}/>
+        }
     }
 }

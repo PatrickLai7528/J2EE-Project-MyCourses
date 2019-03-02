@@ -34,11 +34,9 @@ export class AssignmentSubmitFormContainer extends React.Component<IAssignmentSu
 
     private submit(): void {
         if (this.form) {
-            console.log(this.form.props.form);
             this.form.props.form.validateFields((err: any, values: any) => {
                     if (!err) {
                         let {assignment} = values;
-                        console.log(values);
                         const sendSubmissionData: ISendSubmissionData = {
                             fileName: assignment,
                             email: this.props.email,

@@ -210,7 +210,6 @@ export default class App extends Component<IAppProps, IAppState> {
     // }
 
     private async handleVisitorCome() {
-        console.log("visitor come");
         const response: IAPIResponse<IReleasement[]> = await ReleasementAPI.getInstance().getAllReleasement();
         if (response.isSuccess && response.payload)
             this.setState({
@@ -219,12 +218,10 @@ export default class App extends Component<IAppProps, IAppState> {
                     releasementList: response.payload
                 }
             })
-        console.log(this.state);
     }
 
 
     private handleLogInSuccess(userType: UserType, email: string, token: string): void {
-        console.log("handling log in");
         const cookie: Cookies = new Cookies();
         cookie.remove("token");
         cookie.remove("userType");
@@ -278,8 +275,6 @@ export default class App extends Component<IAppProps, IAppState> {
 
     private sendAssignment(data: ISendAssignmentData, callback?: ISendActionCallback): void {
         const doAfter: (payload: any) => void = (payload: IReleasement) => {
-            console.log("after send assignment")
-            console.log(payload);
             this.state.userType === "teacher" && this.state.forTeacher &&
             this.setState({
                 forTeacher: {
@@ -322,7 +317,6 @@ export default class App extends Component<IAppProps, IAppState> {
                     releasementList: payload
                 }
             })
-            console.log(this.state);
         };
         SendActionHandler.sendCourseRelease(data, callback)(doAfter);
     }
@@ -408,7 +402,6 @@ export default class App extends Component<IAppProps, IAppState> {
                     sendForum: this.sendForum.bind(this)
                 }
             });
-            console.log(this.state);
         } catch (e) {
             console.log(e);
             message.error("初始化老師失敗，請稍候再試")
@@ -416,7 +409,6 @@ export default class App extends Component<IAppProps, IAppState> {
     }
 
     private async handleStudentLogIn(studentEmail: string) {
-        console.log("student log in");
         try {
             let releasementList: IReleasement[] = [];
             let selectionList: ISelection[] = []; // use empty list for default
@@ -443,15 +435,12 @@ export default class App extends Component<IAppProps, IAppState> {
                     releasementList: releasementList,
                     setDisplayingForum: this.setDisplayingForum.bind(this),
                     onSelectionClick: (selection: ISelection) => {
-                        console.log(selection);
                         this.state.forStudent && this.setState({
                             forStudent: {
                                 ...this.state.forStudent,
                                 displayingSelection: selection
                             }
                         });
-                        console.log("after click selection");
-                        console.log(this.state.forStudent);
                     },
                     sendComment: this.sendComment.bind(this),
                     sendCourseSelection: this.sendCourseSelection.bind(this),
@@ -459,7 +448,6 @@ export default class App extends Component<IAppProps, IAppState> {
                     sendSubmission:this.sendSubmission.bind(this)
                 }
             });
-            console.log(this.state);
         } catch (e) {
             console.log(e);
             message.error("初始化學生數據失敗，請稍候再試");

@@ -31,11 +31,9 @@ export class SlideAddingFormContainer extends React.Component<ISlideAddingFormCo
 
     private submit(): void {
         if (this.form) {
-            console.log(this.form.props.form);
             this.form.props.form.validateFields((err: any, values: any) => {
                     if (!err) {
                         let {title, slide} = values;
-                        console.log(values);
                         const sendAssignmentData: ISendSlideData = {
                             title,
                             rid: this.props.releasement.rid,

@@ -29,11 +29,10 @@ export class AssignmentAddingFormContainer extends React.Component<IAssignmentAd
 
     private submit(): void {
         if (this.form) {
-            console.log(this.form.props.form);
+            // console.log(this.form.props.form);
             this.form.props.form.validateFields((err: any, values: any) => {
                     if (!err) {
                         let {title, description, ddl, fileSize, byteUnit, attachment} = values;
-                        console.log(values);
                         description = description.replace("\n", "%0A");
                         const sendAssignmentData: ISendAssignmentData = {
                             title,

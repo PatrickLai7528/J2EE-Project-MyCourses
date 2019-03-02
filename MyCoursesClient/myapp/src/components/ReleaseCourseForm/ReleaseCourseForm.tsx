@@ -24,7 +24,6 @@ export class ReleaseCourseForm extends React.Component<IReleaseCourseFormProps> 
          * if this time refresh is different from previous's, do it!
          */
         if (nextProps.refresh !== this.props.refresh) {
-            console.log(nextProps);
             this.props.form.resetFields()
         }
     }

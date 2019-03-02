@@ -31,8 +31,6 @@ export class ForumSimpleDisplayContainer extends React.Component<IForumSimpleDis
     }
 
     public render(): React.ReactNode {
-        console.log(this.props);
-        console.log(this.state);
         return (
             <div>
                 <ForumSimpleDisplay
@@ -43,7 +41,6 @@ export class ForumSimpleDisplayContainer extends React.Component<IForumSimpleDis
                 <ForumAddingModal
                     visible={this.state.modalVisible}
                     onOk={() => {
-                        console.log("on ok click");
                         this.setState({submitForm: true})
                     }}
                     onCancel={() => this.setState({confirmLoading: false, submitForm: false, modalVisible: false})}
@@ -122,7 +119,6 @@ export class ForumSimpleDisplayContainer extends React.Component<IForumSimpleDis
     }
 
     private getSendForum(): (data: ISendForumData, callback?: ISendActionCallback) => void {
-        console.log("on get send forum");
         if (this.props.userType === "teacher" && this.props.forTeacher) {
             return this.props.forTeacher.sendForum;
         }

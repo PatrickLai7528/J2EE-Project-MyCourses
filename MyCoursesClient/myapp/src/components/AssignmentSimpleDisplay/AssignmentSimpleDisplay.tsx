@@ -2,6 +2,7 @@ import * as React from "react";
 import {Empty, Icon, List} from "antd";
 import {IAssignment, IReleasement} from "../../types/entities";
 import NetworkSettings from "../../setting/NetworkSettings";
+import {IconText} from "../IconText/IconText";
 
 const moment = require("moment");
 
@@ -14,17 +15,6 @@ export interface IAssignmentDisplayProps {
     assignmentList: IAssignment[]
 }
 
-interface IIconTextProps {
-    type: string,
-    text: string | React.ReactNode
-}
-
-export const IconText: React.FunctionComponent<IIconTextProps> = (props: IIconTextProps) => (
-    <span>
-    <Icon type={props.type} style={{marginRight: 8}}/>
-        {props.text}
-  </span>
-);
 
 export const AssignmentSimpleDisplay: React.FunctionComponent<IAssignmentDisplayProps> = (props: IAssignmentDisplayProps) => {
 
