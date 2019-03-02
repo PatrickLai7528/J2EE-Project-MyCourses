@@ -77,13 +77,21 @@ export default class ReleasementAPI {
                 "?teacherEmail=" + teacherEmail;
             axios.get(url)
                 .then((response: any) => {
-                    const releasementList: IReleasement[] = EnumUtils.changeStringsToReleasementEnums(response.data.payload);
-                    resolve({
-                        isSuccess: response.data.code === 0,
-                        code: response.data.code,
-                        payload: releasementList,
-                        message: response.data.message
-                    })
+                    if (response.data.payload) {
+                        const releasementList: IReleasement[] = EnumUtils.changeStringsToReleasementEnums(response.data.payload);
+                        resolve({
+                            isSuccess: response.data.code === 0,
+                            code: response.data.code,
+                            payload: releasementList,
+                            message: response.data.message
+                        })
+                    } else {
+                        resolve({
+                            isSuccess: response.data.code === 0,
+                            code: response.data.code,
+                            message: response.data.message
+                        })
+                    }
                 })
         })
     }
@@ -104,13 +112,21 @@ export default class ReleasementAPI {
                 "&limitNumber=" + data.limitNumber;
             axios.post(url)
                 .then((response: any) => {
-                    const releasementList: IReleasement[] = EnumUtils.changeStringsToReleasementEnums(response.data.payload);
-                    resolve({
-                        isSuccess: response.data.code === 0,
-                        code: response.data.code,
-                        message: response.data.message,
-                        payload: releasementList
-                    })
+                    if (response.data.payload) {
+                        const releasementList: IReleasement[] = EnumUtils.changeStringsToReleasementEnums(response.data.payload);
+                        resolve({
+                            isSuccess: response.data.code === 0,
+                            code: response.data.code,
+                            message: response.data.message,
+                            payload: releasementList
+                        })
+                    } else {
+                        resolve({
+                            isSuccess: response.data.code === 0,
+                            code: response.data.code,
+                            message: response.data.message,
+                        })
+                    }
                 })
                 .catch((e: any) => {
                     console.log(e);

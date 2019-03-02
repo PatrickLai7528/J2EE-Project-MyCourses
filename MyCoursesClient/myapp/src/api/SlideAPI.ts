@@ -31,13 +31,22 @@ export default class SlideAPI {
                 "&title=" + data.title;
             axios.post(url)
                 .then((response: any) => {
-                    const releasement:IReleasement = EnumUtils.changeStringToReleasementEnum(response.data.payload);
-                    resolve({
-                        isSuccess: response.data.code === 0,
-                        code: response.data.code,
-                        message: response.data.message,
-                        payload: releasement
-                    })
+                    if(response.data.payload) {
+                        const releasement: IReleasement = EnumUtils.changeStringToReleasementEnum(response.data.payload);
+                        resolve({
+                            isSuccess: response.data.code === 0,
+                            code: response.data.code,
+                            message: response.data.message,
+                            payload: releasement
+                        })
+                    }else{
+                        resolve({
+                            isSuccess: response.data.code === 0,
+                            code: response.data.code,
+                            message: response.data.message,
+                        })
+                    }
+
                 })
                 .catch((e: any) => {
                     console.log(e);

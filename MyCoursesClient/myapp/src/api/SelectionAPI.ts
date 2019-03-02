@@ -28,13 +28,21 @@ export default class SelectionAPI {
                 "?rid=" + data.rid + "&studentEmail=" + data.studentEmail;
             axios.post(url)
                 .then((response: any) => {
-                    const selectionList:ISelection[] = EnumUtils.changeStringsToSelectionEnums(response.data.payload);
-                    resolve({
-                        isSuccess: response.data.code === 0,
-                        code: response.data.code,
-                        message: response.data.message,
-                        payload: selectionList
-                    })
+                    if(response.data.payload) {
+                        const selectionList: ISelection[] = EnumUtils.changeStringsToSelectionEnums(response.data.payload);
+                        resolve({
+                            isSuccess: response.data.code === 0,
+                            code: response.data.code,
+                            message: response.data.message,
+                            payload: selectionList
+                        })
+                    }else{
+                        resolve({
+                            isSuccess: response.data.code === 0,
+                            code: response.data.code,
+                            message: response.data.message,
+                        })
+                    }
                 })
                 .catch((e: any) => {
                     console.log(e);

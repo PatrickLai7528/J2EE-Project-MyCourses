@@ -44,7 +44,7 @@ export class AssignmentSimpleDisplayContainer extends React.Component<IAssignmen
         if (this.props.userType === "student" && this.props.forStudent && this.props.forStudent.displayingSelection) {
             if (this.props.forStudent.displayingSelection.releasementEntity.assignmentEntityList)
                 return this.props.forStudent.displayingSelection.releasementEntity.assignmentEntityList;
-            return []
+            else return []
         }
         // others type
         return []

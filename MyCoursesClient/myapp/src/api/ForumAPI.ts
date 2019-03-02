@@ -41,7 +41,8 @@ export default class ForumAPI {
                 "&content=" + data.content + (data.replyTo ? "&replyTo=" + data.replyTo : "");
             axios.post(url)
                 .then((response: any) => {
-                    const releasement: IReleasement = EnumUtils.changeStringToReleasementEnum(response.data.payload)
+                    let releasement: IReleasement = response.data.payload;
+                    releasement = EnumUtils.changeStringToReleasementEnum(response.data.payload)
                     resolve({
                         isSuccess: response.data.code === 0,
                         code: response.data.code,
@@ -64,13 +65,21 @@ export default class ForumAPI {
                 "&questioner=" + data.questioner;
             axios.post(url)
                 .then((response: any) => {
-                    const releasement:IReleasement = EnumUtils.changeStringToReleasementEnum(response.data.payload);
-                    resolve({
-                        isSuccess: response.data.code === 0,
-                        code: response.data.code,
-                        message: response.data.message,
-                        payload: releasement
-                    })
+                    if (response.data.payload) {
+                        const releasement: IReleasement = EnumUtils.changeStringToReleasementEnum(response.data.payload);
+                        resolve({
+                            isSuccess: response.data.code === 0,
+                            code: response.data.code,
+                            message: response.data.message,
+                            payload: releasement
+                        })
+                    } else {
+                        resolve({
+                            isSuccess: response.data.code === 0,
+                            code: response.data.code,
+                            message: response.data.message,
+                        })
+                    }
                 })
                 .catch((e: any) => {
                     reject(e);

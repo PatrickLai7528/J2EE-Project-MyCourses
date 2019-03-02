@@ -68,12 +68,19 @@ export class SlideSimpleDisplayContainer extends React.Component<ISlideDisplayCo
     }
 
     private getSlideList(): ISlide[] {
+        console.log(this.props);
         const {userType, forTeacher, forStudent} = this.props;
-        if (userType === "student" && forStudent && forStudent.displayingSelection && forStudent.displayingSelection.releasementEntity && forStudent.displayingSelection.releasementEntity.slideEntityList)
-            return forStudent.displayingSelection.releasementEntity.slideEntityList;
+        if (userType === "student" && forStudent && forStudent.displayingSelection && forStudent.displayingSelection.releasementEntity) {
+            if (forStudent.displayingSelection.releasementEntity.slideEntityList)
+                return forStudent.displayingSelection.releasementEntity.slideEntityList;
+            else return []
+        }
 
-        if (userType === "teacher" && forTeacher && forTeacher.managingReleasement && forTeacher.managingReleasement.slideEntityList)
-            return forTeacher.managingReleasement.slideEntityList;
+        if (userType === "teacher" && forTeacher && forTeacher.managingReleasement) {
+            if (forTeacher.managingReleasement.slideEntityList)
+                return forTeacher.managingReleasement.slideEntityList;
+            else return []
+        }
 
         throw new Error();
     }

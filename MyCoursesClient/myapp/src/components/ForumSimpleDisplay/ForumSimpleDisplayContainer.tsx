@@ -97,11 +97,15 @@ export class ForumSimpleDisplayContainer extends React.Component<IForumSimpleDis
 
     private getForumList(): IForum[] {
         const {userType, forTeacher, forStudent} = this.props;
-        if (userType === "teacher" && forTeacher && forTeacher.managingReleasement && forTeacher.managingReleasement.forumEntityList) {
-            return forTeacher.managingReleasement.forumEntityList
+        if (userType === "teacher" && forTeacher && forTeacher.managingReleasement) {
+            if (forTeacher.managingReleasement.forumEntityList)
+                return forTeacher.managingReleasement.forumEntityList;
+            else return []
         }
-        if (userType === "student" && forStudent && forStudent.displayingSelection && forStudent.displayingSelection.releasementEntity && forStudent.displayingSelection.releasementEntity.forumEntityList) {
-            return forStudent.displayingSelection.releasementEntity.forumEntityList;
+        if (userType === "student" && forStudent && forStudent.displayingSelection && forStudent.displayingSelection.releasementEntity) {
+            if (forStudent.displayingSelection.releasementEntity.forumEntityList)
+                return forStudent.displayingSelection.releasementEntity.forumEntityList;
+            else return []
         }
         throw new Error();
     }

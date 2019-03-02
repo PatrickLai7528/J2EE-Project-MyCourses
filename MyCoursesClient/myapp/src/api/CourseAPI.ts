@@ -43,13 +43,21 @@ export default class CourseAPI {
                 + "&courseName=" + data.courseName;
             axios.post(url)
                 .then((response: any) => {
-                    const courseList: ICourse[] = EnumUtils.changeStringsToCourseEnums(response.data.payload);
-                    resolve({
-                        isSuccess: response.data.code === 0,
-                        code: response.data.code,
-                        message: response.data.message,
-                        payload: courseList
-                    })
+                    if (response.data.payload) {
+                        const courseList: ICourse[] = EnumUtils.changeStringsToCourseEnums(response.data.payload);
+                        resolve({
+                            isSuccess: response.data.code === 0,
+                            code: response.data.code,
+                            message: response.data.message,
+                            payload: courseList
+                        })
+                    } else {
+                        resolve({
+                            isSuccess: response.data.code === 0,
+                            code: response.data.code,
+                            message: response.data.message,
+                        })
+                    }
                 })
                 .catch((e: any) => {
                     reject(e);
@@ -63,17 +71,12 @@ export default class CourseAPI {
                 .then((response: any) => {
                     // remember to deal with the enums
                     let payload: ICourse[] = response.data.payload;
-                    if (payload)
-                        for (let course of payload) {
-                            // @ts-ignore
-                            // here the enum approvalState is actually a string, so we need to make it right
-                            course.approvalState = toApprovalState(course.approvalState)
-                        }
+                    payload = EnumUtils.changeStringsToCourseEnums(payload);
                     resolve({
                         isSuccess: response.data.code === 0,
                         code: response.data.code,
                         message: response.data.message,
-                        payload: response.data.payload
+                        payload: payload
                     })
                 })
                 .catch((e: any) => {

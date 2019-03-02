@@ -7,6 +7,10 @@ import {IAppForStudentState, IAppForTeacherState} from "../App/App";
 import {AssignmentSimpleDisplayContainer} from "../AssignmentSimpleDisplay/AssignmentSimpleDisplayContainer";
 import {SlideSimpleDisplayContainer} from "../SlideSimpleDisplay/SlideSimpleDisplayContainer";
 import {ForumSimpleDisplayContainer} from "../ForumSimpleDisplay/ForumSimpleDisplayContainer";
+import {Divider, Layout} from "antd";
+import {ReleasementManageMessage} from "./ReleasementManageMessage";
+import {ReleasementManageSlide} from "./ReleasementManageSlide";
+import {ReleasementManageForum} from "./ReleasementManageForum";
 
 export interface IReleasementManageContainerProps {
     forTeacher?: IAppForTeacherState
@@ -73,20 +77,40 @@ export default class ReleasementManageContainer extends React.Component<IRelease
         if (email && releasement && setDisplayingForum) {
             return (
                 <div>
-                    <ForumSimpleDisplayContainer userType={userType} forStudent={forStudent} forTeacher={forTeacher}/>
-                    <AssignmentSimpleDisplayContainer userType={userType} forTeacher={this.props.forTeacher}
-                                                      forStudent={this.props.forStudent}/>
-                    <SlideSimpleDisplayContainer userType={userType} forStudent={this.props.forStudent}
-                                                 forTeacher={this.props.forTeacher}/>
-                    <ReleasementManage
-                        editable={this.props.userType === "teacher"}
-                        releasement={releasement}
-                        onAssignmentClick={this.enableAssignmentAddingForm.bind(this)}
-                        onSlideClick={this.enableSlideAddingForm.bind(this)}
-                        onForumClick={this.enableForumAddingForm.bind(this)}
+                    <Layout>
+                        <Layout.Content>
+                            <h1>{releasement.courseEntity.name}</h1>
+                            <Divider/>
+                            <ReleasementManageMessage/>
+                            <Divider/>
+                            <SlideSimpleDisplayContainer userType={userType}
+                                                         forTeacher={forTeacher} forStudent={forStudent}
+                            />
+                            <Divider/>
+                            <AssignmentSimpleDisplayContainer userType={userType} forStudent={forStudent}
+                                                              forTeacher={forTeacher}/>
+                            {/*<ReleasementManageAssignment releasement={props.releasement} editable={props.editable}*/}
+                            {/*onClick={props.onAssignmentClick}/>*/}
+                            <Divider/>
+                        </Layout.Content>
+                        <Layout.Sider theme={"light"}
+                                      style={{marginTop: 0, margin: 15, padding: 8, background: "#f0f2f5"}} width={250}>
+                            {/*<ReleasementManageForum setDisplayingForum={props.setDisplayingForum}*/}
+                            {/*onClick={props.onForumClick}*/}
+                            {/*releasement={props.releasement}/>*/}
+                            <ForumSimpleDisplayContainer userType={userType} forTeacher={forTeacher}
+                                                         forStudent={forStudent}/>
+                        </Layout.Sider>
+                    </Layout>
+                    {/*<ReleasementManage*/}
+                    {/*editable={this.props.userType === "teacher"}*/}
+                    {/*releasement={releasement}*/}
+                    {/*onAssignmentClick={this.enableAssignmentAddingForm.bind(this)}*/}
+                    {/*onSlideClick={this.enableSlideAddingForm.bind(this)}*/}
+                    {/*onForumClick={this.enableForumAddingForm.bind(this)}*/}
 
-                        setDisplayingForum={setDisplayingForum}
-                    />
+                    {/*setDisplayingForum={setDisplayingForum}*/}
+                    {/*/>*/}
                     {/*<GeneralAddingModal*/}
                     {/*userType={this.props.userType}*/}
                     {/*email={this.props.email}*/}
