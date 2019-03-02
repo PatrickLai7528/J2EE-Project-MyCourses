@@ -1,13 +1,13 @@
 import * as React from "react";
 import {GetFieldDecoratorOptions, ValidationRule} from "antd/lib/form/Form";
-import {Button, Form, Icon, Input, message, Tooltip, Upload} from "antd";
+import {Button, Form, Icon, message, Tooltip, Upload} from "antd";
 import AssignmentAPI from "../../api/AssignmentAPI";
 import IAPIResponse from "../../api/IAPIResponse";
-import {IGeneralAssignmentAddingFormItemProps} from "../AssignmentAddingForm/AssignmentAddingFormItem";
 
 export interface IGeneralAssignmentSubmitFormItemProps {
     getFieldDecorator<T extends Object = {}>(id: keyof T, options?: GetFieldDecoratorOptions): (node: React.ReactNode) => React.ReactNode;
 }
+
 export interface IAssignmentSubmitFormItemProps extends IGeneralAssignmentSubmitFormItemProps {
     setFieldsValue(obj: Object): void
 }
@@ -51,9 +51,9 @@ export class AttachmentAssignmentAddingFormItem extends React.Component<IAssignm
             .then((response: IAPIResponse<string>) => {
                 if (response.isSuccess) {
                     message.success(response.message);
-                    this.setState({isUploaded: true})
+                    this.setState({isUploaded: true});
                     if (response.payload)
-                        this.props.setFieldsValue({attachment: response.payload})
+                        this.props.setFieldsValue({assignment: response.payload})
                 } else {
                     message.error(response.message)
                 }

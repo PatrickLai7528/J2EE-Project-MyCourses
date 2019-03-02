@@ -2,7 +2,7 @@ import {ISendActionCallback} from "./GeneralProps";
 import IAPIResponse from "../../api/IAPIResponse";
 import SlideAPI, {ISendSlideData} from "../../api/SlideAPI";
 import ForumAPI, {ISendCommentData, ISendForumData} from "../../api/ForumAPI";
-import AssignmentAPI, {ISendAssignmentData} from "../../api/AssignmentAPI";
+import AssignmentAPI, {ISendAssignmentData, ISendSubmissionData} from "../../api/AssignmentAPI";
 import SelectionAPI, {ISendSelectionData} from "../../api/SelectionAPI";
 import CourseAPI, {ISendAddCourseData, ISendReleasementData} from "../../api/CourseAPI";
 import ReleasementAPI from "../../api/ReleasementAPI";
@@ -73,6 +73,13 @@ export class SendActionHandler {
         return this.sendAction(
             async () => {
                 return await ForumAPI.getInstance().sendComment(data);
+            }, callback);
+    }
+
+    public static sendSubmission(data: ISendSubmissionData, callback?: ISendActionCallback): (doAfter: (payload: any) => void) => void {
+        return this.sendAction(
+            async () => {
+                return await AssignmentAPI.getInstance().sendSubmission(data);
             }, callback);
     }
 }

@@ -12,7 +12,7 @@ import {ICourse, IForum, IReleasement, ISelection} from "../../types/entities";
 import SelectionAPI, {ISendSelectionData} from "../../api/SelectionAPI";
 import ReleasementAPI from "../../api/ReleasementAPI";
 import Cookies from "universal-cookie/es6";
-import {ISendAssignmentData} from "../../api/AssignmentAPI";
+import {ISendAssignmentData, ISendSubmissionData} from "../../api/AssignmentAPI";
 import {TeacherSider} from "../TeacherSider/TeacherSider";
 import {ISendSlideData} from "../../api/SlideAPI";
 import {ISendCommentData, ISendForumData} from "../../api/ForumAPI";
@@ -23,7 +23,7 @@ import {
     ISendCommentProps,
     ISendCourseReleaseProps, ISendCourseSelectionProps,
     ISendForumProps,
-    ISendSlideProps
+    ISendSlideProps, ISendSubmissionProps
 } from "./GeneralProps";
 import {ContentRouter} from "../ContentRouter/ContentRouter";
 import {SendActionHandler} from "./SendActionHandler";
@@ -36,7 +36,7 @@ import VisitorSider from "../VisitorSider/VisitorSider";
 //     setDisplayingForum: (forum: IForum) => void
 // }
 
-export interface IAppForStudentState extends ISendCourseSelectionProps, ISendCommentProps, ISendForumProps {
+export interface IAppForStudentState extends ISendCourseSelectionProps, ISendCommentProps, ISendForumProps, ISendSubmissionProps {
     displayingSelection?: ISelection
     selectionList?: ISelection[]
     email: string
@@ -340,6 +340,19 @@ export default class App extends Component<IAppProps, IAppState> {
         SendActionHandler.sendForum(data, callback)(doAfter);
     }
 
+    private sendSubmission(data: ISendSubmissionData, callback?: ISendActionCallback): void {
+        const doAfter: (payload: any) => void = (payload: ISelection) => {
+            this.state.userType === "student" && this.state.forStudent &&
+            this.setState({
+                forStudent: {
+                    ...this.state.forStudent,
+                    displayingSelection: {...payload}
+                }
+            })
+        };
+        SendActionHandler.sendSubmission(data, callback)(doAfter);
+    }
+
     private sendCourseSelection(data: ISendSelectionData, callback?: ISendActionCallback): void {
         const doAfter: (payload: any) => void = (payload: ISelection[]) => {
             this.state.userType === "student" && this.state.forStudent &&
@@ -442,7 +455,8 @@ export default class App extends Component<IAppProps, IAppState> {
                     },
                     sendComment: this.sendComment.bind(this),
                     sendCourseSelection: this.sendCourseSelection.bind(this),
-                    sendForum: this.sendForum.bind(this)
+                    sendForum: this.sendForum.bind(this),
+                    sendSubmission:this.sendSubmission.bind(this)
                 }
             });
             console.log(this.state);

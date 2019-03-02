@@ -8,12 +8,13 @@ export interface IAssignmentAddingModalProps {
     confirmLoading: boolean
 
     children?: any
+    title: string
 }
 
 export const AssignmentAddingModal: React.FunctionComponent<IAssignmentAddingModalProps> = (props: IAssignmentAddingModalProps) => {
     return (
         <Modal align={undefined}
-               title={"發佈作業"}
+               title={props.title}
                destroyOnClose={true}
                visible={props.visible}
                onOk={props.onOk}

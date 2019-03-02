@@ -1,5 +1,5 @@
 import {UserType} from "../../api/UserAPI";
-import {ISendAssignmentData} from "../../api/AssignmentAPI";
+import {ISendAssignmentData, ISendSubmissionData} from "../../api/AssignmentAPI";
 import IAPIResponse from "../../api/IAPIResponse";
 import {ISendSlideData} from "../../api/SlideAPI";
 import {ISendCommentData, ISendForumData} from "../../api/ForumAPI";
@@ -45,4 +45,8 @@ export interface ISendCourseSelectionProps {
 
 export interface ISendCommentProps {
     sendComment: (data: ISendCommentData, callback?: ISendActionCallback) => void
+}
+
+export interface ISendSubmissionProps {
+    sendSubmission: (data: ISendSubmissionData, callback?: ISendActionCallback) => void
 }
