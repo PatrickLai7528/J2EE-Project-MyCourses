@@ -310,7 +310,7 @@ export default class App extends Component<IAppProps, IAppState> {
                     ...this.state.forStudent,
                     displayingForum: {...payload}
                 }
-            })
+            });
             console.log(this.state);
         };
         SendActionHandler.sendComment(data, callback)(doAfter);
