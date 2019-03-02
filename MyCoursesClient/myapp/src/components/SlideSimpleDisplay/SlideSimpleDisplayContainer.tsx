@@ -112,6 +112,7 @@ export class SlideSimpleDisplayContainer extends React.Component<ISlideDisplayCo
         if (this.props.userType === "teacher" && this.props.forTeacher) {
             return this.props.forTeacher.sendSlide;
         }
-        throw new Error();
+        return () => {
+        };
     }
 }

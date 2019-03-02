@@ -1,11 +1,10 @@
 import * as React from "react";
 import {UserType} from "../../api/UserAPI";
 import {IAppForStudentState, IAppForTeacherState} from "../App/App";
-import {AssignmentSimpleDisplay} from "./AssignmentSimpleDisplay";
+import {AssignmentSimpleDisplay, IconText} from "./AssignmentSimpleDisplay";
 import {IAssignment, IReleasement} from "../../types/entities";
 import {Button} from "antd";
 import {AssignmentAddingModal} from "../AssignmentAddingModal/AssignmentAddingModal";
-import {AssignmentSubmitFormContainer} from "../AssignmentSubmitForm/AssignmentSubmitFormContainer";
 import {AssignmentAddingFormContainer} from "../AssignmentAddingForm/AssignmentAddingFormContainer";
 import {ISendAssignmentData} from "../../api/AssignmentAPI";
 import {ISendActionCallback} from "../App/GeneralProps";
@@ -20,7 +19,12 @@ interface IAssignmentDisplayContainerState {
     modalVisible: boolean
     confirmLoading: boolean
     submitForm: boolean
+
+    form: AssignmentModalForm
 }
+
+type AssignmentModalForm = "SUBMIT" | "UPLOAD"
+
 
 export class AssignmentSimpleDisplayContainer extends React.Component<IAssignmentDisplayContainerProps, IAssignmentDisplayContainerState> {
 
@@ -29,12 +33,13 @@ export class AssignmentSimpleDisplayContainer extends React.Component<IAssignmen
         this.state = {
             modalVisible: false,
             confirmLoading: false,
-            submitForm: false
+            submitForm: false,
+            form: "SUBMIT"
         }
     }
 
 
-    private getAssignmentFrom(): IAssignment[] {
+    private getAssignment(): IAssignment[] {
         if (this.props.userType === "teacher" && this.props.forTeacher && this.props.forTeacher.managingReleasement) {
             if (this.props.forTeacher.managingReleasement.assignmentEntityList)
                 return this.props.forTeacher.managingReleasement.assignmentEntityList;
@@ -73,14 +78,19 @@ export class AssignmentSimpleDisplayContainer extends React.Component<IAssignmen
     public render(): React.ReactNode {
         return (
             <div>
-                <AssignmentSimpleDisplay assignmentList={this.getAssignmentFrom()}
-                                         addAssignmentButton={this.getAddAssignmentButton()}/>
+                <AssignmentSimpleDisplay assignmentList={this.getAssignment()}
+                                         addAssignmentButton={this.getAddAssignmentButton()}
+                                         submitAssignmentButtonList={this.getSubmitAssignmentButtonList()}
+                />
                 <AssignmentAddingModal
                     visible={this.state.modalVisible}
                     onOk={() => this.setState({submitForm: true})}
                     onCancel={() => this.setState({confirmLoading: false, submitForm: false, modalVisible: false})}
                     confirmLoading={this.state.confirmLoading}
                 >
+                    {
+
+                    }
                     <AssignmentAddingFormContainer
                         isTimeToSubmit={this.state.submitForm}
                         releasement={this.getReleasement()}
@@ -111,6 +121,20 @@ export class AssignmentSimpleDisplayContainer extends React.Component<IAssignmen
         if (this.props.userType === "teacher" && this.props.forTeacher) {
             return this.props.forTeacher.sendAssignment;
         }
-        throw new Error();
+        return ()=>{}
+    }
+
+    private getSubmitAssignmentButtonList(): React.ReactNode[] {
+        if (this.props.userType === "student" && this.props.forStudent) {
+            const assignmentList: IAssignment[] = this.getAssignment();
+            let ret: React.ReactNode[] = [];
+            for (let assignment of assignmentList) {
+                ret[assignment.assid] = (
+                    <a onClick={() => {
+                    }}><IconText type={"upload"} text={"提交作業"}/></a>
+                )
+            }
+            return ret;
+        } else return []
     }
 }

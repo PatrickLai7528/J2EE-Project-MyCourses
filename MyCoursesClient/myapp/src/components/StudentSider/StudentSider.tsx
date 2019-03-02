@@ -48,6 +48,7 @@ const StudentSider: React.FunctionComponent<IStudentSiderProps> = (props: IStude
                             return (
                                 <Menu.Item key={selection.slid}
                                            onClick={() => {
+                                               console.log("click selection")
                                                props.onSelectionClick(selection)
                                            }}
                                 >

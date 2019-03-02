@@ -10,6 +10,7 @@ export interface IAssignmentDisplayProps {
     // forStudent?: IAppForStudentState
     // forTeacher?: IAppForTeacherState
     addAssignmentButton?: React.ReactNode
+    submitAssignmentButtonList?: React.ReactNode[]
     assignmentList: IAssignment[]
 }
 
@@ -18,7 +19,7 @@ interface IIconTextProps {
     text: string | React.ReactNode
 }
 
-const IconText: React.FunctionComponent<IIconTextProps> = (props: IIconTextProps) => (
+export const IconText: React.FunctionComponent<IIconTextProps> = (props: IIconTextProps) => (
     <span>
     <Icon type={props.type} style={{marginRight: 8}}/>
         {props.text}
@@ -49,21 +50,22 @@ export const AssignmentSimpleDisplay: React.FunctionComponent<IAssignmentDisplay
                             renderItem={(assignment: IAssignment) => {
                                 return (
                                     <List.Item
-                                        actions={[
-                                            <IconText type="check"
-                                                      text={"提交人數：" + (assignment.submissionEntityList? assignment.submissionEntityList.length : 0)}/>,
-                                            <IconText type="calendar"
-                                                      text={"截止日期：" + moment(assignment.ddl).format("YYYY-MM-DD")}/>,
-                                            <div>
-                                                {/* slideEntity is a optional value of assignment */}
-                                                {assignment.slideEntity ?
-                                                    <a href={NetworkSettings.getOpenNetworkIP() + "/file/attachment/download?fileName=" + assignment.slideEntity.filePath + "&rename=附件-" + assignment.title}><IconText
-                                                        type={"file"} text={"附件"}/></a>
-                                                    : ""
-                                                }
-                                            </div>,
-                                            <IconText type={"upload"} text={(<a>提交作業</a>)}/>
-                                        ]}
+                                        actions={
+                                            [
+                                                <IconText type="check"
+                                                          text={"提交人數：" + (assignment.submissionEntityList ? assignment.submissionEntityList.length : 0)}/>,
+                                                <IconText type="calendar"
+                                                          text={"截止日期：" + moment(assignment.ddl).format("YYYY-MM-DD")}/>,
+                                                <div>
+                                                    {/* slideEntity is a optional value of assignment */}
+                                                    {assignment.slideEntity ?
+                                                        <a href={NetworkSettings.getOpenNetworkIP() + "/file/attachment/download?fileName=" + assignment.slideEntity.filePath + "&rename=附件-" + assignment.title}><IconText
+                                                            type={"file"} text={"附件"}/></a>
+                                                        : ""
+                                                    }
+                                                </div>,
+                                                props.submitAssignmentButtonList && props.submitAssignmentButtonList[assignment.assid]
+                                            ]}
                                     >
                                         <List.Item.Meta
                                             title={assignment.title}

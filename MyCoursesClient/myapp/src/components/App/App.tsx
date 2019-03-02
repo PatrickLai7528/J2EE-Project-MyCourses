@@ -293,9 +293,6 @@ export default class App extends Component<IAppProps, IAppState> {
 
     private sendComment(data: ISendCommentData, callback?: ISendActionCallback): void {
         const doAfter: (payload: any) => void = (payload: IForum) => {
-            console.warn(" in do after of send comment ");
-            console.log("here is the payload");
-            console.warn(payload);
             this.state.userType === "teacher" && this.state.forTeacher &&
             this.setState({
                 forTeacher: {
@@ -311,7 +308,6 @@ export default class App extends Component<IAppProps, IAppState> {
                     displayingForum: {...payload}
                 }
             });
-            console.log(this.state);
         };
         SendActionHandler.sendComment(data, callback)(doAfter);
     }
@@ -434,18 +430,21 @@ export default class App extends Component<IAppProps, IAppState> {
                     releasementList: releasementList,
                     setDisplayingForum: this.setDisplayingForum.bind(this),
                     onSelectionClick: (selection: ISelection) => {
+                        console.log(selection);
                         this.state.forStudent && this.setState({
                             forStudent: {
                                 ...this.state.forStudent,
                                 displayingSelection: selection
                             }
-                        })
+                        });
+                        console.log("after click selection");
+                        console.log(this.state.forStudent);
                     },
                     sendComment: this.sendComment.bind(this),
                     sendCourseSelection: this.sendCourseSelection.bind(this),
                     sendForum: this.sendForum.bind(this)
                 }
-            })
+            });
             console.log(this.state);
         } catch (e) {
             console.log(e);
