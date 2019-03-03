@@ -31,26 +31,6 @@ export const ReleasementManageMessage: React.FunctionComponent<IReleasementManag
                 </div>
             )
         }
-        let now: number = new Date().getTime();
-
-        function isStillOpen() {
-            if (userType === "teacher" && forTeacher && forTeacher.managingReleasement) {
-                return forTeacher.managingReleasement.deadTime >= now
-            }
-        }
-
-
-        function isStart() {
-            if (userType === "teacher" && forTeacher && forTeacher.managingReleasement) {
-                return forTeacher.managingReleasement.effectiveTime <= now;
-            }
-        }
-
-        function isEnd() {
-            if (userType === "teacher" && forTeacher && forTeacher.managingReleasement) {
-                return forTeacher.managingReleasement.deadTime >= now
-            }
-        }
 
         if (userType === "teacher" && forTeacher && forTeacher.managingReleasement) {
             return (
@@ -65,7 +45,6 @@ export const ReleasementManageMessage: React.FunctionComponent<IReleasementManag
                            description={moment(forTeacher.managingReleasement.deadTime).format("YYYY-MM-DD")}
                            type={"success"}
                     />
-
                 </div>
             )
         }

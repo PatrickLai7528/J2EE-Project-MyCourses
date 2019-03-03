@@ -34,6 +34,11 @@ export const TeacherSider: React.FunctionComponent<ITeacherSiderProps> = (props:
                         <Icon type="book"/>待發佈課程
                     </NavLink>
                 </Menu.Item>
+                <Menu.Item key={"statistics"}>
+                    <NavLink exact={true} to="/statistics">
+                        <Icon type="area-chart"/>統計信息
+                    </NavLink>
+                </Menu.Item>
                 <Menu.SubMenu key="types" title={<span><Icon type="profile"/>已發佈課程</span>}>
                     {
                         props.releasementList.length === 0 ?

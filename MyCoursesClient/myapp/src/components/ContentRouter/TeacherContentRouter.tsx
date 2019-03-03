@@ -5,6 +5,7 @@ import {ForumDisplayContainer} from "../ForumDisplay/ForumDisplayContainer";
 import CourseDisplayContainer from "../CourseDisplay/CourseDisplayContainer";
 import {IAppForTeacherState} from "../App/App";
 import {UserType} from "../../api/UserAPI";
+import {StatisticsDisplay} from "../StatisticsDisplay/StatisticsDisplay";
 
 export interface ITeacherContentRouterProps {
     userType: UserType
@@ -15,6 +16,12 @@ export interface ITeacherContentRouterProps {
 export const TeacherContentRouter: React.FunctionComponent<ITeacherContentRouterProps> = (props: ITeacherContentRouterProps) => {
     return (
         <div>
+            <Route exact path="/statistics" component={
+                () => {
+                    return <StatisticsDisplay userType={props.userType} forTeacher={props.forTeacher}/>
+                }
+            }
+            />
             <Route exact path="/releasement/manage" component={
                 () => {
                     if (props.forTeacher.managingReleasement)

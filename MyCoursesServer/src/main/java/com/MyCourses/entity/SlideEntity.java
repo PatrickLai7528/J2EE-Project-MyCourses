@@ -38,6 +38,9 @@ public class SlideEntity implements Serializable {
     @Convert(converter = DetailDateConverter.class)
     private Date uploadTime;
 
+    @Column(name = "download_times")
+    private Long downloadTimes;
+
 //    private CourseEntity courseEntity;
 ////
 //    public SlideEntity() {
