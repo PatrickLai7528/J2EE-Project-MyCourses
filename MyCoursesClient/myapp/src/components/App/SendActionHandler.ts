@@ -24,7 +24,8 @@ export class SendActionHandler {
                 if (response.isSuccess) {
                     if (callback && callback.onSuccess) callback.onSuccess(response);
                 } else if (callback && callback.onFail) callback.onFail(response);
-                doAfter(response.payload);
+                if (response.payload)
+                    doAfter(response.payload);
             } catch (e) {
                 console.log(e);
                 if (callback && callback.onError) callback.onError(e);

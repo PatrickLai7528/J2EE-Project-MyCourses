@@ -8,6 +8,7 @@ package com.MyCourses.controller;/*
 
 import com.MyCourses.annotations.GenerateToken;
 import com.MyCourses.annotations.PleaseLog;
+import com.MyCourses.annotations.VerifyToken;
 import com.MyCourses.entity.AdminEntity;
 import com.MyCourses.entity.CourseEntity;
 import com.MyCourses.entity.ReleasementEntity;
@@ -54,6 +55,7 @@ public class AdminController {
 
     @PleaseLog
     @PostMapping("approve/course/{cid}")
+    @VerifyToken
     @CrossOrigin(origins = "http://localhost:3000")
     public APIResponse<List<CourseEntity>> approveCourse(@PathVariable(name = "cid") Long cid) {
         try {
@@ -68,6 +70,7 @@ public class AdminController {
     @PleaseLog
     @PostMapping("reject/course/{cid}")
     @CrossOrigin(origins = "http://localhost:3000")
+    @VerifyToken
     public APIResponse<List<CourseEntity>> rejectCourse(@PathVariable(name = "cid") Long cid) {
         try {
             adminService.rejectCourse(cid);
@@ -81,6 +84,7 @@ public class AdminController {
     @PleaseLog
     @PostMapping("approve/releasement/{rid}")
     @CrossOrigin(origins = "http://localhost:3000")
+    @VerifyToken
     public APIResponse<List<ReleasementEntity>> approveReleasement(@PathVariable(name = "rid") Long rid) {
         try {
             adminService.approveReleasement(rid);
@@ -94,6 +98,7 @@ public class AdminController {
     @PleaseLog
     @PostMapping("reject/releasement/{rid}")
     @CrossOrigin(origins = "http://localhost:3000")
+    @VerifyToken
     public APIResponse<List<ReleasementEntity>> rejectReleasement(@PathVariable(name = "rid") Long rid) {
         try {
             adminService.rejectReleasement(rid);

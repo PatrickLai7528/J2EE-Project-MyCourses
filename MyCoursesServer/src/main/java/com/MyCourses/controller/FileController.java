@@ -7,6 +7,7 @@ package com.MyCourses.controller;/*
  */
 
 import com.MyCourses.annotations.PleaseLog;
+import com.MyCourses.annotations.VerifyToken;
 import com.MyCourses.exceptions.FileEmptyException;
 import com.MyCourses.service.IFileService;
 import com.MyCourses.service.RenamableResource;
@@ -36,6 +37,8 @@ public class FileController {
     }
 
 
+
+    @VerifyToken
     @PostMapping(value = "attachment/upload")
     @CrossOrigin(origins = "http://localhost:3000")
     @PleaseLog
@@ -49,6 +52,8 @@ public class FileController {
         }
     }
 
+
+    @VerifyToken
     @PostMapping(value = "submission/upload")
     @CrossOrigin(origins = "http://localhost:3000")
     @PleaseLog
@@ -62,6 +67,8 @@ public class FileController {
         }
     }
 
+
+    @VerifyToken
     @PostMapping(value = "slide/upload")
     @CrossOrigin(origins = "http://localhost:3000")
     @PleaseLog
@@ -102,6 +109,8 @@ public class FileController {
         }
     }
 
+
+    @VerifyToken
     @GetMapping("slide/download")
     @CrossOrigin(origins = "http://localhost:3000")
     @PleaseLog
@@ -111,6 +120,8 @@ public class FileController {
         return download(renamableResource);
     }
 
+
+    @VerifyToken
     @GetMapping("attachment/download")
     @CrossOrigin(origins = "http://localhost:3000")
     @PleaseLog
@@ -120,6 +131,8 @@ public class FileController {
         return download(renamableResource);
     }
 
+
+    @VerifyToken
     @GetMapping("submission/download")
     @CrossOrigin(origins = "http://localhost:3000")
     @PleaseLog

@@ -7,6 +7,7 @@ package com.MyCourses.controller;/*
  */
 
 import com.MyCourses.annotations.PleaseLog;
+import com.MyCourses.annotations.VerifyToken;
 import com.MyCourses.entity.ForumEntity;
 import com.MyCourses.entity.ReleasementEntity;
 import com.MyCourses.exceptions.ForumNotExistException;
@@ -31,6 +32,7 @@ public class ForumController {
         this.releasementService = releasementService;
     }
 
+    @VerifyToken
     @PostMapping("add")
     @PleaseLog
     @CrossOrigin(origins = "http://localhost:3000")
@@ -47,6 +49,7 @@ public class ForumController {
         }
     }
 
+    @VerifyToken
     @PostMapping("comment")
     @PleaseLog
     @CrossOrigin(origins = "http://localhost:3000")

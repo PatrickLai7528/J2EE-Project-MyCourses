@@ -124,7 +124,7 @@ export default class App extends Component<IAppProps, IAppState> {
     }
 
     private async handleVisitorCome() {
-        const response: IAPIResponse<IReleasement[]> = await ReleasementAPI.getInstance().getAllReleasement();
+        const response: IAPIResponse<IReleasement[]> = await ReleasementAPI.getInstance().getAvailableReleasement();
         if (response.isSuccess && response.payload)
             this.setState({
                 forVisitor: {
@@ -137,9 +137,14 @@ export default class App extends Component<IAppProps, IAppState> {
 
     private handleLogInSuccess(userType: UserType, email: string, token: string): void {
         const cookie: Cookies = new Cookies();
+        console.log(cookie);
         cookie.remove("token");
         cookie.remove("userType");
         cookie.remove("email");
+        console.log(cookie);
+        cookie.set("token", token);
+        cookie.set("userType", userType);
+        cookie.set("email", email);
 
         if (userType === "student")
             this.handleStudentLogIn(email);
@@ -150,9 +155,6 @@ export default class App extends Component<IAppProps, IAppState> {
         if (userType === "admin")
             this.handleAdminLogIn(email);
 
-        cookie.set("token", token);
-        cookie.set("userType", userType);
-        cookie.set("email", email);
     }
 
     private sendAddCourse(data: ISendAddCourseData, callback?: ISendActionCallback): void {
@@ -231,11 +233,20 @@ export default class App extends Component<IAppProps, IAppState> {
 
     private sendForum(data: ISendForumData, callback?: ISendActionCallback): void {
         const doAfter: (payload: any) => void = (payload: IReleasement) => {
-            this.state.userType === "teacher" && this.state.forTeacher &&
-            this.setState({
+            this.state.forTeacher &&
+            this.state.userType === "teacher" && this.setState({
                 forTeacher: {
                     ...this.state.forTeacher,
                     managingReleasement: payload
+                }
+            });
+            this.state.userType === "student" && this.state.forStudent && this.state.forStudent.displayingSelection && this.setState({
+                forStudent: {
+                    ...this.state.forStudent,
+                    displayingSelection: {
+                        ...this.state.forStudent.displayingSelection,
+                        releasementEntity: payload
+                    }
                 }
             })
         };
@@ -407,7 +418,7 @@ export default class App extends Component<IAppProps, IAppState> {
         try {
             let releasementList: IReleasement[] = [];
             let selectionList: ISelection[] = []; // use empty list for default
-            const responseOfAllReleasement = await ReleasementAPI.getInstance().getAllReleasement();
+            const responseOfAllReleasement = await ReleasementAPI.getInstance().getAvailableReleasement();
             if (responseOfAllReleasement.isSuccess && responseOfAllReleasement.payload) {
                 // not to show message
                 releasementList = responseOfAllReleasement.payload;

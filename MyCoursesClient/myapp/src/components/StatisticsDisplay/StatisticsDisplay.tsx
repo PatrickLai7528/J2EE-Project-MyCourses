@@ -2,7 +2,7 @@ import * as React from "react";
 import {UserType} from "../../api/UserAPI";
 import {IAppForTeacherState} from "../App/App";
 import {IReleasementStatistics, ISemesterStatistics, ITeacherStatistics} from "../../types/entities";
-import {Col, Divider, message, Row, Spin, Statistic, Table, Tag} from "antd";
+import {Col, Divider, Empty, message, Row, Spin, Statistic, Table, Tag} from "antd";
 import {StatisticsAPI} from "../../api/StatisticsAPI";
 import IAPIResponse from "../../api/IAPIResponse";
 
@@ -38,12 +38,20 @@ export class StatisticsDisplay extends React.Component<IStatisticsDisplayProps, 
 
 
     public render(): React.ReactNode {
+        console.log(this.state.teacherStatistics);
         if (!this.state.teacherStatistics) {
             return (
                 <Spin spinning={true}>
                     {this.showStatistics()}
                 </Spin>
             );
+        } else if (!this.state.teacherStatistics.outlineStatistics || !this.state.teacherStatistics.releasementStatisticsList || !this.state.teacherStatistics.semesterStatisticsList) {
+            return (<div>
+                    <h1>統計信息</h1>
+                    <Divider/>
+                    <Empty/>
+                </div>
+            )
         } else
             return (
                 this.showStatistics()
@@ -281,7 +289,7 @@ export class StatisticsDisplay extends React.Component<IStatisticsDisplayProps, 
                             return (
                                 <div
                                     style={{marginBottom: 50}}
-                                    key={releasementStatistics.courseName + releasementStatistics.simplifySelectionList[0].selectTime}>
+                                    key={releasementStatistics.courseName + (releasementStatistics.simplifySelectionList && releasementStatistics.simplifySelectionList.length !== 0 && releasementStatistics.simplifySelectionList[0].selectTime)}>
                                     <h2 style={{marginBottom: 15}}>{releasementStatistics.courseName}</h2>
                                     {
                                         _show(releasementStatistics)

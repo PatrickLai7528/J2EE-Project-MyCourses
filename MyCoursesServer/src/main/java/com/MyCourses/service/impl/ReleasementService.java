@@ -9,6 +9,7 @@ package com.MyCourses.service.impl;/*
 import com.MyCourses.dao.IReleasementDAO;
 import com.MyCourses.dao.ITeacherDAO;
 import com.MyCourses.entity.ReleasementEntity;
+import com.MyCourses.entity.enums.ApprovalState;
 import com.MyCourses.exceptions.ReleasementNotExistException;
 import com.MyCourses.exceptions.TeacherNotExistException;
 import com.MyCourses.service.IReleasementService;
@@ -43,12 +44,8 @@ public class ReleasementService implements IReleasementService {
         List<ReleasementEntity> all = getAll();
         List<ReleasementEntity> available = new ArrayList<>();
         for (ReleasementEntity releasementEntity : all) {
-            Date effectiveTime = releasementEntity.getEffectiveTime();
-            Date deadTime = releasementEntity.getDeadTime();
-            Date now = new Date();
-            if (deadTime.compareTo(now) < 0 && effectiveTime.compareTo(now) > 0) {
-                available.add(releasementEntity);
-            }
+           if(releasementEntity.getApprovalState() == ApprovalState.APPROVED)
+               available.add(releasementEntity);
         }
         return available;
     }

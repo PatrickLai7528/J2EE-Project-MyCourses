@@ -4,6 +4,7 @@ import axios from "axios";
 import {any} from "prop-types";
 import {IForum, IReleasement} from "../types/entities";
 import {EnumUtils} from "../utils/EnumUtils";
+import {TokenUtils} from "../utils/TokenUtils";
 
 export interface ISendForumData {
     rid: number,
@@ -32,14 +33,13 @@ export default class ForumAPI {
     }
 
     public sendComment(data: ISendCommentData): Promise<IAPIResponse<IForum>> {
-        console.log(data);
         return new Promise<IAPIResponse<IForum>>((resolve, reject) => {
             const url: string = NetworkSettings.getOpenNetworkIP() + "/forum/comment" +
                 "?rid=" + data.rid +
                 "&from=" + data.messageFrom +
                 "&fid=" + data.fid +
                 "&content=" + data.content + (data.replyTo ? "&replyTo=" + data.replyTo : "");
-            axios.post(url)
+            axios.post(url,{},{headers: {"Authorization": TokenUtils.getToken()}})
                 .then((response: any) => {
                     resolve({
                         isSuccess: response.data.code === 0,
@@ -61,7 +61,7 @@ export default class ForumAPI {
                 "?rid=" + data.rid +
                 "&topic=" + data.topic +
                 "&questioner=" + data.questioner;
-            axios.post(url)
+            axios.post(url,{},{headers: {"Authorization": TokenUtils.getToken()}})
                 .then((response: any) => {
                     if (response.data.payload) {
                         const releasement: IReleasement = EnumUtils.changeStringToReleasementEnum(response.data.payload);

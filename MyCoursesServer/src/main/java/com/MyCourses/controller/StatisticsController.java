@@ -7,6 +7,7 @@ package com.MyCourses.controller;/*
  */
 
 import com.MyCourses.annotations.PleaseLog;
+import com.MyCourses.annotations.VerifyToken;
 import com.MyCourses.entity.TeacherStatistics;
 import com.MyCourses.exceptions.ReleasementNotExistException;
 import com.MyCourses.exceptions.TeacherNotExistException;
@@ -27,6 +28,7 @@ public class StatisticsController {
     }
 
     @PleaseLog
+    @VerifyToken
     @GetMapping("teacher")
     @CrossOrigin(origins = "http://localhost:3000")
     public APIResponse<TeacherStatistics> getTeacherStatistics(@RequestParam(name = "email") String teacherEmail){

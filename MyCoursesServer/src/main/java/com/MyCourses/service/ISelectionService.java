@@ -16,11 +16,11 @@ public interface ISelectionService {
 
     List<SelectionEntity> getSelectionOfReleasement(Long releasementId) throws ReleasementNotExistException;
 
-    SelectionState select(String studentEmail, Long rid) throws ReleasementNotExistException, StudentNotExistException, RepeatSelectCourseException;
+    SelectionState select(String studentEmail, Long rid) throws ReleasementNotExistException, StudentNotExistException, RepeatSelectCourseException, SelectionFailExceptions;
 
     List<SelectionEntity> getSelectionOf(String studentEmail);
 
     SelectionEntity getSelectionBySlid(Long slid) throws SelectionNotExistException;
 
-    void broadCastEmailToSelector(Long releasementId, String content) throws MailSendingException;
+    void broadCastEmailToSelector(Long releasementId, String content) throws MailSendingException, SelectionNotExistException;
 }

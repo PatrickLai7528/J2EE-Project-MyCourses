@@ -3,7 +3,7 @@ import {IReleasement, ISelection} from "../../types/entities";
 import SelectionAPI from "../../api/SelectionAPI";
 import IAPIResponse from "../../api/IAPIResponse";
 import {FormComponentProps} from "antd/lib/form";
-import {Form, Input, InputNumber, message, Tooltip} from "antd";
+import {Empty, Form, Input, InputNumber, message, Tooltip} from "antd";
 import {ISendAssignmentData} from "../../api/AssignmentAPI";
 import {toByteUnit} from "../../types/enums";
 import ReleasementAPI, {ISendScoreData} from "../../api/ReleasementAPI";
@@ -51,25 +51,27 @@ class UploadScoreOperationForm extends React.Component<IUploadScoreOperationForm
                 layout={"inline"}
             >
                 {
-                    this.state.selectionList.map((selection: ISelection) => {
-                        return (
-                            <Form.Item
-                                key={selection.slid}
-                                label={"學號" + selection.studentEntity.studentNo + "的成績"}
-                            >
-                                {this.props.form.getFieldDecorator(String(selection.slid), {
-                                    rules: [
-                                        {
-                                            required: true, message: '成績不能為空',
-                                        }
-                                    ],
-                                })(
-                                    <InputNumber placeholder={selection.score === undefined ? "成績":"已有成績"} min={0} max={100}
-                                                 disabled={selection.score !== undefined}/>
-                                )}
-                            </Form.Item>
-                        )
-                    })
+                    (!this.state.selectionList || this.state.selectionList.length === 0) ?
+                        <Empty/> : this.state.selectionList.map((selection: ISelection) => {
+                            return (
+                                <Form.Item
+                                    key={selection.slid}
+                                    label={"學號" + selection.studentEntity.studentNo + "的成績"}
+                                >
+                                    {this.props.form.getFieldDecorator(String(selection.slid), {
+                                        rules: [
+                                            {
+                                                required: true, message: '成績不能為空',
+                                            }
+                                        ],
+                                    })(
+                                        <InputNumber placeholder={selection.score === undefined ? "成績" : "已有成績"} min={0}
+                                                     max={100}
+                                                     disabled={selection.score !== undefined}/>
+                                    )}
+                                </Form.Item>
+                            )
+                        })
                 }
             </Form>
         )

@@ -7,6 +7,7 @@ package com.MyCourses.controller;/*
  */
 
 import com.MyCourses.annotations.PleaseLog;
+import com.MyCourses.annotations.VerifyToken;
 import com.MyCourses.entity.ReleasementEntity;
 import com.MyCourses.exceptions.ReleasementNotExistException;
 import com.MyCourses.service.IReleasementService;
@@ -31,6 +32,7 @@ public class SlideController {
     @PostMapping("add")
     @CrossOrigin(origins = "http://localhost:3000")
     @PleaseLog
+    @VerifyToken
     public APIResponse<ReleasementEntity> addSlideOf(
             @RequestParam(name = "rid") Long rid,
             @RequestParam(name = "title") String title,

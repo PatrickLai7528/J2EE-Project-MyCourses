@@ -8,12 +8,10 @@ package com.MyCourses.controller;
  */
 
 import com.MyCourses.annotations.PleaseLog;
+import com.MyCourses.annotations.VerifyToken;
 import com.MyCourses.entity.CourseEntity;
 import com.MyCourses.entity.ReleasementEntity;
-import com.MyCourses.exceptions.CourseNotExistException;
-import com.MyCourses.exceptions.ReleasementNotExistException;
-import com.MyCourses.exceptions.TeacherNotExistException;
-import com.MyCourses.exceptions.UnexpectedReleaseConfig;
+import com.MyCourses.exceptions.*;
 import com.MyCourses.service.ICourseService;
 import com.MyCourses.service.IReleasementService;
 import com.MyCourses.service.ReleaseConfig;
@@ -47,6 +45,8 @@ public class ReleasementController {
 
     @PleaseLog
 //    @VerifyToken
+
+    @VerifyToken
     @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("add")
     public APIResponse<List<ReleasementEntity>> release(
@@ -76,9 +76,9 @@ public class ReleasementController {
                     releasementService.getReleasementOf(courseEntity.getTeacherEntity().getTeacherEmail());
 
             return ResponseUtils.ok("課程發佈成功", releasementEntityList);
-        } catch (UnexpectedReleaseConfig | CourseNotExistException | TeacherNotExistException e) {
+        } catch (UnexpectedReleaseConfig | CourseNotExistException | TeacherNotExistException | ReleasementDateException e) {
             e.printStackTrace();
-            return ResponseUtils.error(e.getLocalizedMessage(),null);
+            return ResponseUtils.error(e.getLocalizedMessage(), null);
         }
     }
 
@@ -90,6 +90,8 @@ public class ReleasementController {
         return ResponseUtils.ok("操作成功", available);
     }
 
+
+    @VerifyToken
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("all")
     @PleaseLog
@@ -101,6 +103,7 @@ public class ReleasementController {
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("of")
     @PleaseLog
+    @VerifyToken
     public APIResponse<List<ReleasementEntity>> getReleasementOf(
             @RequestParam(name = "teacherEmail") String teacherEmail) {
         try {
@@ -113,6 +116,8 @@ public class ReleasementController {
         }
     }
 
+
+    @VerifyToken
     @GetMapping("rid/{rid}")
     @PleaseLog
     @CrossOrigin("http://localhost:3000")
@@ -128,21 +133,4 @@ public class ReleasementController {
         }
     }
 
-//    private Map<String, String> getReleaseConfig(MultiValueMap<String, String> formData) throws UnexpectedReleaseConfig {
-//        Map<String, String> map = new HashMap<>();
-//        try {
-//            map.put(ReleaseConfig.REPEAT_AFTER_DAY, formData.getFirst(ReleaseConfig.REPEAT_AFTER_DAY));
-//            map.put(ReleaseConfig.LIMIT_NUMBER, formData.getFirst(ReleaseConfig.LIMIT_NUMBER));
-//            map.put(ReleaseConfig.DEAD_TIME, formData.getFirst(ReleaseConfig.DEAD_TIME));
-//            map.put(ReleaseConfig.EFFECTIVE_TIME, formData.getFirst(ReleaseConfig.EFFECTIVE_TIME));
-//            map.put(ReleaseConfig.START_HOUR, formData.getFirst(ReleaseConfig.START_HOUR));
-//            map.put(ReleaseConfig.START_MIN, formData.getFirst(ReleaseConfig.START_MIN));
-//            map.put(ReleaseConfig.END_HOUR, formData.getFirst(ReleaseConfig.END_HOUR));
-//            map.put(ReleaseConfig.END_MIN, formData.getFirst(ReleaseConfig.END_MIN));
-//            return map;
-//        } catch (Throwable throwable) {
-//            throwable.printStackTrace();
-//            throw new UnexpectedReleaseConfig();
-//        }
-//    }
 }

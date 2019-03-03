@@ -7,10 +7,7 @@ package com.MyCourses.service;/*
  */
 
 import com.MyCourses.entity.CourseEntity;
-import com.MyCourses.exceptions.CourseHasNoTeacherException;
-import com.MyCourses.exceptions.CourseNotExistException;
-import com.MyCourses.exceptions.TeacherNotExistException;
-import com.MyCourses.exceptions.UnexpectedReleaseConfig;
+import com.MyCourses.exceptions.*;
 
 import java.util.List;
 import java.util.Map;
@@ -24,7 +21,7 @@ public interface ICourseService {
 
 //    void release(Long cid) throws CourseNotExistException;
 
-    void release(Long cid, Map<String, String> config) throws CourseNotExistException, UnexpectedReleaseConfig;
+    void release(Long cid, Map<String, String> config) throws CourseNotExistException, UnexpectedReleaseConfig, ReleasementDateException;
 
     CourseEntity findByCid(Long cid) throws CourseNotExistException;
 

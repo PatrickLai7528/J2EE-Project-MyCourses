@@ -4,6 +4,7 @@ import {any} from "prop-types";
 import NetworkSettings from "../setting/NetworkSettings";
 import {ICourse, IReleasement} from "../types/entities";
 import {EnumUtils} from "../utils/EnumUtils";
+import {TokenUtils} from "../utils/TokenUtils";
 
 export interface ICourseApproveData {
     cid: number
@@ -36,7 +37,7 @@ export class AdminAPI {
 
     public sendCourseApprove(data: ICourseApproveData): Promise<IAPIResponse<ICourse[]>> {
         return new Promise<IAPIResponse<any>>((resolve, reject) => {
-            axios.post(NetworkSettings.getOpenNetworkIP() + "/admin/approve/course/" + data.cid)
+            axios.post(NetworkSettings.getOpenNetworkIP() + "/admin/approve/course/" + data.cid,{},{headers: {"Authorization": TokenUtils.getToken()}})
                 .then((response: any) => {
                     let payload: ICourse[] = response.data.payload;
                     payload = EnumUtils.changeStringsToCourseEnums(payload);
@@ -55,7 +56,7 @@ export class AdminAPI {
 
     public sendCourseReject(data: ICourseRejectData): Promise<IAPIResponse<any>> {
         return new Promise<IAPIResponse<any>>((resolve, reject) => {
-            axios.post(NetworkSettings.getOpenNetworkIP() + "/admin/reject/course/" + data.cid)
+            axios.post(NetworkSettings.getOpenNetworkIP() + "/admin/reject/course/" + data.cid,{},{headers: {"Authorization": TokenUtils.getToken()}})
                 .then((response: any) => {
                     let payload: ICourse[] = response.data.payload;
                     payload = EnumUtils.changeStringsToCourseEnums(payload);
@@ -74,7 +75,7 @@ export class AdminAPI {
 
     public sendReleasementApprove(data: IReleasementApproveData): Promise<IAPIResponse<IReleasement[]>> {
         return new Promise<IAPIResponse<IReleasement[]>>((resolve, reject) => {
-            axios.post(NetworkSettings.getOpenNetworkIP() + "/admin/approve/releasement/" + data.rid)
+            axios.post(NetworkSettings.getOpenNetworkIP() + "/admin/approve/releasement/" + data.rid,{},{headers: {"Authorization": TokenUtils.getToken()}})
                 .then((response: any) => {
                     let payload: IReleasement[] = response.data.payload;
                     payload = EnumUtils.changeStringsToReleasementEnums(payload);
@@ -93,7 +94,7 @@ export class AdminAPI {
 
     public sendReleasementReject(data: IReleasementRejectData): Promise<IAPIResponse<IReleasement[]>> {
         return new Promise<IAPIResponse<IReleasement[]>>((resolve, reject) => {
-            axios.post(NetworkSettings.getOpenNetworkIP() + "/admin/reject/releasement/" + data.rid)
+            axios.post(NetworkSettings.getOpenNetworkIP() + "/admin/reject/releasement/" + data.rid,{},{headers: {"Authorization": TokenUtils.getToken()}})
                 .then((response: any) => {
                     let payload: IReleasement[] = response.data.payload;
                     payload = EnumUtils.changeStringsToReleasementEnums(payload);

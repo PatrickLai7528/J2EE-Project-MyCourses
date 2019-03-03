@@ -7,6 +7,7 @@ package com.MyCourses.controller;/*
  */
 
 import com.MyCourses.annotations.PleaseLog;
+import com.MyCourses.annotations.VerifyToken;
 import com.MyCourses.entity.ReleasementEntity;
 import com.MyCourses.entity.SelectionEntity;
 import com.MyCourses.entity.enums.ByteUnit;
@@ -41,6 +42,7 @@ public class AssignmentController {
 
     @PostMapping("add")
     @PleaseLog
+    @VerifyToken
     @CrossOrigin(origins = "http://localhost:3000")
     public APIResponse<ReleasementEntity> addAssignmentOf(
             @RequestParam(name = "rid") Long rid,
@@ -65,6 +67,7 @@ public class AssignmentController {
     @PostMapping("submit")
     @PleaseLog
     @CrossOrigin(origins = "http://localhost:3000")
+    @VerifyToken
     public APIResponse<SelectionEntity> submitAssignment(
             @RequestParam(name = "slid") Long selectionId,
             @RequestParam(name = "assid") Long assignmentId,

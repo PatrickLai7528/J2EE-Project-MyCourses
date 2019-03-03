@@ -6,6 +6,7 @@ import {toApprovalState} from "../types/enums";
 import {ISendReleasementData} from "./CourseAPI";
 import {EnumUtils} from "../utils/EnumUtils";
 import {any} from "prop-types";
+import {TokenUtils} from "../utils/TokenUtils";
 
 export interface ISendScoreData {
     slid: number,
@@ -27,7 +28,32 @@ export default class ReleasementAPI {
 
     public getAllReleasement(): Promise<IAPIResponse<IReleasement[]>> {
         return new Promise<IAPIResponse<IReleasement[]>>((resolve, reject) => {
-            axios.get(NetworkSettings.getOpenNetworkIP() + "/releasement/all")
+            axios.get(NetworkSettings.getOpenNetworkIP() + "/releasement/all", {headers: {"Authorization": TokenUtils.getToken()}})
+                .then((response: any) => {
+                    // 處理枚舉類
+                    let payload: any = response.data.payload; // 其實是IReleasement類型，但枚舉類是個字符串
+                    if (payload) {
+                        for (let releasement of payload) {
+                            releasement.approvalState = toApprovalState(releasement.approvalState);
+                        }
+                    }
+                    resolve({
+                        isSuccess: response.data.code === 0,
+                        code: response.data.code,
+                        message: response.data.message,
+                        payload: response.data.payload
+                    })
+                })
+                .catch((e: any) => {
+                    console.log(e);
+                    reject(e);
+                })
+        });
+    }
+
+    public getAvailableReleasement(): Promise<IAPIResponse<IReleasement[]>> {
+        return new Promise<IAPIResponse<IReleasement[]>>((resolve, reject) => {
+            axios.get(NetworkSettings.getOpenNetworkIP() + "/releasement/available")
                 .then((response: any) => {
                     // 處理枚舉類
                     let payload: any = response.data.payload; // 其實是IReleasement類型，但枚舉類是個字符串
@@ -80,7 +106,7 @@ export default class ReleasementAPI {
         return new Promise<IAPIResponse<IReleasement[]>>((resolve, reject) => {
             const url: string = NetworkSettings.getOpenNetworkIP() + "/releasement/of" +
                 "?teacherEmail=" + teacherEmail;
-            axios.get(url)
+            axios.get(url, {headers: {"Authorization": TokenUtils.getToken()}})
                 .then((response: any) => {
                     if (response.data.payload) {
                         const releasementList: IReleasement[] = EnumUtils.changeStringsToReleasementEnums(response.data.payload);
@@ -115,7 +141,7 @@ export default class ReleasementAPI {
                 "&endHour=" + data.endHour +
                 "&endMin=" + data.endMin +
                 "&limitNumber=" + data.limitNumber;
-            axios.post(url)
+            axios.post(url, {}, {headers: {"Authorization": TokenUtils.getToken()}})
                 .then((response: any) => {
                     if (response.data.payload) {
                         const releasementList: IReleasement[] = EnumUtils.changeStringsToReleasementEnums(response.data.payload);
@@ -143,7 +169,7 @@ export default class ReleasementAPI {
 
     public sendScores(dataList: ISendScoreData[]): Promise<IAPIResponse<any>> {
         return new Promise<IAPIResponse<any>>((resolve, reject) => {
-            axios.post(NetworkSettings.getOpenNetworkIP() + "/reportcard/add", dataList)
+            axios.post(NetworkSettings.getOpenNetworkIP() + "/reportcard/add", dataList, {headers: {"Authorization": TokenUtils.getToken()}})
                 .then((response: any) => {
                     resolve({
                         isSuccess: response.data.code === 0,
@@ -152,7 +178,7 @@ export default class ReleasementAPI {
                         payload: response.data.payload
                     })
                 })
-                .catch((e:any)=>{
+                .catch((e: any) => {
                     reject(e);
                 })
         })

@@ -21,6 +21,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -60,7 +61,7 @@ public class SelectionService implements ISelectionService {
     }
 
     @Override
-    public SelectionState select(String studentEmail, Long rid) throws ReleasementNotExistException, StudentNotExistException, RepeatSelectCourseException {
+    public SelectionState select(String studentEmail, Long rid) throws ReleasementNotExistException, StudentNotExistException, RepeatSelectCourseException, SelectionFailExceptions {
         StudentEntity studentEntity = studentDAO.retrieveByEmail(studentEmail);
         ReleasementEntity releasementEntity = releasementDAO.retrieveByRid(rid);
 
@@ -72,8 +73,18 @@ public class SelectionService implements ISelectionService {
             throw new RepeatSelectCourseException();
 
         List<SelectionEntity> selectionEntities = selectionDAO.retrieveByReleasement(releasementEntity);
-        SelectionState selectionState = selectionEntities.size() > releasementEntity.getLimitNumber() ?
-                SelectionState.OVER : SelectionState.ADDED;
+        SelectionState selectionState;
+        long now = new Date().getTime();
+        if (releasementEntity.isActive() && selectionEntities.size() < releasementEntity.getLimitNumber()) {
+            selectionState = SelectionState.BY_SELECTED;
+        } else if (releasementEntity.isActive() && selectionEntities.size() >= releasementEntity.getLimitNumber()) {
+            throw new SelectionFailExceptions("補選失敗，人數已滿");
+        } else if (now >= releasementEntity.getDeadTime().getTime()) {
+            throw new SelectionFailExceptions("選課失敗，課程已失效");
+        } else {
+            selectionState = selectionEntities.size() > releasementEntity.getLimitNumber() ?
+                    SelectionState.OVER : SelectionState.ADDED;
+        }
         SelectionEntity selectionEntity = new SelectionEntity();
         selectionEntity.setStudentEntity(studentEntity);
         selectionEntity.setReleasementEntity(releasementEntity);
@@ -86,7 +97,14 @@ public class SelectionService implements ISelectionService {
     @Override
     public List<SelectionEntity> getSelectionOf(String studentEmail) {
         StudentEntity studentEntity = studentDAO.retrieveByEmail(studentEmail);
-        return selectionDAO.retrieveByStudent(studentEntity);
+        List<SelectionEntity> selectionEntityList = selectionDAO.retrieveByStudent(studentEntity);
+        List<SelectionEntity> ret = new ArrayList<>();
+        for (SelectionEntity selectionEntity : selectionEntityList) {
+            if (selectionEntity.getReleasementEntity().isActive()) {
+                ret.add(selectionEntity);
+            }
+        }
+        return ret;
     }
 
     @Override
@@ -98,9 +116,12 @@ public class SelectionService implements ISelectionService {
     }
 
     @Override
-    public void broadCastEmailToSelector(Long releasementId, String content) throws MailSendingException {
+    public void broadCastEmailToSelector(Long releasementId, String content) throws MailSendingException, SelectionNotExistException {
         ReleasementEntity releasementEntity = releasementDAO.retrieveByRid(releasementId);
         List<SelectionEntity> selectionEntityList = selectionDAO.retrieveByReleasement(releasementEntity);
+        if (selectionEntityList == null || selectionEntityList.isEmpty()) {
+            throw new SelectionNotExistException("沒有學生選課");
+        }
         for (SelectionEntity selectionEntity : selectionEntityList) {
             String subject =
                     releasementEntity.getCourseEntity().getName() + " 群發郵件";

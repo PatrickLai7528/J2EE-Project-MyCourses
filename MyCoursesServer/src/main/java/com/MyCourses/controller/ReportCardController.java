@@ -7,6 +7,7 @@ package com.MyCourses.controller;/*
  */
 
 import com.MyCourses.annotations.PleaseLog;
+import com.MyCourses.annotations.VerifyToken;
 import com.MyCourses.exceptions.SelectionNotExistException;
 import com.MyCourses.service.IReportCardService;
 import com.MyCourses.utils.ResponseUtils;
@@ -34,6 +35,7 @@ public class ReportCardController {
     @PleaseLog
     @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("add")
+    @VerifyToken
     public APIResponse<Object> addScore(@RequestBody List<ScoreItem> scoreItemList) {
         try {
             for (ScoreItem scoreItem : scoreItemList) {

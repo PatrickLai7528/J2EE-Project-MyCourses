@@ -52,7 +52,7 @@ export class ReleasementOperationForTeacherContainer extends React.Component<IRe
                     </Row>
                 </Card>
                 <Modal align={undefined}
-                       title={"群發郵件"}
+                       title={this.state.operationType === "SCORE" ? "發佈成績" : "群發郵件"}
                        destroyOnClose={true}
                        visible={this.state.modalVisible}
                        onOk={() => {

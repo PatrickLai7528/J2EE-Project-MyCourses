@@ -2,6 +2,7 @@ import {ITeacherStatistics} from "../types/entities";
 import IAPIResponse from "./IAPIResponse";
 import axios from "axios";
 import NetworkSettings from "../setting/NetworkSettings";
+import {TokenUtils} from "../utils/TokenUtils";
 
 export class StatisticsAPI {
     private static instance: StatisticsAPI;
@@ -17,7 +18,7 @@ export class StatisticsAPI {
 
     public getTeacherStatistics(teacherEmail: string): Promise<IAPIResponse<ITeacherStatistics>> {
         return new Promise<IAPIResponse<ITeacherStatistics>>((resolve, reject) => {
-            axios.get(NetworkSettings.getOpenNetworkIP() + "/statistics/teacher?email=" + teacherEmail)
+            axios.get(NetworkSettings.getOpenNetworkIP() + "/statistics/teacher?email=" + teacherEmail,{headers: {"Authorization": TokenUtils.getToken()}})
                 .then((response: any) => {
                     resolve({
                         isSuccess: response.data.code === 0,

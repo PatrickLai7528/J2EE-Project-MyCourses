@@ -3,6 +3,7 @@ import axios from "axios";
 import NetworkSettings from "../setting/NetworkSettings";
 import {IReleasement} from "../types/entities";
 import {EnumUtils} from "../utils/EnumUtils";
+import {TokenUtils} from "../utils/TokenUtils";
 
 export interface ISendSlideData {
     rid: number
@@ -29,9 +30,9 @@ export default class SlideAPI {
                 "?rid=" + data.rid +
                 "&fileName=" + data.fileName +
                 "&title=" + data.title;
-            axios.post(url)
+            axios.post(url, {}, {headers: {"Authorization": TokenUtils.getToken()}})
                 .then((response: any) => {
-                    if(response.data.payload) {
+                    if (response.data.payload) {
                         const releasement: IReleasement = EnumUtils.changeStringToReleasementEnum(response.data.payload);
                         resolve({
                             isSuccess: response.data.code === 0,
@@ -39,7 +40,7 @@ export default class SlideAPI {
                             message: response.data.message,
                             payload: releasement
                         })
-                    }else{
+                    } else {
                         resolve({
                             isSuccess: response.data.code === 0,
                             code: response.data.code,
@@ -59,7 +60,7 @@ export default class SlideAPI {
         return new Promise<IAPIResponse<string>>((resolve, reject) => {
             axios.post(NetworkSettings.getOpenNetworkIP() + "/file/slide/upload",
                 formData,
-                {headers: {"Content-Type": "application/x-www-form-urlencoded"}}
+                {headers: {"Content-Type": "application/x-www-form-urlencoded", "Authorization": TokenUtils.getToken()}}
             )
                 .then((response: any) => {
                     resolve({

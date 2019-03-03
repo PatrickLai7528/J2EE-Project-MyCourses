@@ -1,5 +1,5 @@
 import * as React from "react";
-import {Route} from "react-router";
+import {Redirect, Route} from "react-router";
 import ReleasementManageContainer from "../ReleasementManage/ReleasementManageContainer";
 import {ForumDisplayContainer} from "../ForumDisplay/ForumDisplayContainer";
 import CourseDisplayContainer from "../CourseDisplay/CourseDisplayContainer";
@@ -16,6 +16,7 @@ export interface ITeacherContentRouterProps {
 export const TeacherContentRouter: React.FunctionComponent<ITeacherContentRouterProps> = (props: ITeacherContentRouterProps) => {
     return (
         <div>
+            <Redirect to="/course/all"/>
             <Route exact path="/statistics" component={
                 () => {
                     return (<div><StatisticsDisplay userType={props.userType} forTeacher={props.forTeacher}/></div>)
@@ -29,14 +30,8 @@ export const TeacherContentRouter: React.FunctionComponent<ITeacherContentRouter
                             <ReleasementManageContainer
                                 forTeacher={props.forTeacher}
                                 userType={props.userType}
-                                // setDisplayingForum={props.forTeacher.setDisplayingForum}
-                                // sendForum={props.forTeacher.sendForum}
-                                // sendSlide={props.forTeacher.sendSlide}
-                                // sendAssignment={props.forTeacher.sendAssignment}
-                                // userType={props.userType}
-                                // releasement={props.forTeacher.managingReleasement}
                             />
-                        )
+                        );
                     return null;
                 }
             }/>

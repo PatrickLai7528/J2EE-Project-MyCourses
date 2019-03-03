@@ -1,6 +1,7 @@
 import axios from "axios";
 import IAPIResponse from "./IAPIResponse";
 import NetworkSettings from "../setting/NetworkSettings";
+import {TokenUtils} from "../utils/TokenUtils";
 export interface ISendBroadCastEmailData {
     content: string
     rid: number
@@ -23,7 +24,8 @@ export class EmailAPI {
             const url: string = NetworkSettings.getOpenNetworkIP() + "/selection/broadcast/" + data.rid;
             axios.post(url, encodeURI(data.content), {
                 headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
+                    'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8',
+                    "Authorization":TokenUtils.getToken()
                 },
             })
                 .then((response: any) => {

@@ -11,6 +11,7 @@ package com.MyCourses.controller;
 
 
 import com.MyCourses.annotations.PleaseLog;
+import com.MyCourses.annotations.VerifyToken;
 import com.MyCourses.entity.CourseEntity;
 import com.MyCourses.entity.TeacherEntity;
 import com.MyCourses.exceptions.CourseHasNoTeacherException;
@@ -38,6 +39,7 @@ public class CourseController {
         this.teacherService = teacherService;
     }
 
+    @VerifyToken
     @GetMapping("all")
     @PleaseLog
     @CrossOrigin(origins = "http://localhost:3000")
@@ -45,6 +47,7 @@ public class CourseController {
         return ResponseUtils.ok("操作成功", courseService.getAllCourses());
     }
 
+    @VerifyToken
     @GetMapping("of")
     @PleaseLog
     @CrossOrigin(origins = "http://localhost:3000")
@@ -59,6 +62,7 @@ public class CourseController {
     }
 
 
+    @VerifyToken
     @PostMapping("add")
     @PleaseLog
     @CrossOrigin(origins = "http://localhost:3000")

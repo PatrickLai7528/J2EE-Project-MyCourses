@@ -148,7 +148,8 @@ public class StatisticsService implements IStatisticsService {
             }
 
             for (SlideEntity slideEntity : releasementEntity.getSlideEntityList()) {
-                downloaded += slideEntity.getDownloadTimes();
+                if (slideEntity.getDownloadTimes() != null)
+                    downloaded += slideEntity.getDownloadTimes();
             }
 
             for (AssignmentEntity assignmentEntity : releasementEntity.getAssignmentEntityList()) {

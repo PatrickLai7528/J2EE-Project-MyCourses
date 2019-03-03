@@ -4,6 +4,7 @@ import axios from "axios";
 import {ByteUnit, fromByteUnitToString} from "../types/enums";
 import {IReleasement, ISelection} from "../types/entities";
 import {EnumUtils} from "../utils/EnumUtils";
+import {TokenUtils} from "../utils/TokenUtils";
 
 export interface ISendAssignmentData {
     title: string,
@@ -42,7 +43,7 @@ export default class AssignmentAPI {
                 "&file=" + data.fileName +
                 "&email=" + data.email;
 
-            axios.post(url)
+            axios.post(url, {}, {headers: {"Authorization": TokenUtils.getToken()}})
                 .then((response: any) => {
                     let payload: ISelection = response.data.payload;
                     payload.releasementEntity = EnumUtils.changeStringToReleasementEnum(payload.releasementEntity);
@@ -64,7 +65,7 @@ export default class AssignmentAPI {
         return new Promise<IAPIResponse<string>>((resolve, reject) => {
             axios.post(NetworkSettings.getOpenNetworkIP() + "/file/submission/upload",
                 formData,
-                {headers: {"Content-Type": "application/x-www-form-urlencoded"}}
+                {headers: {"Content-Type": "application/x-www-form-urlencoded", "Authorization": TokenUtils.getToken()}}
             )
                 .then((response: any) => {
                     resolve({
@@ -86,7 +87,7 @@ export default class AssignmentAPI {
         return new Promise<IAPIResponse<string>>((resolve, reject) => {
             axios.post(NetworkSettings.getOpenNetworkIP() + "/file/attachment/upload",
                 formData,
-                {headers: {"Content-Type": "application/x-www-form-urlencoded"}}
+                {headers: {"Content-Type": "application/x-www-form-urlencoded", "Authorization": TokenUtils.getToken()}}
             )
                 .then((response: any) => {
                     resolve({
@@ -113,7 +114,7 @@ export default class AssignmentAPI {
                 "&unit=" + fromByteUnitToString(data.byteUnit) +
                 "&size=" + data.fileSize +
                 "&fileName=" + data.fileName;
-            axios.post(url)
+            axios.post(url,{},{headers: {"Authorization": TokenUtils.getToken()}})
                 .then((response: any) => {
                     if (response.data.payload) {
                         const releasement: IReleasement = EnumUtils.changeStringToReleasementEnum(response.data.payload);

@@ -13,10 +13,7 @@ import com.MyCourses.entity.CourseEntity;
 import com.MyCourses.entity.ReleasementEntity;
 import com.MyCourses.entity.TeacherEntity;
 import com.MyCourses.entity.enums.ApprovalState;
-import com.MyCourses.exceptions.CourseHasNoTeacherException;
-import com.MyCourses.exceptions.CourseNotExistException;
-import com.MyCourses.exceptions.TeacherNotExistException;
-import com.MyCourses.exceptions.UnexpectedReleaseConfig;
+import com.MyCourses.exceptions.*;
 import com.MyCourses.service.ICourseService;
 import com.MyCourses.service.ITeacherService;
 import com.MyCourses.service.ReleaseConfig;
@@ -64,7 +61,7 @@ public class CourseService implements ICourseService {
     }
 
     @Override
-    public void release(Long cid, Map<String, String> config) throws CourseNotExistException, UnexpectedReleaseConfig {
+    public void release(Long cid, Map<String, String> config) throws CourseNotExistException, UnexpectedReleaseConfig, ReleasementDateException {
         CourseEntity courseEntity = courseDAO.retrieveByCid(cid);
         if (courseEntity == null)
             throw new CourseNotExistException();
@@ -83,11 +80,17 @@ public class CourseService implements ICourseService {
             releasementEntity.setDeadTime(DateUtils.generateFrom(config.get(ReleaseConfig.DEAD_TIME)));
             releasementEntity.setLimitNumber(Integer.parseInt(config.get(ReleaseConfig.LIMIT_NUMBER)));
             releasementEntity.setRepeatAfterNDay(Integer.parseInt(config.get(ReleaseConfig.REPEAT_AFTER_DAY)));
+
         } catch (Throwable throwable) {
             throwable.printStackTrace();
             throw new UnexpectedReleaseConfig();
         }
-
+        if (releasementEntity.getDeadTime().getTime() <= releasementEntity.getEffectiveTime().getTime()) {
+            throw new ReleasementDateException("結課時間大於開課時間");
+        }
+        if (releasementEntity.getStartHour() > releasementEntity.getEndHour() || (releasementEntity.getStartHour() == releasementEntity.getEndHour() && releasementEntity.getStartMin() > releasementEntity.getEndMin())) {
+            throw new ReleasementDateException("上課時間大於下課時間");
+        }
         releasementDAO.create(releasementEntity);
     }
 

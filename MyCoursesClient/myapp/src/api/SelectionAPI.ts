@@ -4,6 +4,7 @@ import axios from "axios";
 import NetworkSettings from "../setting/NetworkSettings";
 import {toApprovalState, toSelectionState} from "../types/enums";
 import {EnumUtils} from "../utils/EnumUtils";
+import {TokenUtils} from "../utils/TokenUtils";
 
 export interface ISendSelectionData {
     studentEmail: string,
@@ -26,7 +27,7 @@ export default class SelectionAPI {
         return new Promise<IAPIResponse<ISelection[]>>((resolve, reject) => {
             const url: string = NetworkSettings.getOpenNetworkIP() + "/selection/select" +
                 "?rid=" + data.rid + "&studentEmail=" + data.studentEmail;
-            axios.post(url)
+            axios.post(url,{},{headers: {"Authorization": TokenUtils.getToken()}})
                 .then((response: any) => {
                     if (response.data.payload) {
                         const selectionList: ISelection[] = EnumUtils.changeStringsToSelectionEnums(response.data.payload);
@@ -53,7 +54,7 @@ export default class SelectionAPI {
 
     public getSelectionOfReleasement(rid: number): Promise<IAPIResponse<ISelection[]>> {
         return new Promise<IAPIResponse<ISelection[]>>((resolve, reject) => {
-            axios.get(NetworkSettings.getOpenNetworkIP() + "/selection/releasement/" + rid)
+            axios.get(NetworkSettings.getOpenNetworkIP() + "/selection/releasement/" + rid,{headers: {"Authorization": TokenUtils.getToken()}})
                 .then((response: any) => {
                     let payload: ISelection[] = response.data.payload;
                     for (let item of payload)
@@ -73,7 +74,7 @@ export default class SelectionAPI {
 
     public getSelectionOf(studentEmail: string): Promise<IAPIResponse<ISelection[]>> {
         return new Promise<IAPIResponse<ISelection[]>>((resolve, reject) => {
-            axios.get(NetworkSettings.getOpenNetworkIP() + "/selection/of?studentEmail=" + studentEmail)
+            axios.get(NetworkSettings.getOpenNetworkIP() + "/selection/of?studentEmail=" + studentEmail,{headers: {"Authorization": TokenUtils.getToken()}})
                 .then((response: any) => {
                     // 處理枚舉類
                     let selectionList: any[] = response.data.payload;

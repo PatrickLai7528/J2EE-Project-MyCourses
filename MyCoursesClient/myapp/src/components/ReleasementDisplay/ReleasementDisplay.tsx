@@ -21,12 +21,20 @@ const ReleasementDisplay: React.FunctionComponent<ICourseDisplayProps> = (props:
                         <div key={releasement.rid} className={"releasement__display-flex-insider"}>
                             <Card
                                 style={{width: 300, marginTop: 16}}
-                                actions={[
-                                    <Button loading={props.isCourseSelectionSending} htmlType="button" onClick={
-                                        () => {
-                                            props.sendSelectAction(releasement)
-                                        }
-                                    }>選課</Button>]}
+                                actions={
+                                    [
+                                        <Button loading={props.isCourseSelectionSending} htmlType="button" onClick={
+                                            () => {
+                                                props.sendSelectAction(releasement)
+                                            }
+                                        }>選課</Button>,
+                                        <Button loading={props.isCourseSelectionSending} htmlType="button" onClick={
+                                            () => {
+                                                props.sendSelectAction(releasement)
+                                            }
+                                        }>退課</Button>,
+                                    ]
+                                }
                             >
                                 <Card.Meta
                                     description={<ReactMarkdown escapeHtml={false}
