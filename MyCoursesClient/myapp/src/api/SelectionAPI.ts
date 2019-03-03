@@ -5,9 +5,9 @@ import NetworkSettings from "../setting/NetworkSettings";
 import {toApprovalState, toSelectionState} from "../types/enums";
 import {EnumUtils} from "../utils/EnumUtils";
 
-export interface ISendSelectionData{
-    studentEmail:string,
-    rid:number
+export interface ISendSelectionData {
+    studentEmail: string,
+    rid: number
 }
 
 export default class SelectionAPI {
@@ -22,13 +22,13 @@ export default class SelectionAPI {
         return SelectionAPI.instance;
     }
 
-    public sendSelection(data:ISendSelectionData): Promise<IAPIResponse<ISelection[]>> {
+    public sendSelection(data: ISendSelectionData): Promise<IAPIResponse<ISelection[]>> {
         return new Promise<IAPIResponse<ISelection[]>>((resolve, reject) => {
             const url: string = NetworkSettings.getOpenNetworkIP() + "/selection/select" +
                 "?rid=" + data.rid + "&studentEmail=" + data.studentEmail;
             axios.post(url)
                 .then((response: any) => {
-                    if(response.data.payload) {
+                    if (response.data.payload) {
                         const selectionList: ISelection[] = EnumUtils.changeStringsToSelectionEnums(response.data.payload);
                         resolve({
                             isSuccess: response.data.code === 0,
@@ -36,7 +36,7 @@ export default class SelectionAPI {
                             message: response.data.message,
                             payload: selectionList
                         })
-                    }else{
+                    } else {
                         resolve({
                             isSuccess: response.data.code === 0,
                             code: response.data.code,
@@ -46,6 +46,26 @@ export default class SelectionAPI {
                 })
                 .catch((e: any) => {
                     console.log(e);
+                    reject(e);
+                })
+        })
+    }
+
+    public getSelectionOfReleasement(rid: number): Promise<IAPIResponse<ISelection[]>> {
+        return new Promise<IAPIResponse<ISelection[]>>((resolve, reject) => {
+            axios.get(NetworkSettings.getOpenNetworkIP() + "/selection/releasement/" + rid)
+                .then((response: any) => {
+                    let payload: ISelection[] = response.data.payload;
+                    for (let item of payload)
+                        item.releasementEntity = EnumUtils.changeStringToReleasementEnum(item.releasementEntity);
+                    resolve({
+                        isSuccess: response.data.code === 0,
+                        message: response.data.message,
+                        code: response.data.code,
+                        payload: payload
+                    })
+                })
+                .catch((e: any) => {
                     reject(e);
                 })
         })

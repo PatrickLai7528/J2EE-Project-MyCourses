@@ -13,6 +13,9 @@ import com.MyCourses.exceptions.*;
 import java.util.List;
 
 public interface ISelectionService {
+
+    List<SelectionEntity> getSelectionOfReleasement(Long releasementId) throws ReleasementNotExistException;
+
     SelectionState select(String studentEmail, Long rid) throws ReleasementNotExistException, StudentNotExistException, RepeatSelectCourseException;
 
     List<SelectionEntity> getSelectionOf(String studentEmail);

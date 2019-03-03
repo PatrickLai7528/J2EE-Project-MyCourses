@@ -9,6 +9,7 @@ package com.MyCourses.service;/*
 import com.MyCourses.exceptions.FileEmptyException;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.io.IOException;
 
 public interface IFileService {
@@ -24,4 +25,4 @@ public interface IFileService {
 
     RenamableResource downloadSubmission(String fileName, String rename);
 
-}        
+}

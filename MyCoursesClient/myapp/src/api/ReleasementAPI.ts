@@ -5,6 +5,12 @@ import NetworkSettings from "../setting/NetworkSettings";
 import {toApprovalState} from "../types/enums";
 import {ISendReleasementData} from "./CourseAPI";
 import {EnumUtils} from "../utils/EnumUtils";
+import {any} from "prop-types";
+
+export interface ISendScoreData {
+    slid: number,
+    score: number
+}
 
 export default class ReleasementAPI {
 
@@ -134,4 +140,21 @@ export default class ReleasementAPI {
         })
     }
 
+
+    public sendScores(dataList: ISendScoreData[]): Promise<IAPIResponse<any>> {
+        return new Promise<IAPIResponse<any>>((resolve, reject) => {
+            axios.post(NetworkSettings.getOpenNetworkIP() + "/reportcard/add", dataList)
+                .then((response: any) => {
+                    resolve({
+                        isSuccess: response.data.code === 0,
+                        message: response.data.message,
+                        code: response.data.code,
+                        payload: response.data.payload
+                    })
+                })
+                .catch((e:any)=>{
+                    reject(e);
+                })
+        })
+    }
 }

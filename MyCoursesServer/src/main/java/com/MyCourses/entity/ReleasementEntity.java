@@ -68,10 +68,6 @@ public class ReleasementEntity implements Serializable {
     @Column(name = "limit_number")
     private int limitNumber;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "rid")
-    private ReportCardEntity reportCardEntity;
-
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "rid")
     private List<SlideEntity> slideEntityList;

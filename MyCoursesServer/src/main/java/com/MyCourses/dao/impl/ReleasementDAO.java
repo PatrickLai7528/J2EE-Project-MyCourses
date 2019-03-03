@@ -55,7 +55,6 @@ public class ReleasementDAO implements IReleasementDAO {
         r.setAssignmentEntityList(releasementEntity.getAssignmentEntityList());
         r.setForumEntityList(releasementEntity.getForumEntityList());
         r.setSlideEntityList(releasementEntity.getSlideEntityList());
-        r.setReportCardEntity(releasementEntity.getReportCardEntity());
         entityManager.flush();
     }
 

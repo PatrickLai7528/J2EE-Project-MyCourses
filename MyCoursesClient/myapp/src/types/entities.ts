@@ -71,16 +71,6 @@ export interface IForum {
     addTime: number
 }
 
-export interface IReportCard {
-    rcid: number,
-    reportCardItemList: IReportCardItem[]
-}
-
-export interface IReportCardItem {
-    rciid: number,
-    studentNo: string,
-    score: number
-}
 
 export interface ISelection {
     slid: number,
@@ -88,6 +78,7 @@ export interface ISelection {
     studentEntity: IStudent,
     selectionState: SelectionState
     selectTime: number
+    score: number
 }
 
 export interface ISlide {
@@ -102,7 +93,6 @@ export interface IReleasement {
     releaseTime: number
     approvalState: ApprovalState,
     courseEntity: ICourse,
-    reportCardEntity?: IReportCard,
     slideEntityList?: ISlide[],
     assignmentEntityList?: IAssignment[],
     forumEntityList?: IForum[]

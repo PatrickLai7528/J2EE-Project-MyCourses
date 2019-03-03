@@ -54,6 +54,12 @@ public class SelectionService implements ISelectionService {
     }
 
     @Override
+    public List<SelectionEntity> getSelectionOfReleasement(Long releasementId) throws ReleasementNotExistException {
+        ReleasementEntity releasementEntity = releasementDAO.retrieveByRid(releasementId);
+        return selectionDAO.retrieveByReleasement(releasementEntity);
+    }
+
+    @Override
     public SelectionState select(String studentEmail, Long rid) throws ReleasementNotExistException, StudentNotExistException, RepeatSelectCourseException {
         StudentEntity studentEntity = studentDAO.retrieveByEmail(studentEmail);
         ReleasementEntity releasementEntity = releasementDAO.retrieveByRid(rid);

@@ -64,6 +64,7 @@ public class SelectionDAO implements ISelectionDAO {
         s.setSelectionState(selectionEntity.getSelectionState());
         s.setReleasementEntity(selectionEntity.getReleasementEntity());
         s.setStudentEntity(selectionEntity.getStudentEntity());
+        s.setScore(selectionEntity.getScore());
         entityManager.flush();
     }
 

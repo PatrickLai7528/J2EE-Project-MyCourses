@@ -1,12 +1,11 @@
 import * as React from "react";
 import {UserType} from "../../api/UserAPI";
 import {IAppForTeacherState} from "../App/App";
-import {ReleasementOperationForTeacher} from "./ReleasementOperationForTeacher";
 import {Card, Col, Modal, Row} from "antd";
 import {EmailOperationForm} from "./EmailOperationForm";
 import {IReleasement} from "../../types/entities";
 import {IconText} from "../IconText/IconText";
-import {ForumAddingFormContainer} from "../ForumAddingForm/ForumAddingFormContainer";
+import {WrappedUploadScoreOperationForm} from "./UploadScoreOperationForm";
 
 export interface IReleasementOperationForTeacherContainerProps {
     userType: UserType
@@ -17,7 +16,10 @@ interface IReleasementOperationForTeacherContainerState {
     modalVisible: boolean
     confirmLoading: boolean
     submitForm: boolean
+    operationType: OperationType
 }
+
+type OperationType = "BROADCAST" | "SCORE"
 
 export class ReleasementOperationForTeacherContainer extends React.Component<IReleasementOperationForTeacherContainerProps, IReleasementOperationForTeacherContainerState> {
 
@@ -26,7 +28,8 @@ export class ReleasementOperationForTeacherContainer extends React.Component<IRe
         this.state = {
             modalVisible: false,
             confirmLoading: false,
-            submitForm: false
+            submitForm: false,
+            operationType: "BROADCAST"
         }
     }
 
@@ -36,12 +39,16 @@ export class ReleasementOperationForTeacherContainer extends React.Component<IRe
                 <Card title={"操作"} style={{borderRadius: 10, marginBottom: 15}}>
                     <Row type="flex" justify="space-around" align="middle">
                         <Col span={12}>
-                            <a onClick={() => this.setState({modalVisible: true})}>
+                            <a onClick={() => this.setState({modalVisible: true, operationType: "BROADCAST"})}>
                                 <IconText text={"群發郵件"}
                                           type={"mail"}/>
                             </a>
                         </Col>
-                        <Col span={12}></Col>
+                        <Col span={12}>
+                            <a onClick={() => this.setState({modalVisible: true, operationType: "SCORE"})}>
+                                <IconText type={"file"} text={"發佈成績"}/>
+                            </a>
+                        </Col>
                     </Row>
                 </Card>
                 <Modal align={undefined}
@@ -54,16 +61,10 @@ export class ReleasementOperationForTeacherContainer extends React.Component<IRe
                        onCancel={() => this.setState({confirmLoading: false, submitForm: false, modalVisible: false})}
                        confirmLoading={this.state.confirmLoading}
                 >
-                    <EmailOperationForm
-                        isTimeToSubmit={this.state.submitForm}
-                        releasement={this.getReleasement()}
-                        onSendBefore={() => this.setState({submitForm: false, confirmLoading: true})}
-                        onSendAfter={() => this.setState({
-                            submitForm: false,
-                            modalVisible: false,
-                            confirmLoading: false
-                        })}
-                    />
+
+                    {
+                        this.showForm()
+                    }
                 </Modal>
             </div>
         )
@@ -75,5 +76,38 @@ export class ReleasementOperationForTeacherContainer extends React.Component<IRe
             return forTeacher.managingReleasement
         }
         throw new Error();
+    }
+
+    private showForm(): React.ReactNode {
+        switch (this.state.operationType) {
+            case "BROADCAST":
+                return (
+                    <EmailOperationForm
+                        isTimeToSubmit={this.state.submitForm}
+                        releasement={this.getReleasement()}
+                        onSendBefore={() => this.setState({submitForm: false, confirmLoading: true})}
+                        onSendAfter={() => this.setState({
+                            submitForm: false,
+                            modalVisible: false,
+                            confirmLoading: false
+                        })}
+                    />
+                );
+            case "SCORE":
+                return (
+                    <WrappedUploadScoreOperationForm
+                        isTimeToSubmit={this.state.submitForm}
+                        releasement={this.getReleasement()}
+                        onSendBefore={() => this.setState({
+                            submitForm: false,
+                            confirmLoading: true
+                        })}
+                        onSendAfter={() => this.setState({
+                            submitForm: false,
+                            modalVisible: false,
+                            confirmLoading: false
+                        })}/>
+                )
+        }
     }
 }

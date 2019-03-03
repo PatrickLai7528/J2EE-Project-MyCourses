@@ -7,18 +7,20 @@ package com.MyCourses.controller;/*
  */
 
 import com.MyCourses.annotations.PleaseLog;
+import com.MyCourses.entity.ReleasementEntity;
 import com.MyCourses.entity.SelectionEntity;
 import com.MyCourses.entity.enums.SelectionState;
 import com.MyCourses.exceptions.MailSendingException;
 import com.MyCourses.exceptions.ReleasementNotExistException;
 import com.MyCourses.exceptions.RepeatSelectCourseException;
 import com.MyCourses.exceptions.StudentNotExistException;
+import com.MyCourses.service.IReleasementService;
 import com.MyCourses.service.ISelectionService;
 import com.MyCourses.utils.ResponseUtils;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
@@ -27,10 +29,12 @@ import java.util.List;
 @RequestMapping("selection")
 public class SelectionController {
     private final ISelectionService selectionService;
+    private final IReleasementService releasementService;
 
     @Autowired
-    public SelectionController(ISelectionService selectionService) {
+    public SelectionController(ISelectionService selectionService, IReleasementService releasementService) {
         this.selectionService = selectionService;
+        this.releasementService = releasementService;
     }
 
     @PleaseLog
@@ -62,6 +66,18 @@ public class SelectionController {
         }
     }
 
+    @PleaseLog
+    @GetMapping("releasement/{rid}")
+    @CrossOrigin(origins = "http://localhost:3000")
+    public APIResponse<List<SelectionEntity>> getSelectionByRid(@PathVariable(name = "rid") Long rid){
+        try {
+            List<SelectionEntity> selectionEntityList = selectionService.getSelectionOfReleasement(rid);
+            return ResponseUtils.ok("操作成功", selectionEntityList);
+        } catch (ReleasementNotExistException e) {
+            e.printStackTrace();
+            return ResponseUtils.error(e.getLocalizedMessage(), null);
+        }
+    }
 
     @PleaseLog
     @CrossOrigin(origins = "http://localhost:3000")

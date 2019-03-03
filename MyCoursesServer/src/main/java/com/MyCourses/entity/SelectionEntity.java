@@ -42,4 +42,7 @@ public class SelectionEntity implements Serializable {
     @Column(name = "state")
     @Convert(converter = SelectionStateConverter.class)
     private SelectionState selectionState;
+
+    @Column(name = "score")
+    private Double score;
 }
