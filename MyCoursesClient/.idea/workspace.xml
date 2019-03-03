@@ -2,28 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5e92ab2f-ebd7-408b-b8b8-3bef3f1dfbb2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/myapp/src/components/ReleasementOperationForTeacher/UploadScoreOperationForm.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/MyCourses/controller/ReportCardController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/MyCourses/exceptions/ScoreOutOfRangeException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/MyCourses/service/IReportCardService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/MyCourses/service/impl/ReportCardService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapp/src/api/ReleasementAPI.ts" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/src/api/ReleasementAPI.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapp/src/api/SelectionAPI.ts" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/src/api/SelectionAPI.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapp/src/components/ReleasementOperationForTeacher/ReleasementOperationForTeacher.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapp/src/components/ReleasementOperationForTeacher/ReleasementOperationForTeacherContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/src/components/ReleasementOperationForTeacher/ReleasementOperationForTeacherContainer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapp/src/types/entities.ts" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/src/types/entities.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myapp/src/components/ReleasementManage/ReleasementManageContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/src/components/ReleasementManage/ReleasementManageContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myapp/src/components/ReleasementManage/ReleasementManageMessage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/src/components/ReleasementManage/ReleasementManageMessage.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../MyCoursesServer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesServer/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/MyCourses/controller/SelectionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/MyCourses/controller/SelectionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/MyCourses/dao/impl/ReleasementDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/MyCourses/dao/impl/ReleasementDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/MyCourses/dao/impl/SelectionDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/MyCourses/dao/impl/SelectionDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/MyCourses/entity/ReleasementEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/MyCourses/entity/ReleasementEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/MyCourses/entity/ReportCardEntity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/MyCourses/entity/ReportCardItem.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/MyCourses/entity/SelectionEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/MyCourses/entity/SelectionEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/MyCourses/service/IFileService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/MyCourses/service/IFileService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/MyCourses/service/ISelectionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/MyCourses/service/ISelectionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/MyCourses/service/impl/SelectionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesServer/src/main/java/com/MyCourses/service/impl/SelectionService.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -49,10 +30,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/myapp/src/components/ReleasementManage/ReleasementManageContainer.tsx">
+        <entry file="file://$PROJECT_DIR$/myapp/src/components/ReleasementOperationForTeacher/UploadScoreOperationForm.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="466">
-              <caret line="81" column="5" selection-start-line="81" selection-start-column="5" selection-end-line="81" selection-end-column="5" />
+            <state relative-caret-position="351">
+              <caret line="66" column="79" selection-start-line="66" selection-start-column="79" selection-end-line="66" selection-end-column="79" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
               </folding>
@@ -61,10 +42,22 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/myapp/src/components/ReleasementOperationForTeacher/UploadScoreOperationForm.tsx">
+        <entry file="file://$PROJECT_DIR$/myapp/src/components/ReleasementManage/ReleasementManageMessage.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="351">
-              <caret line="66" column="79" selection-start-line="66" selection-start-column="79" selection-end-line="66" selection-end-column="79" />
+            <state relative-caret-position="338">
+              <caret line="22" column="138" selection-start-line="22" selection-start-column="138" selection-end-line="22" selection-end-column="138" />
+              <folding>
+                <element signature="e#0#31#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/myapp/src/components/ReleasementManage/ReleasementManageContainer.tsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="365">
+              <caret line="49" column="120" selection-start-line="49" selection-start-column="120" selection-end-line="49" selection-end-column="120" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
               </folding>
@@ -133,15 +126,6 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/myapp/src/types/entities.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="354">
-              <caret line="80" column="17" selection-start-line="80" selection-start-column="17" selection-end-line="80" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/myapp/src/components/ReleasementOperationForTeacher/EmailOperationForm.tsx">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-832">
@@ -174,7 +158,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/myapp/src/components/SlideAddingModal/SlideAddingModal.tsx" />
         <option value="$PROJECT_DIR$/myapp/src/components/SlideAddingForm/SlideAddingForm.tsx" />
         <option value="$PROJECT_DIR$/myapp/src/components/AssignmentDisplay/AssignmentDisplayContainer.tsx" />
         <option value="$PROJECT_DIR$/myapp/src/components/SlideDisplay/SlideDisplayContainer.tsx" />
@@ -219,12 +202,13 @@
         <option value="$PROJECT_DIR$/myapp/src/components/ReleasementOperationForTeacher/ReleasementOperationForTeacher.tsx" />
         <option value="$PROJECT_DIR$/myapp/src/components/ReleasementOperationForTeacher/EmailOperationForm.tsx" />
         <option value="$PROJECT_DIR$/myapp/src/api/EmailAPI.ts" />
-        <option value="$PROJECT_DIR$/myapp/src/components/ReleasementManage/ReleasementManageContainer.tsx" />
         <option value="$PROJECT_DIR$/myapp/src/types/entities.ts" />
         <option value="$PROJECT_DIR$/myapp/src/api/SelectionAPI.ts" />
         <option value="$PROJECT_DIR$/myapp/src/components/ReleasementOperationForTeacher/ReleasementOperationForTeacherContainer.tsx" />
         <option value="$PROJECT_DIR$/myapp/src/api/ReleasementAPI.ts" />
         <option value="$PROJECT_DIR$/myapp/src/components/ReleasementOperationForTeacher/UploadScoreOperationForm.tsx" />
+        <option value="$PROJECT_DIR$/myapp/src/components/ReleasementManage/ReleasementManageContainer.tsx" />
+        <option value="$PROJECT_DIR$/myapp/src/components/ReleasementManage/ReleasementManageMessage.tsx" />
       </list>
     </option>
   </component>
@@ -425,7 +409,7 @@
       <workItem from="1551105293817" duration="24726000" />
       <workItem from="1551232093669" duration="3592000" />
       <workItem from="1551371844423" duration="216000" />
-      <workItem from="1551403931541" duration="49951000" />
+      <workItem from="1551403931541" duration="52226000" />
     </task>
     <servers />
   </component>
@@ -447,7 +431,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="248045000" />
+    <option name="totallyTimeSpent" value="250320000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -769,9 +753,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/myapp/src/components/ReleasementManage/ReleasementManageMessage.tsx">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/myapp/src/components/ForumSimpleDisplay/ForumSimpleDisplay.tsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
@@ -869,16 +850,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/myapp/src/components/ReleasementManage/ReleasementManageContainer.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="466">
-          <caret line="81" column="5" selection-start-line="81" selection-start-column="5" selection-end-line="81" selection-end-column="5" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/myapp/src/types/entities.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="354">
@@ -960,6 +931,26 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="351">
           <caret line="66" column="79" selection-start-line="66" selection-start-column="79" selection-end-line="66" selection-end-column="79" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myapp/src/components/ReleasementManage/ReleasementManageContainer.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="365">
+          <caret line="49" column="120" selection-start-line="49" selection-start-column="120" selection-end-line="49" selection-end-column="120" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myapp/src/components/ReleasementManage/ReleasementManageMessage.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="338">
+          <caret line="22" column="138" selection-start-line="22" selection-start-column="138" selection-end-line="22" selection-end-column="138" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
           </folding>

@@ -47,7 +47,7 @@ export default class ReleasementManageContainer extends React.Component<IRelease
                         <Layout.Content>
                             <h1>{releasement.courseEntity.name}</h1>
                             <Divider/>
-                            <ReleasementManageMessage/>
+                            <ReleasementManageMessage userType={userType} forStudent={forStudent} forTeacher={forTeacher}/>
                             <Divider/>
                             <SlideSimpleDisplayContainer
                                 userType={userType}
@@ -80,4 +80,5 @@ export default class ReleasementManageContainer extends React.Component<IRelease
             return <ReleasementOperationForTeacherContainer userType={userType} forTeacher={forTeacher}/>
         }
     }
+
 }
