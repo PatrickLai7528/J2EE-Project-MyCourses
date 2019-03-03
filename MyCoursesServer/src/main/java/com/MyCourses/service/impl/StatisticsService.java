@@ -52,7 +52,15 @@ public class StatisticsService implements IStatisticsService {
         Map<String, List<CourseEntity>> courseMap = new HashMap<>();
         for (ReleasementEntity releasementEntity : releasementService.getReleasementOf(teacherEntity.getTeacherEmail())) {
             String dateStr = DateUtils.toDateString(releasementEntity.getEffectiveTime());
-            String semester = dateStr.split("-")[0] + (Integer.parseInt(dateStr.split("-")[1]) > 9 ? "上學期" : "下學期");
+            String term = (Integer.parseInt(dateStr.split("-")[1]) > 9 ? "上學期" : "下學期");
+            String semester;
+            if (term.equals("上學期")) {
+                int year = Integer.parseInt(dateStr.split("-")[0]);
+                semester = year + " - " + (year + 1) + "學年" + term;
+            } else {
+                int year = Integer.parseInt(dateStr.split("-")[0]);
+                semester = year - 1 + " - " + year + "學年" + term;
+            }
             List<ReleasementEntity> releasementEntityList = releasementMap.get(semester);
             if (releasementEntityList == null)
                 releasementEntityList = new ArrayList<>();
@@ -63,7 +71,15 @@ public class StatisticsService implements IStatisticsService {
 
         for (CourseEntity courseEntity : courseService.getCoursesByTeacherEmail(teacherEntity.getTeacherEmail())) {
             String dateStr = DateUtils.toDateString(courseEntity.getAddTime());
-            String semester = dateStr.split("-")[0] + (Integer.parseInt(dateStr.split("-")[1]) > 9 ? "上學期" : "下學期");
+            String term = (Integer.parseInt(dateStr.split("-")[1]) > 9 ? "上學期" : "下學期");
+            String semester;
+            if (term.equals("上學期")) {
+                int year = Integer.parseInt(dateStr.split("-")[0]);
+                semester = year + " - " + (year + 1) + "學年" + term;
+            } else {
+                int year = Integer.parseInt(dateStr.split("-")[0]);
+                semester = year - 1 + " - " + year + "學年" + term;
+            }
             List<CourseEntity> courseEntityList = courseMap.get(semester);
             if (courseEntityList == null)
                 courseEntityList = new ArrayList<>();
@@ -181,7 +197,7 @@ public class StatisticsService implements IStatisticsService {
             uploaded += releasementEntity.getSlideEntityList().size();
             pushlished += releasementEntity.getAssignmentEntityList().size();
 
-            selected+= selectionService.getSelectionOfReleasement(releasementEntity.getRid()).size();
+            selected += selectionService.getSelectionOfReleasement(releasementEntity.getRid()).size();
         }
 
         outlineStatistics.setCommented(commented);

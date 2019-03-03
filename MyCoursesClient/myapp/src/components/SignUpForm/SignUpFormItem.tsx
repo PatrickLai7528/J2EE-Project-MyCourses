@@ -98,7 +98,11 @@ export class VerifyCodeFormItem extends React.Component<IVerifyCodeFormItemProps
     }
 }
 
-export class UserTypeFormItem extends React.Component<IGeneralFormItemProps> {
+export interface IUserTypeFormItemProps extends IGeneralFormItemProps {
+    adminVisible: boolean
+}
+
+export class UserTypeFormItem extends React.Component<IUserTypeFormItemProps> {
     public render(): React.ReactNode {
         return (
             <Form.Item
@@ -120,6 +124,13 @@ export class UserTypeFormItem extends React.Component<IGeneralFormItemProps> {
                         <Select.Option value="student">
                             學生
                         </Select.Option>
+                        {
+                            this.props.adminVisible && (
+                                <Select.Option value="admin">
+                                    管理員
+                                </Select.Option>
+                            )
+                        }
                     </Select>
                 )}
             </Form.Item>

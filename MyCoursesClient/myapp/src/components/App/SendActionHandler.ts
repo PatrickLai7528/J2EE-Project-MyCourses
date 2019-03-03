@@ -6,6 +6,13 @@ import AssignmentAPI, {ISendAssignmentData, ISendSubmissionData} from "../../api
 import SelectionAPI, {ISendSelectionData} from "../../api/SelectionAPI";
 import CourseAPI, {ISendAddCourseData, ISendReleasementData} from "../../api/CourseAPI";
 import ReleasementAPI from "../../api/ReleasementAPI";
+import {
+    AdminAPI,
+    ICourseApproveData,
+    ICourseRejectData,
+    IReleasementApproveData,
+    IReleasementRejectData
+} from "../../api/AdminAPI";
 
 
 export class SendActionHandler {
@@ -40,7 +47,7 @@ export class SendActionHandler {
     }
 
 
-    public static sendAssignment(data: ISendAssignmentData, callback?: ISendActionCallback): (doAfter: (payload:any) => void) => void {
+    public static sendAssignment(data: ISendAssignmentData, callback?: ISendActionCallback): (doAfter: (payload: any) => void) => void {
         return this.sendAction(
             async () => {
                 return await AssignmentAPI.getInstance().sendAssignment(data);
@@ -80,6 +87,34 @@ export class SendActionHandler {
         return this.sendAction(
             async () => {
                 return await AssignmentAPI.getInstance().sendSubmission(data);
+            }, callback);
+    }
+
+    public static sendCourseApprove(data: ICourseApproveData, callback?: ISendActionCallback): (doAfter: (payload: any) => void) => void {
+        return this.sendAction(
+            async () => {
+                return await AdminAPI.getInstance().sendCourseApprove(data);
+            }, callback);
+    }
+
+    public static sendCourseReject(data: ICourseRejectData, callback?: ISendActionCallback): (doAfter: (payload: any) => void) => void {
+        return this.sendAction(
+            async () => {
+                return await AdminAPI.getInstance().sendCourseReject(data);
+            }, callback);
+    }
+
+    public static sendReleasementApprove(data: IReleasementApproveData, callback?: ISendActionCallback): (doAfter: (payload: any) => void) => void {
+        return this.sendAction(
+            async () => {
+                return await AdminAPI.getInstance().sendReleasementApprove(data);
+            }, callback);
+    }
+
+    public static sendReleasementReject(data: IReleasementRejectData, callback?: ISendActionCallback): (doAfter: (payload: any) => void) => void {
+        return this.sendAction(
+            async () => {
+                return await AdminAPI.getInstance().sendReleasementReject(data);
             }, callback);
     }
 }

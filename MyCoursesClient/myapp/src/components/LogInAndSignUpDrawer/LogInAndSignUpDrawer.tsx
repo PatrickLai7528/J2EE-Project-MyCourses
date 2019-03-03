@@ -165,6 +165,7 @@ export default class LogInAndSignUpDrawer extends React.Component<ILogInAndSignU
                     title={
                         this.state.logInOrSignUp === Mode.LOG_IN ? "登錄" : "註冊"
                     }
+                    destroyOnClose={true}
                     width={480}
                     placement={"right"}
                     onClose={this.props.onClose}

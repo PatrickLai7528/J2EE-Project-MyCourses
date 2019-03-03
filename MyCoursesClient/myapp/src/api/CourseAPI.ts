@@ -4,6 +4,7 @@ import NetworkSettings from "../setting/NetworkSettings";
 import {ICourse} from "../types/entities";
 import {toApprovalState} from "../types/enums";
 import {EnumUtils} from "../utils/EnumUtils";
+import {NewLifecycle} from "react";
 
 
 export interface ISendReleasementData {
@@ -58,6 +59,25 @@ export default class CourseAPI {
                             message: response.data.message,
                         })
                     }
+                })
+                .catch((e: any) => {
+                    reject(e);
+                })
+        })
+    }
+
+    public getAllCourse(): Promise<IAPIResponse<ICourse[]>> {
+        return new Promise<IAPIResponse<ICourse[]>>((resolve, reject) => {
+            axios.get(NetworkSettings.getOpenNetworkIP() + "/course/all")
+                .then((response: any) => {
+                    let payload: ICourse[] = response.data.payload;
+                    payload = EnumUtils.changeStringsToCourseEnums(payload);
+                    resolve({
+                        isSuccess: response.data.code === 0,
+                        code: response.data.code,
+                        message: response.data.message,
+                        payload: payload
+                    })
                 })
                 .catch((e: any) => {
                     reject(e);

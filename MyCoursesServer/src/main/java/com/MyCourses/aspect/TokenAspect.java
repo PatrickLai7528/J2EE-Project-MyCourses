@@ -54,10 +54,10 @@ public class TokenAspect {
     public Object doGenerateToken(ProceedingJoinPoint pjp) throws Throwable {
         try {
             Object[] args = pjp.getArgs();
-            APIResponse<Object> response = (APIResponse<Object>) pjp.proceed(args);
+            APIResponse response = (APIResponse) pjp.proceed(args);
             if (response.getCode() == 0) {
                 // code == 0 means everything is ok
-                String token = JWTTokenUtils.sign((String) response.getPayload());
+                String token = JWTTokenUtils.sign(response.toString());
                 response.setPayload(token);
             }
             return response;

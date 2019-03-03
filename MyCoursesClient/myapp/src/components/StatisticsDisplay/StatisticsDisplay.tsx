@@ -1,7 +1,7 @@
 import * as React from "react";
 import {UserType} from "../../api/UserAPI";
 import {IAppForTeacherState} from "../App/App";
-import {IReleasement, IReleasementStatistics, ISemesterStatistics, ITeacherStatistics} from "../../types/entities";
+import {IReleasementStatistics, ISemesterStatistics, ITeacherStatistics} from "../../types/entities";
 import {Col, Divider, message, Row, Spin, Statistic, Table, Tag} from "antd";
 import {StatisticsAPI} from "../../api/StatisticsAPI";
 import IAPIResponse from "../../api/IAPIResponse";
@@ -16,119 +16,6 @@ export interface IStatisticsDisplayProps {
 interface IStatisticsDisplayState {
     teacherStatistics?: ITeacherStatistics
 }
-
-const columns = [{
-    title: '姓名',
-    dataIndex: 'name',
-    key: 'name',
-    render: (text: any) => <a href="javascript:;">{text}</a>,
-}, {
-    title: '學號',
-    dataIndex: 'age',
-    key: 'age',
-}, {
-    title: '郵箱',
-    dataIndex: 'address',
-    key: 'address',
-}, {
-    title: '選課時間',
-    key: 'tags',
-    dataIndex: 'tags',
-    render: (tags: any) => {
-        return (
-            <span>
-          {tags.map((tag: any) => {
-              let color = tag.length > 5 ? 'geekblue' : 'green';
-              if (tag === 'loser') {
-                  color = 'volcano';
-              }
-              return <Tag color={color} key={tag}>{tag.toUpperCase()}</Tag>;
-          })}
-        </span>
-        );
-    },
-}];
-
-const data = [{
-    key: '1',
-    name: 'John Brown',
-    age: 32,
-    address: 'New York No. 1 Lake Park',
-    tags: ['nice', 'developer'],
-}, {
-    key: '2',
-    name: 'Jim Green',
-    age: 42,
-    address: 'London No. 1 Lake Park',
-    tags: ['loser'],
-}, {
-    key: '3',
-    name: 'Joe Black',
-    age: 32,
-    address: 'Sidney No. 1 Lake Park',
-    tags: ['cool', 'teacher'],
-}, {
-    key: '4',
-    name: 'Jim Green',
-    age: 42,
-    address: 'London No. 1 Lake Park',
-    tags: ['loser'],
-}, {
-    key: '5',
-    name: 'Joe Black',
-    age: 32,
-    address: 'Sidney No. 1 Lake Park',
-    tags: ['cool', 'teacher'],
-}, {
-    key: '6',
-    name: 'Jim Green',
-    age: 42,
-    address: 'London No. 1 Lake Park',
-    tags: ['loser'],
-}, {
-    key: '7',
-    name: 'Joe Black',
-    age: 32,
-    address: 'Sidney No. 1 Lake Park',
-    tags: ['cool', 'teacher'],
-}, {
-    key: '8',
-    name: 'Jim Green',
-    age: 42,
-    address: 'London No. 1 Lake Park',
-    tags: ['loser'],
-}, {
-    key: '9',
-    name: 'Joe Black',
-    age: 32,
-    address: 'Sidney No. 1 Lake Park',
-    tags: ['cool', 'teacher'],
-}, {
-    key: '10',
-    name: 'Jim Green',
-    age: 42,
-    address: 'London No. 1 Lake Park',
-    tags: ['loser'],
-}, {
-    key: "11",
-    name: 'Joe Black',
-    age: 32,
-    address: 'Sidney No. 1 Lake Park',
-    tags: ['cool', 'teacher'],
-}, {
-    key: '12',
-    name: 'Jim Green',
-    age: 42,
-    address: 'London No. 1 Lake Park',
-    tags: ['loser'],
-}, {
-    key: '13',
-    name: 'Joe Black',
-    age: 32,
-    address: 'Sidney No. 1 Lake Park',
-    tags: ['cool', 'teacher'],
-}];
-
 
 export class StatisticsDisplay extends React.Component<IStatisticsDisplayProps, IStatisticsDisplayState> {
 
@@ -163,12 +50,6 @@ export class StatisticsDisplay extends React.Component<IStatisticsDisplayProps, 
             )
     }
 
-    private getReleasementList(): IReleasement[] {
-        const {userType, forTeacher} = this.props;
-        if (userType === "teacher" && forTeacher)
-            return forTeacher.releasementList;
-        throw new Error();
-    }
 
     private getEmail(): string {
         if (this.props.userType && this.props.forTeacher)
@@ -332,12 +213,12 @@ export class StatisticsDisplay extends React.Component<IStatisticsDisplayProps, 
                 title: '名稱',
                 dataIndex: 'studentName',
                 key: 'studentName',
-                width: 150
+                width: 120
             }, {
                 title: '郵箱',
                 dataIndex: 'studentEmail',
                 key: 'studentEmail',
-                width: 250
+                width: 200
             }, {
                 title: '學號',
                 dataIndex: 'studentNo',
@@ -347,8 +228,8 @@ export class StatisticsDisplay extends React.Component<IStatisticsDisplayProps, 
                 title: '選課時間',
                 dataIndex: 'tags',
                 key: 'selectTime',
-                width: 200,
-                render: (selectTime: number) => moment(selectTime).format("YYYY-MM-DD HH-mm-SS")
+                width: 220,
+                render: (selectTime: number) => moment(selectTime).format("YYYY-MM-DD HH:mm")
             }, {
                 title: "成績",
                 dataIndex: "studentScore",
@@ -357,6 +238,13 @@ export class StatisticsDisplay extends React.Component<IStatisticsDisplayProps, 
             }
         ];
 
+
+        function wrappedKey(simplifySelectionList: any[]) {
+            for (let item of simplifySelectionList) {
+                item.key = item.selectTime + item.studentEmail + item.studentNo + item.studentScore
+            }
+            return simplifySelectionList;
+        }
 
         function _show(releasementStatistics?: IReleasementStatistics) {
             return (
@@ -380,7 +268,7 @@ export class StatisticsDisplay extends React.Component<IStatisticsDisplayProps, 
                     </Row>
                     <Table scroll={{y: true}} showHeader={true} title={() => "選課學生列表"}
                            columns={simplifySelectionColumns}
-                           dataSource={releasementStatistics ? releasementStatistics.simplifySelectionList : []}/>
+                           dataSource={releasementStatistics ? wrappedKey(releasementStatistics.simplifySelectionList) : []}/>
                 </div>
             )
         }
@@ -393,7 +281,7 @@ export class StatisticsDisplay extends React.Component<IStatisticsDisplayProps, 
                             return (
                                 <div
                                     style={{marginBottom: 50}}
-                                    key={releasementStatistics.courseName + releasementStatistics.simplifySelectionList[0].studentEmail}>
+                                    key={releasementStatistics.courseName + releasementStatistics.simplifySelectionList[0].selectTime}>
                                     <h2 style={{marginBottom: 15}}>{releasementStatistics.courseName}</h2>
                                     {
                                         _show(releasementStatistics)

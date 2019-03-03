@@ -79,4 +79,9 @@ public class ReleasementEntity implements Serializable {
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "rid")
     private List<ForumEntity> forumEntityList;
+
+    public boolean isActive() {
+        long now = new Date().getTime();
+        return effectiveTime.getTime() <= now && deadTime.getTime() >= now;
+    }
 }

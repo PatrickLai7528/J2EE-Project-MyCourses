@@ -28,13 +28,13 @@ import {
 import {ContentRouter} from "../ContentRouter/ContentRouter";
 import {SendActionHandler} from "./SendActionHandler";
 import VisitorSider from "../VisitorSider/VisitorSider";
-
-// interface IAppNonVisitorState {
-//     email: string
-//     releasementList: IReleasement[]
-//     displayingForum?: IForum
-//     setDisplayingForum: (forum: IForum) => void
-// }
+import {AdminSider} from "../AdminSider/AdminSider";
+import {
+    ICourseApproveData,
+    ICourseRejectData,
+    IReleasementApproveData,
+    IReleasementRejectData
+} from "../../api/AdminAPI";
 
 export interface IAppForStudentState extends ISendCourseSelectionProps, ISendCommentProps, ISendForumProps, ISendSubmissionProps {
     displayingSelection?: ISelection
@@ -60,29 +60,23 @@ export interface IAppForVisitorState {
     releasementList: IReleasement[]
 }
 
+export interface IAppForAdminState {
+    email: string
+    courseList: ICourse[]
+    releasementList: IReleasement[]
+    sendCourseReject: (data: ICourseRejectData, callback?: ISendActionCallback) => void
+    sendCourseApprove: (data: ICourseApproveData, callback?: ISendActionCallback) => void
+    sendReleasementApprove: (data: IReleasementApproveData, callback?: ISendActionCallback) => void
+    sendReleasementReject: (data: IReleasementRejectData, callback?: ISendActionCallback) => void
+
+}
 
 interface IAppState {
     userType: UserType
     forStudent?: IAppForStudentState
     forTeacher?: IAppForTeacherState
     forVisitor?: IAppForVisitorState
-    // // for student sider
-    // selectionList: ISelection[]
-    // courseList: ICourse[]
-    //
-    // // for the student to select these released course,
-    // // the reason why keep it here, is for better performance
-    // releasementListOfStudent: IReleasement[]
-    //
-    // // for the teacher sider
-    // releasementListOfTeacher: IReleasement[]
-    //
-    // // for teacher to manage their released course
-    // managingReleasement?: IReleasement
-    //
-    // displayingSelection?: ISelection
-    //
-    // displayingForum?: IForum
+    forAdmin?: IAppForAdminState
 }
 
 
@@ -129,86 +123,6 @@ export default class App extends Component<IAppProps, IAppState> {
         });
     }
 
-    // private async getCourseOf(teacherEmail: string | undefined) {
-    //     if (!teacherEmail) return;
-    //     try {
-    //         const response: IAPIResponse<ICourse[]> = await CourseAPI.getInstance().getCourseOf(teacherEmail);
-    //         if (response.isSuccess && response.payload) this.setState({courseList: response.payload});
-    //     } catch (e) {
-    //         console.log(e);
-    //     }
-    // }
-
-    // private async getSelectionOf(studentEmail: string | undefined) {
-    //     if (!studentEmail) return;
-    //     try {
-    //         const response: IAPIResponse<ISelection[]> = await SelectionAPI.getInstance().getSelectionOf(studentEmail);
-    //         if (response.isSuccess && response.payload) this.setState({selectionList: response.payload})
-    //     } catch (e) {
-    //         console.log(e);
-    //     }
-    // }
-
-    // public getAllReleasement(handlePayload: (releasementList: IReleasement[]) => void): void {
-    //     ReleasementAPI.getInstance().getAllReleasement()
-    //         .then((response: IAPIResponse<IReleasement[]>) => {
-    //             if (response.isSuccess) {
-    //                 if (response.payload)
-    //                     handlePayload(response.payload);
-    //             } else {
-    //                 message.error(response.message);
-    //             }
-    //         })
-    //         .catch((e: any) => {
-    //             console.log(e);
-    //             message.error("發生未知錯誤，請稍候再試");
-    //         })
-    // }
-
-    // private getReleasementOf(teacherEmail: string | undefined) {
-    //     if (!teacherEmail) return;
-    //     ReleasementAPI.getInstance().getReleasementOf(teacherEmail)
-    //         .then((response: IAPIResponse<IReleasement[]>) => {
-    //             if (response.isSuccess) {
-    //                 if (response.payload)
-    //                     this.setState({releasementListOfTeacher: response.payload})
-    //             } else {
-    //                 message.error(response.message);
-    //             }
-    //         })
-    //         .catch((e: any) => {
-    //             console.log(e);
-    //             message.error("發生未知錯誤，請稍候再試");
-    //         })
-    // }
-
-    // private refreshManagingReleasementByRid(rid: number, callback: () => void = () => {
-    // }): void {
-    //     ReleasementAPI.getInstance().getReleasementByRid(rid)
-    //         .then((response: IAPIResponse<IReleasement>) => {
-    //             if (response.isSuccess) {
-    //                 this.setState({managingReleasement: response.payload});
-    //                 callback();
-    //                 console.log("完成取得Releasemnet by id");
-    //                 console.log(this.state.managingReleasement);
-    //             } else {
-    //                 message.error(response.message);
-    //             }
-    //         })
-    //         .catch((e: any) => {
-    //             console.log(e);
-    //             message.error("發生未知錯誤，請稍候再試")
-    //         })
-    // }
-
-    // private handleReleaseClickFromTeacherSider(releasement: IReleasement): void {
-    //     this.setState({managingReleasement: releasement})
-    // }
-    //
-    // private handleSelectionClickFromStudentSider(selection: ISelection): void {
-    //     this.setState({displayingSelection: selection})
-    // }
-
     private async handleVisitorCome() {
         const response: IAPIResponse<IReleasement[]> = await ReleasementAPI.getInstance().getAllReleasement();
         if (response.isSuccess && response.payload)
@@ -233,18 +147,12 @@ export default class App extends Component<IAppProps, IAppState> {
             this.handleTeacherLogIn(email);
         if (userType === "visitor")
             this.handleVisitorCome();
+        if (userType === "admin")
+            this.handleAdminLogIn(email);
 
         cookie.set("token", token);
         cookie.set("userType", userType);
         cookie.set("email", email);
-        // if (userType === "student") {
-        //     if (!email) return;
-        //     this.getSelectionOf(email);
-        // } else if (userType === "teacher") {
-        //     if (!email) return;
-        //     this.getCourseOf(email);
-        //     this.getReleasementOf(email);
-        // }
     }
 
     private sendAddCourse(data: ISendAddCourseData, callback?: ISendActionCallback): void {
@@ -347,6 +255,58 @@ export default class App extends Component<IAppProps, IAppState> {
         SendActionHandler.sendSubmission(data, callback)(doAfter);
     }
 
+    private sendReleasementApprove(data: IReleasementApproveData, callback?: ISendActionCallback): void {
+        const doAfter: (payload: any) => void = (payload: IReleasement[]) => {
+            this.state.userType === "admin" && this.state.forAdmin &&
+            this.setState({
+                forAdmin: {
+                    ...this.state.forAdmin,
+                    releasementList: payload
+                }
+            })
+        };
+        SendActionHandler.sendReleasementApprove(data, callback)(doAfter);
+    }
+
+    private sendReleasementReject(data: IReleasementRejectData, callback?: ISendActionCallback): void {
+        const doAfter: (payload: any) => void = (payload: IReleasement[]) => {
+            this.state.userType === "admin" && this.state.forAdmin &&
+            this.setState({
+                forAdmin: {
+                    ...this.state.forAdmin,
+                    releasementList: payload
+                }
+            })
+        };
+        SendActionHandler.sendReleasementReject(data, callback)(doAfter);
+    }
+
+    private sendCourseApprove(data: ICourseApproveData, callback?: ISendActionCallback): void {
+        const doAfter: (payload: any) => void = (payload: ICourse[]) => {
+            this.state.userType === "admin" && this.state.forAdmin &&
+            this.setState({
+                forAdmin: {
+                    ...this.state.forAdmin,
+                    courseList: payload
+                }
+            })
+        };
+        SendActionHandler.sendCourseApprove(data, callback)(doAfter);
+    }
+
+    private sendCourseReject(data: ICourseRejectData, callback?: ISendActionCallback): void {
+        const doAfter: (payload: any) => void = (payload: ICourse[]) => {
+            this.state.userType === "admin" && this.state.forAdmin &&
+            this.setState({
+                forAdmin: {
+                    ...this.state.forAdmin,
+                    courseList: payload
+                }
+            })
+        };
+        SendActionHandler.sendCourseReject(data, callback)(doAfter);
+    }
+
     private sendCourseSelection(data: ISendSelectionData, callback?: ISendActionCallback): void {
         const doAfter: (payload: any) => void = (payload: ISelection[]) => {
             this.state.userType === "student" && this.state.forStudent &&
@@ -408,6 +368,41 @@ export default class App extends Component<IAppProps, IAppState> {
         }
     }
 
+    private async handleAdminLogIn(email: string) {
+        try {
+            let releasementList: IReleasement[] = [];
+            let courseList: ICourse[] = [];
+            const responseOfAllCourse: IAPIResponse<ICourse[]> = await CourseAPI.getInstance().getAllCourse();
+            const responseOfAllReleasement: IAPIResponse<IReleasement[]> = await ReleasementAPI.getInstance().getAllReleasement();
+            if (responseOfAllCourse.isSuccess && responseOfAllCourse.payload)
+                courseList = responseOfAllCourse.payload;
+            else
+                message.error(responseOfAllCourse.message);
+            if (responseOfAllReleasement.isSuccess && responseOfAllReleasement.payload)
+                releasementList = responseOfAllReleasement.payload;
+            else
+                message.error(responseOfAllReleasement.message);
+            this.setState({
+                userType: "admin",
+                forStudent: undefined,
+                forTeacher: undefined,
+                forVisitor: undefined,
+                forAdmin: {
+                    email: email,
+                    releasementList: releasementList,
+                    courseList: courseList,
+                    sendCourseApprove: this.sendCourseApprove.bind(this),
+                    sendCourseReject: this.sendCourseReject.bind(this),
+                    sendReleasementApprove: this.sendReleasementApprove.bind(this),
+                    sendReleasementReject: this.sendReleasementReject.bind(this)
+                }
+            })
+        } catch (e) {
+            console.log(e);
+            message.error("初始化管理員數據失敗，請稍候再試")
+        }
+    }
+
     private async handleStudentLogIn(studentEmail: string) {
         try {
             let releasementList: IReleasement[] = [];
@@ -445,7 +440,7 @@ export default class App extends Component<IAppProps, IAppState> {
                     sendComment: this.sendComment.bind(this),
                     sendCourseSelection: this.sendCourseSelection.bind(this),
                     sendForum: this.sendForum.bind(this),
-                    sendSubmission:this.sendSubmission.bind(this)
+                    sendSubmission: this.sendSubmission.bind(this)
                 }
             });
         } catch (e) {
@@ -503,44 +498,23 @@ export default class App extends Component<IAppProps, IAppState> {
                         this.state.userType === "visitor" && this.state.forVisitor
                         && <VisitorSider/>
                     }
+                    {
+                        this.state.userType === "admin" && this.state.forAdmin
+                        && <AdminSider/>
+                    }
                     <Layout>
                         <ContentRouter
                             userType={this.state.userType}
                             forStudent={this.state.forStudent}
                             forTeacher={this.state.forTeacher}
                             forVisitor={this.state.forVisitor}
-                            // email={this.state.email}
-                            //
-                            // courseList={this.state.courseList}
-                            // releasementList={this.state.releasementListOfStudent}
-                            //
-                            // managingReleasement={this.state.managingReleasement}
-                            // displayingForum={this.state.displayingForum}
-                            // displayingSelection={this.state.displayingSelection}
-                            //
-                            // setDisplayingForum={this.setDisplayingForum.bind(this)}
-
-                            // sendAddCourse={(data: ISendAddCourseData, callback?: ISendActionCallback) => SendActionHandler.sendAddCourse(data, callback)(() => this.getCourseOf(this.state.email))}
-                            // sendCourseRelease={(data: ISendReleasementData, callback?: ISendActionCallback) => SendActionHandler.sendCourseRelease(data, callback)(() => this.getReleasementOf(this.state.email))}
-                            // sendCourseSelection={(data: ISendSelectionData, callback?: ISendActionCallback) => SendActionHandler.sendCourseSelection(data, callback)(() => this.getSelectionOf(this.state.email))}
-                            // sendAssignment={(data: ISendAssignmentData, callback?: ISendActionCallback) => SendActionHandler.sendAssignment(data, callback)(() => this.refreshManagingReleasementByRid(data.rid))}
-                            // sendSlide={(data: ISendSlideData, callback?: ISendActionCallback) => SendActionHandler.sendSlide(data, callback)(() => this.refreshManagingReleasementByRid(data.rid))}
-                            // sendForum={(data: ISendForumData, callback?: ISendActionCallback) => SendActionHandler.sendForum(data, callback)(() => this.refreshManagingReleasementByRid(data.rid))}
-                            // sendComment={(data: ISendCommentData, callback?: ISendActionCallback) => SendActionHandler.sendComment(data, callback)(() => {
-                            //     this.refreshManagingReleasementByRid(data.rid, () => {
-                            //         this.state.managingReleasement && this.state.managingReleasement.forumEntityList ?
-                            //             this.state.managingReleasement.forumEntityList.forEach((forum: IForum) => {
-                            //                 if (forum.fid === data.fid) {
-                            //                     this.setDisplayingForum(forum);
-                            //                }
-                            //            }) : "";
-                            //    });
-                            //})}
+                            forAdmin={this.state.forAdmin}
                         />
                     </Layout>
                 </Layout>
             </Layout>
         );
     }
+
 }
 

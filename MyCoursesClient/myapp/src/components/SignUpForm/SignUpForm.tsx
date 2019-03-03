@@ -69,8 +69,8 @@ export class SignUpForm extends React.Component<ISignUpFormProps, ISignUpFormSta
                 </Form.Item>
                 <NameFormItem getFieldDecorator={getFieldDecorator}/>
                 <StudentNoFormItem getFieldDecorator={getFieldDecorator}
-                                   />
-                <UserTypeFormItem getFieldDecorator={getFieldDecorator}/>
+                />
+                <UserTypeFormItem adminVisible={false} getFieldDecorator={getFieldDecorator}/>
                 <Form.Item
                     style={{marginBottom: 0}}
                     label="密碼"

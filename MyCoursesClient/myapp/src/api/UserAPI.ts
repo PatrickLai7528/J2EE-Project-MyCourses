@@ -2,7 +2,7 @@ import axios from "axios";
 import IAPIResponse from "./IAPIResponse";
 import NetworkSettings from "../setting/NetworkSettings";
 
-export type UserType = "teacher" | "student" | "visitor";
+export type UserType = "teacher" | "student" | "visitor" | "admin";
 
 export interface ISignUpData {
     email: string,
@@ -94,6 +94,12 @@ export default class UserAPI {
                 realLogInData = {
                     studentEmail: email, password
                 };
+                break;
+            case "admin":
+                url = "/admin/login";
+                realLogInData = {
+                    adminEmail:email, password
+                }
                 break;
             default:
                 throw Error("Unexpected user type");

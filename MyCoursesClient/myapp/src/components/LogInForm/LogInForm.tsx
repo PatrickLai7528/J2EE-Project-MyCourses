@@ -1,18 +1,14 @@
 import * as React from "react";
 import {FormComponentProps} from "antd/lib/form";
-import {
-    Form, Icon, Input, Checkbox
-} from 'antd';
+import {Checkbox, Form, Icon, Input} from 'antd';
 import "./LogInForm.css"
 import {UserTypeFormItem} from "../SignUpForm/SignUpFormItem";
-import {UserType} from "../../api/UserAPI";
 
 export interface ILogInFormProps extends FormComponentProps {
-    toSignUp: () => void
 }
 
-export class LogInForm extends React.Component<FormComponentProps> {
-    public constructor(props: FormComponentProps) {
+export class LogInForm extends React.Component<ILogInFormProps> {
+    public constructor(props: ILogInFormProps) {
         super(props);
     }
 
@@ -47,7 +43,7 @@ export class LogInForm extends React.Component<FormComponentProps> {
                                placeholder="Password"/>
                     )}
                 </Form.Item>
-                <UserTypeFormItem getFieldDecorator={getFieldDecorator}/>
+                <UserTypeFormItem adminVisible={true} getFieldDecorator={getFieldDecorator}/>
                 <Form.Item>
                     {getFieldDecorator('remember', {
                         valuePropName: 'checked',

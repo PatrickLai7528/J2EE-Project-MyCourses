@@ -1,12 +1,6 @@
 import * as React from "react";
 import {Route} from "react-router";
 import ReleasementDisplayContainer from "../ReleasementDisplay/ReleasementDisplayContainer";
-import {
-    ISendCommentProps,
-    ISendCourseReleaseProps,
-    ISendCourseSelectionProps,
-    UserStateProps
-} from "../App/GeneralProps";
 import {ForumDisplayContainer} from "../ForumDisplay/ForumDisplayContainer";
 import {SelectionDisplayContainer} from "../SelectionDisplay/SelectionDisplayContainer";
 import {IAppForStudentState} from "../App/App";
