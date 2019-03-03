@@ -106,45 +106,53 @@ export interface IReleasement {
     deadTime: number,
 }
 
-export interface IOutlineStatistics{
-    created:number
-    released:number
-    selected:number
-    commented:number
-    uploaded:number
-    published:number
+export interface IOutlineStatistics {
+    created: number
+    released: number
+    selected: number
+    commented: number
+    uploaded: number
+    published: number
 }
 
-export interface ISimplifyReleasement{
-    courseName:string
-    effectiveTime:number
-    deadTime:number
-    selected:number
-    uploaded:number
-    published:number
-    submitted:number
+export interface ISimplifyReleasement {
+    courseName: string
+    effectiveTime: number
+    deadTime: number
+    selected: number
+    uploaded: number
+    published: number
+    submitted: number
 }
 
 export interface ISemesterStatistics {
-    semester:string
-    created:number
-    released:number
-    selected:number
-    simplifyReleasementList:ISimplifyReleasement[]
+    semester: string
+    created: number
+    released: number
+    selected: number
+    simplifyReleasementList: ISimplifyReleasement[]
 }
 
-export interface ISimplifySelection{
-    studentName:string
-    studentNo:string
-    studentEmail:string
-    selectTime:number
-    studentScore:number
+export interface ISimplifySelection {
+    studentName: string
+    studentNo: string
+    studentEmail: string
+    selectTime: number
+    studentScore: number
 }
 
-export interface IReleasementStatistics{
-    courseName:string
-    selected:number
-    submitted:number
-    downloaded:number
-    commented:number
+export interface IReleasementStatistics {
+    courseName: string
+    selected: number
+    submitted: number
+    downloaded: number
+    commented: number
+    simplifySelectionList: ISimplifySelection[]
 }
+
+export interface ITeacherStatistics {
+    outlineStatistics: IOutlineStatistics
+    semesterStatisticsList: ISemesterStatistics[]
+    releasementStatisticsList: IReleasementStatistics[]
+}
+

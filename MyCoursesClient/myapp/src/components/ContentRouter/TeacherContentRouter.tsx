@@ -18,7 +18,7 @@ export const TeacherContentRouter: React.FunctionComponent<ITeacherContentRouter
         <div>
             <Route exact path="/statistics" component={
                 () => {
-                    return <StatisticsDisplay userType={props.userType} forTeacher={props.forTeacher}/>
+                    return (<div><StatisticsDisplay userType={props.userType} forTeacher={props.forTeacher}/></div>)
                 }
             }
             />
