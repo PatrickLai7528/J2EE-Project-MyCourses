@@ -29,7 +29,7 @@ export const AdminSider: React.FunctionComponent<IAdminSiderProps> = (props: IAd
                     </NavLink>
                 </Menu.Item>
                 <Menu.Item key={"statistics"}>
-                    <NavLink exact={true} to="/statistics">
+                    <NavLink exact={true} to="/statistics/admin">
                         <Icon type="area-chart"/>統計信息
                     </NavLink>
                 </Menu.Item>

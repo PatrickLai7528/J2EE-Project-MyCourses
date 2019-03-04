@@ -5,7 +5,7 @@ import {ForumDisplayContainer} from "../ForumDisplay/ForumDisplayContainer";
 import CourseDisplayContainer from "../CourseDisplay/CourseDisplayContainer";
 import {IAppForTeacherState} from "../App/App";
 import {UserType} from "../../api/UserAPI";
-import {StatisticsDisplay} from "../StatisticsDisplay/StatisticsDisplay";
+import {StatisticsDisplayForTeacher} from "../StatisticsDisplay/StatisticsDisplayForTeacher";
 
 export interface ITeacherContentRouterProps {
     userType: UserType
@@ -19,7 +19,7 @@ export const TeacherContentRouter: React.FunctionComponent<ITeacherContentRouter
             <Redirect to="/course/all"/>
             <Route exact path="/statistics" component={
                 () => {
-                    return (<div><StatisticsDisplay userType={props.userType} forTeacher={props.forTeacher}/></div>)
+                    return (<div><StatisticsDisplayForTeacher userType={props.userType} forTeacher={props.forTeacher}/></div>)
                 }
             }
             />

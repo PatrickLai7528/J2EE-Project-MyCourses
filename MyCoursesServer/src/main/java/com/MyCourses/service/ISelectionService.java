@@ -14,7 +14,9 @@ import java.util.List;
 
 public interface ISelectionService {
 
-    List<SelectionEntity> getSelectionOfReleasement(Long releasementId) throws ReleasementNotExistException;
+    List<SelectionEntity> getAll();
+
+    List<SelectionEntity> getSelectionOfReleasement(Long releasementId);
 
     SelectionState select(String studentEmail, Long rid) throws ReleasementNotExistException, StudentNotExistException, RepeatSelectCourseException, SelectionFailExceptions;
 
@@ -23,4 +25,7 @@ public interface ISelectionService {
     SelectionEntity getSelectionBySlid(Long slid) throws SelectionNotExistException;
 
     void broadCastEmailToSelector(Long releasementId, String content) throws MailSendingException, SelectionNotExistException;
+
+
 }
+

@@ -55,7 +55,12 @@ public class SelectionService implements ISelectionService {
     }
 
     @Override
-    public List<SelectionEntity> getSelectionOfReleasement(Long releasementId) throws ReleasementNotExistException {
+    public List<SelectionEntity> getAll() {
+        return selectionDAO.retrieveAll();
+    }
+
+    @Override
+    public List<SelectionEntity> getSelectionOfReleasement(Long releasementId) {
         ReleasementEntity releasementEntity = releasementDAO.retrieveByRid(releasementId);
         return selectionDAO.retrieveByReleasement(releasementEntity);
     }

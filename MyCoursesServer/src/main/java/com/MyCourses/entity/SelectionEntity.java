@@ -45,4 +45,8 @@ public class SelectionEntity implements Serializable {
 
     @Column(name = "score")
     private Double score;
+
+    public boolean isFail() {
+        return score == null || score < 60;
+    }
 }

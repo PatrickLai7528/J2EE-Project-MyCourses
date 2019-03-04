@@ -42,4 +42,11 @@ public final class StudentEntity implements Serializable {
 
     @Column(name = "deleted")
     private boolean deleted;
+
+    @Column(name = "last_log_in")
+    @Convert(converter = DetailDateConverter.class)
+    private Date lastLogInDate;
+
+    @Column(name = "logged_in_times")
+    private Long loggedInTimes;
 }

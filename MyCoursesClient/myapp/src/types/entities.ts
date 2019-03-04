@@ -106,7 +106,7 @@ export interface IReleasement {
     deadTime: number,
 }
 
-export interface IOutlineStatistics {
+export interface IOutlineStatisticsForTeacher {
     created: number
     released: number
     selected: number
@@ -115,7 +115,7 @@ export interface IOutlineStatistics {
     published: number
 }
 
-export interface ISimplifyReleasement {
+export interface ISimplifyReleasementForTeacher {
     courseName: string
     effectiveTime: number
     deadTime: number
@@ -125,15 +125,15 @@ export interface ISimplifyReleasement {
     submitted: number
 }
 
-export interface ISemesterStatistics {
+export interface ISemesterStatisticsForTeacher {
     semester: string
     created: number
     released: number
     selected: number
-    simplifyReleasementList: ISimplifyReleasement[]
+    simplifyReleasementList: ISimplifyReleasementForTeacher[]
 }
 
-export interface ISimplifySelection {
+export interface ISimplifySelectionForTeacher {
     studentName: string
     studentNo: string
     studentEmail: string
@@ -141,18 +141,97 @@ export interface ISimplifySelection {
     studentScore: number
 }
 
-export interface IReleasementStatistics {
+export interface IReleasementStatisticsForTeacher {
     courseName: string
     selected: number
     submitted: number
     downloaded: number
     commented: number
-    simplifySelectionList: ISimplifySelection[]
+    simplifySelectionList: ISimplifySelectionForTeacher[]
 }
 
 export interface ITeacherStatistics {
-    outlineStatistics: IOutlineStatistics
-    semesterStatisticsList: ISemesterStatistics[]
-    releasementStatisticsList: IReleasementStatistics[]
+    outlineStatistics: IOutlineStatisticsForTeacher
+    semesterStatisticsList: ISemesterStatisticsForTeacher[]
+    releasementStatisticsList: IReleasementStatisticsForTeacher[]
 }
 
+export interface IOutlineStatisticsForAdmin {
+    student: number
+    teacher: number
+    studentTeacherProportion: number
+    created: number
+    released: number
+    releasedCreatedProportion: number
+    approved: number
+    rejected: number
+    rejectedApprovedProportion: number
+    teacherRegistryLast7: number
+    studentRegistryLast7: number
+    allUserRegistryCompareToLast7: number
+    teacherLogInLast7: number
+    studentLogInLast7: number
+    allUserLogInCompareToLast7: number
+}
+
+export interface ISimplifyCourseForAdmin {
+    courseName: string
+    addTime: number
+    approvalState: ApprovalState
+}
+
+export interface ISimplifyReleasementForAdmin {
+    courseName: string
+    approvalState: ApprovalState
+    limited: number
+    selected: number
+    dropped: number
+    bySelected: number
+    releaseTime: number
+    effectiveTime: number
+    deadTime: number
+    avgScore: number
+    failed: number
+}
+
+export interface ITeacherStatisticsForAdmin {
+    teacherName: string
+    teacherEmail: string
+    created: number
+    released: number
+    rejected: number
+    rejectedApprovedProportion: number
+    selected: number
+    fulledAllProportion: number
+    droppedAllProportion: number
+    bySelectedAllProportion: number
+    simplifyCourseList: ISimplifyCourseForAdmin[]
+    simplifyReleasementList: ISimplifyReleasementForAdmin[]
+}
+
+export interface ISimplifySelectionForAdmin {
+    courseName: string
+    selectedTime: number
+    selectionState: SelectionState
+    score: number
+}
+
+export interface IStudentStatisticsForAdmin {
+    studentName: string
+    studentEmail: string
+    selected: number
+    selectedAvgProportion: number
+    dropped: number
+    droppedAvgProportion: number
+    loggedIn: number
+    loggedInAvgProportion: number
+    recentLogInTime: number
+    registryTime: number
+    simplifySelectionList: ISimplifySelectionForAdmin[]
+}
+
+export interface IAdminStatistics {
+    outlineStatistics: IOutlineStatisticsForAdmin
+    teacherStatisticsList: ITeacherStatisticsForAdmin[]
+    studentStatisticsList: IStudentStatisticsForAdmin[]
+}

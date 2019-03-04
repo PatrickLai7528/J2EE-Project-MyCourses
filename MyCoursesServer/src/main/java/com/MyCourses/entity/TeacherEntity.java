@@ -28,7 +28,15 @@ public class TeacherEntity implements Serializable {
 
     @Column(name = "password")
     private String password;
-    
+
     @Column(name = "teacher_no")
     private String teacherNo;
+
+    @Column(name = "last_log_in")
+    @Convert(converter = DetailDateConverter.class)
+    private Date lastLogInDate;
+
+
+    @Column(name = "logged_in_times")
+    private Long loggedInTimes;
 }

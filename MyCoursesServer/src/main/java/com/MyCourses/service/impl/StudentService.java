@@ -58,6 +58,10 @@ public class StudentService implements IStudentService {
         String unEncryptedPassword = studentEntity.getPassword();
         String encryptedPassword = encryptService.encrypt(unEncryptedPassword);
         StudentEntity studentFound = studentDAO.retrieveByEmail(studentEntity.getStudentEmail());
+        studentEntity.setLastLogInDate(new Date());
+        studentDAO.update(studentEntity);
+        long loggedInTimes = studentEntity.getLoggedInTimes();
+        studentEntity.setLoggedInTimes(loggedInTimes);
         return studentFound.getPassword().equals(encryptedPassword);
     }
 

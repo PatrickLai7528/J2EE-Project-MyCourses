@@ -8,6 +8,7 @@ package com.MyCourses.controller;/*
 
 import com.MyCourses.annotations.PleaseLog;
 import com.MyCourses.annotations.VerifyToken;
+import com.MyCourses.entity.AdminStatistics;
 import com.MyCourses.entity.TeacherStatistics;
 import com.MyCourses.exceptions.ReleasementNotExistException;
 import com.MyCourses.exceptions.TeacherNotExistException;
@@ -31,13 +32,28 @@ public class StatisticsController {
     @VerifyToken
     @GetMapping("teacher")
     @CrossOrigin(origins = "http://localhost:3000")
-    public APIResponse<TeacherStatistics> getTeacherStatistics(@RequestParam(name = "email") String teacherEmail){
+    public APIResponse<TeacherStatistics> getTeacherStatistics(@RequestParam(name = "email") String teacherEmail) {
         try {
-            TeacherStatistics teacherStatistics =  statisticsService.getTeacherStatistics(teacherEmail) ;
+            TeacherStatistics teacherStatistics = statisticsService.getTeacherStatistics(teacherEmail);
             return ResponseUtils.ok("操作成功", teacherStatistics);
         } catch (TeacherNotExistException | ReleasementNotExistException e) {
             e.printStackTrace();
-            return ResponseUtils.error(e.getLocalizedMessage(), null) ;
+            return ResponseUtils.error(e.getLocalizedMessage(), null);
         }
     }
+
+    @PleaseLog
+//    @VerifyToken
+    @GetMapping("admin")
+    @CrossOrigin(origins = "http://localhost:3000")
+    public APIResponse<AdminStatistics> getAdminStatistics() {
+        try {
+            AdminStatistics adminStatistics = statisticsService.getAdminStatistics();
+            return ResponseUtils.ok("操作成功", adminStatistics);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseUtils.error(e.getLocalizedMessage(), null);
+        }
+    }
+
 }

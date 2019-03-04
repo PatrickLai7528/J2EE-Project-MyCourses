@@ -6,10 +6,13 @@ package com.MyCourses.service;/*
  * @ProjectName MyCoursesServer
  */
 
+import com.MyCourses.entity.AdminStatistics;
 import com.MyCourses.entity.TeacherStatistics;
 import com.MyCourses.exceptions.ReleasementNotExistException;
 import com.MyCourses.exceptions.TeacherNotExistException;
 
 public interface IStatisticsService {
     TeacherStatistics getTeacherStatistics(String teacherEmail) throws TeacherNotExistException, ReleasementNotExistException;
+
+    AdminStatistics getAdminStatistics();
 }

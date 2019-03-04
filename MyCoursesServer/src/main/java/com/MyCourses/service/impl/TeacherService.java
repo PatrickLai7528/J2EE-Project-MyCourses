@@ -59,6 +59,10 @@ public class TeacherService implements ITeacherService {
         String unEncryptedPassword = teacherEntity.getPassword();
         String encryptedPassword = encryptService.encrypt(unEncryptedPassword);
         TeacherEntity teacherFound = teacherDAO.retrieveByEmail(teacherEntity.getTeacherEmail());
+        teacherEntity.setLastLogInDate(new Date());
+        teacherDAO.update(teacherEntity);
+        long loggedInTime = teacherEntity.getLoggedInTimes();
+        teacherEntity.setLoggedInTimes(loggedInTime+1);
         return teacherFound.getPassword().equals(encryptedPassword);
     }
 
