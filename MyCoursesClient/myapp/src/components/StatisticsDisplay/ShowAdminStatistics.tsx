@@ -21,7 +21,10 @@ export const showAdminStatistics = (statistics?: IAdminStatistics): React.ReactN
                     </Col>
                     <Col span={4}>
                         <Statistic title="學生教師比"
-                                   value={statistics ? statistics.outlineStatistics.studentTeacherProportion : 0}/>
+                                   suffix={"%"}
+                                   precision={1}
+                                   valueStyle={statistics && statistics.outlineStatistics.studentTeacherProportion >= 1 ? {color: '#3f8600'} : {color: '#cf1322'}}
+                                   value={statistics ? statistics.outlineStatistics.studentTeacherProportion * 100 : 0}/>
                     </Col>
                 </Row>
                 <Row type="flex" justify="space-around" align="middle" style={{marginBottom: 20}}>
@@ -35,7 +38,10 @@ export const showAdminStatistics = (statistics?: IAdminStatistics): React.ReactN
                     </Col>
                     <Col span={4}>
                         <Statistic title="發佈/創建比"
-                                   value={statistics ? statistics.outlineStatistics.releasedCreatedProportion : 0}/>
+                                   suffix={"%"}
+                                   precision={1}
+                                   valueStyle={statistics && statistics.outlineStatistics.releasedCreatedProportion >= 1 ? {color: '#3f8600'} : {color: '#cf1322'}}
+                                   value={statistics ? statistics.outlineStatistics.releasedCreatedProportion * 100 : 0}/>
                     </Col>
                 </Row>
                 <Row type="flex" justify="space-around" align="middle" style={{marginBottom: 20}}>
@@ -49,13 +55,16 @@ export const showAdminStatistics = (statistics?: IAdminStatistics): React.ReactN
                     </Col>
                     <Col span={4}>
                         <Statistic title="否決/通過比"
-                                   value={statistics ? statistics.outlineStatistics.rejectedApprovedProportion : 0}/>
+                                   suffix={"%"}
+                                   precision={1}
+                                   valueStyle={statistics && statistics.outlineStatistics.rejectedApprovedProportion >= 1 ? {color: '#3f8600'} : {color: '#cf1322'}}
+                                   value={statistics ? statistics.outlineStatistics.rejectedApprovedProportion * 100 : 0}/>
                     </Col>
                 </Row>
                 <Row type="flex" justify="space-around" align="middle" style={{marginBottom: 20}}>
                     <Col span={4}>
                         <Statistic title="最近七日教師注冊"
-                                   value={statistics ? statistics.outlineStatistics.teacherRegistryLast7 :0}/>
+                                   value={statistics ? statistics.outlineStatistics.teacherRegistryLast7 : 0}/>
                     </Col>
                     <Col span={4}>
                         <Statistic title="最近七日學生注冊"
@@ -63,7 +72,10 @@ export const showAdminStatistics = (statistics?: IAdminStatistics): React.ReactN
                     </Col>
                     <Col span={4}>
                         <Statistic title="相近上週（總用戶）"
-                                   value={statistics ? statistics.outlineStatistics.allUserRegistryCompareToLast7:0}/>
+                                   suffix={"%"}
+                                   precision={1}
+                                   valueStyle={statistics && statistics.outlineStatistics.allUserRegistryCompareToLast7 >= 1 ? {color: '#3f8600'} : {color: '#cf1322'}}
+                                   value={statistics ? statistics.outlineStatistics.allUserRegistryCompareToLast7 * 100 : 0}/>
                     </Col>
                 </Row>
                 <Row type="flex" justify="space-around" align="middle" style={{marginBottom: 20}}>
@@ -77,7 +89,10 @@ export const showAdminStatistics = (statistics?: IAdminStatistics): React.ReactN
                     </Col>
                     <Col span={4}>
                         <Statistic title="相比上週（總用戶）"
-                                   value={statistics ? statistics.outlineStatistics.allUserLogInCompareToLast7 : 0}/>
+                                   suffix={"%"}
+                                   precision={1}
+                                   valueStyle={statistics && statistics.outlineStatistics.allUserLogInCompareToLast7 >= 1 ? {color: '#3f8600'} : {color: '#cf1322'}}
+                                   value={statistics ? statistics.outlineStatistics.allUserLogInCompareToLast7 * 200 : 0}/>
                     </Col>
                 </Row>
             </div>

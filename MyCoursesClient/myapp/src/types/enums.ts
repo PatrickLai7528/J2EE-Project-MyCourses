@@ -88,3 +88,22 @@ export enum SelectionState {
     BY_SELECTED,
     SELECTED
 }
+
+export function fromSelectionStateToChinese(state:SelectionState):string {
+    switch (state) {
+        case SelectionState.SELECTED:
+            return "選課成功";
+        case SelectionState.BY_SELECTED:
+            return "補選成功";
+        case SelectionState.MISS:
+            return "未抽取";
+        case SelectionState.DROPPED:
+            return "已退課";
+        case SelectionState.OVER:
+            return "超過限制人數，等待抽籤";
+        case SelectionState.ADDED:
+            return "加入名單，等待開課";
+        default:
+            throw new Error();
+    }
+}

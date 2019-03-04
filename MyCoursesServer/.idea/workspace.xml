@@ -2,33 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b7acb967-7f4e-4e76-a68d-ff398a1380be" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/StatisticsDisplay/ShowAdminStatistics.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/StatisticsDisplay/ShowReleasementStatisticsForTeacher.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/StatisticsDisplay/ShowSesmesterStatisticsForTeacher.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/StatisticsDisplay/ShowStudentStatisticsForAdmin.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/StatisticsDisplay/ShowTeacherStatistics.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/StatisticsDisplay/ShowTeacherStatisticsForAdmin.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/StatisticsDisplay/StatisticsDisplayForAdmin.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/MyCourses/entity/AdminStatistics.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../MyCoursesClient/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesClient/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/api/StatisticsAPI.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/api/StatisticsAPI.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/AdminSider/AdminSider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/AdminSider/AdminSider.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/ContentRouter/AdminContentRouter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/ContentRouter/AdminContentRouter.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/ContentRouter/TeacherContentRouter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/ContentRouter/TeacherContentRouter.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/StatisticsDisplay/StatisticsDisplay.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/StatisticsDisplay/StatisticsDisplayForTeacher.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/types/entities.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/types/entities.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/StatisticsDisplay/ShowAdminStatistics.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/StatisticsDisplay/ShowAdminStatistics.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/StatisticsDisplay/ShowStudentStatisticsForAdmin.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesClient/myapp/src/components/StatisticsDisplay/ShowStudentStatisticsForAdmin.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/MyCourses/controller/SelectionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/MyCourses/controller/SelectionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/MyCourses/controller/StatisticsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/MyCourses/controller/StatisticsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/MyCourses/entity/SelectionEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/MyCourses/entity/SelectionEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/MyCourses/entity/StudentEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/MyCourses/entity/StudentEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/MyCourses/entity/TeacherEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/MyCourses/entity/TeacherEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/MyCourses/service/ISelectionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/MyCourses/service/ISelectionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/MyCourses/service/IStatisticsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/MyCourses/service/IStatisticsService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/MyCourses/service/impl/SelectionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/MyCourses/service/impl/SelectionService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/MyCourses/service/impl/StatisticsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/MyCourses/service/impl/StatisticsService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/MyCourses/service/impl/StudentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/MyCourses/service/impl/StudentService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/MyCourses/service/impl/TeacherService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/MyCourses/service/impl/TeacherService.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -94,8 +72,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/MyCourses/service/impl/StatisticsService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="424">
-              <caret line="142" column="60" lean-forward="true" selection-start-line="142" selection-start-column="60" selection-end-line="142" selection-end-column="60" />
+            <state relative-caret-position="144">
+              <caret line="283" selection-start-line="283" selection-end-line="283" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -345,7 +323,7 @@
     <property name="RequestMappingsPanelWidth2" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551679669224" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551681760689" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers" value="true" />
@@ -511,7 +489,7 @@
       <workItem from="1551232100251" duration="11290000" />
       <workItem from="1551313034194" duration="518000" />
       <workItem from="1551402700925" duration="35777000" />
-      <workItem from="1551657263176" duration="12991000" />
+      <workItem from="1551657263176" duration="13625000" />
     </task>
     <servers />
   </component>
@@ -548,7 +526,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="155419000" />
+    <option name="totallyTimeSpent" value="156053000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -580,7 +558,7 @@
       <window_info anchor="bottom" id="Spring" order="14" />
       <window_info anchor="bottom" id="Database Changes" order="15" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="16" />
-      <window_info active="true" anchor="bottom" id="Run Dashboard" order="17" visible="true" weight="0.18443114" />
+      <window_info active="true" anchor="bottom" id="Run Dashboard" order="17" visible="true" weight="0.40838322" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -1021,8 +999,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/MyCourses/service/impl/StatisticsService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="424">
-          <caret line="142" column="60" lean-forward="true" selection-start-line="142" selection-start-column="60" selection-end-line="142" selection-end-column="60" />
+        <state relative-caret-position="144">
+          <caret line="283" selection-start-line="283" selection-end-line="283" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

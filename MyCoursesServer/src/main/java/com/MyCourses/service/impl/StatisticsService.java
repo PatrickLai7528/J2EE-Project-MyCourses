@@ -159,10 +159,10 @@ public class StatisticsService implements IStatisticsService {
             teacherStatistics.setSelected(selected);
             teacherStatistics.setTeacherName(teacherName);
             teacherStatistics.setTeacherEmail(teacherEmail);
-            teacherStatistics.setRejectedApprovedProportion((double) (rejected / approved));
-            teacherStatistics.setBySelectedAllProportion((double) (bySelectedAll / selected));
-            teacherStatistics.setDroppedAllProportion((double) (dropped / selected));
-            teacherStatistics.setFulledAllProportion((double) (full / selected));
+            teacherStatistics.setRejectedApprovedProportion( ((double)rejected / approved));
+            teacherStatistics.setBySelectedAllProportion( ((double)bySelectedAll / selected));
+            teacherStatistics.setDroppedAllProportion( ((double)dropped / selected));
+            teacherStatistics.setFulledAllProportion( ((double)full / selected));
             teacherStatistics.setSimplifyCourseList(simplifyCourseList);
             teacherStatistics.setSimplifyReleasementList(simplifyReleasementList);
             teacherStatisticsList.add(teacherStatistics);
@@ -196,9 +196,9 @@ public class StatisticsService implements IStatisticsService {
             }
 
         }
-        logInAvg = (double) (logInSum / (studentEntityList.size() == 0 ? 1 : studentEntityList.size()));
-        dropAvg = (double) (dropSum / (studentEntityList.size() == 0 ? 1 : studentEntityList.size()));
-        selectAvg = (double) (selectSum / studentEntityList.size() == 0 ? 1 : studentEntityList.size());
+        logInAvg =( (double) logInSum / (studentEntityList.size() == 0 ? 1 : studentEntityList.size()));
+        dropAvg =  ((double)dropSum / (studentEntityList.size() == 0 ? 1 : studentEntityList.size()));
+        selectAvg =  ((double)selectSum / studentEntityList.size() == 0 ? 1 : studentEntityList.size());
 
         for (StudentEntity studentEntity : studentEntityList) {
             AdminStatistics.StudentStatistics studentStatistics = new AdminStatistics.StudentStatistics();
@@ -280,14 +280,14 @@ public class StatisticsService implements IStatisticsService {
         outlineStatistics.setCreated(created);
         outlineStatistics.setRejected(rejected);
         outlineStatistics.setReleased(released);
-        outlineStatistics.setRejectedApprovedProportion((double) (rejected / (approved == 0 ? 1 : approved)));
-        outlineStatistics.setReleasedCreatedProportion((double) (released / (created == 0 ? 1 : created)));
+        outlineStatistics.setRejectedApprovedProportion( ((double)rejected / (approved == 0 ? 1 : approved)));
+        outlineStatistics.setReleasedCreatedProportion( ((double)released / (created == 0 ? 1 : created)));
 
         List<StudentEntity> studentEntityList = studentService.getAllStudents();
         List<TeacherEntity> teacherEntityList = teacherService.getAllTeachers();
         outlineStatistics.setStudent((long) studentEntityList.size());
         outlineStatistics.setTeacher((long) teacherEntityList.size());
-        outlineStatistics.setStudentTeacherProportion((double) (studentEntityList.size() / (teacherEntityList.size() == 0 ? 1 : teacherEntityList.size())));
+        outlineStatistics.setStudentTeacherProportion( ((double)studentEntityList.size() / (teacherEntityList.size() == 0 ? 1 : teacherEntityList.size())));
         long allUserLogIn = 0;
         long teacherRegistryLast7 = 0;
         long allUserRegistry = 0;
@@ -334,8 +334,8 @@ public class StatisticsService implements IStatisticsService {
             }
         }
 
-        outlineStatistics.setAllUserLogInCompareToLast7((double) ((teacherLogInLast7 + studentLogInLast7) / (allUserLogIn == 0 ? 1 : allUserLogIn)));
-        outlineStatistics.setAllUserRegistryCompareToLast7((double) ((teacherRegistryLast7 + studentRegistryLast7) / (allUserRegistry == 0 ? 1 : allUserRegistry)));
+        outlineStatistics.setAllUserLogInCompareToLast7(((double) (teacherLogInLast7 + studentLogInLast7) / (allUserLogIn == 0 ? 1 : allUserLogIn)));
+        outlineStatistics.setAllUserRegistryCompareToLast7( ((double)(teacherRegistryLast7 + studentRegistryLast7) / (allUserRegistry == 0 ? 1 : allUserRegistry)));
         outlineStatistics.setStudentLogInLast7(studentLogInLast7);
         outlineStatistics.setTeacherLogInLast7(teacherLogInLast7);
         outlineStatistics.setStudentRegistryLast7(studentRegistryLast7);
