@@ -48,8 +48,9 @@ public class SelectionService implements ISelectionService {
     private boolean isAlreadySelected(StudentEntity studentEntity, ReleasementEntity releasementEntity) {
         List<SelectionEntity> selectionEntityList = selectionDAO.retrieveByReleasement(releasementEntity);
         for (SelectionEntity selectionEntity : selectionEntityList) {
-            if (studentEntity.getStudentEmail().equals(selectionEntity.getStudentEntity().getStudentEmail()))
+            if (studentEntity.getStudentEmail().equals(selectionEntity.getStudentEntity().getStudentEmail())) {
                 return true;
+            }
         }
         return false;
     }
@@ -99,15 +100,30 @@ public class SelectionService implements ISelectionService {
         return selectionState;
     }
 
+
     @Override
     public List<SelectionEntity> getSelectionOf(String studentEmail) {
         StudentEntity studentEntity = studentDAO.retrieveByEmail(studentEmail);
         List<SelectionEntity> selectionEntityList = selectionDAO.retrieveByStudent(studentEntity);
         List<SelectionEntity> ret = new ArrayList<>();
         for (SelectionEntity selectionEntity : selectionEntityList) {
-            if (selectionEntity.getReleasementEntity().isActive()) {
+            if (!selectionEntity.getSelectionState().equals(SelectionState.DROPPED) && selectionEntity.getSelectionState().equals(SelectionState.MISS) && selectionEntity.getReleasementEntity().isActive()) {
                 ret.add(selectionEntity);
             }
+        }
+        return ret;
+    }
+
+    @Override
+    public List<SelectionEntity> getAllSelectionOf(String studentEmail) throws StudentNotExistException {
+        StudentEntity studentEntity = studentDAO.retrieveByEmail(studentEmail);
+        if (studentEntity == null)
+            throw new StudentNotExistException();
+        List<SelectionEntity> selectionEntityList = selectionDAO.retrieveByStudent(studentEntity);
+        List<SelectionEntity> ret = new ArrayList<>();
+        for (SelectionEntity selectionEntity : selectionEntityList) {
+            if (selectionEntity.getStudentEntity().getStudentEmail().equals(studentEmail))
+                ret.add(selectionEntity);
         }
         return ret;
     }
@@ -128,6 +144,9 @@ public class SelectionService implements ISelectionService {
             throw new SelectionNotExistException("沒有學生選課");
         }
         for (SelectionEntity selectionEntity : selectionEntityList) {
+            if (selectionEntity.getSelectionState().equals(SelectionState.MISS) || selectionEntity.getSelectionState().equals(SelectionState.DROPPED))
+                continue;
+
             String subject =
                     releasementEntity.getCourseEntity().getName() + " 群發郵件";
             String studentEmail = selectionEntity.getStudentEntity().getStudentEmail();
@@ -138,5 +157,18 @@ public class SelectionService implements ISelectionService {
             logger.info("已發送郵件至 {}", studentEmail);
             logger.info("郵件內容為 {}", wrappedContent);
         }
+    }
+
+    @Override
+    public void drop(Long slid) throws SelectionNotExistException, DropSelectionException {
+        SelectionEntity selectionEntity = getSelectionBySlid(slid);
+        if (selectionEntity.getSelectionState().equals(SelectionState.DROPPED)) {
+            throw new DropSelectionException("已經退選了");
+        }
+        if (selectionEntity.getSelectionState().equals(SelectionState.MISS)) {
+            throw new DropSelectionException("你並沒有選上");
+        }
+        selectionEntity.setSelectionState(SelectionState.DROPPED);
+        selectionDAO.update(selectionEntity);
     }
 }

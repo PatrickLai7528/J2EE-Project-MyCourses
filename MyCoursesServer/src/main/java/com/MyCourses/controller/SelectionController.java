@@ -99,4 +99,18 @@ public class SelectionController {
             return ResponseUtils.error(e.getLocalizedMessage());
         }
     }
+
+    @PleaseLog
+    @CrossOrigin(origins = "http://localhost:3000")
+//    @VerifyToken
+    @PostMapping("drop/{slid}")
+    public APIResponse<Object> dropSelection(@PathVariable(name = "slid") Long slid) {
+        try {
+            selectionService.drop(slid);
+            return ResponseUtils.ok("發送成功");
+        } catch (SelectionNotExistException | DropSelectionException e) {
+            e.printStackTrace();
+            return ResponseUtils.error(e.getLocalizedMessage());
+        }
+    }
 }

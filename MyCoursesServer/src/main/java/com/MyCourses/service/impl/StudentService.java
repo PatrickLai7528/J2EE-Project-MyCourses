@@ -62,7 +62,7 @@ public class StudentService implements IStudentService {
         StudentEntity studentFound = studentDAO.retrieveByEmail(studentEntity.getStudentEmail());
         studentFound.setLastLogInDate(new Date());
         long loggedInTimes = studentFound.getLoggedInTimes();
-        studentFound.setLoggedInTimes(loggedInTimes);
+        studentFound.setLoggedInTimes(loggedInTimes + 1);
         studentDAO.update(studentFound);
         return studentFound.getPassword().equals(encryptedPassword);
     }

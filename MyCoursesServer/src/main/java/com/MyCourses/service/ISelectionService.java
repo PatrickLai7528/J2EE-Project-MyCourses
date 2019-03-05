@@ -22,10 +22,12 @@ public interface ISelectionService {
 
     List<SelectionEntity> getSelectionOf(String studentEmail);
 
+    List<SelectionEntity> getAllSelectionOf(String studentEmail) throws StudentNotExistException;
+
     SelectionEntity getSelectionBySlid(Long slid) throws SelectionNotExistException;
 
     void broadCastEmailToSelector(Long releasementId, String content) throws MailSendingException, SelectionNotExistException;
 
-    void 
+    void drop(Long slid) throws SelectionNotExistException, DropSelectionException;
 }
 

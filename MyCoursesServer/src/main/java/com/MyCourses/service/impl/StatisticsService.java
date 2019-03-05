@@ -10,6 +10,7 @@ import com.MyCourses.entity.*;
 import com.MyCourses.entity.enums.ApprovalState;
 import com.MyCourses.entity.enums.SelectionState;
 import com.MyCourses.exceptions.ReleasementNotExistException;
+import com.MyCourses.exceptions.StudentNotExistException;
 import com.MyCourses.exceptions.TeacherNotExistException;
 import com.MyCourses.service.*;
 import com.MyCourses.utils.DateUtils;
@@ -51,10 +52,10 @@ public class StatisticsService implements IStatisticsService {
     public AdminStatistics getAdminStatistics() {
         AdminStatistics adminStatistics = new AdminStatistics();
         adminStatistics.setOutlineStatistics(this.calcAdminOutlineStatistics());
-        adminStatistics.setStudentStatisticsList(this.calcAdminStudentStatistics());
         try {
+            adminStatistics.setStudentStatisticsList(this.calcAdminStudentStatistics());
             adminStatistics.setTeacherStatisticsList(this.calcAdminTeacherStatistics());
-        } catch (TeacherNotExistException e) {
+        } catch (TeacherNotExistException | StudentNotExistException e) {
             e.printStackTrace();
         }
         return adminStatistics;
@@ -170,7 +171,7 @@ public class StatisticsService implements IStatisticsService {
         return teacherStatisticsList;
     }
 
-    private List<AdminStatistics.StudentStatistics> calcAdminStudentStatistics() {
+    private List<AdminStatistics.StudentStatistics> calcAdminStudentStatistics() throws StudentNotExistException {
         List<AdminStatistics.StudentStatistics> studentStatisticsList = new ArrayList<>();
         List<StudentEntity> studentEntityList = studentService.getAllStudents();
         if (studentEntityList == null || studentEntityList.isEmpty()) return null;
@@ -207,7 +208,7 @@ public class StatisticsService implements IStatisticsService {
             String studentEmail = studentEntity.getStudentEmail();
             long dropped = 0;
             long loggedIn = studentEntity.getLoggedInTimes();
-            long selected = selectionService.getSelectionOf(studentEmail).size();
+            long selected = selectionService.getAllSelectionOf(studentEmail).size();
             double droppedAvgProportion;
             double loggedInAvgProportion = (studentEntity.getLoggedInTimes() / (logInAvg == 0 ? 1 : logInAvg));
             double selectedAvgProportion;
@@ -216,7 +217,7 @@ public class StatisticsService implements IStatisticsService {
             List<AdminStatistics.StudentStatistics.SimplifySelection> simplifySelectionList = new ArrayList<>();
 
             List<SelectionEntity> selectionEntityList =
-                    selectionService.getSelectionOf(studentEntity.getStudentEmail());
+                    selectionService.getAllSelectionOf(studentEntity.getStudentEmail());
 
             for (SelectionEntity selectionEntity : selectionEntityList) {
                 if (selectionEntity.getSelectionState().equals(SelectionState.DROPPED)) {
