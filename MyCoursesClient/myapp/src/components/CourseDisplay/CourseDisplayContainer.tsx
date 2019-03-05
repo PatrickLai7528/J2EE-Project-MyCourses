@@ -131,6 +131,7 @@ export default class CourseDisplayContainer extends React.Component<ICourseDispl
                 />
                 <Modal
                     title="創建課程"
+                    destroyOnClose={true}
                     visible={this.state.addCourseModalVisible}
                     onOk={this.handleAddCourseOK.bind(this)}
                     confirmLoading={this.state.addCourseConfirmLoading}
@@ -149,6 +150,7 @@ export default class CourseDisplayContainer extends React.Component<ICourseDispl
                 </Modal>
                 <Modal
                     title="發佈課程"
+                    destroyOnClose={true}
                     visible={this.state.releaseCourseModalVisible}
                     onOk={this.handleReleaseCourseOK.bind(this)}
                     confirmLoading={this.state.releaseCourseConfirmLoading}

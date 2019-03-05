@@ -7,14 +7,11 @@ package com.MyCourses.service;/*
  */
 
 import com.MyCourses.entity.AdminEntity;
-import com.MyCourses.exceptions.CourseAlreadyReleaseException;
-import com.MyCourses.exceptions.CourseNotExistException;
-import com.MyCourses.exceptions.ReleasementAlreadyPassEffectiveTimeException;
-import com.MyCourses.exceptions.ReleasementNotExistException;
+import com.MyCourses.exceptions.*;
 
 public interface IAdminService {
 
-    boolean logIn(AdminEntity adminEntity);
+    boolean logIn(AdminEntity adminEntity) throws AdminNotExistException;
 
     void approveCourse(Long cid) throws CourseNotExistException, CourseAlreadyReleaseException;
 

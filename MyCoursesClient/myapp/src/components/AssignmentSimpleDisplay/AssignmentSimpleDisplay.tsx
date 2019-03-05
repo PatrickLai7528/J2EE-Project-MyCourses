@@ -12,6 +12,7 @@ export interface IAssignmentDisplayProps {
     // forTeacher?: IAppForTeacherState
     addAssignmentButton?: React.ReactNode
     submitAssignmentButtonList?: React.ReactNode[]
+    downloadAssignmentButton?: (assignment: IAssignment) => React.ReactNode
     assignmentList: IAssignment[]
 }
 
@@ -42,10 +43,9 @@ export const AssignmentSimpleDisplay: React.FunctionComponent<IAssignmentDisplay
                                     <List.Item
                                         actions={
                                             [
-                                                <IconText type="check"
-                                                          text={"提交人數：" + (assignment.submissionEntityList ? assignment.submissionEntityList.length : 0)}/>,
                                                 <IconText type="calendar"
                                                           text={"截止日期：" + moment(assignment.ddl).format("YYYY-MM-DD")}/>,
+                                                props.downloadAssignmentButton && props.downloadAssignmentButton(assignment),
                                                 <div>
                                                     {/* slideEntity is a optional value of assignment */}
                                                     {assignment.slideEntity ?

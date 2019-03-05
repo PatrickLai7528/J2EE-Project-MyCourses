@@ -26,6 +26,6 @@ public interface ISelectionService {
 
     void broadCastEmailToSelector(Long releasementId, String content) throws MailSendingException, SelectionNotExistException;
 
-
+    void 
 }
 

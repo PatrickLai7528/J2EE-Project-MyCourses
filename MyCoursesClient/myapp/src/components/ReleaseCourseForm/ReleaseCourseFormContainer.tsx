@@ -15,7 +15,6 @@ export interface IReleaseCourseFormContainerProps extends ISendCourseReleaseProp
 }
 
 interface IReleaseCourseFormContainerState {
-    refresh: boolean
 }
 
 export default class ReleaseCourseFormContainer extends React.Component<IReleaseCourseFormContainerProps, IReleaseCourseFormContainerState> {
@@ -61,12 +60,11 @@ export default class ReleaseCourseFormContainer extends React.Component<IRelease
         if (nextProps.isTimeToSubmit) {
             this.submit()
         }
-        this.setState({refresh: !this.state.refresh})
     }
 
     public render(): React.ReactNode {
         return (
-            <WrappedReleaseForm refresh={this.state.refresh} wrappedComponentRef={(form: ReleaseCourseForm) => {
+            <WrappedReleaseForm wrappedComponentRef={(form: ReleaseCourseForm) => {
                 this.form = form;
             }}/>
         )

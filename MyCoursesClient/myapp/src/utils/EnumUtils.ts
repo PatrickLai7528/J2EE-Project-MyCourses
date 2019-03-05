@@ -4,6 +4,7 @@ import {release} from "os";
 
 export class EnumUtils {
     public static changeStringToReleasementEnum(releasement: IReleasement): IReleasement {
+        if (!releasement) return releasement;
         // @ts-ignore
         // here the enum approvalState is actually a string, so we need to make it right
         releasement.approvalState = toApprovalState(releasement.approvalState);
@@ -14,6 +15,7 @@ export class EnumUtils {
     }
 
     public static changeStringsToReleasementEnums(releasementList: IReleasement[]): IReleasement[] {
+        if (!releasementList) return releasementList;
         for (let item of releasementList) {
             // @ts-ignore
             // here the enum approvalState is actually a string, so we need to make it right
@@ -26,6 +28,7 @@ export class EnumUtils {
     }
 
     public static changeStringToCourseEnum(course: ICourse): ICourse {
+        if (!course) return course;
         // @ts-ignore
         // here the enum approvalState is actually a string, so we need to make it right
         course.approvalState = toApprovalState(course.approvalState)
@@ -33,6 +36,7 @@ export class EnumUtils {
     }
 
     public static changeStringsToCourseEnums(courseList: ICourse[]): ICourse[] {
+        if (!courseList) return courseList;
         for (let course of courseList) {
             // @ts-ignore
             // here the enum approvalState is actually a string, so we need to make it right
@@ -42,6 +46,7 @@ export class EnumUtils {
     }
 
     public static changeStringsToSelectionEnums(selectionList: ISelection[]): ISelection[] {
+        if (!selectionList) return selectionList;
         for (let selection of selectionList) {
             selection.releasementEntity = this.changeStringToReleasementEnum(selection.releasementEntity);
         }

@@ -110,7 +110,6 @@ public class FileController {
     }
 
 
-    @VerifyToken
     @GetMapping("slide/download")
     @CrossOrigin(origins = "http://localhost:3000")
     @PleaseLog
@@ -121,7 +120,6 @@ public class FileController {
     }
 
 
-    @VerifyToken
     @GetMapping("attachment/download")
     @CrossOrigin(origins = "http://localhost:3000")
     @PleaseLog
@@ -132,7 +130,6 @@ public class FileController {
     }
 
 
-    @VerifyToken
     @GetMapping("submission/download")
     @CrossOrigin(origins = "http://localhost:3000")
     @PleaseLog

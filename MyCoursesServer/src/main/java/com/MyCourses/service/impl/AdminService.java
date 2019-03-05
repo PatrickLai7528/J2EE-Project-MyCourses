@@ -13,10 +13,7 @@ import com.MyCourses.entity.AdminEntity;
 import com.MyCourses.entity.CourseEntity;
 import com.MyCourses.entity.ReleasementEntity;
 import com.MyCourses.entity.enums.ApprovalState;
-import com.MyCourses.exceptions.CourseAlreadyReleaseException;
-import com.MyCourses.exceptions.CourseNotExistException;
-import com.MyCourses.exceptions.ReleasementAlreadyPassEffectiveTimeException;
-import com.MyCourses.exceptions.ReleasementNotExistException;
+import com.MyCourses.exceptions.*;
 import com.MyCourses.service.IAdminService;
 import com.MyCourses.service.IReleasementService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,8 +35,10 @@ public class AdminService implements IAdminService {
     }
 
     @Override
-    public boolean logIn(AdminEntity adminEntity) {
+    public boolean logIn(AdminEntity adminEntity) throws AdminNotExistException {
         AdminEntity found = adminDAO.retrieveByEmail(adminEntity.getAdminEmail());
+        if(found == null)
+            throw new AdminNotExistException();
         return found.getPassword().equals(adminEntity.getPassword());
     }
 

@@ -1,8 +1,8 @@
 import * as React from "react";
-import {IReleasement} from "../../types/entities";
 import {UserType} from "../../api/UserAPI";
 import {IAppForStudentState, IAppForTeacherState} from "../App/App";
 import {Alert} from "antd";
+import {ApprovalState} from "../../types/enums";
 
 const moment = require("moment");
 
@@ -35,6 +35,11 @@ export const ReleasementManageMessage: React.FunctionComponent<IReleasementManag
         if (userType === "teacher" && forTeacher && forTeacher.managingReleasement) {
             return (
                 <div>
+                    <Alert style={{marginBottom: 10}}
+                           message={"狀態"}
+                           description={forTeacher.managingReleasement.approvalState === ApprovalState.APPROVED ? "課程已經通過審批" : "課程尚未通過審批"}
+                           type={forTeacher.managingReleasement.approvalState === ApprovalState.APPROVED ? "success" : "warning"}
+                    />
                     <Alert style={{marginBottom: 10}}
                            message="課程開始日期"
                            description={moment(forTeacher.managingReleasement.effectiveTime).format("YYYY-MM-DD")}

@@ -2,7 +2,7 @@ import * as React from "react";
 import {UserType} from "../../api/UserAPI";
 import {IAppForStudentState, IAppForTeacherState} from "../App/App";
 import {AssignmentSimpleDisplay} from "./AssignmentSimpleDisplay";
-import {IAssignment, IReleasement, ISelection} from "../../types/entities";
+import {IAssignment, IReleasement, ISelection, ISubmission} from "../../types/entities";
 import {Button} from "antd";
 import {AssignmentAddingModal} from "../AssignmentAddingModal/AssignmentAddingModal";
 import {AssignmentAddingFormContainer} from "../AssignmentAddingForm/AssignmentAddingFormContainer";
@@ -10,6 +10,8 @@ import {ISendAssignmentData, ISendSubmissionData} from "../../api/AssignmentAPI"
 import {ISendActionCallback, ISendSubmissionProps} from "../App/GeneralProps";
 import {AssignmentSubmitFormContainer} from "../AssignmentSubmitForm/AssignmentSubmitFormContainer";
 import {IconText} from "../IconText/IconText";
+import {AssignmentDownload} from "../AssignmentDownload/AssignmentDownload";
+import NetworkSettings from "../../setting/NetworkSettings";
 
 export interface IAssignmentDisplayContainerProps {
     userType: UserType
@@ -23,6 +25,9 @@ interface IAssignmentDisplayContainerState {
     submitForm: boolean
     submittingAssignment?: IAssignment
     form: AssignmentModalForm
+
+    downloadModalVisible: boolean
+    downloadingAssignment?: IAssignment
 }
 
 type AssignmentModalForm = "SUBMIT" | "UPLOAD"
@@ -36,7 +41,8 @@ export class AssignmentSimpleDisplayContainer extends React.Component<IAssignmen
             modalVisible: false,
             confirmLoading: false,
             submitForm: false,
-            form: "UPLOAD"
+            form: "UPLOAD",
+            downloadModalVisible: false
         }
     }
 
@@ -80,10 +86,18 @@ export class AssignmentSimpleDisplayContainer extends React.Component<IAssignmen
     public render(): React.ReactNode {
         return (
             <div>
-                <AssignmentSimpleDisplay assignmentList={this.getAssignmentList()}
-                                         addAssignmentButton={this.getAddAssignmentButton()}
-                                         submitAssignmentButtonList={this.getSubmitAssignmentButtonList()}
+                <AssignmentSimpleDisplay
+                    assignmentList={this.getAssignmentList()}
+                    addAssignmentButton={this.getAddAssignmentButton()}
+                    submitAssignmentButtonList={this.getSubmitAssignmentButtonList()}
+                    downloadAssignmentButton={this.getDownloadAssignmentButton.bind(this)}
                 />
+                {
+                    this.state.downloadingAssignment &&
+                    <AssignmentDownload onCancel={() => this.setState({downloadModalVisible: false})}
+                                        visible={this.state.downloadModalVisible}
+                                        assignment={this.state.downloadingAssignment}/>
+                }
                 <AssignmentAddingModal
                     title={this.getModalTitle()}
                     visible={this.state.modalVisible}
@@ -157,18 +171,20 @@ export class AssignmentSimpleDisplayContainer extends React.Component<IAssignmen
             const assignmentList: IAssignment[] = this.getAssignmentList();
             let ret: React.ReactNode[] = [];
             for (let assignment of assignmentList) {
-                let submitted: boolean = false;
+                let submitted: ISubmission | undefined;
 
                 // check this student is submitted this assignment or not
                 for (let submission of assignment.submissionEntityList) {
                     if (submission.studentEntity.studentEmail === this.props.forStudent.email) {
-                        submitted = true
+                        submitted = submission;
                     }
                 }
 
                 // submitted cannot submit again
                 if (submitted) {
-                    ret[assignment.assid] = <IconText type={"upload"} text={"已經提交"}/>
+                    ret[assignment.assid] =
+                        <a href={NetworkSettings.getOpenNetworkIP() + "/file/submission/download?fileName=" + submitted.filePath}><IconText
+                            type={"download"} text={"已經提交"}/></a>
                 } else {
                     ret[assignment.assid] = (
                         <a onClick={() => {
@@ -221,4 +237,23 @@ export class AssignmentSimpleDisplayContainer extends React.Component<IAssignmen
             return forTeacher.email;
         throw new Error();
     }
+
+    private getDownloadAssignmentButton(assignment: IAssignment): React.ReactNode {
+        const {userType, forTeacher, forStudent} = this.props;
+        if (userType === "student" && forStudent) {
+            return (
+                <IconText type="check"
+                          text={"提交人數：" + (assignment.submissionEntityList ? assignment.submissionEntityList.length : 0)}/>
+            )
+        }
+        if (userType === "teacher" && forTeacher)
+            return (
+                <a onClick={() => this.setState({
+                    downloadModalVisible: true,
+                    downloadingAssignment: assignment
+                })}><IconText type={"check"}
+                              text={"提交人數：" + (assignment.submissionEntityList ? assignment.submissionEntityList.length : 0)}/></a>
+            )
+    }
+
 }

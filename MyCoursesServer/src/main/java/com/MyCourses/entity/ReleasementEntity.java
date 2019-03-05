@@ -84,4 +84,9 @@ public class ReleasementEntity implements Serializable {
         long now = new Date().getTime();
         return effectiveTime.getTime() <= now && deadTime.getTime() >= now;
     }
+
+    public boolean isDead() {
+        long now = new Date().getTime();
+        return deadTime.getTime() <= now;
+    }
 }

@@ -47,7 +47,7 @@ export class AttachmentAssignmentAddingFormItem extends React.Component<IAssignm
             formData.append('file', file);
         });
         this.setState({uploading: true});
-        AssignmentAPI.getInstance().uploadAttachment(formData)
+        AssignmentAPI.getInstance().uploadSubmission(formData)
             .then((response: IAPIResponse<string>) => {
                 if (response.isSuccess) {
                     message.success(response.message);

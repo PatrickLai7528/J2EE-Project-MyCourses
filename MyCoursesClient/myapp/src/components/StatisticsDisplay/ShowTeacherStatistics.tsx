@@ -1,6 +1,6 @@
 import * as React from "react";
 import {ITeacherStatistics} from "../../types/entities";
-import {Col, Divider, Row, Statistic} from "antd";
+import {Col, Divider, Empty, Row, Statistic} from "antd";
 import {showSemesterStatistics} from "./ShowSesmesterStatisticsForTeacher";
 import {showReleasementStatisticsForTeacher} from "./ShowReleasementStatisticsForTeacher";
 
@@ -44,14 +44,16 @@ export const showStatistics = (statistics?: ITeacherStatistics): React.ReactNode
                 <h1>按學期統計</h1>
                 <Divider/>
                 {
-                    showSemesterStatistics(statistics)
+                    statistics && statistics.semesterStatisticsList && statistics.semesterStatisticsList.length !== 0 ? showSemesterStatistics(statistics) :
+                        <Empty/>
                 }
             </div>
             <div style={{marginBottom: 100}}>
                 <h1>按課程統計</h1>
                 <Divider/>
                 {
-                    showReleasementStatisticsForTeacher(statistics)
+                    statistics && statistics.releasementStatisticsList && statistics.releasementStatisticsList.length !== 0 ? showReleasementStatisticsForTeacher(statistics) :
+                        <Empty/>
                 }
             </div>
         </div>
