@@ -375,7 +375,7 @@ export default class App extends Component<IAppProps, IAppState> {
             });
         } catch (e) {
             console.log(e);
-            message.error("初始化老師失敗，請稍候再試")
+            message.warn("認證已失效，請重新登錄")
         }
     }
 
@@ -410,7 +410,7 @@ export default class App extends Component<IAppProps, IAppState> {
             })
         } catch (e) {
             console.log(e);
-            message.error("初始化管理員數據失敗，請稍候再試")
+            message.warn("認證已失效，請重新登錄")
         }
     }
 
@@ -456,7 +456,7 @@ export default class App extends Component<IAppProps, IAppState> {
             });
         } catch (e) {
             console.log(e);
-            message.error("初始化學生數據失敗，請稍候再試");
+            message.warn("認證已失效，請重新登錄")
         }
     }
 

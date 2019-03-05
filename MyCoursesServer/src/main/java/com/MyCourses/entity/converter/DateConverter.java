@@ -16,6 +16,7 @@ import java.util.Date;
 public class DateConverter implements AttributeConverter<Date, String> {
     @Override
     public String convertToDatabaseColumn(Date date) {
+        if (date == null) return null;
         return DateUtils.toDateString(date);
     }
 

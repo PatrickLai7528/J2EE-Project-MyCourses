@@ -40,6 +40,8 @@ public class StudentService implements IStudentService {
         if (studentDAO.exists(studentEntity))
             throw new StudentRepeatedException();
         studentEntity.setRegistryTime(new Date());
+        studentEntity.setLastLogInDate(new Date());
+        studentEntity.setLoggedInTimes((long) 0);
         studentEntity.setPassword(encryptService.encrypt(studentEntity.getPassword()));
         studentDAO.create(studentEntity);
     }
@@ -58,10 +60,10 @@ public class StudentService implements IStudentService {
         String unEncryptedPassword = studentEntity.getPassword();
         String encryptedPassword = encryptService.encrypt(unEncryptedPassword);
         StudentEntity studentFound = studentDAO.retrieveByEmail(studentEntity.getStudentEmail());
-        studentEntity.setLastLogInDate(new Date());
-        studentDAO.update(studentEntity);
-        long loggedInTimes = studentEntity.getLoggedInTimes();
-        studentEntity.setLoggedInTimes(loggedInTimes);
+        studentFound.setLastLogInDate(new Date());
+        long loggedInTimes = studentFound.getLoggedInTimes();
+        studentFound.setLoggedInTimes(loggedInTimes);
+        studentDAO.update(studentFound);
         return studentFound.getPassword().equals(encryptedPassword);
     }
 

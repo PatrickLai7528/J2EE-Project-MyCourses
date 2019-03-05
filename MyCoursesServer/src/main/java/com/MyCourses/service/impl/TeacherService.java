@@ -1,8 +1,6 @@
 package com.MyCourses.service.impl;
 
-import java.util.Date;
-import java.util.List;
-
+import com.MyCourses.dao.ITeacherDAO;
 import com.MyCourses.entity.TeacherEntity;
 import com.MyCourses.exceptions.TeacherNotExistException;
 import com.MyCourses.exceptions.TeacherRepeatedException;
@@ -11,7 +9,8 @@ import com.MyCourses.service.ITeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.MyCourses.dao.ITeacherDAO;
+import java.util.Date;
+import java.util.List;
 
 @Service
 public class TeacherService implements ITeacherService {
@@ -42,6 +41,8 @@ public class TeacherService implements ITeacherService {
             throw new TeacherRepeatedException();
 
         teacherEntity.setRegistryTime(new Date());
+        teacherEntity.setLoggedInTimes((long) 0);
+        teacherEntity.setLastLogInDate(new Date());
         teacherEntity.setPassword(encryptService.encrypt(teacherEntity.getPassword()));
         teacherDAO.create(teacherEntity);
     }
@@ -59,10 +60,10 @@ public class TeacherService implements ITeacherService {
         String unEncryptedPassword = teacherEntity.getPassword();
         String encryptedPassword = encryptService.encrypt(unEncryptedPassword);
         TeacherEntity teacherFound = teacherDAO.retrieveByEmail(teacherEntity.getTeacherEmail());
-        teacherEntity.setLastLogInDate(new Date());
-        teacherDAO.update(teacherEntity);
-        long loggedInTime = teacherEntity.getLoggedInTimes();
-        teacherEntity.setLoggedInTimes(loggedInTime+1);
+        teacherFound.setLastLogInDate(new Date());
+        long loggedInTime = teacherFound.getLoggedInTimes();
+        teacherFound.setLoggedInTimes(loggedInTime + 1);
+        teacherDAO.update(teacherFound);
         return teacherFound.getPassword().equals(encryptedPassword);
     }
 

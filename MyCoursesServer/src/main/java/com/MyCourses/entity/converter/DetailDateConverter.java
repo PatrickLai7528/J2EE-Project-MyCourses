@@ -12,17 +12,19 @@ import com.MyCourses.utils.DateUtils;
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;
 import java.util.Date;
+
 @Converter
 public class DetailDateConverter implements AttributeConverter<Date, String> {
     @Override
     public String convertToDatabaseColumn(Date date) {
+        if (date == null) return null;
         return DateUtils.toDetailDateString(date);
     }
 
     @Override
     public Date convertToEntityAttribute(String s) {
         try {
-            if(s == null) return null;
+            if (s == null) return null;
             return DateUtils.generateFromDetail(s);
         } catch (DateStringFormatException e) {
             e.printStackTrace();
