@@ -4,7 +4,7 @@ import IAPIResponse from "../../api/IAPIResponse";
 import {ISendSlideData} from "../../api/SlideAPI";
 import {ISendCommentData, ISendForumData} from "../../api/ForumAPI";
 import {ISendAddCourseData, ISendReleasementData} from "../../api/CourseAPI";
-import {ISendSelectionData} from "../../api/SelectionAPI";
+import {ISendSelectionData, ISendSelectionDropData} from "../../api/SelectionAPI";
 
 export interface UserStateProps {
     userType: UserType
@@ -49,4 +49,8 @@ export interface ISendCommentProps {
 
 export interface ISendSubmissionProps {
     sendSubmission: (data: ISendSubmissionData, callback?: ISendActionCallback) => void
+}
+
+export interface ISendSelectionDropProps {
+    sendSelectionDrop: (data: ISendSelectionDropData, callback?: ISendActionCallback) => void
 }

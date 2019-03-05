@@ -3,7 +3,7 @@ import {SlideAddingForm, WrappedSlideAddingForm} from "./SlideAddingForm";
 import {IReleasement} from "../../types/entities";
 import IAPIResponse from "../../api/IAPIResponse";
 import {ISendSlideData} from "../../api/SlideAPI";
-import {ISendSlideProps} from "../App/GeneralProps";
+import {ISendSlideProps} from "../App/SendActionProps";
 
 export interface ISlideAddingFormContainerProps extends ISendSlideProps {
     isTimeToSubmit: boolean

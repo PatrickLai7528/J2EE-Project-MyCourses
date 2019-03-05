@@ -6,7 +6,7 @@ import {IReleasement, ITeacher} from "../../types/entities";
 import {IconText} from "../IconText/IconText";
 import {ApprovalState} from "../../types/enums";
 import IAPIResponse from "../../api/IAPIResponse";
-import {ISendActionCallback} from "../App/GeneralProps";
+import {ISendActionCallback} from "../App/SendActionProps";
 import {ReleasementColumns} from "./ReleasementColumns";
 
 export interface IReleasementApprovalProps {

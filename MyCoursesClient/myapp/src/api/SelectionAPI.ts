@@ -11,6 +11,11 @@ export interface ISendSelectionData {
     rid: number
 }
 
+export interface ISendSelectionDropData {
+    studentEmail: string
+    slid: number
+}
+
 export default class SelectionAPI {
     private static instance: SelectionAPI;
 
@@ -27,7 +32,7 @@ export default class SelectionAPI {
         return new Promise<IAPIResponse<ISelection[]>>((resolve, reject) => {
             const url: string = NetworkSettings.getOpenNetworkIP() + "/selection/select" +
                 "?rid=" + data.rid + "&studentEmail=" + data.studentEmail;
-            axios.post(url,{},{headers: {"Authorization": TokenUtils.getToken()}})
+            axios.post(url, {}, {headers: {"Authorization": TokenUtils.getToken()}})
                 .then((response: any) => {
                     if (response.data.payload) {
                         const selectionList: ISelection[] = EnumUtils.changeStringsToSelectionEnums(response.data.payload);
@@ -54,7 +59,7 @@ export default class SelectionAPI {
 
     public getSelectionOfReleasement(rid: number): Promise<IAPIResponse<ISelection[]>> {
         return new Promise<IAPIResponse<ISelection[]>>((resolve, reject) => {
-            axios.get(NetworkSettings.getOpenNetworkIP() + "/selection/releasement/" + rid,{headers: {"Authorization": TokenUtils.getToken()}})
+            axios.get(NetworkSettings.getOpenNetworkIP() + "/selection/releasement/active" + rid, {headers: {"Authorization": TokenUtils.getToken()}})
                 .then((response: any) => {
                     let payload: ISelection[] = response.data.payload;
                     for (let item of payload)
@@ -72,9 +77,31 @@ export default class SelectionAPI {
         })
     }
 
+    public sendSelectionDrop(data: ISendSelectionDropData): Promise<IAPIResponse<ISelection[]>> {
+        return new Promise<IAPIResponse<ISelection[]>>((resolve, reject) => {
+            const url: string = NetworkSettings.getOpenNetworkIP() + "/selection/drop" +
+                "?slid=" + data.slid +
+                "&email=" + data.studentEmail;
+            axios.post(url)
+                .then((response: any) => {
+                    let payload: ISelection[] = response.data.payload;
+                    payload = EnumUtils.changeStringsToSelectionEnums(payload);
+                    resolve({
+                        isSuccess: response.data.code === 0,
+                        code: response.data.code,
+                        message: response.data.message,
+                        payload: payload
+                    })
+                })
+                .catch((e: any) => {
+                    reject(e);
+                })
+        })
+    }
+
     public getSelectionOf(studentEmail: string): Promise<IAPIResponse<ISelection[]>> {
         return new Promise<IAPIResponse<ISelection[]>>((resolve, reject) => {
-            axios.get(NetworkSettings.getOpenNetworkIP() + "/selection/of?studentEmail=" + studentEmail,{headers: {"Authorization": TokenUtils.getToken()}})
+            axios.get(NetworkSettings.getOpenNetworkIP() + "/selection/of?studentEmail=" + studentEmail, {headers: {"Authorization": TokenUtils.getToken()}})
                 .then((response: any) => {
                     // 處理枚舉類
                     let selectionList: any[] = response.data.payload;
@@ -94,6 +121,7 @@ export default class SelectionAPI {
                 })
                 .catch((e: any) => {
                     console.log(e);
+                    reject(e);
                 })
         });
     }

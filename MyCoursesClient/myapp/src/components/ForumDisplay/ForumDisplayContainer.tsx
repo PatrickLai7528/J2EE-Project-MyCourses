@@ -6,7 +6,7 @@ import {ForumCommentEditor, IForumCommentEditorProps} from "./ForumCommentEditor
 import {IAppForStudentState, IAppForTeacherState} from "../App/App";
 import {UserType} from "../../api/UserAPI";
 import {ISendAssignmentData} from "../../api/AssignmentAPI";
-import {ISendActionCallback} from "../App/GeneralProps";
+import {ISendActionCallback} from "../App/SendActionProps";
 import {ISendCommentData} from "../../api/ForumAPI";
 
 export interface IForumDisplayProps {

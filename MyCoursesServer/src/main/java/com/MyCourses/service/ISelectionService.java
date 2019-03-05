@@ -16,11 +16,14 @@ public interface ISelectionService {
 
     List<SelectionEntity> getAll();
 
-    List<SelectionEntity> getSelectionOfReleasement(Long releasementId);
+    // active means SelectionState != MISS and != DROPPED
+    List<SelectionEntity> getActiveSelectionOfReleasement(Long releasementId);
+
+    List<SelectionEntity> getAllSelectionOfReleasement(Long releasemedId);
 
     SelectionState select(String studentEmail, Long rid) throws ReleasementNotExistException, StudentNotExistException, RepeatSelectCourseException, SelectionFailExceptions;
 
-    List<SelectionEntity> getSelectionOf(String studentEmail);
+    List<SelectionEntity> getActiveSelectionOf(String studentEmail);
 
     List<SelectionEntity> getAllSelectionOf(String studentEmail) throws StudentNotExistException;
 

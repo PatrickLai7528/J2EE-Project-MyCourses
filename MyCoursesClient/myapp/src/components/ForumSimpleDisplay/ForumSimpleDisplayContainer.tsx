@@ -5,7 +5,7 @@ import {ForumSimpleDisplay} from "./ForumSimpleDisplay";
 import {IForum} from "../../types/entities";
 import {ForumAddingModal} from "../ForumAddingModal/ForumAddingModal";
 import {ForumAddingFormContainer} from "../ForumAddingForm/ForumAddingFormContainer";
-import {ISendActionCallback} from "../App/GeneralProps";
+import {ISendActionCallback} from "../App/SendActionProps";
 import {ISendForumData} from "../../api/ForumAPI";
 
 export interface IForumSimpleDisplayContainerProps {

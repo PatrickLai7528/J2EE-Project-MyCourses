@@ -2,7 +2,7 @@ import * as React from "react";
 import {AssignmentSubmitForm, WrappedAssignmentSubmitForm} from "./AssignmentSubmitForm";
 import {IAssignment, ISelection} from "../../types/entities";
 import IAPIResponse from "../../api/IAPIResponse";
-import {ISendSubmissionProps} from "../App/GeneralProps";
+import {ISendSubmissionProps} from "../App/SendActionProps";
 import {ISendSubmissionData} from "../../api/AssignmentAPI";
 
 export interface IAssignmentSubmitFormContainerProps extends ISendSubmissionProps {

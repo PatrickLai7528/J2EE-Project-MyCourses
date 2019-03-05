@@ -6,7 +6,7 @@ import {ISlide} from "../../types/entities";
 import {Button} from "antd";
 import {SlideAddingModal} from "../SlideAddingModal/SlideAddingModal";
 import {SlideAddingFormContainer} from "../SlideAddingForm/SlideAddingFormContainer";
-import {ISendActionCallback} from "../App/GeneralProps";
+import {ISendActionCallback} from "../App/SendActionProps";
 import {ISendSlideData} from "../../api/SlideAPI";
 
 export interface ISlideDisplayContainerProps {

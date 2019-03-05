@@ -58,7 +58,7 @@ public class SelectionController {
                 default:
                     throw new IllegalStateException("should not be here");
             }
-            List<SelectionEntity> selectionEntityList = selectionService.getSelectionOf(studentEmail);
+            List<SelectionEntity> selectionEntityList = selectionService.getActiveSelectionOf(studentEmail);
             return ResponseUtils.ok(message, selectionEntityList);
         } catch (RepeatSelectCourseException | ReleasementNotExistException | StudentNotExistException | SelectionFailExceptions e) {
             e.printStackTrace();
@@ -67,11 +67,11 @@ public class SelectionController {
     }
 
     @PleaseLog
-    @GetMapping("releasement/{rid}")
+    @GetMapping("releasement/active/{rid}")
     @VerifyToken
     @CrossOrigin(origins = "http://localhost:3000")
-    public APIResponse<List<SelectionEntity>> getSelectionByRid(@PathVariable(name = "rid") Long rid) {
-        List<SelectionEntity> selectionEntityList = selectionService.getSelectionOfReleasement(rid);
+    public APIResponse<List<SelectionEntity>> getActiveSelectionByRid(@PathVariable(name = "rid") Long rid) {
+        List<SelectionEntity> selectionEntityList = selectionService.getActiveSelectionOfReleasement(rid);
         return ResponseUtils.ok("操作成功", selectionEntityList);
     }
 
@@ -80,7 +80,7 @@ public class SelectionController {
     @VerifyToken
     @GetMapping("of")
     public APIResponse<List<SelectionEntity>> getSelectionOf(@RequestParam(name = "studentEmail") String studentEmail) {
-        List<SelectionEntity> list = selectionService.getSelectionOf(studentEmail);
+        List<SelectionEntity> list = selectionService.getActiveSelectionOf(studentEmail);
         return ResponseUtils.ok("操作成功", list);
     }
 
@@ -103,14 +103,15 @@ public class SelectionController {
     @PleaseLog
     @CrossOrigin(origins = "http://localhost:3000")
 //    @VerifyToken
-    @PostMapping("drop/{slid}")
-    public APIResponse<Object> dropSelection(@PathVariable(name = "slid") Long slid) {
+    @PostMapping("drop")
+    public APIResponse<List<SelectionEntity>> dropSelection(@RequestParam(name = "slid") Long slid,
+                                             @RequestParam(name = "email") String studentEmail) {
         try {
             selectionService.drop(slid);
-            return ResponseUtils.ok("發送成功");
+            return ResponseUtils.ok("發送成功", selectionService.getActiveSelectionOf(studentEmail));
         } catch (SelectionNotExistException | DropSelectionException e) {
             e.printStackTrace();
-            return ResponseUtils.error(e.getLocalizedMessage());
+            return ResponseUtils.error(e.getLocalizedMessage(), null);
         }
     }
 }

@@ -7,7 +7,8 @@ import {SlideSimpleDisplayContainer} from "../SlideSimpleDisplay/SlideSimpleDisp
 import {ForumSimpleDisplayContainer} from "../ForumSimpleDisplay/ForumSimpleDisplayContainer";
 import {Divider, Layout} from "antd";
 import {ReleasementManageMessage} from "./ReleasementManageMessage";
-import {ReleasementOperationForTeacherContainer} from "../ReleasementOperationForTeacher/ReleasementOperationForTeacherContainer";
+import {ReleasementOperationForTeacher} from "../ReleasementOperationForTeacher/ReleasementOperationForTeacher";
+import {ReleasementOperationForStudent} from "../ReleasementOperationForStudent/ReleasementOperationForStudent";
 
 export interface IReleasementManageContainerProps {
     forTeacher?: IAppForTeacherState
@@ -47,7 +48,8 @@ export default class ReleasementManageContainer extends React.Component<IRelease
                         <Layout.Content>
                             <h1>{releasement.courseEntity.name}</h1>
                             <Divider/>
-                            <ReleasementManageMessage userType={userType} forStudent={forStudent} forTeacher={forTeacher}/>
+                            <ReleasementManageMessage userType={userType} forStudent={forStudent}
+                                                      forTeacher={forTeacher}/>
                             <Divider/>
                             <SlideSimpleDisplayContainer
                                 userType={userType}
@@ -75,9 +77,12 @@ export default class ReleasementManageContainer extends React.Component<IRelease
     }
 
     private showOperation(): React.ReactNode {
-        const {userType, forTeacher} = this.props;
+        const {userType, forTeacher, forStudent} = this.props;
         if (userType === "teacher" && forTeacher) {
-            return <ReleasementOperationForTeacherContainer userType={userType} forTeacher={forTeacher}/>
+            return <ReleasementOperationForTeacher userType={userType} forTeacher={forTeacher}/>
+        }
+        if (userType === "student" && forStudent) {
+            return <ReleasementOperationForStudent userType={userType} forStudent={forStudent}/>
         }
     }
 

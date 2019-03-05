@@ -7,7 +7,7 @@ import {Button} from "antd";
 import {AssignmentAddingModal} from "../AssignmentAddingModal/AssignmentAddingModal";
 import {AssignmentAddingFormContainer} from "../AssignmentAddingForm/AssignmentAddingFormContainer";
 import {ISendAssignmentData, ISendSubmissionData} from "../../api/AssignmentAPI";
-import {ISendActionCallback, ISendSubmissionProps} from "../App/GeneralProps";
+import {ISendActionCallback, ISendSubmissionProps} from "../App/SendActionProps";
 import {AssignmentSubmitFormContainer} from "../AssignmentSubmitForm/AssignmentSubmitFormContainer";
 import {IconText} from "../IconText/IconText";
 import {AssignmentDownload} from "../AssignmentDownload/AssignmentDownload";

@@ -3,7 +3,7 @@ import WrappedReleaseForm, {ReleaseCourseForm} from "./ReleaseCourseForm";
 import {ISendReleasementData} from "../../api/CourseAPI";
 import {ICourse} from "../../types/entities";
 import IAPIResponse from "../../api/IAPIResponse";
-import {ISendCourseReleaseProps} from "../App/GeneralProps";
+import {ISendCourseReleaseProps} from "../App/SendActionProps";
 
 export interface IReleaseCourseFormContainerProps extends ISendCourseReleaseProps {
     isTimeToSubmit: boolean

@@ -1,9 +1,9 @@
-import {ISendActionCallback} from "./GeneralProps";
+import {ISendActionCallback} from "./SendActionProps";
 import IAPIResponse from "../../api/IAPIResponse";
 import SlideAPI, {ISendSlideData} from "../../api/SlideAPI";
 import ForumAPI, {ISendCommentData, ISendForumData} from "../../api/ForumAPI";
 import AssignmentAPI, {ISendAssignmentData, ISendSubmissionData} from "../../api/AssignmentAPI";
-import SelectionAPI, {ISendSelectionData} from "../../api/SelectionAPI";
+import SelectionAPI, {ISendSelectionData, ISendSelectionDropData} from "../../api/SelectionAPI";
 import CourseAPI, {ISendAddCourseData, ISendReleasementData} from "../../api/CourseAPI";
 import ReleasementAPI from "../../api/ReleasementAPI";
 import {
@@ -116,6 +116,13 @@ export class SendActionHandler {
         return this.sendAction(
             async () => {
                 return await AdminAPI.getInstance().sendReleasementReject(data);
+            }, callback);
+    }
+
+    public static sendSelectionDrop(data: ISendSelectionDropData, callback?: ISendActionCallback): (doAfter: (payload: any) => void) => void {
+        return this.sendAction(
+            async () => {
+                return await SelectionAPI.getInstance().sendSelectionDrop(data);
             }, callback);
     }
 }

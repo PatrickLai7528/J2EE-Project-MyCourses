@@ -4,7 +4,7 @@ import {ISendAssignmentData} from "../../api/AssignmentAPI";
 import IAPIResponse from "../../api/IAPIResponse";
 import {IReleasement} from "../../types/entities";
 import {toByteUnit} from "../../types/enums";
-import {ISendAssignmentProps} from "../App/GeneralProps";
+import {ISendAssignmentProps} from "../App/SendActionProps";
 
 export interface IAssignmentAddingFormContainerProps extends ISendAssignmentProps {
     isTimeToSubmit: boolean

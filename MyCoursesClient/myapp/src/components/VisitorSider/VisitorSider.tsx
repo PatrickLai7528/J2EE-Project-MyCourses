@@ -19,11 +19,6 @@ const VisitorSider: React.FunctionComponent<IVisitorSiderProps> = (props: IVisit
                 defaultOpenKeys={["types"]}
                 // style={{height: '100%', borderRight: 0}}
             >
-                <Menu.Item key={"calendar"}>
-                    <NavLink exact={true} to="/calendar">
-                        <Icon type="setting"/>個人檔案
-                    </NavLink>
-                </Menu.Item>
                 <Menu.Item key={"releasementAll"}>
                     <NavLink exact={true} to="/releasement/all">
                         <Icon type="book"/>所有課程

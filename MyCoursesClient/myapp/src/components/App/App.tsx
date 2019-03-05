@@ -9,7 +9,7 @@ import {UserType} from "../../api/UserAPI";
 import CourseAPI, {ISendAddCourseData, ISendReleasementData} from "../../api/CourseAPI";
 import IAPIResponse from "../../api/IAPIResponse";
 import {ICourse, IForum, IReleasement, ISelection} from "../../types/entities";
-import SelectionAPI, {ISendSelectionData} from "../../api/SelectionAPI";
+import SelectionAPI, {ISendSelectionData, ISendSelectionDropData} from "../../api/SelectionAPI";
 import ReleasementAPI from "../../api/ReleasementAPI";
 import Cookies from "universal-cookie/es6";
 import {ISendAssignmentData, ISendSubmissionData} from "../../api/AssignmentAPI";
@@ -22,9 +22,9 @@ import {
     ISendAssignmentProps,
     ISendCommentProps,
     ISendCourseReleaseProps, ISendCourseSelectionProps,
-    ISendForumProps,
+    ISendForumProps, ISendSelectionDropProps,
     ISendSlideProps, ISendSubmissionProps
-} from "./GeneralProps";
+} from "./SendActionProps";
 import {ContentRouter} from "../ContentRouter/ContentRouter";
 import {SendActionHandler} from "./SendActionHandler";
 import VisitorSider from "../VisitorSider/VisitorSider";
@@ -36,7 +36,7 @@ import {
     IReleasementRejectData
 } from "../../api/AdminAPI";
 
-export interface IAppForStudentState extends ISendCourseSelectionProps, ISendCommentProps, ISendForumProps, ISendSubmissionProps {
+export interface IAppForStudentState extends ISendSelectionDropProps, ISendCourseSelectionProps, ISendCommentProps, ISendForumProps, ISendSubmissionProps {
     displayingSelection?: ISelection
     selectionList?: ISelection[]
     email: string
@@ -318,6 +318,19 @@ export default class App extends Component<IAppProps, IAppState> {
         SendActionHandler.sendCourseReject(data, callback)(doAfter);
     }
 
+    private sendSelectionDrop(data:ISendSelectionDropData, callback?:ISendActionCallback):void{
+        const doAfter: (payload: any) => void = (payload: ISelection[]) => {
+            this.state.userType === "student" && this.state.forStudent &&
+            this.setState({
+                forStudent: {
+                    ...this.state.forStudent,
+                    selectionList: payload
+                }
+            })
+        };
+        SendActionHandler.sendSelectionDrop(data,callback)(doAfter);
+    }
+
     private sendCourseSelection(data: ISendSelectionData, callback?: ISendActionCallback): void {
         const doAfter: (payload: any) => void = (payload: ISelection[]) => {
             this.state.userType === "student" && this.state.forStudent &&
@@ -332,7 +345,7 @@ export default class App extends Component<IAppProps, IAppState> {
     }
 
     private async handleTeacherLogIn(teacherEmail: string) {
-        console.log("teacher log in");
+        // console.log("teacher log in");
         try {
             let courseList: ICourse[] = [];
             let releasementList: IReleasement[] = [];
@@ -451,7 +464,8 @@ export default class App extends Component<IAppProps, IAppState> {
                     sendComment: this.sendComment.bind(this),
                     sendCourseSelection: this.sendCourseSelection.bind(this),
                     sendForum: this.sendForum.bind(this),
-                    sendSubmission: this.sendSubmission.bind(this)
+                    sendSubmission: this.sendSubmission.bind(this),
+                    sendSelectionDrop:this.sendSelectionDrop.bind(this)
                 }
             });
         } catch (e) {

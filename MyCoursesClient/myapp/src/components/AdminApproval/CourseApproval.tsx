@@ -7,7 +7,7 @@ import {ICourse, ITeacher} from "../../types/entities";
 import {IconText} from "../IconText/IconText";
 import {ApprovalState} from "../../types/enums";
 import IAPIResponse from "../../api/IAPIResponse";
-import {ISendActionCallback} from "../App/GeneralProps";
+import {ISendActionCallback} from "../App/SendActionProps";
 
 
 export interface ICourseApprovalProps {

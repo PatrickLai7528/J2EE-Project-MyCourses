@@ -2,7 +2,7 @@ import * as React from "react";
 import {UserType} from "../../api/UserAPI";
 import {IForum, IReleasement, ISelection} from "../../types/entities";
 import ReleasementManageContainer from "../ReleasementManage/ReleasementManageContainer";
-import {UserStateProps} from "../App/GeneralProps";
+import {UserStateProps} from "../App/SendActionProps";
 
 export interface ISelectionDisplayProps extends UserStateProps {
     selection: ISelection

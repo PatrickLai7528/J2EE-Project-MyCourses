@@ -2,7 +2,7 @@ import * as React from "react";
 import {Comment} from "antd";
 import {IComment, IForum, IReleasement} from "../../types/entities";
 import {ForumCommentEditor} from "./ForumCommentEditor";
-import {ISendCommentProps, UserStateProps} from "../App/GeneralProps";
+import {ISendCommentProps, UserStateProps} from "../App/SendActionProps";
 
 const moment = require("moment");
 

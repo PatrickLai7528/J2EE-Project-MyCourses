@@ -2,7 +2,7 @@ import * as React from "react";
 import {NavLink} from "react-router-dom";
 import {Icon, Layout, Menu} from "antd";
 import {IReleasement} from "../../types/entities";
-import {UserStateProps} from "../App/GeneralProps";
+import {UserStateProps} from "../App/SendActionProps";
 
 const moment = require("moment");
 
@@ -24,11 +24,6 @@ export const TeacherSider: React.FunctionComponent<ITeacherSiderProps> = (props:
                 mode="inline"
                 defaultOpenKeys={["types"]}
             >
-                <Menu.Item key={"calendar"}>
-                    <NavLink exact={true} to="/calendar">
-                        <Icon type="setting"/>個人檔案
-                    </NavLink>
-                </Menu.Item>
                 <Menu.Item key={"course"}>
                     <NavLink exact={true} to="/course/all">
                         <Icon type="book"/>待發佈課程

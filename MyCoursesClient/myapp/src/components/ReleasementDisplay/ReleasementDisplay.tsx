@@ -27,12 +27,7 @@ const ReleasementDisplay: React.FunctionComponent<ICourseDisplayProps> = (props:
                                             () => {
                                                 props.sendSelectAction(releasement)
                                             }
-                                        }>選課</Button>,
-                                        <Button loading={props.isCourseSelectionSending} htmlType="button" onClick={
-                                            () => {
-                                                props.sendSelectAction(releasement)
-                                            }
-                                        }>退課</Button>,
+                                        }>選課</Button>
                                     ]
                                 }
                             >

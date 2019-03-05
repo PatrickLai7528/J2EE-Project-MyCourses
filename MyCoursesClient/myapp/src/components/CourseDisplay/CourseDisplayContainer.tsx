@@ -6,7 +6,7 @@ import IAPIResponse from "../../api/IAPIResponse";
 import {fromApprovalStateToChinese} from "../../types/enums";
 import ReleaseCourseFormContainer from "../ReleaseCourseForm/ReleaseCourseFormContainer";
 import {ISendAddCourseData} from "../../api/CourseAPI";
-import {ISendAddCourseProps, ISendCourseReleaseProps, UserStateProps} from "../App/GeneralProps";
+import {ISendAddCourseProps, ISendCourseReleaseProps, UserStateProps} from "../App/SendActionProps";
 import {UserType} from "../../api/UserAPI";
 import {IAppForTeacherState} from "../App/App";
 

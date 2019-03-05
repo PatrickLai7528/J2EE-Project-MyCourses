@@ -5,7 +5,7 @@ import {ISendCommentData} from "../../api/ForumAPI";
 import IAPIResponse from "../../api/IAPIResponse";
 import {UserType} from "../../api/UserAPI";
 import {IComment, IForum, IReleasement} from "../../types/entities";
-import {ISendCommentProps, UserStateProps} from "../App/GeneralProps";
+import {ISendCommentProps, UserStateProps} from "../App/SendActionProps";
 
 export type BaseComment = "BaseComment";
 

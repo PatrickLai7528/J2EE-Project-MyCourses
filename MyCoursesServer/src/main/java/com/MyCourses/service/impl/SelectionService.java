@@ -48,7 +48,7 @@ public class SelectionService implements ISelectionService {
     private boolean isAlreadySelected(StudentEntity studentEntity, ReleasementEntity releasementEntity) {
         List<SelectionEntity> selectionEntityList = selectionDAO.retrieveByReleasement(releasementEntity);
         for (SelectionEntity selectionEntity : selectionEntityList) {
-            if (studentEntity.getStudentEmail().equals(selectionEntity.getStudentEntity().getStudentEmail())) {
+            if (!selectionEntity.getSelectionState().equals(SelectionState.DROPPED) && studentEntity.getStudentEmail().equals(selectionEntity.getStudentEntity().getStudentEmail())) {
                 return true;
             }
         }
@@ -61,7 +61,21 @@ public class SelectionService implements ISelectionService {
     }
 
     @Override
-    public List<SelectionEntity> getSelectionOfReleasement(Long releasementId) {
+    public List<SelectionEntity> getActiveSelectionOfReleasement(Long releasementId) {
+        ReleasementEntity releasementEntity = releasementDAO.retrieveByRid(releasementId);
+        List<SelectionEntity> selectionEntityList = selectionDAO.retrieveByReleasement(releasementEntity);
+        List<SelectionEntity> ret = new ArrayList<>();
+        for (SelectionEntity selectionEntity : selectionEntityList) {
+            if (!selectionEntity.getSelectionState().equals(SelectionState.DROPPED)
+                    && !selectionEntity.getSelectionState().equals(SelectionState.MISS)
+            )
+                ret.add(selectionEntity);
+        }
+        return ret;
+    }
+
+    @Override
+    public List<SelectionEntity> getAllSelectionOfReleasement(Long releasementId) {
         ReleasementEntity releasementEntity = releasementDAO.retrieveByRid(releasementId);
         return selectionDAO.retrieveByReleasement(releasementEntity);
     }
@@ -102,12 +116,12 @@ public class SelectionService implements ISelectionService {
 
 
     @Override
-    public List<SelectionEntity> getSelectionOf(String studentEmail) {
+    public List<SelectionEntity> getActiveSelectionOf(String studentEmail) {
         StudentEntity studentEntity = studentDAO.retrieveByEmail(studentEmail);
         List<SelectionEntity> selectionEntityList = selectionDAO.retrieveByStudent(studentEntity);
         List<SelectionEntity> ret = new ArrayList<>();
         for (SelectionEntity selectionEntity : selectionEntityList) {
-            if (!selectionEntity.getSelectionState().equals(SelectionState.DROPPED) && selectionEntity.getSelectionState().equals(SelectionState.MISS) && selectionEntity.getReleasementEntity().isActive()) {
+            if (!selectionEntity.getSelectionState().equals(SelectionState.DROPPED) && !selectionEntity.getSelectionState().equals(SelectionState.MISS) && selectionEntity.getReleasementEntity().isActive()) {
                 ret.add(selectionEntity);
             }
         }

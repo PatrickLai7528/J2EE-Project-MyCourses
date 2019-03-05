@@ -3,7 +3,7 @@ import './StudentSider.css';
 import {Icon, Layout, Menu} from 'antd';
 import {NavLink} from "react-router-dom";
 import {ISelection} from "../../types/entities";
-import {UserStateProps} from "../App/GeneralProps";
+import {UserStateProps} from "../App/SendActionProps";
 
 const moment = require("moment");
 
@@ -26,11 +26,6 @@ const StudentSider: React.FunctionComponent<IStudentSiderProps> = (props: IStude
                 defaultOpenKeys={["types"]}
                 // style={{height: '100%', borderRight: 0}}
             >
-                <Menu.Item key={"calendar"}>
-                    <NavLink exact={true} to="/calendar">
-                        <Icon type="setting"/>個人檔案
-                    </NavLink>
-                </Menu.Item>
                 <Menu.Item key={"releasementAll"}>
                     <NavLink exact={true} to="/releasement/all">
                         <Icon type="book"/>所有課程

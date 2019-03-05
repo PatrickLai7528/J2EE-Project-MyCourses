@@ -6,7 +6,7 @@ import IAPIResponse from "../../api/IAPIResponse";
 import {ForumAddingForm, WrappedForumAddingForm} from "./ForumAddingForm";
 import {ISendForumData} from "../../api/ForumAPI";
 import {UserType} from "../../api/UserAPI";
-import {ISendForumProps, UserStateProps} from "../App/GeneralProps";
+import {ISendForumProps, UserStateProps} from "../App/SendActionProps";
 
 export interface IForumAddingFormContainerProps extends UserStateProps, ISendForumProps {
 

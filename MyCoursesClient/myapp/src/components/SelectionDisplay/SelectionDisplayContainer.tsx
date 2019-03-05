@@ -1,6 +1,6 @@
 import * as React from "react";
 import {SelectionDisplay} from "./SelectionDisplay";
-import {UserStateProps} from "../App/GeneralProps";
+import {UserStateProps} from "../App/SendActionProps";
 import {IAppForStudentState} from "../App/App";
 import {UserType} from "../../api/UserAPI";
 import ReleasementManageContainer from "../ReleasementManage/ReleasementManageContainer";

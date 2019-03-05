@@ -21,7 +21,7 @@ interface IReleasementOperationForTeacherContainerState {
 
 type OperationType = "BROADCAST" | "SCORE"
 
-export class ReleasementOperationForTeacherContainer extends React.Component<IReleasementOperationForTeacherContainerProps, IReleasementOperationForTeacherContainerState> {
+export class ReleasementOperationForTeacher extends React.Component<IReleasementOperationForTeacherContainerProps, IReleasementOperationForTeacherContainerState> {
 
     public constructor(props: IReleasementOperationForTeacherContainerProps) {
         super(props);

@@ -104,7 +104,7 @@ public class StatisticsService implements IStatisticsService {
             for (ReleasementEntity releasementEntity : releasementService.getReleasementOf(teacherEmail)) {
 
                 List<SelectionEntity> selectionEntityList =
-                        selectionService.getSelectionOfReleasement(releasementEntity.getRid());
+                        selectionService.getAllSelectionOfReleasement(releasementEntity.getRid());
                 selected += selectionEntityList.size();
 
                 double scoreSum = 0;
@@ -186,7 +186,7 @@ public class StatisticsService implements IStatisticsService {
             if (studentEntity.getLoggedInTimes() != null)
                 logInSum += studentEntity.getLoggedInTimes();
             List<SelectionEntity> selectionEntityList =
-                    selectionService.getSelectionOf(studentEntity.getStudentEmail());
+                    selectionService.getActiveSelectionOf(studentEntity.getStudentEmail());
             if (selectionEntityList == null || selectionEntityList.isEmpty())
                 continue;
             selectSum += selectionEntityList.size();
@@ -396,7 +396,7 @@ public class StatisticsService implements IStatisticsService {
             List<TeacherStatistics.SemesterStatistics.SimplifyReleasement> simplifyReleasementList = new ArrayList<>();
             for (ReleasementEntity releasementEntity : releasementEntityList) {
                 List<SelectionEntity> selectionEntityList =
-                        selectionService.getSelectionOfReleasement(releasementEntity.getRid());
+                        selectionService.getAllSelectionOfReleasement(releasementEntity.getRid());
 
                 selected += selectionEntityList.size();
 
@@ -434,7 +434,7 @@ public class StatisticsService implements IStatisticsService {
         for (ReleasementEntity releasementEntity : releasementService.getReleasementOf(teacherEntity.getTeacherEmail())) {
             TeacherStatistics.ReleasementStatistics releasementStatistics = new TeacherStatistics.ReleasementStatistics();
             List<SelectionEntity> selectionEntityList =
-                    selectionService.getSelectionOfReleasement(releasementEntity.getRid());
+                    selectionService.getAllSelectionOfReleasement(releasementEntity.getRid());
             releasementStatistics.setCourseName(releasementEntity.getCourseEntity().getName());
             long commented = 0;
             long downloaded = 0;
@@ -494,7 +494,7 @@ public class StatisticsService implements IStatisticsService {
             uploaded += releasementEntity.getSlideEntityList().size();
             pushlished += releasementEntity.getAssignmentEntityList().size();
 
-            selected += selectionService.getSelectionOfReleasement(releasementEntity.getRid()).size();
+            selected += selectionService.getAllSelectionOfReleasement(releasementEntity.getRid()).size();
         }
 
         outlineStatistics.setCommented(commented);
