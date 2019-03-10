@@ -20,10 +20,10 @@ export class LogInForm extends React.Component<ILogInFormProps> {
                     {getFieldDecorator('email', {
                             rules: [
                                 {
-                                    required: true, message: 'Please input your email!'
+                                    required: true, message: '請輸入郵箱'
                                 },
                                 {
-                                    type: 'email', message: 'The input is not valid E-mail!',
+                                    type: 'email', message: '請輸入有效的email地址',
                                 }
                             ],
                         }
@@ -35,7 +35,7 @@ export class LogInForm extends React.Component<ILogInFormProps> {
                     {getFieldDecorator('password', {
                         rules: [
                             {
-                                required: true, message: 'Please input your Password!'
+                                required: true, message: '請輸入密碼'
                             }
                         ],
                     })(

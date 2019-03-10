@@ -54,10 +54,10 @@ export class SignUpForm extends React.Component<ISignUpFormProps, ISignUpFormSta
                     {getFieldDecorator('email', {
                         rules: [
                             {
-                                type: 'email', message: 'The input is not valid E-mail!',
+                                type: 'email', message: '請輸入有效的email地址',
                             },
                             {
-                                required: true, message: 'Please input your E-mail!',
+                                required: true, message: '郵箱不能為空',
                             }
                         ],
                     })(
@@ -78,16 +78,16 @@ export class SignUpForm extends React.Component<ISignUpFormProps, ISignUpFormSta
                     {getFieldDecorator('password', {
                         rules: [
                             {
-                                required: true, message: 'Please input your password!',
+                                required: true, message: '請輸入密碼',
                             },
                             {
-                                min: 6, message: "Password length should be 6~16"
+                                min: 6, message: "密碼長度應為6-16"
                             },
                             {
-                                max: 16, message: "Password length should be 6~16"
+                                max: 16, message: "密碼長度應為6-16"
                             },
                             {
-                                whitespace: true, message: "Password should not contain white space"
+                                whitespace: true, message: "密碼不能包含中文字符"
                             },
                             {
                                 validator: this.validateToNextPassword.bind(this),
@@ -104,16 +104,16 @@ export class SignUpForm extends React.Component<ISignUpFormProps, ISignUpFormSta
                     {getFieldDecorator('confirm', {
                         rules: [
                             {
-                                required: true, message: 'Please confirm your password!',
+                                required: true, message: '請輸入密碼',
                             },
                             {
-                                min: 6, message: "Password length should be 6~16"
+                                min: 6, message: "密碼長度應為6-16"
                             },
                             {
-                                max: 16, message: "Password length should be 6~16"
+                                max: 16, message: "密碼長度應為6-16"
                             },
                             {
-                                whitespace: true, message: "Password should not contain white space"
+                                whitespace: true, message: "密碼不能包含中文字符"
                             },
                             {
                                 validator: this.compareToFirstPassword.bind(this),

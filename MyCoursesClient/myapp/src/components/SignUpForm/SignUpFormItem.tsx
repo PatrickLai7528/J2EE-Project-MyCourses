@@ -18,13 +18,13 @@ export class NameFormItem extends React.Component<IGeneralFormItemProps> {
                 {this.props.getFieldDecorator('name', {
                         rules: [
                             {
-                                required: true, message: 'Please input your name!', whitespace: true
+                                required: true, message: '請輸入姓名', whitespace: true
                             },
                             {
-                                max: 6, message: "It is too long for a name"
+                                max: 6, message: "姓名長度不符合要求"
                             },
                             {
-                                min: 2, message: "It is too short for a name"
+                                min: 2, message: "姓名長度不符合要求"
                             }
                         ],
                     }
@@ -83,7 +83,7 @@ export class VerifyCodeFormItem extends React.Component<IVerifyCodeFormItemProps
                 <Row gutter={8}>
                     <Col span={12}>
                         {this.props.getFieldDecorator('verifyCode', {
-                            rules: [{required: true, message: 'Please input the verification code you got!'}],
+                            rules: [{required: true, message: '請輸入驗證碼'}],
                         })(
                             <Input/>
                         )}
@@ -110,7 +110,7 @@ export class UserTypeFormItem extends React.Component<IUserTypeFormItemProps> {
                 label="用戶身份"
             >
                 {this.props.getFieldDecorator('userType', {
-                    rules: [{required: true, message: 'Please choose your user type'}],
+                    rules: [{required: true, message: '請選擇用戶身份'}],
                 })(
                     <Select
                         style={{width: '100%'}}
