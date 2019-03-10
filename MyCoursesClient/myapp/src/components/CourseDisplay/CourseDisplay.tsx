@@ -1,7 +1,7 @@
 import * as React from "react";
 import {ICourse} from "../../types/entities";
-import {Divider, Table, Tag} from "antd";
-import {ApprovalState, fromApprovalStateToChinese} from "../../types/enums";
+import {Divider, Table} from "antd";
+import {ApprovalState} from "../../types/enums";
 import {CourseColumns} from "./CourseColumns";
 
 export interface ICourseWithKey extends ICourse {
@@ -12,8 +12,6 @@ export interface ICourseDisplayProps {
     courseList: ICourse[]
     okToRelease: (course: ICourse) => void
     notOkToRelease: (course: ICourse) => void
-    okToDelete: (course: ICourse) => void
-    notOkToDelete: (course: ICourse) => void
 }
 
 const toCourseWithKey = (courseList: ICourse[]): ICourseWithKey[] => {
@@ -42,14 +40,6 @@ const CourseDisplay: React.FunctionComponent<ICourseDisplayProps> = (props: ICou
                 }}>
                     {course.isReleased ? "再次發佈" : "發佈"}
                 </a>
-                <Divider type="vertical"/>
-                 <a onClick={() => {
-                     if (course.approvalState === ApprovalState.APPROVED) {
-                         props.notOkToDelete(course);
-                     } else {
-                         props.okToDelete(course);
-                     }
-                 }}>刪除</a>
             </span>
             )
         }

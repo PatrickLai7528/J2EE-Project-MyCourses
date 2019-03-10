@@ -11,6 +11,7 @@ import com.MyCourses.exceptions.*;
 
 public interface IAdminService {
 
+
     boolean logIn(AdminEntity adminEntity) throws AdminNotExistException;
 
     void approveCourse(Long cid) throws CourseNotExistException, CourseAlreadyReleaseException;

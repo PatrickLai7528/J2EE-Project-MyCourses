@@ -122,14 +122,9 @@ export default class CourseDisplayContainer extends React.Component<ICourseDispl
                     notOkToRelease={(course: ICourse) => {
                         message.warn(fromApprovalStateToChinese(course.approvalState) + "課程不能發佈！")
                     }}
-                    okToDelete={(course: ICourse) => {
-                        message.success("刪除" + course.name);
-                    }}
-                    notOkToDelete={(course: ICourse) => {
-                        message.success(course.name + "已通過，不能刪除");
-                    }}
                 />
                 <Modal
+                    align={undefined}
                     title="創建課程"
                     destroyOnClose={true}
                     visible={this.state.addCourseModalVisible}
@@ -158,7 +153,7 @@ export default class CourseDisplayContainer extends React.Component<ICourseDispl
                     maskClosable={true}
                     okText="確定"
                     cancelText="取消"
-                >
+                    align={undefined}>
                     {/*Our own form will be presented here*/}
                     {
                         this.state.releasingCourse ?

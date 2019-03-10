@@ -15,7 +15,7 @@ import com.MyCourses.entity.ReleasementEntity;
 import com.MyCourses.entity.enums.ApprovalState;
 import com.MyCourses.exceptions.*;
 import com.MyCourses.service.IAdminService;
-import com.MyCourses.service.IReleasementService;
+import com.MyCourses.service.IEncryptService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -37,7 +37,7 @@ public class AdminService implements IAdminService {
     @Override
     public boolean logIn(AdminEntity adminEntity) throws AdminNotExistException {
         AdminEntity found = adminDAO.retrieveByEmail(adminEntity.getAdminEmail());
-        if(found == null)
+        if (found == null)
             throw new AdminNotExistException();
         return found.getPassword().equals(adminEntity.getPassword());
     }

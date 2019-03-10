@@ -14,7 +14,9 @@ import com.MyCourses.annotations.PleaseLog;
 import com.MyCourses.annotations.VerifyToken;
 import com.MyCourses.entity.CourseEntity;
 import com.MyCourses.entity.TeacherEntity;
+import com.MyCourses.exceptions.CourseAlreadyReleaseException;
 import com.MyCourses.exceptions.CourseHasNoTeacherException;
+import com.MyCourses.exceptions.CourseNotExistException;
 import com.MyCourses.exceptions.TeacherNotExistException;
 import com.MyCourses.service.ICourseService;
 import com.MyCourses.service.ITeacherService;
@@ -60,7 +62,6 @@ public class CourseController {
             return ResponseUtils.error(e.getLocalizedMessage(), null);
         }
     }
-
 
     @VerifyToken
     @PostMapping("add")

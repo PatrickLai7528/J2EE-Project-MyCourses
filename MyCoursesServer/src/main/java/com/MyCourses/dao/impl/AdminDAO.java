@@ -21,6 +21,7 @@ public class AdminDAO implements IAdminDAO {
     @PersistenceContext
     private EntityManager entityManager;
 
+
     @Override
     public AdminEntity retrieveByEmail(String adminEmail) {
         return entityManager.find(AdminEntity.class, adminEmail);

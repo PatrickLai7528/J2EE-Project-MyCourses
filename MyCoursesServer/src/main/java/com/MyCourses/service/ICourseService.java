@@ -24,5 +24,4 @@ public interface ICourseService {
     void release(Long cid, Map<String, String> config) throws CourseNotExistException, UnexpectedReleaseConfig, ReleasementDateException;
 
     CourseEntity findByCid(Long cid) throws CourseNotExistException;
-
 }
