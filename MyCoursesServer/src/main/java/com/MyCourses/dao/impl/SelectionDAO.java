@@ -59,10 +59,10 @@ public class SelectionDAO implements ISelectionDAO {
     }
 
     @Override
-    public void update(SelectionEntity selectionEntity) {
+    synchronized public void update(SelectionEntity selectionEntity) {
         SelectionEntity s = retrieveBySlid(selectionEntity.getSlid());
         s.setSelectionState(selectionEntity.getSelectionState());
-        s.setReleasementEntity(selectionEntity.getReleasementEntity());
+//        s.setReleasementEntity(selectionEntity.getReleasementEntity());
         s.setStudentEntity(selectionEntity.getStudentEntity());
         s.setScore(selectionEntity.getScore());
         entityManager.flush();

@@ -12,5 +12,5 @@ import com.MyCourses.exceptions.StudentNotExistException;
 
 public interface ISubmissionService {
 
-    public void submitAssignment(String studentEmail, Long selectionId, Long assignmentId, String filePath) throws StudentNotExistException, SelectionNotExistException, AssignmentNotExistException;
+    void submitAssignment(String studentEmail, Long selectionId, Long assignmentId, String filePath) throws StudentNotExistException, SelectionNotExistException, AssignmentNotExistException;
 }

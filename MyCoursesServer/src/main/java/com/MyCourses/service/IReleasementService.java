@@ -15,7 +15,7 @@ import java.util.List;
 public interface IReleasementService {
     List<ReleasementEntity> getAll();
 
-    List<ReleasementEntity> getAvailable();
+    List<ReleasementEntity> getApproved();
 
     List<ReleasementEntity> getReleasementOf(String teacherEmail) throws TeacherNotExistException;
 

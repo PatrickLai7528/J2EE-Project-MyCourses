@@ -19,12 +19,8 @@ import com.MyCourses.utils.ResponseUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -86,7 +82,7 @@ public class ReleasementController {
     @GetMapping("available")
     @PleaseLog
     public APIResponse<List<ReleasementEntity>> getAllAvailableRelease() {
-        List<ReleasementEntity> available = releasementService.getAvailable();
+        List<ReleasementEntity> available = releasementService.getApproved();
         return ResponseUtils.ok("操作成功", available);
     }
 

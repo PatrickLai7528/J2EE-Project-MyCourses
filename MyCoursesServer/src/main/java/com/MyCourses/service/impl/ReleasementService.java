@@ -40,7 +40,7 @@ public class ReleasementService implements IReleasementService {
     }
 
     @Override
-    public List<ReleasementEntity> getAvailable() {
+    public List<ReleasementEntity> getApproved() {
         List<ReleasementEntity> all = getAll();
         List<ReleasementEntity> available = new ArrayList<>();
         for (ReleasementEntity releasementEntity : all) {

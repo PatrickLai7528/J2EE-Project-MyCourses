@@ -231,6 +231,119 @@ create table course_entity (
 
 
 
+#### com.MyCourses.entity.conventer
+
+| 類名稱                 | 職責                                                         |
+| ---------------------- | ------------------------------------------------------------ |
+| ApprovalStateConverter | 負責實體類中的ApprovalState和數據庫的字符串的互相轉換        |
+| ByteUnitConverter            | 負責實體類中的ByteUnit和數據庫的字符串的互相轉換 |
+| DateConverter | 負責實體類中的java.util.Date類型的屬性，按YYYY-MM-DD格式，與數據庫的字符串互相轉換 |
+| DetailDateConverter | 負責實體類中java.util.Date類型的屬性，按YYYY-MM-DD HH:mm:SS格式，與數據庫的字符串互相轉換 |
+| SelectionStateConverter | 負責實體類中的SelectionState和數據庫的字符串互相轉換 |
+|  |  |
+
+#### com.MyCourses.entity.enums
+
+| 類名稱         | 職責               |
+| -------------- | ------------------ |
+| ApprovalState  | 表示課程的審批狀態 |
+| ByteUnit       | 表示字節大小單位   |
+| SelectionState | 表示選課狀態       |
+|                |                    |
+
+#### com.MyCourses.entity
+
+| 類名稱            | 職責                                                         |
+| ----------------- | ------------------------------------------------------------ |
+| AdminEntity       | 將標註了PleaseLog的Controller的類方法，以日誌方式將參數、訪問方法、請求來源IP和返回值打印在控制台上 |
+| AdminStatistics   | 以AOP的方式攔截訪問標註了VerifyToken、GenerateToken的方法的請求，根據標註完成相應Token操作 |
+| AssignmentEntity  |                                                              |
+| CommentEntity     |                                                              |
+| FileSize          |                                                              |
+| ForumEntity       |                                                              |
+| ReleasementEntity |                                                              |
+| SelectionEntity   |                                                              |
+| SlideEntity       |                                                              |
+| StudentEntity     |                                                              |
+| SubmissionEntity  |                                                              |
+| TeacherEntity     |                                                              |
+| TeacherStatistics |                                                              |
+
+#### com.MyCourses.entity.AdminStatistics
+
+| 類名稱            | 職責 |
+| ----------------- | ---- |
+| OutlineStatistics |      |
+| TeacherStatistics |      |
+| StudentStatistics |      |
+|                   |      |
+
+#### com.MyCourses.entity.AdminStatistics.TeacherStatistics
+
+| 類名稱              | 職責                                                         |
+| ------------------- | ------------------------------------------------------------ |
+| SimplifyCourse      | 簡化版CourseEntity，刪除顯示統計信息時不必要的屬性           |
+| SimplifyReleasement | 以AOP的方式攔截訪問標註了VerifyToken、GenerateToken的方法的請求，根據標註完成相應Token操作 |
+
+
+
+#### com.MyCourses.entity.AdminStatistics.StudentStatistics
+
+| 類名稱            | 職責                                            |
+| ----------------- | ----------------------------------------------- |
+| SimplifySelection | 簡化版Selection，刪除顯示統計信息時不必要的屬性 |
+
+
+
+#### com.MyCourses.entity.TeacherStatistics
+
+| 類名稱                | 職責 |
+| --------------------- | ---- |
+| SemesterStatistics    |      |
+| ReleasementStatistics |      |
+
+
+
+#### com.MyCourses.service
+
+| 類名稱              | 職責                                   | 對應實現                              |
+| ------------------- | -------------------------------------- | ------------------------------------- |
+| IAdminService       | 提供管理員的登錄、審批課程的接口       | com.MyCourses.dao.impl.AdminDao       |
+| IAssignmentService  | 提供發佈作業的接口                     | com.MyCourses.dao.impl.CommentDAO     |
+| ICourseService      | 提供增加、發佈和查詢課程的接口         | com.MyCourses.dao.impl.ForumDAO       |
+| IEncryptService     | 提供字符串哈希運算的接口               | com.MyCourses.dao.impl.ReleasementDAO |
+| IFileService        | 提接上下載文件的接口                   | /                                     |
+| IForumService       | 提供創建、留言和查詢討論區的接口       | com.MyCourses.dao.impl.ReleasementDAO |
+| IMailService        | 提供發送郵件的服務                     | com.MyCourses.dao.impl.SelectionDAO   |
+| IReleasementService | 提供發佈課程的查詢接口                 | com.MyCourses.dao.impl.StudentDAO     |
+| IReportCardService  | 提供發佈成績的接口                     | com.MyCourses.dao.impl.TeacherDAO     |
+| ISelectionService   | 提供選課、查詢選課情況和群發郵件的接口 |                                       |
+| ISlideService       | 提供上載文件的接口                     |                                       |
+| IStatisticsService  | 提供取得統計信息的接口                 |                                       |
+| IStudentService     | 提供取得登錄/注冊，查詢學生的接口      |                                       |
+| ISubmissionService  | 提供提交作業的接口                     |                                       |
+| ITeacherService     | 提供教師登錄/注冊，查詢的接口          |                                       |
+| IVerifyService      | 提供發送驗證郵件和普通郵件的接口       |                                       |
+| ReleaseConfig       |                                        |                                       |
+| RenamableRecourse   |                                        |                                       |
+
+#### com.MyCourses.utils
+
+| 類名稱        | 職責 |
+| ------------- | ---- |
+| DateUtils     |      |
+| JWTTokenUTils |      |
+| ResponseUtils |      |
+|               |      |
+
+
+
+
+
+
+
+
+
 
 ### 前端頁面
 

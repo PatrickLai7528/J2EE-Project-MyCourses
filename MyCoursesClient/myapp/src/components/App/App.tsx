@@ -99,7 +99,7 @@ export default class App extends Component<IAppProps, IAppState> {
 
     public componentWillMount(): void {
         const cookie: Cookies = new Cookies();
-        // console.log(cookie);
+        console.log(cookie);
         const userType: UserType = cookie.get("userType");
         const token: string = cookie.get("token");
         const email: string = cookie.get("email");
