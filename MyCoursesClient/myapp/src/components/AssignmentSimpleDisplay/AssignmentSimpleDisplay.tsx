@@ -49,7 +49,7 @@ export const AssignmentSimpleDisplay: React.FunctionComponent<IAssignmentDisplay
                                                 <div>
                                                     {/* slideEntity is a optional value of assignment */}
                                                     {assignment.slideEntity ?
-                                                        <a href={NetworkSettings.getOpenNetworkIP() + "/file/attachment/download?fileName=" + assignment.slideEntity.filePath + "&rename=附件-" + assignment.title}><IconText
+                                                        <a href={NetworkSettings.getOpenNetworkIP() + "/file/attachment/download?fileName=" + assignment.slideEntity.filePath}><IconText
                                                             type={"file"} text={"附件"}/></a>
                                                         : ""
                                                     }

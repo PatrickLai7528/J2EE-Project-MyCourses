@@ -116,7 +116,8 @@ public class FileService implements IFileService {
         // here can rename file
         // only the name, without the file suffix
         String onlyName;
-        String fileSuffix = "." + resource.getFilename().split("\\.")[1];
+        String[] temp = resource.getFilename().split("\\.");
+        String fileSuffix = "." + temp[temp.length - 1];
         if (rename != null) {
             onlyName = rename;
             renamableResource.setRenamed(true);
