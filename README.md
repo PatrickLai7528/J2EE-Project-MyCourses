@@ -173,13 +173,13 @@
 
 #### 前端
 
-![螢幕截圖 2019-03-11 下午10.05.31](./J2EE_MyCourses_ScreenShot/螢幕截圖 2019-03-11 下午10.05.31.png)
+![螢幕截圖 2019-03-11 下午10.05.31](./J2EE_MyCourses_ScreenShot/structure_fe_1.png)
 
-![螢幕截圖 2019-03-11 下午10.09.20](./J2EE_MyCourses_ScreenShot/螢幕截圖 2019-03-11 下午10.09.20.png)
+![螢幕截圖 2019-03-11 下午10.09.20](./J2EE_MyCourses_ScreenShot/structure_fe_2.png)
 
 #### 後端
 
-![螢幕截圖 2019-03-11 下午10.06.01](./J2EE_MyCourses_ScreenShot/螢幕截圖 2019-03-11 下午10.06.01.png)
+![螢幕截圖 2019-03-11 下午10.06.01](./J2EE_MyCourses_ScreenShot/structure_be_1.png)
 
 ### 使用框架
 
@@ -404,7 +404,7 @@
 - 登錄後將切換至相應的頁面
 - 表單驗證：郵箱需為郵箱格式、密碼不能為空且長度為6-16
 
-![螢幕截圖 2019-03-11 下午6.59.59](./J2EE_MyCourses_ScreenShot/2019-03-11 下午6.59.59.png)
+![螢幕截圖 2019-03-11 下午6.59.59](./J2EE_MyCourses_ScreenShot/login.png)
 
 
 
@@ -417,7 +417,7 @@
   - 密碼和確定密碼需一致
 - 點擊驗證碼可發送驗證碼至上面填寫的郵箱，需填寫正確驗證碼才能順利注冊
 
-![螢幕截圖 2019-03-11 下午7.00.07](./J2EE_MyCourses_ScreenShot/螢幕截圖 2019-03-11 下午7.00.07.png)
+![螢幕截圖 2019-03-11 下午7.00.07](./J2EE_MyCourses_ScreenShot/signup.png)
 
 
 
@@ -426,17 +426,17 @@
 - 審批未通過的課程不能發佈
 - 審批通過的課程可多次發佈
 
-![螢幕截圖 2019-03-11 下午7.00.40](./J2EE_MyCourses_ScreenShot/螢幕截圖 2019-03-11 下午7.00.40.png)
+![螢幕截圖 2019-03-11 下午7.00.40](./J2EE_MyCourses_ScreenShot/course_display.png)
 
 ##### 教師可創建新的課程
 
-![螢幕截圖 2019-03-11 下午7.28.49](./J2EE_MyCourses_ScreenShot/螢幕截圖 2019-03-11 下午7.28.49.png)
+![螢幕截圖 2019-03-11 下午7.28.49](./J2EE_MyCourses_ScreenShot/add_course.png)
 
 
 
 ##### 教師可發佈審批通過的課程
 
-![螢幕截圖 2019-03-11 下午7.27.30](./J2EE_MyCourses_ScreenShot/螢幕截圖 2019-03-11 下午7.27.30.png)
+![螢幕截圖 2019-03-11 下午7.27.30](./J2EE_MyCourses_ScreenShot/release_course.png)
 
 
 
@@ -444,7 +444,7 @@
 
 - 點擊修改個人資料可進行編輯
 
-![螢幕截圖 2019-03-11 下午7.02.11](./J2EE_MyCourses_ScreenShot/螢幕截圖 2019-03-11 下午7.02.11.png)
+![螢幕截圖 2019-03-11 下午7.02.11](./J2EE_MyCourses_ScreenShot/profile.png)
 
 
 
@@ -453,19 +453,19 @@
 - 若留空，則不會更新該項
 - 若要更改新的密碼，必須提供舊的密碼
 
-![螢幕截圖 2019-03-11 下午7.02.17](./J2EE_MyCourses_ScreenShot/螢幕截圖 2019-03-11 下午7.02.17.png)
+![螢幕截圖 2019-03-11 下午7.02.17](./J2EE_MyCourses_ScreenShot/profile_edit.png)
 
 
 
 ##### 教師查看統計信息（概述和按學期按計）
 
-![螢幕截圖 2019-03-11 下午7.02.31](./J2EE_MyCourses_ScreenShot/螢幕截圖 2019-03-11 下午7.02.31.png)
+![螢幕截圖 2019-03-11 下午7.02.31](./J2EE_MyCourses_ScreenShot/statistics_teacher_1.png)
 
 
 
 ##### 教師查看統計信息（按課程統計）
 
-![螢幕截圖 2019-03-11 下午7.02.37](./J2EE_MyCourses_ScreenShot/螢幕截圖 2019-03-11 下午7.02.37.png)
+![螢幕截圖 2019-03-11 下午7.02.37](./J2EE_MyCourses_ScreenShot/statistics_teacher_2.png)
 
 
 
@@ -473,25 +473,25 @@
 
 - 右上側為教師的操作面版，可對選課的學生發送郵件，或對選課學生發佈成績
 
-![螢幕截圖 2019-03-11 下午7.02.45](./J2EE_MyCourses_ScreenShot/螢幕截圖 2019-03-11 下午7.02.45.png)
+![螢幕截圖 2019-03-11 下午7.02.45](./J2EE_MyCourses_ScreenShot/releasement_display.png)
 
 
 
 ##### 教師可上傳課件
 
-![螢幕截圖 2019-03-11 下午7.34.21](./J2EE_MyCourses_ScreenShot/螢幕截圖 2019-03-11 下午7.34.21.png)
+![螢幕截圖 2019-03-11 下午7.34.21](./J2EE_MyCourses_ScreenShot/upload_slide.png)
 
 
 
 ##### 教師和學生皆可創建討論區
 
-![螢幕截圖 2019-03-11 下午7.34.38](./J2EE_MyCourses_ScreenShot/螢幕截圖 2019-03-11 下午7.34.38.png)
+![螢幕截圖 2019-03-11 下午7.34.38](./J2EE_MyCourses_ScreenShot/add_forum.png)
 
 
 
 ##### 教師可以發佈作業
 
-![螢幕截圖 2019-03-11 下午7.02.56](./J2EE_MyCourses_ScreenShot/螢幕截圖 2019-03-11 下午7.02.56.png)
+![螢幕截圖 2019-03-11 下午7.02.56](./J2EE_MyCourses_ScreenShot/add_assignment.png)
 
 
 
@@ -499,29 +499,31 @@
 
 - 下載的作業會以該學生的學號進行保存
 
-![螢幕截圖 2019-03-11 下午7.03.04](./J2EE_MyCourses_ScreenShot/螢幕截圖 2019-03-11 下午7.03.04.png)
+![螢幕截圖 2019-03-11 下午7.03.04](./J2EE_MyCourses_ScreenShot/download_submission.png)
 
 
 
 ##### 教師和學生皆可以創建討論區和留言
 
-![螢幕截圖 2019-03-11 下午7.03.20](./J2EE_MyCourses_ScreenShot/螢幕截圖 2019-03-11 下午7.03.20.png)
+![螢幕截圖 2019-03-11 下午7.03.20](./J2EE_MyCourses_ScreenShot/forum_display.png)
 
 
 
 ##### 學生瀏覽已發佈的課程
 
-![螢幕截圖 2019-03-11 下午7.05.04](./J2EE_MyCourses_ScreenShot/螢幕截圖 2019-03-11 下午7.05.04.png)
+![螢幕截圖 2019-03-11 下午7.05.04](./J2EE_MyCourses_ScreenShot/releasement_select.png)
+
+
 
 ##### 學生進入課程主頁面
 
-![螢幕截圖 2019-03-11 下午7.05.15](./J2EE_MyCourses_ScreenShot/螢幕截圖 2019-03-11 下午7.05.15.png)
+![螢幕截圖 2019-03-11 下午7.05.15](./J2EE_MyCourses_ScreenShot/releasement_display_student.png)
 
 
 
 ##### 進行退課時的提示框
 
-![螢幕截圖 2019-03-11 下午7.05.28](./J2EE_MyCourses_ScreenShot/螢幕截圖 2019-03-11 下午7.05.28.png)
+![螢幕截圖 2019-03-11 下午7.05.28](./J2EE_MyCourses_ScreenShot/drop_warn.png)
 
 
 
@@ -529,7 +531,7 @@
 
 - 不能對同一課程多次審批
 
-![螢幕截圖 2019-03-11 下午7.05.49](./J2EE_MyCourses_ScreenShot/螢幕截圖 2019-03-11 下午7.05.49.png)
+![螢幕截圖 2019-03-11 下午7.05.49](./J2EE_MyCourses_ScreenShot/approve_course.png)
 
 
 
@@ -538,31 +540,31 @@
 - 不能對同一課程發佈多次審批
 - 對過了開課時間的課程不能通過
 
-![螢幕截圖 2019-03-11 下午7.07.52](./J2EE_MyCourses_ScreenShot/螢幕截圖 2019-03-11 下午7.07.52.png)
+![螢幕截圖 2019-03-11 下午7.07.52](./J2EE_MyCourses_ScreenShot/approve_releasement.png)
 
 
 
 ##### 管理員查看統計信息（概述）
 
-![螢幕截圖 2019-03-11 下午7.07.58](./J2EE_MyCourses_ScreenShot/螢幕截圖 2019-03-11 下午7.07.58.png)
+![螢幕截圖 2019-03-11 下午7.07.58](./J2EE_MyCourses_ScreenShot/statistics_admin_1.png)
 
 
 
 ##### 管理員查看統計信息（按教師統計）
 
-![螢幕截圖 2019-03-11 下午7.08.16](./J2EE_MyCourses_ScreenShot/螢幕截圖 2019-03-11 下午7.08.16.png)
+![螢幕截圖 2019-03-11 下午7.08.16](./J2EE_MyCourses_ScreenShot/statistics_admin_2.png)
 
 
 
 ##### 管理員查看統計信息（按學生統計之一）
 
-![螢幕截圖 2019-03-11 下午7.08.33](./J2EE_MyCourses_ScreenShot/螢幕截圖 2019-03-11 下午7.08.33.png)
+![螢幕截圖 2019-03-11 下午7.08.33](./J2EE_MyCourses_ScreenShot/statistics_admin_4.png)
 
 
 
 #####管理員查看統計信息（按學生統計之二） 
 
-![螢幕截圖 2019-03-11 下午7.08.26](./J2EE_MyCourses_ScreenShot/螢幕截圖 2019-03-11 下午7.08.26.png)
+![螢幕截圖 2019-03-11 下午7.08.26](./J2EE_MyCourses_ScreenShot/statistics_admin_3.png)
 
 
 
