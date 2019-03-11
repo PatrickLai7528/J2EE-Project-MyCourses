@@ -404,7 +404,7 @@
 - 登錄後將切換至相應的頁面
 - 表單驗證：郵箱需為郵箱格式、密碼不能為空且長度為6-16
 
-![螢幕截圖 2019-03-11 下午6.59.59](/Users/laikinmeng/Documents/GitHub/J2EE-Project-MyCourses/J2EE_MyCourses_ScreenShot/螢幕截圖 2019-03-11 下午6.59.59.png)
+![螢幕截圖 2019-03-11 下午6.59.59](/Users/laikinmeng/Documents/GitHub/J2EE-Project-MyCourses/J2EE_MyCourses_ScreenShot/2019-03-11 下午6.59.59.png)
 
 
 
