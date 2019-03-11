@@ -1,161 +1,185 @@
+
+
 # MyCourses
 
 ## 數據庫設計
 
-### 學生（StudentEntity）
+### ER圖
 
-#### 屬性
+![ER](/Users/laikinmeng/Documents/GitHub/J2EE-Project-MyCourses/ER.png)
 
-| 中文 | 英文      | 描述                                                         |
-| ---- | --------- | ------------------------------------------------------------ |
-| 郵箱 | email     | 只能用NJU郵箱登陸，即@smail.nju.cn作為後綴，前綴則任意3-9位數字和字母組合，不能重覆 |
-| 密碼 | password  | 6-9位字母、數字和符號組合。不能包含空白字符，需有至少一位大寫字母，一位數字和一位符號。大小寫敏感 |
-| 姓名 | name      | 學生姓名，僅中文，可重覆                                     |
-| 學號 | studentNo | 9位數字，不可重覆                                            |
-| 注消 | deleted   | 是否已被注銷                                                 |
-|      |           |                                                              |
+### 數據庫表
 
-### 教師（TeacherEntity）
+#### admin_entity
 
-#### 屬性
-
-| 中文   | 英文      | 描述                                                         |
-| ------ | --------- | ------------------------------------------------------------ |
-| 郵箱   | email     | 只能用NJU郵箱登陸，即@smail.nju.cn作為後綴，前綴則任意3-9位數字和字母組合，不能重覆 |
-| 密碼   | password  | 6-9位字母、數字和符號組合。不能包含空白字符，需有至少一位大寫字母，一位數字和一位符號。大小寫敏感 |
-| 姓名   | name      | 學生姓名，僅中文，可重覆                                     |
-| 職員號 | teacherNo | 9位數字，不可重覆                                            |
-|        |           |                                                              |
-
-###課程（CourseEntity）
-
-#### 屬性
-
-| 中文       | 英文        | 描述                 |
-| ---------- | ----------- | -------------------- |
-| 課程號     | cid         | 課程的編號，不可重覆 |
-| 名稱       | name        | 12個中文字內的課程   |
-| 授課老師   | teacher     | / deleted            |
-| 課件       | sildes      | 已上傳的課件列表     |
-| 作業       | assignments | 已佈置的作業列表     |
-| 成績報告單 | reportCard  | 已選課的學生的成績   |
-| 論壇       | forums      | 已開放的論壇列表     |
-|            |             |                      |
-
-### 發佈（Releasement）
-
-#### 屬性
-
-| 中文     | 英文                | 描述                                                 |
-| -------- | ------------------- | ---------------------------------------------------- |
-| 發佈號   | rid                 | 課程發佈紀錄的編號，不可重覆                         |
-| 課程     | course              | 發佈的課程實體類                                     |
-| 上課時間 | startHour，startMin | 課程的上課小時和分鐘                                 |
-| 下課時間 | endHour，endMin     | 課程的下課小時和分鐘                                 |
-| 班次     | repeatAfterNDay     | 隔多少天重覆一次課程                                 |
-| 生效時間 | effectiveDate       | 課程生效日期，即第一天開始上課的日期                 |
-| 失效時間 | deadDate            | 課程失效日期，即最後一天上課的日期，注意需與班次配合 |
-| 限選人數 | limitNumber         | 課程選課人數的上限                                   |
-|          |                     |                                                      |
-
-## 數據庫設計
-
-### 學生（StudentEntity）
-
-```sql
-create table student_entity (
-	`email` varchar(20) primary key,
-    `password` varchar(12) not null,
-    `name` varchar(30) not null,
-    `student_no` int(10) not null,
-    `is_deleted` boolean unique
-);
-```
+| 列名        | 數據類型     | 外鍵關係 | 其它         |
+| ----------- | ------------ | -------- | ------------ |
+| admin_email | varchar(255) | /        | primary key  |
+| password    | varchar(255  | /        | default null |
 
 
 
-### 教師（TeacherEntity）
+#### assignment_entity
 
-```sql
-create table teacher_entity (
-	`email` varchar(20) primary key,
-    `password` varchar(12) not null,
-    `name` varchar(30) not null,
-    `teacher_no` int(10) unique
-);
-```
-
-
-
-### 課件（SlideEntity）
-
-```sql
-create table slide_entity (
-	`sid` int(10) primary key auto_increment,
-    `title` varchar(100) not null, 
-    `file_path` varchar(100) not null
-);
-```
+| 列名             | 數據類型     | 外鍵關係                            | 其它                         |
+| ---------------- | ------------ | ----------------------------------- | ---------------------------- |
+| assid            | bigint(20)   | /                                   | primary key,  auto_increment |
+| add_time         | varchar(255) | /                                   | default null                 |
+| ddl              | varchar(255) | /                                   | default null                 |
+| description      | varchar(255) | /                                   | default null                 |
+| file_size        | int(11)      | /                                   | default null                 |
+| file_unit        | varchar(255) | /                                   | default null                 |
+| title            | varchar(255) | /                                   | default null                 |
+| slide_entity_sid | bigint(20)   | references  slide_entity (sid)      | default null                 |
+| rid              | bigint(20)   | references releasement_entity (rid) | default null                 |
 
 
 
-### 評論（CommentEntity）
-
-```sql
-create table comment_entity (
-    `cmid` int(10) primary key auto_increment,
-    `content` varchar(1000) not null,
-    `commentByEmail` varchar(20) not null
-);
-```
+####  comment_entity
 
 
-
-###  作業（AssignmentEntity）
-
-```sql
-create table assignment_entity (
-	`assid` int(10) primary key auto_increment,
-    `title` varchar(20) not null,
-    `description` varchar(100),
-    `sid` int(10)
-);
-```
+| 列名                               | 數據類型     | 外鍵關係                                  | 其它                         |
+| ---------------------------------- | ------------ | ----------------------------------------- | ---------------------------- |
+| cmid                               | bigint(20)   | /                                         | primary key,  auto_increment |
+| comment_time                       | varchar(255) | /                                         | default null                 |
+| content                            | varchar(255) | /                                         | default null                 |
+| message_from_student_student_email | varchar(255) | references student_entity (student_email) | default null                 |
+| message_from_teacher_teacher_email | varchar(255) | references teacher_entity (teacher_email) | default null                 |
+| fid                                | bigint(20)   | references forum_entity (fid)             | default null                 |
 
 
 
-###  成績單（ReportCardEntity）
+####  comment_entity_below_comment_list
 
-```sql
-create table report_card_item (
-	`student_no` varchar(10) primary key,
-    `score` double(10, 2) not null,
-    `rcid` int(10) not null
-);
-
-create table report_card_entity (
-	`rcid` int(10) primary key auto_increment,
-);
-```
+| 列名                    | 數據類型   | 外鍵關係                         | 其它                 |
+| ----------------------- | ---------- | -------------------------------- | -------------------- |
+| comment_entity_cmid     | bigint(20) | references comment_entity (cmid) | unique key, not null |
+| below_comment_list_cmid | bigint(20) | references comment_entity (cmid) | not null             |
 
 
 
-### 課程（CourseEntity）
+#### course_entity
 
-```sql
-create table course_entity (
-	`cid` int(10) primary key auto_increment,
-    `name` varchar(20) not null,
-    `teacher_no` int(10) unique,
-    `rcid` int
-)
-```
+| 列名           | 數據類型     | 外鍵關係                                  | 其它                         |
+| -------------- | ------------ | ----------------------------------------- | ---------------------------- |
+| cid            | bigint(20)   | /                                         | primary key,  auto_increment |
+| add_time       | varchar(255) | /                                         | default null                 |
+| approval_state | varchar(255) | /                                         | default null                 |
+| released       | bit(1)       | /                                         | default null                 |
+| name           | varchar(255) | /                                         | default null                 |
+| teacher_email  | varchar(255) | references teacher_entity (teacher_email) | default null                 |
 
 
+
+#### forum_entity
+
+| 列名           | 數據類型     | 外鍵關係                                  | 其它                         |
+| -------------- | ------------ | ----------------------------------------- | ---------------------------- |
+| fid            | bigint(20)   | /                                         | primary key,  auto_increment |
+| add_time       | varchar(255) | /                                         | default null                 |
+| topic          | varchar(255) | /                                         | default null                 |
+| rid            | bigint(20)   | references releasement_entity (rid)       | default null                 |
+| studente_email | varchar(255) | references student_entity (student_email) | default null                 |
+| teacher_email  | varchar(255) | references teacher_entity (teacher_email) | default null                 |
+
+
+
+#### releasement_entity
+
+| 列名             | 數據類型     | 外鍵關係                       | 其它                         |
+| ---------------- | ------------ | ------------------------------ | ---------------------------- |
+| rid              | bigint(20)   | /                              | primary key,  auto_increment |
+| add_time         | varchar(255) | /                              | default null                 |
+| approval_state   | varchar(255) | /                              | default null                 |
+| effective_time   | varchar(255) | /                              | default null                 |
+| dead_time        | varchar(255) | /                              | default null                 |
+| end_hour         | int(11)      | /                              | default null                 |
+| end_min          | int(11)      | /                              | default null                 |
+| limit_number     | int(11)      | /                              | default null                 |
+| release_time     | varchar(255) | /                              | default null                 |
+| repeat_after_day | int(11)      | /                              | default null                 |
+| start_hour       | int(11)      | /                              | default null                 |
+| start_min        | int(11)      | /                              | default null                 |
+| course_id        | bigint(20)   | references course_entity (cid) | default null                 |
+|                  |              |                                |                              |
+
+
+
+#### selection_entity
+
+| 列名          | 數據類型     | 外鍵關係                                  | 其它                         |
+| ------------- | ------------ | ----------------------------------------- | ---------------------------- |
+| slid          | bigint(20)   | /                                         | primary key,  auto_increment |
+| score         | double       | /                                         | default null                 |
+| select_time   | varchar(255) | /                                         | default null                 |
+| state         | varchar(255) | /                                         | default null                 |
+| rid           | bigint(20)   | references releasement_entity (rid)       | default null                 |
+| student_email | varchar(255) | references student_entity (student_email) | default null                 |
+
+#### slide_entity
+
+| 列名           | 數據類型     | 外鍵關係                            | 其它                         |
+| -------------- | ------------ | ----------------------------------- | ---------------------------- |
+| sid            | bigint(20)   | /                                   | primary key,  auto_increment |
+| download_times | bigint(20)   | /                                   | default null                 |
+| file_path      | varchar(255) | /                                   | default null                 |
+| titile         | varchar(255) | /                                   | default null                 |
+| upload_time    | varchar(255) | /                                   | default null                 |
+| rid            | bigint(20)   | references releasement_entity (rid) | default null                 |
+
+
+
+#### student_entity
+
+| 列名            | 數據類型     | 外鍵關係 | 其它         |
+| --------------- | ------------ | -------- | ------------ |
+| student_email   | varchar(255) | /        | primary key  |
+| deleted         | bit(1)       | /        | default null |
+| last_log_in     | varchar(255) | /        | default null |
+| logged_in_times | bigint(20)   | /        | default null |
+| name            | varchar(255) | /        | default null |
+| password        | varchar(255) | /        | default null |
+| registry_time   | varchar(255) | /        | default null |
+| student_no      | varchar(255) | /        | default null |
+
+
+
+#### submission_entity
+
+| 列名          | 數據類型     | 外鍵關係                                  | 其它                        |
+| ------------- | ------------ | ----------------------------------------- | --------------------------- |
+| smid          | bigint(20)   | references  assignment_entity (assid)     | primary key, auto_increment |
+| file_path     | varchar(255) | /                                         | default null                |
+| submit_time   | varchar(255) | /                                         | default null                |
+| student_email | varchar(255) | references student_entity (student_email) | default null                |
+
+
+
+####  teacher_entity
+
+| 列名            | 數據類型     | 外鍵關係 | 其它         |
+| --------------- | ------------ | -------- | ------------ |
+| teacher_email   | varchar(255) | /        | primary key  |
+| last_log_in     | varchar(255) | /        | default null |
+| logged_in_times | bigint(20)   | /        | default null |
+| name            | varchar(255) | /        | default null |
+| password        | varchar(255) | /        | default null |
+| registry_time   | varchar(255) | /        | default null |
+| teacher_no      | varchar(255) | /        | default null |
 
 ## 架講設計
 
 ### 項目結構截圖
+
+#### 前端
+
+![螢幕截圖 2019-03-11 下午10.05.31](/Users/laikinmeng/Documents/GitHub/J2EE-Project-MyCourses/J2EE_MyCourses_ScreenShot/螢幕截圖 2019-03-11 下午10.05.31.png)
+
+![螢幕截圖 2019-03-11 下午10.09.20](/Users/laikinmeng/Documents/GitHub/J2EE-Project-MyCourses/J2EE_MyCourses_ScreenShot/螢幕截圖 2019-03-11 下午10.09.20.png)
+
+#### 後端
+
+![螢幕截圖 2019-03-11 下午10.06.01](/Users/laikinmeng/Documents/GitHub/J2EE-Project-MyCourses/J2EE_MyCourses_ScreenShot/螢幕截圖 2019-03-11 下午10.06.01.png)
 
 ### 使用框架
 
@@ -365,23 +389,182 @@ create table course_entity (
 
 #### com.MyCourses.utils
 
-| 類名稱        | 職責 |
-| ------------- | ---- |
-| DateUtils     | 提   |
-| JWTTokenUTils |      |
-| ResponseUtils |      |
-|               |      |
-
-
-
-
-
-
-
-
-
+| 類名稱        | 職責                                    |
+| ------------- | --------------------------------------- |
+| DateUtils     | 提供java.utils.Date的轉換為字符串的方法 |
+| JWTTokenUTils | 提供生成Token和驗證Token的方法          |
+| ResponseUtils | 提供生成AIPResponse的方法               |
+|               |                                         |
 
 ### 前端頁面
+
+##### 登錄
+
+- 可選擇用戶身份（學生、教師和管理員）
+- 登錄後將切換至相應的頁面
+- 表單驗證：郵箱需為郵箱格式、密碼不能為空且長度為6-16
+
+![螢幕截圖 2019-03-11 下午6.59.59](/Users/laikinmeng/Documents/GitHub/J2EE-Project-MyCourses/J2EE_MyCourses_ScreenShot/螢幕截圖 2019-03-11 下午6.59.59.png)
+
+
+
+##### 註冊
+
+- 表單驗證：
+  - 郵箱需為郵箱格式
+  - 姓名長度為2-4
+  - 密碼不能為空且長度為6-16
+  - 密碼和確定密碼需一致
+- 點擊驗證碼可發送驗證碼至上面填寫的郵箱，需填寫正確驗證碼才能順利注冊
+
+![螢幕截圖 2019-03-11 下午7.00.07](/Users/laikinmeng/Documents/GitHub/J2EE-Project-MyCourses/J2EE_MyCourses_ScreenShot/螢幕截圖 2019-03-11 下午7.00.07.png)
+
+
+
+##### 教師查看待發佈課程
+
+- 審批未通過的課程不能發佈
+- 審批通過的課程可多次發佈
+
+![螢幕截圖 2019-03-11 下午7.00.40](/Users/laikinmeng/Documents/GitHub/J2EE-Project-MyCourses/J2EE_MyCourses_ScreenShot/螢幕截圖 2019-03-11 下午7.00.40.png)
+
+##### 教師可創建新的課程
+
+![螢幕截圖 2019-03-11 下午7.28.49](/Users/laikinmeng/Documents/GitHub/J2EE-Project-MyCourses/J2EE_MyCourses_ScreenShot/螢幕截圖 2019-03-11 下午7.28.49.png)
+
+
+
+##### 教師可發佈審批通過的課程
+
+![螢幕截圖 2019-03-11 下午7.27.30](/Users/laikinmeng/Documents/GitHub/J2EE-Project-MyCourses/J2EE_MyCourses_ScreenShot/螢幕截圖 2019-03-11 下午7.27.30.png)
+
+
+
+##### 個人資料
+
+- 點擊修改個人資料可進行編輯
+
+![螢幕截圖 2019-03-11 下午7.02.11](/Users/laikinmeng/Documents/GitHub/J2EE-Project-MyCourses/J2EE_MyCourses_ScreenShot/螢幕截圖 2019-03-11 下午7.02.11.png)
+
+
+
+##### 編輯個人資料
+
+- 若留空，則不會更新該項
+- 若要更改新的密碼，必須提供舊的密碼
+
+![螢幕截圖 2019-03-11 下午7.02.17](/Users/laikinmeng/Documents/GitHub/J2EE-Project-MyCourses/J2EE_MyCourses_ScreenShot/螢幕截圖 2019-03-11 下午7.02.17.png)
+
+
+
+##### 教師查看統計信息（概述和按學期按計）
+
+![螢幕截圖 2019-03-11 下午7.02.31](/Users/laikinmeng/Documents/GitHub/J2EE-Project-MyCourses/J2EE_MyCourses_ScreenShot/螢幕截圖 2019-03-11 下午7.02.31.png)
+
+
+
+##### 教師查看統計信息（按課程統計）
+
+![螢幕截圖 2019-03-11 下午7.02.37](/Users/laikinmeng/Documents/GitHub/J2EE-Project-MyCourses/J2EE_MyCourses_ScreenShot/螢幕截圖 2019-03-11 下午7.02.37.png)
+
+
+
+##### 課程發佈的主頁面
+
+- 右上側為教師的操作面版，可對選課的學生發送郵件，或對選課學生發佈成績
+
+![螢幕截圖 2019-03-11 下午7.02.45](/Users/laikinmeng/Documents/GitHub/J2EE-Project-MyCourses/J2EE_MyCourses_ScreenShot/螢幕截圖 2019-03-11 下午7.02.45.png)
+
+
+
+##### 教師可上傳課件
+
+![螢幕截圖 2019-03-11 下午7.34.21](/Users/laikinmeng/Documents/GitHub/J2EE-Project-MyCourses/J2EE_MyCourses_ScreenShot/螢幕截圖 2019-03-11 下午7.34.21.png)
+
+
+
+##### 教師和學生皆可創建討論區
+
+![螢幕截圖 2019-03-11 下午7.34.38](/Users/laikinmeng/Documents/GitHub/J2EE-Project-MyCourses/J2EE_MyCourses_ScreenShot/螢幕截圖 2019-03-11 下午7.34.38.png)
+
+
+
+##### 教師可以發佈作業
+
+![螢幕截圖 2019-03-11 下午7.02.56](/Users/laikinmeng/Documents/GitHub/J2EE-Project-MyCourses/J2EE_MyCourses_ScreenShot/螢幕截圖 2019-03-11 下午7.02.56.png)
+
+
+
+##### 教師可以下載學生提交的作業
+
+- 下載的作業會以該學生的學號進行保存
+
+![螢幕截圖 2019-03-11 下午7.03.04](/Users/laikinmeng/Documents/GitHub/J2EE-Project-MyCourses/J2EE_MyCourses_ScreenShot/螢幕截圖 2019-03-11 下午7.03.04.png)
+
+
+
+##### 教師和學生皆可以創建討論區和留言
+
+![螢幕截圖 2019-03-11 下午7.03.20](/Users/laikinmeng/Documents/GitHub/J2EE-Project-MyCourses/J2EE_MyCourses_ScreenShot/螢幕截圖 2019-03-11 下午7.03.20.png)
+
+
+
+##### 學生瀏覽已發佈的課程
+
+![螢幕截圖 2019-03-11 下午7.05.04](/Users/laikinmeng/Documents/GitHub/J2EE-Project-MyCourses/J2EE_MyCourses_ScreenShot/螢幕截圖 2019-03-11 下午7.05.04.png)
+
+##### 學生進入課程主頁面
+
+![螢幕截圖 2019-03-11 下午7.05.15](/Users/laikinmeng/Documents/GitHub/J2EE-Project-MyCourses/J2EE_MyCourses_ScreenShot/螢幕截圖 2019-03-11 下午7.05.15.png)
+
+
+
+##### 進行退課時的提示框
+
+![螢幕截圖 2019-03-11 下午7.05.28](/Users/laikinmeng/Documents/GitHub/J2EE-Project-MyCourses/J2EE_MyCourses_ScreenShot/螢幕截圖 2019-03-11 下午7.05.28.png)
+
+
+
+##### 管理員可以審批課程
+
+- 不能對同一課程多次審批
+
+![螢幕截圖 2019-03-11 下午7.05.49](/Users/laikinmeng/Documents/GitHub/J2EE-Project-MyCourses/J2EE_MyCourses_ScreenShot/螢幕截圖 2019-03-11 下午7.05.49.png)
+
+
+
+##### 管理員可以審批課程發佈
+
+- 不能對同一課程發佈多次審批
+- 對過了開課時間的課程不能通過
+
+![螢幕截圖 2019-03-11 下午7.07.52](/Users/laikinmeng/Documents/GitHub/J2EE-Project-MyCourses/J2EE_MyCourses_ScreenShot/螢幕截圖 2019-03-11 下午7.07.52.png)
+
+
+
+##### 管理員查看統計信息（概述）
+
+![螢幕截圖 2019-03-11 下午7.07.58](/Users/laikinmeng/Documents/GitHub/J2EE-Project-MyCourses/J2EE_MyCourses_ScreenShot/螢幕截圖 2019-03-11 下午7.07.58.png)
+
+
+
+##### 管理員查看統計信息（按教師統計）
+
+![螢幕截圖 2019-03-11 下午7.08.16](/Users/laikinmeng/Documents/GitHub/J2EE-Project-MyCourses/J2EE_MyCourses_ScreenShot/螢幕截圖 2019-03-11 下午7.08.16.png)
+
+
+
+##### 管理員查看統計信息（按學生統計之一）
+
+![螢幕截圖 2019-03-11 下午7.08.33](/Users/laikinmeng/Documents/GitHub/J2EE-Project-MyCourses/J2EE_MyCourses_ScreenShot/螢幕截圖 2019-03-11 下午7.08.33.png)
+
+
+
+#####管理員查看統計信息（按學生統計之二） 
+
+![螢幕截圖 2019-03-11 下午7.08.26](/Users/laikinmeng/Documents/GitHub/J2EE-Project-MyCourses/J2EE_MyCourses_ScreenShot/螢幕截圖 2019-03-11 下午7.08.26.png)
+
+
 
 
 
@@ -389,7 +572,33 @@ create table course_entity (
 
 ### 開發環境
 
+| 名稱       | 版本                                                         |
+| ---------- | ------------------------------------------------------------ |
+| MySQL      | Ver 8.0.14 for macos10.14 on x86_64 (MySQL Community Server - GPL) |
+| SpringBoot | v1.5.2.RELEASE                                               |
+| SDK        | 11.0.2                                                       |
+| React Dom  | 16.7.0                                                       |
+| React      | 16.7.0                                                       |
+| AntDesign  | 3.13.1                                                       |
+| 操作系統   | MacOS 10.14.3（18D109                                        |
+|            |                                                              |
+
 ### 開發心得體會
+
+#### 關於後端
+
+- 對於Spring配置極其繁瑣，還好SpringBoot提供更簡單、方便的配置方式，若要我從零開始配置一個Spring項目，我沒有把握能順利配好。
+- 對於Hibernate和數據庫的使用，Hibernate使用了很多次，但是還有一些像Casade等不夠熟悉，MapKey和JoinColumn等JPA標註的區別也不是分得很清楚。
+- 覺得Convert標註是一個很有用的標註，可以用它把Date轉換成字符串保存在數據庫，直接看數據庫時覺得舒服一點。
+- 對於數據庫的表的設計還是有點隨便，沒有認真思考怎麼設計是最佳的，導致實體類很臃腫。
+- 終於掌握了一對一、一對多、多對一和多對多的正確配置方法。
+
+#### 關於前端
+
+- 如果該項目的狀態複雜且數據來源不唯一時，最好還是使用一下狀態管理庫工具，如Redux。
+- 對於React來說，對組件拆分應愈細愈好，設計為無狀態組件更好，如FunctionalComponent或PureComponent，否則該組件內部狀態太多，就很難去測試和維護。
+- 如果要通過REST API獲得數據，最好把發請求的代碼集中在一個API文件夾裡，能夠更好地統一管理，以同一的格式返回請求結果就更好。
+- 最好將一個組件拆分為展示組件和容器組件，容器組件負責獲得/發送/處理數據，處理完的數據可交給展示組件進行展件，可分離關注點，且展示組件可再次復用。
 
 
 

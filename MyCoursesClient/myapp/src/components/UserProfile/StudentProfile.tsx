@@ -119,9 +119,12 @@ class StudentProfile extends React.Component<IStudentProfileProps, IStudentProfi
                             this.submit();
                         }}>提交</Button>
                     }
-
                     <Button type={"primary"} htmlType={"button"}
-                            onClick={() => this.setState({editable: true})}>修改個人資料</Button>
+                            onClick={() => this.setState({editable: !this.state.editable})}>
+                        {
+                            this.state.editable ? "取消" : "修改個人資料"
+                        }
+                    </Button>
                 </Spin>
             </div>
         )

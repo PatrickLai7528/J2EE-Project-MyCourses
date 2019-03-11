@@ -30,7 +30,7 @@ export class ReleasementApproval extends React.Component<IReleasementApprovalPro
     public render(): React.ReactNode {
         return (
             <div>
-                <h1>審批課程</h1>
+                <h1>審批課程發佈</h1>
                 <Divider/>
                 <Table loading={this.state.loading} columns={this.getColumns()}
                        dataSource={this.wrappedKey(this.getDataSource())}/>
