@@ -6,7 +6,7 @@
 
 ### ER圖
 
-![ER](/Users/laikinmeng/Documents/GitHub/J2EE-Project-MyCourses/ER.png)
+![ER](/Users/laikinmeng/Documents/GitHub/J2EE-Project-MyCourses/J2EE_MyCourses_ScreenShot/ER.png)
 
 ### 數據庫表
 
