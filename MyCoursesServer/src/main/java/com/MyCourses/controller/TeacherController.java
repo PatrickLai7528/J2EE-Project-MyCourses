@@ -31,6 +31,40 @@ public class TeacherController {
     }
 
     @CrossOrigin(origins = "http://localhost:3000")
+    @GetMapping("get")
+    @VerifyToken
+    @PleaseLog
+    public APIResponse<TeacherEntity> getTeacherByEmail(@RequestParam(name = "email") String email) {
+        try {
+            TeacherEntity teacherEntity = teacherService.getByEmail(email);
+            return ResponseUtils.ok("操作成功", teacherEntity);
+        } catch (TeacherNotExistException e) {
+            e.printStackTrace();
+            return ResponseUtils.error(e.getLocalizedMessage(), null);
+        }
+    }
+
+    @CrossOrigin(origins = "http://localhost:3000")
+    @PostMapping("update")
+    @VerifyToken
+    @PleaseLog
+    public APIResponse<TeacherEntity> updateTeacher(
+            @RequestParam(name = "email") String email,
+            @RequestParam(name = "no", required = false) String no,
+            @RequestParam(name = "newName", required = false) String newName,
+            @RequestParam(name = "oldPassword", required = false) String oldPassword,
+            @RequestParam(name = "newPassword", required = false) String newPassword) {
+        try {
+            teacherService.update(email, no, newName, oldPassword, newPassword);
+            return ResponseUtils.ok("更新成功", teacherService.getByEmail(email));
+        } catch (TeacherNotExistException e) {
+            e.printStackTrace();
+            return ResponseUtils.error(e.getLocalizedMessage(), null);
+        }
+    }
+
+
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("all")
     @VerifyToken
     @PleaseLog

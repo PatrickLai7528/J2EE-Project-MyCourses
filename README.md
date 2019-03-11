@@ -253,37 +253,36 @@ create table course_entity (
 
 #### com.MyCourses.entity
 
-| 類名稱            | 職責                                                         |
-| ----------------- | ------------------------------------------------------------ |
-| AdminEntity       | 將標註了PleaseLog的Controller的類方法，以日誌方式將參數、訪問方法、請求來源IP和返回值打印在控制台上 |
-| AdminStatistics   | 以AOP的方式攔截訪問標註了VerifyToken、GenerateToken的方法的請求，根據標註完成相應Token操作 |
-| AssignmentEntity  |                                                              |
-| CommentEntity     |                                                              |
-| FileSize          |                                                              |
-| ForumEntity       |                                                              |
-| ReleasementEntity |                                                              |
-| SelectionEntity   |                                                              |
-| SlideEntity       |                                                              |
-| StudentEntity     |                                                              |
-| SubmissionEntity  |                                                              |
-| TeacherEntity     |                                                              |
-| TeacherStatistics |                                                              |
+| 類名稱            | 職責                   |
+| ----------------- | ---------------------- |
+| AdminEntity       | 管理員的實體類         |
+| AdminStatistics   | 供管理員查看的統計數據 |
+| AssignmentEntity  | 作業的實體類           |
+| CommentEntity     |  評論的實體類                      |
+| FileSize          | 文件大小的數據結構                       |
+| ForumEntity       |  討論區的實體類                      |
+| ReleasementEntity |  課程發佈的實體類                      |
+| SelectionEntity   |  選課的實體類                      |
+| SlideEntity       |  課件的實體類                      |
+| StudentEntity     |  學生的實體類                      |
+| SubmissionEntity  |  提交作業的實體類                      |
+| TeacherEntity     |  老師的實體類                      |
+| TeacherStatistics |  供老師查看的統計數據                      |
 
 #### com.MyCourses.entity.AdminStatistics
 
 | 類名稱            | 職責 |
 | ----------------- | ---- |
-| OutlineStatistics |      |
-| TeacherStatistics |      |
-| StudentStatistics |      |
-|                   |      |
+| OutlineStatistics | 按系統所有情況來進行統計的概要數據     |
+| TeacherStatistics | 按每個老師來進行統計的數據     |
+| StudentStatistics | 按每個學生來進行統計的數據     |
 
 #### com.MyCourses.entity.AdminStatistics.TeacherStatistics
 
 | 類名稱              | 職責                                                         |
 | ------------------- | ------------------------------------------------------------ |
 | SimplifyCourse      | 簡化版CourseEntity，刪除顯示統計信息時不必要的屬性           |
-| SimplifyReleasement | 以AOP的方式攔截訪問標註了VerifyToken、GenerateToken的方法的請求，根據標註完成相應Token操作 |
+| SimplifyReleasement | 簡化版ReleasementEntity，刪除顯示統計信息不必要的屬性 |
 
 
 
@@ -299,39 +298,76 @@ create table course_entity (
 
 | 類名稱                | 職責 |
 | --------------------- | ---- |
-| SemesterStatistics    |      |
-| ReleasementStatistics |      |
+| SemesterStatistics    | 按每學期來進行統計的數據     |
+| ReleasementStatistics | 按每個課程發佈來進行統計的數據     |
 
 
+
+#### com.MyCourses.exceptions
+
+| 類名稱                                       | 職責                                                         |
+| -------------------------------------------- | ------------------------------------------------------------ |
+| AdminNotExistException                       | 登錄時找不到對應的管理員時抛出的異常                         |
+| AssignmentNotExistException                  | 找不到作業時抛出的異常                                       |
+| CourseAlreadyReleaseException                | 對已發佈課程進行審批不通過操作時抛出的異常                   |
+| CourseHasNoTeacherException                  | 增加課程時沒有指定老師時抛出的異常                           |
+| CourseNotExistException                      | 找不到課程時抛出的異常                                       |
+| DateStringFormatException                    | 日期字符串轉換發生錯誤時抛出的異常                           |
+| DropSelectionException                       | 對沒有選上的課程進行退課操作時抛出的異常                     |
+| FileEmptyException                           | 上傳空文件抛出的異常                                         |
+| ForumNotExistException                       | 找不到討論區時抛出的異常                                     |
+| MailSendingException                         | 發送郵件發生錯誤時抛出的異常                                 |
+| ReleasementAlreadyPassEffectiveTimeException | 對已開課的課程發佈進行審批通過或審批不通過時抛出的異常       |
+| ReleasementDateException                     | 發佈課程時開課日期、結課日期、上課時間和上課時間設置錯誤時抛出的異常 |
+| ReleasementNotException                      | 找不到課程發佈時抛出的異常                                   |
+| RepeatSelectionCourseException               | 對已選的課程發佈再進行選課操作時抛出重覆選課的異常           |
+| ScoreOutOfRangeException                     | 發佈成績時成績範圍不符合要求時抛出的異常                     |
+| SelectionFailException                       | 對已超過選課人數的課程發佈進行選課操作，或已過結課時間的課程進行選課操作時抛出的異常 |
+| SelectionNotExistException                   | 找不到選課時抛出的異常                                       |
+| StudentNotExistException                     | 找不到學生時抛出的異常                                       |
+| StudentRepeatedException                     | 學生使用已注冊的郵箱進行注冊時抛出的異常                     |
+| TeacherNotExistException                     | 找不到老師時抛出的異常                                       |
+| TeacherRepeatedException                     | 老師使用已注冊的郵箱進行注冊時抛出的異常                     |
+| UnexpectedReleaseConfig                      | 發佈課程時提供了不需要的數據，或沒提供需要的數據時抛出的異常 |
+| VerficationException                         | 注冊時驗證碼不正確抛出的異常                                 |
+| VerifyMailSendingException                   | 發送驗證郵件出錯時抛出的異常                                 |
+|                                              |                                                              |
 
 #### com.MyCourses.service
 
-| 類名稱              | 職責                                   | 對應實現                              |
-| ------------------- | -------------------------------------- | ------------------------------------- |
-| IAdminService       | 提供管理員的登錄、審批課程的接口       | com.MyCourses.dao.impl.AdminDao       |
-| IAssignmentService  | 提供發佈作業的接口                     | com.MyCourses.dao.impl.CommentDAO     |
-| ICourseService      | 提供增加、發佈和查詢課程的接口         | com.MyCourses.dao.impl.ForumDAO       |
-| IEncryptService     | 提供字符串哈希運算的接口               | com.MyCourses.dao.impl.ReleasementDAO |
-| IFileService        | 提接上下載文件的接口                   | /                                     |
-| IForumService       | 提供創建、留言和查詢討論區的接口       | com.MyCourses.dao.impl.ReleasementDAO |
-| IMailService        | 提供發送郵件的服務                     | com.MyCourses.dao.impl.SelectionDAO   |
-| IReleasementService | 提供發佈課程的查詢接口                 | com.MyCourses.dao.impl.StudentDAO     |
-| IReportCardService  | 提供發佈成績的接口                     | com.MyCourses.dao.impl.TeacherDAO     |
-| ISelectionService   | 提供選課、查詢選課情況和群發郵件的接口 |                                       |
-| ISlideService       | 提供上載文件的接口                     |                                       |
-| IStatisticsService  | 提供取得統計信息的接口                 |                                       |
-| IStudentService     | 提供取得登錄/注冊，查詢學生的接口      |                                       |
-| ISubmissionService  | 提供提交作業的接口                     |                                       |
-| ITeacherService     | 提供教師登錄/注冊，查詢的接口          |                                       |
-| IVerifyService      | 提供發送驗證郵件和普通郵件的接口       |                                       |
-| ReleaseConfig       |                                        |                                       |
-| RenamableRecourse   |                                        |                                       |
+| 類名稱              | 職責                                                         | 對應實現                                     |
+| ------------------- | ------------------------------------------------------------ | -------------------------------------------- |
+| IAdminService       | 提供管理員的登錄、審批課程的接口                             | com.MyCourses.service.impl.AdminService      |
+| IAssignmentService  | 提供發佈作業的接口                                           | com.MyCourses.service.impl.AssignmentService |
+| ICourseService      | 提供增加、發佈和查詢課程的接口                               | com.MyCourses.service.impl.CourseService     |
+| IEncryptService     | 提供字符串哈希運算的接口                                     | com.MyCourses.service.EncryptService         |
+| IFileService        | 提接上下載文件的接口                                         | com.MyCourses.service.impl.FileService       |
+| IForumService       | 提供創建、留言和查詢討論區的接口                             | com.MyCourses.service.impl.ForumService      |
+| IMailService        | 提供發送郵件的服務                                           | com.MyCourses.dao.impl.SelectionDAO          |
+| IReleasementService | 提供發佈課程的查詢接口                                       | com.MyCourses.service.ReleasementService     |
+| IReportCardService  | 提供發佈成績的接口                                           | com.MyCourses.service.impl.ReportCardService |
+| ISelectionService   | 提供選課、查詢選課情況和群發郵件的接口                       | com.MyCourses.service.impl.SelectionService  |
+| ISlideService       | 提供上載文件的接口                                           | com.MyCourses.service.impl.SlideService      |
+| IStatisticsService  | 提供取得統計信息的接口                                       | com.MyCourses.service.impl.StatisticsService |
+| IStudentService     | 提供取得登錄/注冊，查詢學生的接口                            | com.MyCourses.service.impl.StudentService    |
+| ISubmissionService  | 提供提交作業的接口                                           | com.MyCourses.service.impl.SubmissionService |
+| ITeacherService     | 提供教師登錄/注冊，查詢的接口                                | com.MyCourses.service.impl.TeacherService    |
+| IVerifyService      | 提供發送驗證郵件和普通郵件的接口                             | com.MyCourses.service.impl.VerifyService     |
+| ReleaseConfig       | 發佈課程需要提供的數據的集合                                 | /                                            |
+| RenamableRecourse   | 對org.springframework.core.io.Resource進行包裝，使其可重新命名 | /                                            |
+
+#### com.MyCourses.service.schedule
+
+| 類名稱           | 職責                                                         |
+| ---------------- | ------------------------------------------------------------ |
+| ReleasementCheck | 定時任務，每天中午12檢查有沒有Releasement是準備開課，若選課人數超過限制人數，則進行隨機抽取 |
+|                  |                                                              |
 
 #### com.MyCourses.utils
 
 | 類名稱        | 職責 |
 | ------------- | ---- |
-| DateUtils     |      |
+| DateUtils     | 提   |
 | JWTTokenUTils |      |
 | ResponseUtils |      |
 |               |      |

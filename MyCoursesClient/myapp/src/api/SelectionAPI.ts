@@ -59,7 +59,7 @@ export default class SelectionAPI {
 
     public getSelectionOfReleasement(rid: number): Promise<IAPIResponse<ISelection[]>> {
         return new Promise<IAPIResponse<ISelection[]>>((resolve, reject) => {
-            axios.get(NetworkSettings.getOpenNetworkIP() + "/selection/releasement/active" + rid, {headers: {"Authorization": TokenUtils.getToken()}})
+            axios.get(NetworkSettings.getOpenNetworkIP() + "/selection/releasement/active/" + rid, {headers: {"Authorization": TokenUtils.getToken()}})
                 .then((response: any) => {
                     let payload: ISelection[] = response.data.payload;
                     for (let item of payload)

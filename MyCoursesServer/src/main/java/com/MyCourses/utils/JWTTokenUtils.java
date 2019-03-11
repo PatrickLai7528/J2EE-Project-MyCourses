@@ -55,7 +55,7 @@ public class JWTTokenUtils {
         try {
             DecodedJWT jwt = verifier.verify(token);
             return true;
-        } catch (JWTVerificationException e) {
+        } catch (Exception e) {
             return false;
         }
     }

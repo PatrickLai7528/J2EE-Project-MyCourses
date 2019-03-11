@@ -28,7 +28,7 @@ export class SignUpForm extends React.Component<ISignUpFormProps, ISignUpFormSta
     private compareToFirstPassword(rule: ValidationRule, value: any, callback: (message?: string) => void): void {
         const form = this.props.form;
         if (value && value !== form.getFieldValue('password')) {
-            callback('Two passwords that you enter is inconsistent!');
+            callback('兩次輸入的密碼不一致');
         } else {
             callback();
         }
@@ -146,16 +146,6 @@ export class SignUpForm extends React.Component<ISignUpFormProps, ISignUpFormSta
                                                 })
                                         }
                                     }}/>
-                {/*<Form.Item>*/}
-                {/*{getFieldDecorator('agreement', {*/}
-                {/*valuePropName: 'checked',*/}
-                {/*})(*/}
-                {/*<Checkbox>I have read the <a href="">agreement</a></Checkbox>*/}
-                {/*)}*/}
-                {/*</Form.Item>*/}
-                {/*<Form.Item>*/}
-                {/*<Button type="primary" htmlType="submit" className="sign-up-form-button">註冊</Button>*/}
-                {/*</Form.Item>*/}
             </Form>
         );
     }

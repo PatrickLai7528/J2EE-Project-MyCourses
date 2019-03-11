@@ -45,6 +45,7 @@ class UploadScoreOperationForm extends React.Component<IUploadScoreOperationForm
     }
 
     public render(): React.ReactNode {
+        console.log(this.state.selectionList);
         return (
             <Form
                 hideRequiredMark={true}
@@ -53,6 +54,8 @@ class UploadScoreOperationForm extends React.Component<IUploadScoreOperationForm
                 {
                     (!this.state.selectionList || this.state.selectionList.length === 0) ?
                         <Empty/> : this.state.selectionList.map((selection: ISelection) => {
+                            console.log(selection.score === undefined);
+                            console.log(selection.score === null);
                             return (
                                 <Form.Item
                                     key={selection.slid}
@@ -65,9 +68,11 @@ class UploadScoreOperationForm extends React.Component<IUploadScoreOperationForm
                                             }
                                         ],
                                     })(
-                                        <InputNumber placeholder={selection.score === undefined ? "成績" : "已有成績"} min={0}
-                                                     max={100}
-                                                     disabled={selection.score !== undefined}/>
+                                        <InputNumber
+                                            placeholder={selection.score === undefined || selection.score === null ? "成績" : "已有成績"}
+                                            min={0}
+                                            max={100}
+                                            disabled={selection.score !== undefined && selection.score !== null}/>
                                     )}
                                 </Form.Item>
                             )
@@ -78,6 +83,7 @@ class UploadScoreOperationForm extends React.Component<IUploadScoreOperationForm
     }
 
     private submit(): void {
+        this.props.onSendBefore();
         if (this.props.form) {
             this.props.form.validateFields((err: any, values: any) => {
                     if (!err) {
@@ -88,7 +94,6 @@ class UploadScoreOperationForm extends React.Component<IUploadScoreOperationForm
                                 score: values[selection.slid]
                             })
                         }
-                        this.props.onSendBefore();
                         ReleasementAPI.getInstance().sendScores(dataList)
                             .then((response: IAPIResponse<any>) => {
                                 if (response.isSuccess)
@@ -128,22 +133,3 @@ class UploadScoreOperationForm extends React.Component<IUploadScoreOperationForm
 }
 
 export const WrappedUploadScoreOperationForm = Form.create()(UploadScoreOperationForm);
-//
-// export interface IUploadScoreOperationFormContainerProps{
-//
-// }
-//
-// interface IUploadScoreOperationFormContainterState {
-//
-// }
-//
-// export class UploadScoreOperationFormContainer extends React.Component<IUploadScoreOperationFormContainerProps, IUploadScoreOperationFormContainterState>{
-//     public constructor(props:IUploadScoreOperationFormContainerProps){
-//         super(props);
-//     }
-//
-//     public render(): React.ReactNode {
-//         return
-//     }
-//
-// }

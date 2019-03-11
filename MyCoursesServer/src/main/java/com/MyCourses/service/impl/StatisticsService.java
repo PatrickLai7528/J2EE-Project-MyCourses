@@ -1,4 +1,5 @@
-package com.MyCourses.service.impl;/*
+package com.MyCourses.service.impl;
+/*
  * @PackageName com.MyCourses.service.impl
  * @ClassName StatisticsService
  * @Author Lai Kin Meng

@@ -24,6 +24,11 @@ export const TeacherSider: React.FunctionComponent<ITeacherSiderProps> = (props:
                 mode="inline"
                 defaultOpenKeys={["types"]}
             >
+                <Menu.Item key={"profile"}>
+                    <NavLink exact={true} to="/profile">
+                        <Icon type="user"/>個人資料
+                    </NavLink>
+                </Menu.Item>
                 <Menu.Item key={"course"}>
                     <NavLink exact={true} to="/course/all">
                         <Icon type="book"/>待發佈課程

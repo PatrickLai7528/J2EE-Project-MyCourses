@@ -38,6 +38,40 @@ public class StudentController {
         this.verifyService = verifyService;
     }
 
+    @GetMapping("get")
+    @CrossOrigin(origins = "http://localhost:3000")
+    @VerifyToken
+    @PleaseLog
+    public APIResponse<StudentEntity> getStudentByEmail(@RequestParam(name = "email") String email) {
+        try {
+            StudentEntity studentEntity = studentService.getByEmail(email);
+            return ResponseUtils.ok("操作成功", studentEntity);
+        } catch (StudentNotExistException e) {
+            e.printStackTrace();
+            return ResponseUtils.error(e.getLocalizedMessage(), null);
+        }
+    }
+
+    @PostMapping("update")
+    @CrossOrigin(origins = "http://localhost:3000")
+    @VerifyToken
+    @PleaseLog
+    public APIResponse<StudentEntity> updateStudent(
+            @RequestParam(name = "email") String email,
+            @RequestParam(name = "no", required = false) String no,
+            @RequestParam(name = "newName", required = false) String newName,
+            @RequestParam(name = "oldPassword", required = false) String oldPassword,
+            @RequestParam(name = "newPassword", required = false) String newPassword
+    ) {
+        try {
+            studentService.update(email, no, newName, oldPassword, newPassword);
+            return ResponseUtils.ok("操作成功", studentService.getByEmail(email));
+        } catch (StudentNotExistException e) {
+            e.printStackTrace();
+            return ResponseUtils.error(e.getLocalizedMessage(), null);
+        }
+    }
+
     @GetMapping("all")
     @CrossOrigin(origins = "http://localhost:3000")
     @VerifyToken

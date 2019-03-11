@@ -1,8 +1,27 @@
 import axios from "axios";
 import IAPIResponse from "./IAPIResponse";
 import NetworkSettings from "../setting/NetworkSettings";
+import {IStudent, ITeacher} from "../types/entities";
+import {TokenUtils} from "../utils/TokenUtils";
+import {IUserProfileProps} from "../components/UserProfile/UserProfileContainer";
 
 export type UserType = "teacher" | "student" | "visitor" | "admin";
+
+export interface IUpdateTeacherData {
+    email: string
+    name?: string
+    teacherNo?: string
+    oldPassword?: string
+    newPassword?: string
+}
+
+export interface IUpdateStudentData {
+    email: string
+    name?: string
+    studentNo?: string
+    oldPassword?: string
+    newPassword?: string
+}
 
 export interface ISignUpData {
     email: string,
@@ -98,7 +117,7 @@ export default class UserAPI {
             case "admin":
                 url = "/admin/login";
                 realLogInData = {
-                    adminEmail:email, password
+                    adminEmail: email, password
                 }
                 break;
             default:
@@ -120,6 +139,85 @@ export default class UserAPI {
         })
     }
 
+    public getTeacherByEmail(email: string): Promise<IAPIResponse<ITeacher>> {
+        return new Promise<IAPIResponse<ITeacher>>((resolve, reject) => {
+            axios.get(NetworkSettings.getOpenNetworkIP() + "/teacher/get?email=" + email, {headers: {"Authorization": TokenUtils.getToken()}})
+                .then((response: any) => {
+                    resolve({
+                        isSuccess: response.data.code === 0,
+                        code: response.data.code,
+                        payload: response.data.payload,
+                        message: response.data.message
+                    })
+                })
+                .catch((e: any) => {
+                    reject(e);
+                })
+        })
+    }
+
+    public getStudentByEmail(email: string): Promise<IAPIResponse<IStudent>> {
+        return new Promise<IAPIResponse<IStudent>>((resolve, reject) => {
+            axios.get(NetworkSettings.getOpenNetworkIP() + "/student/get?email=" + email, {headers: {"Authorization": TokenUtils.getToken()}})
+                .then((response: any) => {
+                    resolve({
+                        isSuccess: response.data.code === 0,
+                        code: response.data.code,
+                        payload: response.data.payload,
+                        message: response.data.message
+                    })
+                })
+                .catch((e: any) => {
+                    reject(e);
+                })
+        })
+    }
+
+    public updateStudent(data: IUpdateStudentData): Promise<IAPIResponse<IStudent>> {
+        return new Promise<IAPIResponse<IStudent>>((resolve, reject) => {
+            const url: string = NetworkSettings.getOpenNetworkIP() + "/student/update" +
+                "?email=" + data.email +
+                (data.name ? "&newName=" + data.name : "") +
+                (data.studentNo ? "&no=" + data.studentNo : "") +
+                (data.oldPassword ? "&oldPassword=" + data.oldPassword : "") +
+                (data.newPassword ? "&newPassword=" + data.newPassword : "");
+            axios.post(url, {}, {headers: {"Authorization": TokenUtils.getToken()}})
+                .then((response: any) => {
+                    resolve({
+                        isSuccess: response.data.code === 0,
+                        message: response.data.message,
+                        payload: response.data.payload,
+                        code: response.data.code
+                    })
+                })
+                .catch((e: any) => {
+                    reject(e);
+                })
+        })
+    }
+
+    public updateTeacher(data: IUpdateTeacherData): Promise<IAPIResponse<ITeacher>> {
+        return new Promise<IAPIResponse<ITeacher>>((resolve, reject) => {
+            const url: string = NetworkSettings.getOpenNetworkIP() + "/teacher/update" +
+                "?email=" + data.email +
+                (data.name ? "&newName=" + data.name : "") +
+                (data.teacherNo ? "&no=" + data.teacherNo : "") +
+                (data.oldPassword ? "&oldPassword=" + data.oldPassword : "") +
+                (data.newPassword ? "&newPassword=" + data.newPassword : "");
+            axios.post(url, {}, {headers: {"Authorization": TokenUtils.getToken()}})
+                .then((response: any) => {
+                    resolve({
+                        isSuccess: response.data.code === 0,
+                        message: response.data.message,
+                        payload: response.data.payload,
+                        code: response.data.code
+                    })
+                })
+                .catch((e: any) => {
+                    reject(e);
+                })
+        })
+    }
 
     public sendVerifyCode(email: string): Promise<IAPIResponse<any>> {
         return new Promise<IAPIResponse<any>>((resolve, reject) => {

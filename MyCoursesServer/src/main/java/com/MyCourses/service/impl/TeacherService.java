@@ -29,12 +29,6 @@ public class TeacherService implements ITeacherService {
         return teacherDAO.retrieveAll();
     }
 
-//    @Override
-//    public TeacherEntity getEmail(String email) {
-//        TeacherEntity obj = teacherDAO.retrieveByEmail(email);
-//        return obj;
-//    }
-
     @Override
     public void registry(TeacherEntity teacherEntity) throws TeacherRepeatedException {
         if (teacherDAO.exist(teacherEntity))
@@ -82,41 +76,23 @@ public class TeacherService implements ITeacherService {
         return teacherEntity;
     }
 
-//    @Override
-//    public void updateTeacher(TeacherEntity teacherEntity) {
-//        teacherDAO.update(teacherEntity);
-//    }
+    @Override
+    public void update(String email, String no, String name, String newPassword, String oldPassword) throws TeacherNotExistException {
+        TeacherEntity teacherEntity = getByEmail(email);
+        if (newPassword != null) {   // if need to change password, you have to provide old password as well
+            String encryptedOldPassword = encryptService.encrypt(oldPassword);
+            if (!teacherEntity.getPassword().equals(encryptedOldPassword)) {
+                throw new TeacherNotExistException("密碼錯誤");
+            }
+            String encrypedNewPassword = encryptService.encrypt(newPassword);
+            teacherEntity.setPassword(encrypedNewPassword);
+        }
 
-//    @Override
-//    public void deleteTeacher(String email) {
-//        teacherDAO.physicalDelete(teacherDAO.retrieveByEmail(email));
-//    }
+        if (no != null)
+            teacherEntity.setTeacherNo(no);
+        if (name != null)
+            teacherEntity.setName(name);
+        teacherDAO.update(teacherEntity);
+    }
 
-
-    //	@Override
-//	public TeacherEntity getArticleById(int articleId) {
-//		TeacherEntity obj = teacherDAO.getArticleById(articleId);
-//		return obj;
-//	}
-//	@Override
-//	public List<TeacherEntity> getAllArticles(){
-//		return teacherDAO.getAllArticles();
-//	}
-//	@Override
-//	public synchronized boolean addArticle(TeacherEntity teacherEntity){
-//       if (teacherDAO.articleExists(teacherEntity.getTitle(), teacherEntity.getCategory())) {
-//    	   return false;
-//       } else {
-//    	   teacherDAO.addArticle(teacherEntity);
-//    	   return true;
-//       }
-//	}
-//	@Override
-//	public void updateArticle(TeacherEntity teacherEntity) {
-//		teacherDAO.updateArticle(teacherEntity);
-//	}
-//	@Override
-//	public void deleteArticle(int articleId) {
-//		teacherDAO.deleteArticle(articleId);
-//	}
 }

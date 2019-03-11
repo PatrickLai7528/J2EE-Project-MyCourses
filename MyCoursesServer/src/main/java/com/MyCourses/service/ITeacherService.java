@@ -36,4 +36,6 @@ public interface ITeacherService {
 
 
     TeacherEntity getByEmail(String email) throws TeacherNotExistException;
+
+    void update(String email, String no, String name, String oldPassword, String newPassword) throws TeacherNotExistException;
 }

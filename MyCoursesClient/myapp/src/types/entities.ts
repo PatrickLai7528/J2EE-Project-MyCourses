@@ -78,7 +78,7 @@ export interface ISelection {
     studentEntity: IStudent,
     selectionState: SelectionState
     selectTime: number
-    score: number
+    score?: number
 }
 
 export interface ISlide {

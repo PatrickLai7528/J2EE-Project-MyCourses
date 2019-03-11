@@ -92,7 +92,8 @@ public class SelectionService implements ISelectionService {
         if (isAlreadySelected(studentEntity, releasementEntity))
             throw new RepeatSelectCourseException();
 
-        List<SelectionEntity> selectionEntities = selectionDAO.retrieveByReleasement(releasementEntity);
+        List<SelectionEntity> selectionEntities = this.getActiveSelectionOfReleasement(releasementEntity.getRid());
+
         SelectionState selectionState;
         long now = new Date().getTime();
         if (releasementEntity.isActive() && selectionEntities.size() < releasementEntity.getLimitNumber()) {

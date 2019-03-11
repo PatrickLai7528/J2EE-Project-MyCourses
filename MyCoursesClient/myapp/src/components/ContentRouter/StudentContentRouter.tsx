@@ -5,6 +5,7 @@ import {ForumDisplayContainer} from "../ForumDisplay/ForumDisplayContainer";
 import {SelectionDisplayContainer} from "../SelectionDisplay/SelectionDisplayContainer";
 import {IAppForStudentState} from "../App/App";
 import {UserType} from "../../api/UserAPI";
+import {UserProfileContainer} from "../UserProfile/UserProfileContainer";
 
 export interface IStudentContentRouterProps {
     userType: UserType
@@ -20,6 +21,11 @@ export const StudentContentRouter: React.FunctionComponent<IStudentContentRouter
                     <ReleasementDisplayContainer
                         forStudent={props.forStudent}
                         userType={props.userType}/>
+                )
+            }}/>
+            <Route exact path="/profile" component={() => {
+                return (
+                    <UserProfileContainer userType={props.userType} forStudent={props.forStudent}/>
                 )
             }}/>
             <Route exact path="/forum" component={

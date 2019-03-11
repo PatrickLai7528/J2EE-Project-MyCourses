@@ -22,4 +22,8 @@ public interface IStudentService {
     boolean logIn(StudentEntity studentEntity) throws StudentNotExistException;
 
     void logOut(StudentEntity studentEntity);
+
+    StudentEntity getByEmail(String email) throws StudentNotExistException;
+
+    void update(String email, String studentNo, String name, String oldPassword, String newPassword) throws StudentNotExistException;
 }

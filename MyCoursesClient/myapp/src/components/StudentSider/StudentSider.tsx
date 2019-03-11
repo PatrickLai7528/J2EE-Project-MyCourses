@@ -26,6 +26,11 @@ const StudentSider: React.FunctionComponent<IStudentSiderProps> = (props: IStude
                 defaultOpenKeys={["types"]}
                 // style={{height: '100%', borderRight: 0}}
             >
+                <Menu.Item key={"profile"}>
+                    <NavLink exact={true} to="/profile">
+                        <Icon type="user"/>個人資料
+                    </NavLink>
+                </Menu.Item>
                 <Menu.Item key={"releasementAll"}>
                     <NavLink exact={true} to="/releasement/all">
                         <Icon type="book"/>所有課程

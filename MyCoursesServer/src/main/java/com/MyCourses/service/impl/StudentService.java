@@ -8,8 +8,10 @@ package com.MyCourses.service.impl;/*
 
 import com.MyCourses.dao.IStudentDAO;
 import com.MyCourses.entity.StudentEntity;
+import com.MyCourses.entity.TeacherEntity;
 import com.MyCourses.exceptions.StudentNotExistException;
 import com.MyCourses.exceptions.StudentRepeatedException;
+import com.MyCourses.exceptions.TeacherNotExistException;
 import com.MyCourses.service.IEncryptService;
 import com.MyCourses.service.IStudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -70,5 +72,32 @@ public class StudentService implements IStudentService {
     @Override
     public void logOut(StudentEntity studentEntity) {
 
+    }
+
+    @Override
+    public StudentEntity getByEmail(String email) throws StudentNotExistException {
+        StudentEntity studentEntity = this.studentDAO.retrieveByEmail(email);
+        if (studentEntity == null)
+            throw new StudentNotExistException();
+        return studentEntity;
+    }
+
+    @Override
+    public void update(String email, String studentNo, String name, String oldPassword, String newPassword) throws StudentNotExistException {
+        StudentEntity studentEntity = getByEmail(email);
+        if (newPassword != null) {   // if need to change password, you have to provide old password as well
+            String encrypedOldPassword = encryptService.encrypt(oldPassword);
+            if (!studentEntity.getPassword().equals(encrypedOldPassword)) {
+                throw new StudentNotExistException("密碼錯誤");
+            }
+            String encryptedNewPassword = encryptService.encrypt(newPassword);
+            studentEntity.setPassword(encryptedNewPassword);
+        }
+
+        if (studentNo != null)
+            studentEntity.setStudentNo(studentNo);
+        if (name != null)
+            studentEntity.setName(name);
+        studentDAO.update(studentEntity);
     }
 }
