@@ -140,7 +140,15 @@ class StudentProfile extends React.Component<IStudentProfileProps, IStudentProfi
                         message.warning("修改密碼需要提供舊密碼");
                         return;
                     }
-
+                    if(!newPassword && oldPassword){
+                        message.warning("若不要更換密碼，請不要輸入舊密碼");
+                        return ;
+                    }
+                    if(!name && !studentNo && !newPassword && !oldPassword){
+                        message.warning("你沒有填寫新的個人資料");
+                        this.setState({editable:false})
+                        return ;
+                    }
                     UserAPI.getInstance().updateStudent({
                         email: this.props.forStudent.email,
                         studentNo,

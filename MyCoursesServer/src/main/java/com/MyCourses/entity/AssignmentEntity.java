@@ -46,7 +46,7 @@ public class AssignmentEntity implements Serializable {
     private String description;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "smid")
+    @MapKey(name = "smid")
     private List<SubmissionEntity> submissionEntityList;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)

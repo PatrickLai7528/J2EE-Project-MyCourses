@@ -9,6 +9,7 @@ package com.MyCourses.service.impl;/*
 import com.MyCourses.dao.IReleasementDAO;
 import com.MyCourses.dao.ISelectionDAO;
 import com.MyCourses.dao.IStudentDAO;
+import com.MyCourses.entity.AssignmentEntity;
 import com.MyCourses.entity.ReleasementEntity;
 import com.MyCourses.entity.SelectionEntity;
 import com.MyCourses.entity.enums.SelectionState;
@@ -183,6 +184,13 @@ public class SelectionService implements ISelectionService {
         if (selectionEntity.getSelectionState().equals(SelectionState.MISS)) {
             throw new DropSelectionException("你並沒有選上");
         }
+        // remove all submission
+        List<AssignmentEntity> assignmentEntityList = selectionEntity.getReleasementEntity().getAssignmentEntityList();
+        for (AssignmentEntity assignmentEntity : assignmentEntityList) {
+            assignmentEntity.setSubmissionEntityList(null);
+        }
+        selectionEntity.getReleasementEntity().setAssignmentEntityList(assignmentEntityList);
+
         selectionEntity.setSelectionState(SelectionState.DROPPED);
         selectionDAO.update(selectionEntity);
     }

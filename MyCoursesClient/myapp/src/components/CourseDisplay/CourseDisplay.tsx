@@ -1,6 +1,6 @@
 import * as React from "react";
 import {ICourse} from "../../types/entities";
-import {Divider, Table} from "antd";
+import {Table} from "antd";
 import {ApprovalState} from "../../types/enums";
 import {CourseColumns} from "./CourseColumns";
 
@@ -32,7 +32,7 @@ const CourseDisplay: React.FunctionComponent<ICourseDisplayProps> = (props: ICou
                 <span>
                 <a onClick={() => {
                     // console.log(course);
-                    if (course.approvalState === ApprovalState.WAITING) {
+                    if (course.approvalState === ApprovalState.WAITING || course.approvalState === ApprovalState.REJECTED) {
                         props.notOkToRelease(course);
                     } else {
                         props.okToRelease(course);

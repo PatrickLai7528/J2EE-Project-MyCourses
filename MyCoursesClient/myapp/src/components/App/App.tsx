@@ -38,7 +38,7 @@ import {
 
 export interface IAppForStudentState extends ISendSelectionDropProps, ISendCourseSelectionProps, ISendCommentProps, ISendForumProps, ISendSubmissionProps {
     displayingSelection?: ISelection
-    selectionList?: ISelection[]
+    selectionList: ISelection[]
     email: string
     releasementList: IReleasement[]
     displayingForum?: IForum
@@ -98,11 +98,11 @@ export default class App extends Component<IAppProps, IAppState> {
     }
 
     public componentWillMount(): void {
-        const cookie: Cookies = new Cookies();
-        console.log(cookie);
-        const userType: UserType = cookie.get("userType");
-        const token: string = cookie.get("token");
-        const email: string = cookie.get("email");
+        // const cookie: Cookies = new Cookies();
+        // console.log(cookie);
+        const userType: any = localStorage.getItem("userType");
+        const token: any = localStorage.getItem("token");
+        const email: any = localStorage.getItem("email");
         this.handleLogInSuccess(userType, email, token);
     }
 
@@ -135,25 +135,31 @@ export default class App extends Component<IAppProps, IAppState> {
     }
 
 
-    private handleLogInSuccess(userType: UserType, email: string, token: string): void {
-        const cookie: Cookies = new Cookies();
-        console.log(cookie);
-        cookie.remove("token");
-        cookie.remove("userType");
-        cookie.remove("email");
-        console.log(cookie);
-        cookie.set("token", token);
-        cookie.set("userType", userType);
-        cookie.set("email", email);
+    private async handleLogInSuccess(userType: UserType, email: string, token: string) {
+        // const cookie: Cookies = new Cookies();
+        // console.log(cookie);
+        // cookie.remove("token");
+        // cookie.remove("userType");
+        // cookie.remove("email");
+        localStorage.removeItem("token");
+        localStorage.removeItem("userType");
+        localStorage.removeItem("email");
+        // console.log(cookie);
+        localStorage.setItem("token", token);
+        localStorage.setItem("userType", userType);
+        localStorage.setItem("email", email);
+        // cookie.set("token", token, );
+        // cookie.set("userType", userType,);
+        // cookie.set("email", email);
 
         if (userType === "student")
-            this.handleStudentLogIn(email);
+            await this.handleStudentLogIn(email);
         if (userType === "teacher")
-            this.handleTeacherLogIn(email);
+            await this.handleTeacherLogIn(email);
         if (userType === "visitor")
-            this.handleVisitorCome();
+            await this.handleVisitorCome();
         if (userType === "admin")
-            this.handleAdminLogIn(email);
+            await this.handleAdminLogIn(email);
 
     }
 
@@ -176,6 +182,7 @@ export default class App extends Component<IAppProps, IAppState> {
             this.setState({
                 forTeacher: {
                     ...this.state.forTeacher,
+                    releasementList: App.updateReleasementList(this.state.forTeacher.releasementList, payload),
                     managingReleasement: payload
                 }
             })
@@ -189,6 +196,7 @@ export default class App extends Component<IAppProps, IAppState> {
             this.setState({
                 forTeacher: {
                     ...this.state.forTeacher,
+                    releasementList:App.updateReleasementList(this.state.forTeacher.releasementList, payload),
                     managingReleasement: payload
                 }
             })
@@ -198,8 +206,7 @@ export default class App extends Component<IAppProps, IAppState> {
 
     private sendComment(data: ISendCommentData, callback?: ISendActionCallback): void {
         const doAfter: (payload: any) => void = (payload: IForum) => {
-            this.state.userType === "teacher" && this.state.forTeacher &&
-            this.setState({
+            this.state.userType === "teacher" && this.state.forTeacher && this.setState({
                 forTeacher: {
                     ...this.state.forTeacher,
                     displayingForum: {...payload}
@@ -231,12 +238,22 @@ export default class App extends Component<IAppProps, IAppState> {
         SendActionHandler.sendCourseRelease(data, callback)(doAfter);
     }
 
+    private static updateReleasementList(releasementList: IReleasement[], newReleasement: IReleasement): IReleasement[] {
+        for (let i = 0; i < releasementList.length; i++) {
+            if (releasementList[i].rid === newReleasement.rid) {
+                releasementList[i] = {...newReleasement};
+            }
+        }
+        return releasementList;
+    }
+
     private sendForum(data: ISendForumData, callback?: ISendActionCallback): void {
         const doAfter: (payload: any) => void = (payload: IReleasement) => {
             this.state.forTeacher &&
             this.state.userType === "teacher" && this.setState({
                 forTeacher: {
                     ...this.state.forTeacher,
+                    releasementList: App.updateReleasementList(this.state.forTeacher.releasementList, payload),
                     managingReleasement: payload
                 }
             });
@@ -259,6 +276,7 @@ export default class App extends Component<IAppProps, IAppState> {
             this.setState({
                 forStudent: {
                     ...this.state.forStudent,
+                    selectionList: App.updateSelectionList(this.state.forStudent.selectionList, payload),
                     displayingSelection: {...payload}
                 }
             })
@@ -318,7 +336,7 @@ export default class App extends Component<IAppProps, IAppState> {
         SendActionHandler.sendCourseReject(data, callback)(doAfter);
     }
 
-    private sendSelectionDrop(data:ISendSelectionDropData, callback?:ISendActionCallback):void{
+    private sendSelectionDrop(data: ISendSelectionDropData, callback?: ISendActionCallback): void {
         const doAfter: (payload: any) => void = (payload: ISelection[]) => {
             this.state.userType === "student" && this.state.forStudent &&
             this.setState({
@@ -328,7 +346,7 @@ export default class App extends Component<IAppProps, IAppState> {
                 }
             })
         };
-        SendActionHandler.sendSelectionDrop(data,callback)(doAfter);
+        SendActionHandler.sendSelectionDrop(data, callback)(doAfter);
     }
 
     private sendCourseSelection(data: ISendSelectionData, callback?: ISendActionCallback): void {
@@ -465,7 +483,7 @@ export default class App extends Component<IAppProps, IAppState> {
                     sendCourseSelection: this.sendCourseSelection.bind(this),
                     sendForum: this.sendForum.bind(this),
                     sendSubmission: this.sendSubmission.bind(this),
-                    sendSelectionDrop:this.sendSelectionDrop.bind(this)
+                    sendSelectionDrop: this.sendSelectionDrop.bind(this)
                 }
             });
         } catch (e) {
@@ -541,5 +559,13 @@ export default class App extends Component<IAppProps, IAppState> {
         );
     }
 
+    private static updateSelectionList(selectionList: ISelection[], payload: ISelection):ISelection[] {
+        for(let i = 0; i < selectionList.length; i ++){
+            if(selectionList[i].slid === payload.slid){
+                selectionList[i] = {...payload};
+            }
+        }
+        return selectionList;
+    }
 }
 

@@ -139,7 +139,15 @@ class TeacherProfile extends React.Component<ITeacherProfileProps, ITeacherProfi
                         message.warning("修改密碼需要提供舊密碼");
                         return;
                     }
-
+                    if (!newPassword && oldPassword) {
+                        message.warning("若不要更換密碼，請不要輸入舊密碼");
+                        return;
+                    }
+                    if (!name && !teacherNo && !newPassword && !oldPassword) {
+                        message.warning("你沒有填寫新的個人資料");
+                        this.setState({editable: false});
+                        return;
+                    }
                     UserAPI.getInstance().updateTeacher({
                         email: this.props.forTeacher.email,
                         teacherNo,

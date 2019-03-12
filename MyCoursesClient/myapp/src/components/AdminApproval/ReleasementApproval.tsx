@@ -2,7 +2,7 @@ import * as React from "react";
 import {UserType} from "../../api/UserAPI";
 import {IAppForAdminState} from "../App/App";
 import {Divider, message, Table} from "antd";
-import {IReleasement, ITeacher} from "../../types/entities";
+import {IReleasement} from "../../types/entities";
 import {IconText} from "../IconText/IconText";
 import {ApprovalState} from "../../types/enums";
 import IAPIResponse from "../../api/IAPIResponse";
@@ -82,6 +82,10 @@ export class ReleasementApproval extends React.Component<IReleasementApprovalPro
         }
         if (releasement.approvalState === ApprovalState.APPROVED) {
             message.warn("課程已經通過了，不能修改");
+            return;
+        }
+        if(releasement.approvalState == ApprovalState.REJECTED){
+            message.warn("課程已經取消了，不能修改");
             return;
         }
 

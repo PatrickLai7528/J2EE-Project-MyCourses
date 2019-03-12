@@ -33,6 +33,13 @@
 | slide_entity_sid | bigint(20)   | references  slide_entity (sid)      | default null                 |
 | rid              | bigint(20)   | references releasement_entity (rid) | default null                 |
 
+#### assignment_entity_submission_entity_list
+
+| 列名                        | 數據類型   | 外鍵關係                             | 其它       |
+| --------------------------- | ---------- | ------------------------------------ | ---------- |
+| assignment_entity_assid     | bigint(20) | references assignment_entity (assid) | unique key |
+| submission_entity_list_smid | bigint(20  | references submission_entity (smid)  | not null   |
+
 
 
 ####  comment_entity

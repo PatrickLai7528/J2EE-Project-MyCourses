@@ -119,7 +119,7 @@ function _show(teacherStatisticsForAdmin?: ITeacherStatisticsForAdmin): ReactNod
                                value={teacherStatisticsForAdmin ? teacherStatisticsForAdmin.rejected : 0}/>
                 </Col>
                 <Col span={4}>
-                    <Statistic title="否決/通過比"
+                    <Statistic title="否決比"
                                suffix={"%"}
                                precision={1}
                                valueStyle={teacherStatisticsForAdmin && teacherStatisticsForAdmin.rejectedApprovedProportion >= 1 ? {color: '#3f8600'} : {color: '#cf1322'}}

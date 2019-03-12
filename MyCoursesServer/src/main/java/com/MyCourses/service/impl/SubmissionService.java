@@ -6,6 +6,7 @@ package com.MyCourses.service.impl;/*
  * @ProjectName MyCoursesServer
  */
 
+import com.MyCourses.dao.IReleasementDAO;
 import com.MyCourses.dao.ISelectionDAO;
 import com.MyCourses.dao.IStudentDAO;
 import com.MyCourses.entity.AssignmentEntity;
@@ -28,30 +29,32 @@ public class SubmissionService implements ISubmissionService {
 
     private final IStudentDAO studentDAO;
     private ISelectionDAO selectionDAO;
+    private IReleasementDAO releasementDAO;
 
     @Autowired
-    public SubmissionService(IStudentDAO studentDAO, ISelectionDAO selectionDAO) {
+    public SubmissionService(IStudentDAO studentDAO, ISelectionDAO selectionDAO, IReleasementDAO releasementDAO) {
         this.studentDAO = studentDAO;
         this.selectionDAO = selectionDAO;
+        this.releasementDAO = releasementDAO;
     }
 
     @Override
     public void submitAssignment(String studentEmail, Long selectionId, Long assignmentId, String filePath) throws StudentNotExistException, SelectionNotExistException, AssignmentNotExistException {
         StudentEntity studentEntity = studentDAO.retrieveByEmail(studentEmail);
-        if(studentEntity == null)
+        if (studentEntity == null)
             throw new StudentNotExistException();
 
         SelectionEntity selectionEntity = selectionDAO.retrieveBySlid(selectionId);
-        if(selectionEntity == null)
+        if (selectionEntity == null)
             throw new SelectionNotExistException();
 
         AssignmentEntity submittingAssignment = null;
-        for(AssignmentEntity assignmentEntity: selectionEntity.getReleasementEntity().getAssignmentEntityList()){
-            if(assignmentEntity.getAssid().equals(assignmentId))
+        for (AssignmentEntity assignmentEntity : selectionEntity.getReleasementEntity().getAssignmentEntityList()) {
+            if (assignmentEntity.getAssid().equals(assignmentId))
                 submittingAssignment = assignmentEntity;
         }
 
-        if(submittingAssignment == null)
+        if (submittingAssignment == null)
             throw new AssignmentNotExistException();
 
         SubmissionEntity submissionEntity = new SubmissionEntity();
@@ -60,11 +63,10 @@ public class SubmissionService implements ISubmissionService {
         submissionEntity.setSubmitTime(new Date());
 
         List<SubmissionEntity> submissionEntityList = submittingAssignment.getSubmissionEntityList();
-        if(submissionEntityList == null)
+        if (submissionEntityList == null)
             submissionEntityList = new ArrayList<>();
         submissionEntityList.add(submissionEntity);
 
         selectionDAO.update(selectionEntity);
-
     }
 }

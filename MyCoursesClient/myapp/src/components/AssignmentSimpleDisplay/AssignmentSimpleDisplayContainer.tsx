@@ -7,7 +7,7 @@ import {Button} from "antd";
 import {AssignmentAddingModal} from "../AssignmentAddingModal/AssignmentAddingModal";
 import {AssignmentAddingFormContainer} from "../AssignmentAddingForm/AssignmentAddingFormContainer";
 import {ISendAssignmentData, ISendSubmissionData} from "../../api/AssignmentAPI";
-import {ISendActionCallback, ISendSubmissionProps} from "../App/SendActionProps";
+import {ISendActionCallback} from "../App/SendActionProps";
 import {AssignmentSubmitFormContainer} from "../AssignmentSubmitForm/AssignmentSubmitFormContainer";
 import {IconText} from "../IconText/IconText";
 import {AssignmentDownload} from "../AssignmentDownload/AssignmentDownload";
@@ -28,6 +28,8 @@ interface IAssignmentDisplayContainerState {
 
     downloadModalVisible: boolean
     downloadingAssignment?: IAssignment
+
+    submitted: boolean
 }
 
 type AssignmentModalForm = "SUBMIT" | "UPLOAD"
@@ -42,10 +44,14 @@ export class AssignmentSimpleDisplayContainer extends React.Component<IAssignmen
             confirmLoading: false,
             submitForm: false,
             form: "UPLOAD",
-            downloadModalVisible: false
+            downloadModalVisible: false,
+            submitted: false
         }
     }
 
+    public componentWillReceiveProps(nextProps: Readonly<IAssignmentDisplayContainerProps>, nextContext: any): void {
+        this.setState({submitted: false})
+    }
 
     private getAssignmentList(): IAssignment[] {
         if (this.props.userType === "teacher" && this.props.forTeacher && this.props.forTeacher.managingReleasement) {
@@ -180,15 +186,23 @@ export class AssignmentSimpleDisplayContainer extends React.Component<IAssignmen
                     }
                 }
 
+                console.log(this.state);
+                console.log(submitted);
+
                 // submitted cannot submit again
                 if (submitted) {
                     ret[assignment.assid] =
-                        <a href={NetworkSettings.getOpenNetworkIP() + "/file/submission/download?fileName=" + submitted.filePath}><IconText
+                        <a href={NetworkSettings.getOpenNetworkIP() + "/file/submission/download?fileName=" + (submitted ? submitted.filePath : "fake path")}><IconText
                             type={"download"} text={"已經提交"}/></a>
                 } else {
                     ret[assignment.assid] = (
                         <a onClick={() => {
-                            this.setState({modalVisible: true, form: "SUBMIT", submittingAssignment: assignment})
+                            this.setState({
+                                modalVisible: true,
+                                form: "SUBMIT",
+                                submittingAssignment: assignment,
+                                submitted: true
+                            })
                         }}><IconText type={"upload"} text={"提交作業"}/></a>
                     )
                 }
