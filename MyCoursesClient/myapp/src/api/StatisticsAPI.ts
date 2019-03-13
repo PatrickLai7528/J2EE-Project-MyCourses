@@ -22,10 +22,16 @@ export class StatisticsAPI {
         return new Promise<IAPIResponse<ITeacherStatistics>>((resolve, reject) => {
             axios.get(NetworkSettings.getOpenNetworkIP() + "/statistics/teacher?email=" + teacherEmail, {headers: {"Authorization": TokenUtils.getToken()}})
                 .then((response: any) => {
+                    let payload: any = response.data.payload;
+                    for (let item of payload.releasementStatisticsList) {
+                        for (let selection of item.simplifySelectionList) {
+                            selection.selectionState = toSelectionState(selection.selectionState);
+                        }
+                    }
                     resolve({
                         isSuccess: response.data.code === 0,
                         message: response.data.message,
-                        payload: response.data.payload,
+                        payload: payload,
                         code: response.data.code
                     })
                 })

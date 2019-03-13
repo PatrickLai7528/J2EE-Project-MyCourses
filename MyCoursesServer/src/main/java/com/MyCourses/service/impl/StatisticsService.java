@@ -467,6 +467,7 @@ public class StatisticsService implements IStatisticsService {
                 simplifySelection.setStudentNo(selectionEntity.getStudentEntity().getStudentNo());
                 simplifySelection.setStudentScore(selectionEntity.getScore());
                 simplifySelection.setSelectTime(selectionEntity.getSelectTime());
+                simplifySelection.setSelectionState(selectionEntity.getSelectionState());
                 simplifySelectionList.add(simplifySelection);
             }
             releasementStatistics.setSimplifySelectionList(simplifySelectionList);

@@ -2,43 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5e92ab2f-ebd7-408b-b8b8-3bef3f1dfbb2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../J2EE_MyCourses_ScreenShot/ER.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../J2EE_MyCourses_ScreenShot/add_assignment.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../J2EE_MyCourses_ScreenShot/add_course.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../J2EE_MyCourses_ScreenShot/add_forum.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../J2EE_MyCourses_ScreenShot/approve_course.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../J2EE_MyCourses_ScreenShot/approve_releasement.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../J2EE_MyCourses_ScreenShot/course_display.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../J2EE_MyCourses_ScreenShot/download_submission.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../J2EE_MyCourses_ScreenShot/drop_warn.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../J2EE_MyCourses_ScreenShot/forum_display.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../J2EE_MyCourses_ScreenShot/login.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../J2EE_MyCourses_ScreenShot/profile.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../J2EE_MyCourses_ScreenShot/profile_edit.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../J2EE_MyCourses_ScreenShot/release_course.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../J2EE_MyCourses_ScreenShot/releasement_display.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../J2EE_MyCourses_ScreenShot/releasement_display_student.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../J2EE_MyCourses_ScreenShot/releasement_select.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../J2EE_MyCourses_ScreenShot/signup.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../J2EE_MyCourses_ScreenShot/statistics_admin_1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../J2EE_MyCourses_ScreenShot/statistics_admin_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../J2EE_MyCourses_ScreenShot/statistics_admin_3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../J2EE_MyCourses_ScreenShot/statistics_admin_4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../J2EE_MyCourses_ScreenShot/statistics_teacher_1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../J2EE_MyCourses_ScreenShot/statistics_teacher_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../J2EE_MyCourses_ScreenShot/structure_be_1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../J2EE_MyCourses_ScreenShot/structure_fe_1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../J2EE_MyCourses_ScreenShot/structure_fe_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../J2EE_MyCourses_ScreenShot/upload_slide.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapp/src/components/AdminApproval/ReleasementApproval.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/src/components/AdminApproval/ReleasementApproval.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myapp/src/api/StatisticsAPI.ts" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/src/api/StatisticsAPI.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myapp/src/components/App/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/src/components/App/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapp/src/components/AssignmentSimpleDisplay/AssignmentSimpleDisplayContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/src/components/AssignmentSimpleDisplay/AssignmentSimpleDisplayContainer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapp/src/components/CourseDisplay/CourseDisplay.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/src/components/CourseDisplay/CourseDisplay.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapp/src/components/StatisticsDisplay/ShowTeacherStatisticsForAdmin.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/src/components/StatisticsDisplay/ShowTeacherStatisticsForAdmin.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapp/src/components/UserProfile/StudentProfile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/src/components/UserProfile/StudentProfile.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapp/src/components/UserProfile/TeacherProfile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/src/components/UserProfile/TeacherProfile.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapp/src/utils/TokenUtils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/src/utils/TokenUtils.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myapp/src/components/ReleasementOperationForTeacher/UploadScoreOperationForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/src/components/ReleasementOperationForTeacher/UploadScoreOperationForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myapp/src/components/StatisticsDisplay/ShowAdminStatistics.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/src/components/StatisticsDisplay/ShowAdminStatistics.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myapp/src/components/StatisticsDisplay/ShowReleasementStatisticsForTeacher.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/src/components/StatisticsDisplay/ShowReleasementStatisticsForTeacher.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myapp/src/types/entities.ts" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/src/types/entities.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myapp/src/utils/MarkdownGenerator.ts" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/src/utils/MarkdownGenerator.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../MyCoursesServer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCoursesServer/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -52,59 +23,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/myapp/src/components/UserProfile/TeacherProfile.tsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="494">
-              <caret line="147" column="57" selection-start-line="147" selection-start-column="57" selection-end-line="147" selection-end-column="57" />
-              <folding>
-                <element signature="e#0#31#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/myapp/src/components/AssignmentSimpleDisplay/AssignmentSimpleDisplay.tsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="51" column="173" selection-start-line="51" selection-start-column="173" selection-end-line="51" selection-end-column="173" />
-              <folding>
-                <element signature="e#0#31#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/myapp/src/components/AssignmentSimpleDisplay/AssignmentSimpleDisplayContainer.tsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="118">
-              <caret line="192" column="29" selection-start-line="192" selection-start-column="29" selection-end-line="192" selection-end-column="29" />
-              <folding>
-                <element signature="e#0#31#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/myapp/src/components/UserProfile/StudentProfile.tsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="361">
-              <caret line="146" column="20" lean-forward="true" selection-start-line="146" selection-start-column="20" selection-end-line="150" selection-end-column="21" />
-              <folding>
-                <element signature="e#0#31#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/myapp/src/components/App/App.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="52">
-              <caret line="40" column="17" selection-start-line="40" selection-start-column="17" selection-end-line="40" selection-end-column="17" />
+            <state relative-caret-position="163">
+              <caret line="140" column="27" selection-start-line="140" selection-start-column="27" selection-end-line="140" selection-end-column="27" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
               </folding>
@@ -113,10 +36,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/myapp/src/components/UserProfile/UserProfileContainer.tsx">
+        <entry file="file://$PROJECT_DIR$/myapp/src/components/ContentRouter/VisitorContentRouter.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="491">
-              <caret line="35" column="64" selection-start-line="35" selection-start-column="64" selection-end-line="35" selection-end-column="64" />
+            <state relative-caret-position="395">
+              <caret line="18" column="32" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
               </folding>
@@ -125,40 +48,86 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/myapp/src/utils/TokenUtils.ts">
+        <entry file="file://$PROJECT_DIR$/myapp/src/components/ReleasementDisplay/ReleasementDisplayContainer.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="156">
-              <caret line="6" column="34" selection-start-line="6" selection-start-column="34" selection-end-line="6" selection-end-column="34" />
+            <state relative-caret-position="438">
+              <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/myapp/node_modules/universal-cookie/es6/Cookies.d.ts">
+        <entry file="file://$PROJECT_DIR$/myapp/src/api/ReleasementAPI.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="312">
-              <caret line="12" column="55" selection-start-line="12" selection-start-column="55" selection-end-line="12" selection-end-column="55" />
+            <state relative-caret-position="297">
+              <caret line="58" column="59" lean-forward="true" selection-start-line="58" selection-start-column="59" selection-end-line="58" selection-end-column="59" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/myapp/node_modules/universal-cookie/es6/types.d.ts">
+        <entry file="file://$PROJECT_DIR$/myapp/src/components/StatisticsDisplay/ShowAdminStatistics.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="10" column="23" lean-forward="true" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
+            <state relative-caret-position="355">
+              <caret line="25" column="109" selection-start-line="25" selection-start-column="109" selection-end-line="25" selection-end-column="109" />
+              <folding>
+                <element signature="e#0#54#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/myapp/src/components/AdminApproval/ReleasementApproval.tsx">
+        <entry file="file://$PROJECT_DIR$/myapp/src/components/ReleasementDisplay/ReleasementDisplay.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="656">
-              <caret line="88" column="19" selection-start-line="88" selection-start-column="19" selection-end-line="88" selection-end-column="19" />
+            <state relative-caret-position="279">
+              <caret line="29" column="53" selection-start-line="29" selection-start-column="53" selection-end-line="29" selection-end-column="53" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/myapp/src/utils/MarkdownGenerator.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="350">
+              <caret line="14" column="280" selection-start-line="14" selection-start-column="280" selection-end-line="14" selection-end-column="280" />
+              <folding>
+                <element signature="e#0#36#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/myapp/src/components/AssignmentDownload/AssignmentDownload.tsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-411">
+              <folding>
+                <element signature="e#0#31#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/myapp/src/components/SubmisstionDisplay/SubmissionDisplayTableColumns.tsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-357">
+              <folding>
+                <element signature="e#0#59#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/myapp/src/components/ReleasementOperationForTeacher/UploadScoreOperationForm.tsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="37">
+              <caret line="48" column="16" lean-forward="true" selection-start-line="48" selection-start-column="16" selection-end-line="48" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -190,8 +159,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/myapp/src/components/AdminSider/AdminSider.tsx" />
-        <option value="$PROJECT_DIR$/myapp/src/api/StatisticsAPI.ts" />
         <option value="$PROJECT_DIR$/myapp/src/components/StatisticsDisplay/ShowStudentStatistics.tsx" />
         <option value="$PROJECT_DIR$/myapp/src/components/StatisticsDisplay/StatisticsDisplayForAdmin.tsx" />
         <option value="$PROJECT_DIR$/myapp/src/types/enums.ts" />
@@ -217,10 +184,6 @@
         <option value="$PROJECT_DIR$/myapp/src/components/LogInForm/LogInForm.tsx" />
         <option value="$PROJECT_DIR$/myapp/src/components/CourseDisplay/CourseDisplayContainer.tsx" />
         <option value="$PROJECT_DIR$/myapp/src/api/SelectionAPI.ts" />
-        <option value="$PROJECT_DIR$/myapp/src/types/entities.ts" />
-        <option value="$PROJECT_DIR$/myapp/src/components/ReleasementOperationForTeacher/UploadScoreOperationForm.tsx" />
-        <option value="$PROJECT_DIR$/myapp/src/components/StatisticsDisplay/ShowAdminStatistics.tsx" />
-        <option value="$PROJECT_DIR$/myapp/src/components/StatisticsDisplay/ShowReleasementStatisticsForTeacher.tsx" />
         <option value="$PROJECT_DIR$/myapp/src/components/StatisticsDisplay/ShowSesmesterStatisticsForTeacher.tsx" />
         <option value="$PROJECT_DIR$/myapp/src/components/StatisticsDisplay/ShowStudentStatisticsForAdmin.tsx" />
         <option value="$PROJECT_DIR$/myapp/src/components/StatisticsDisplay/ShowTeacherStatistics.tsx" />
@@ -240,6 +203,12 @@
         <option value="$PROJECT_DIR$/myapp/src/components/UserProfile/StudentProfile.tsx" />
         <option value="$PROJECT_DIR$/myapp/src/components/UserProfile/TeacherProfile.tsx" />
         <option value="$PROJECT_DIR$/myapp/src/components/AssignmentSimpleDisplay/AssignmentSimpleDisplayContainer.tsx" />
+        <option value="$PROJECT_DIR$/myapp/src/types/entities.ts" />
+        <option value="$PROJECT_DIR$/myapp/src/api/StatisticsAPI.ts" />
+        <option value="$PROJECT_DIR$/myapp/src/components/StatisticsDisplay/ShowReleasementStatisticsForTeacher.tsx" />
+        <option value="$PROJECT_DIR$/myapp/src/components/StatisticsDisplay/ShowAdminStatistics.tsx" />
+        <option value="$PROJECT_DIR$/myapp/src/utils/MarkdownGenerator.ts" />
+        <option value="$PROJECT_DIR$/myapp/src/components/ReleasementOperationForTeacher/UploadScoreOperationForm.tsx" />
         <option value="$PROJECT_DIR$/myapp/src/components/App/App.tsx" />
       </list>
     </option>
@@ -254,7 +223,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -272,6 +240,13 @@
               <item name="MyCoursesClient" type="462c0819:PsiDirectoryNode" />
               <item name="myapp" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MyCoursesClient" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MyCoursesClient" type="462c0819:PsiDirectoryNode" />
+              <item name="myapp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="MyCoursesClient" type="b2602c69:ProjectViewProjectNode" />
@@ -302,7 +277,23 @@
               <item name="myapp" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="AssignmentDownload" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MyCoursesClient" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MyCoursesClient" type="462c0819:PsiDirectoryNode" />
+              <item name="myapp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
               <item name="AssignmentSimpleDisplay" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MyCoursesClient" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MyCoursesClient" type="462c0819:PsiDirectoryNode" />
+              <item name="myapp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="ContentRouter" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="MyCoursesClient" type="b2602c69:ProjectViewProjectNode" />
@@ -318,7 +309,31 @@
               <item name="myapp" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="ReleasementDisplay" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MyCoursesClient" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MyCoursesClient" type="462c0819:PsiDirectoryNode" />
+              <item name="myapp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="ReleasementOperationForTeacher" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MyCoursesClient" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MyCoursesClient" type="462c0819:PsiDirectoryNode" />
+              <item name="myapp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
               <item name="StatisticsDisplay" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MyCoursesClient" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MyCoursesClient" type="462c0819:PsiDirectoryNode" />
+              <item name="myapp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="SubmisstionDisplay" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="MyCoursesClient" type="b2602c69:ProjectViewProjectNode" />
@@ -333,12 +348,20 @@
               <item name="MyCoursesClient" type="462c0819:PsiDirectoryNode" />
               <item name="myapp" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="types" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MyCoursesClient" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MyCoursesClient" type="462c0819:PsiDirectoryNode" />
+              <item name="myapp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="utils" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -442,6 +465,7 @@
       <workItem from="1552286547477" duration="7719000" />
       <workItem from="1552298650232" duration="1628000" />
       <workItem from="1552391216908" duration="5585000" />
+      <workItem from="1552447879128" duration="2045000" />
     </task>
     <servers />
   </component>
@@ -463,7 +487,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="318137000" />
+    <option name="totallyTimeSpent" value="320182000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -502,87 +526,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/myapp/src/components/SubmisstionDisplay/SubmissionDisplay.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="417">
-          <caret line="17" column="23" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myapp/node_modules/antd/lib/table/interface.d.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="373">
-          <caret line="121" column="16" selection-start-line="121" selection-start-column="16" selection-end-line="121" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myapp/src/components/SubmisstionDisplay/SubmissionDisplayTableColumns.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="35" column="157" selection-start-line="35" selection-start-column="157" selection-end-line="35" selection-end-column="157" />
-          <folding>
-            <element signature="e#0#46#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myapp/src/components/ReleasementDisplay/ReleasementDisplay.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="29" column="53" selection-start-line="29" selection-start-column="53" selection-end-line="29" selection-end-column="53" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myapp/src/utils/EnumUtils.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="343">
-          <caret line="48" column="49" selection-start-line="48" selection-start-column="49" selection-end-line="48" selection-end-column="49" />
-          <folding>
-            <element signature="e#0#68#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myapp/src/components/App/SendActionProps.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1248">
-          <caret line="54" column="93" selection-start-line="54" selection-start-column="93" selection-end-line="54" selection-end-column="93" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myapp/src/components/App/SendActionHandler.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2912">
-          <caret line="126" column="5" selection-start-line="126" selection-start-column="5" selection-end-line="126" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myapp/src/components/VisitorSider/VisitorSider.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="494">
-          <caret line="21" column="23" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myapp/src/components/AdminSider/AdminSider.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="754">
-          <caret line="31" column="63" selection-start-line="31" selection-start-column="63" selection-end-line="31" selection-end-column="63" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/myapp/tsconfig.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="468">
@@ -636,33 +579,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/myapp/src/types/entities.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="346">
-          <caret line="80" column="18" selection-start-line="80" selection-start-column="18" selection-end-line="80" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/myapp/src/components/ReleasementOperationForTeacher/ReleasementOperationForTeacher.tsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2340">
           <caret line="97" column="35" selection-start-line="97" selection-start-column="35" selection-end-line="97" selection-end-column="35" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myapp/src/components/ReleasementOperationForTeacher/UploadScoreOperationForm.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1794">
-          <caret line="77" column="29" selection-start-line="77" selection-start-column="29" selection-end-line="77" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myapp/src/components/StatisticsDisplay/StatisticsDisplayForAdmin.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
           <folding>
             <element signature="e#0#31#0" expanded="true" />
           </folding>
@@ -679,52 +599,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/myapp/src/components/StatisticsDisplay/ShowTeacherStatistics.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="598">
-          <caret line="27" column="70" selection-start-line="27" selection-start-column="21" selection-end-line="27" selection-end-column="70" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myapp/src/components/StatisticsDisplay/ShowStudentStatisticsForAdmin.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1586">
-          <caret line="64" column="66" lean-forward="true" selection-start-line="64" selection-start-column="17" selection-end-line="64" selection-end-column="66" />
-          <folding>
-            <element signature="e#0#110#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/myapp/src/components/StatisticsDisplay/ShowSesmesterStatisticsForTeacher.tsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2106">
           <caret line="83" column="93" selection-start-line="83" selection-start-column="44" selection-end-line="83" selection-end-column="93" />
           <folding>
             <element signature="e#0#87#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myapp/src/components/StatisticsDisplay/ShowAdminStatistics.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="12" column="70" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="70" />
-          <folding>
-            <element signature="e#0#54#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myapp/src/components/StatisticsDisplay/ShowReleasementStatisticsForTeacher.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1196">
-          <caret line="48" column="32" lean-forward="true" selection-start-line="48" selection-start-column="32" selection-end-line="48" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#90#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -786,15 +666,6 @@
           <caret line="30" column="47" selection-start-line="30" selection-start-column="47" selection-end-line="30" selection-end-column="47" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myapp/src/api/StatisticsAPI.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#71#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -875,13 +746,60 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/myapp/src/components/AdminApproval/ReleasementApproval.tsx">
+    <entry file="file://$PROJECT_DIR$/myapp/src/components/UserProfile/TeacherProfile.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="656">
-          <caret line="88" column="19" selection-start-line="88" selection-start-column="19" selection-end-line="88" selection-end-column="19" />
+        <state relative-caret-position="3666">
+          <caret line="147" column="57" selection-start-line="147" selection-start-column="57" selection-end-line="147" selection-end-column="57" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myapp/src/components/AssignmentSimpleDisplay/AssignmentSimpleDisplay.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1222">
+          <caret line="51" column="173" selection-start-line="51" selection-start-column="173" selection-end-line="51" selection-end-column="173" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myapp/src/components/AssignmentSimpleDisplay/AssignmentSimpleDisplayContainer.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4654">
+          <caret line="192" column="29" selection-start-line="192" selection-start-column="29" selection-end-line="192" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myapp/src/components/UserProfile/StudentProfile.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3640">
+          <caret line="146" column="20" lean-forward="true" selection-start-line="146" selection-start-column="20" selection-end-line="150" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myapp/src/components/UserProfile/UserProfileContainer.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="780">
+          <caret line="35" column="64" selection-start-line="35" selection-start-column="64" selection-end-line="35" selection-end-column="64" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myapp/src/utils/TokenUtils.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="6" column="34" selection-start-line="6" selection-start-column="34" selection-end-line="6" selection-end-column="34" />
         </state>
       </provider>
     </entry>
@@ -899,67 +817,170 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/myapp/src/utils/TokenUtils.ts">
+    <entry file="file://$PROJECT_DIR$/myapp/src/components/AdminApproval/ReleasementApproval.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="6" column="34" selection-start-line="6" selection-start-column="34" selection-end-line="6" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myapp/src/components/UserProfile/UserProfileContainer.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="491">
-          <caret line="35" column="64" selection-start-line="35" selection-start-column="64" selection-end-line="35" selection-end-column="64" />
+        <state relative-caret-position="2054">
+          <caret line="88" column="19" selection-start-line="88" selection-start-column="19" selection-end-line="88" selection-end-column="19" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/myapp/src/components/UserProfile/StudentProfile.tsx">
+    <entry file="file://$PROJECT_DIR$/myapp/src/types/entities.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="146" column="20" lean-forward="true" selection-start-line="146" selection-start-column="20" selection-end-line="150" selection-end-column="21" />
+        <state relative-caret-position="289">
+          <caret line="141" column="34" selection-start-line="141" selection-start-column="34" selection-end-line="141" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myapp/src/utils/EnumUtils.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="305">
+          <caret line="48" column="49" selection-start-line="48" selection-start-column="49" selection-end-line="48" selection-end-column="49" />
+          <folding>
+            <element signature="e#0#68#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myapp/src/types/enums.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1110" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myapp/src/api/StatisticsAPI.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="463">
+          <caret line="33" column="41" selection-start-line="33" selection-start-column="41" selection-end-line="33" selection-end-column="41" />
+          <folding>
+            <element signature="e#0#71#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myapp/src/components/StatisticsDisplay/ShowTeacherStatistics.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="568">
+          <caret line="27" column="70" selection-start-line="27" selection-start-column="21" selection-end-line="27" selection-end-column="70" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/myapp/src/components/UserProfile/TeacherProfile.tsx">
+    <entry file="file://$PROJECT_DIR$/myapp/src/components/StatisticsDisplay/ShowReleasementStatisticsForTeacher.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="494">
-          <caret line="147" column="57" selection-start-line="147" selection-start-column="57" selection-end-line="147" selection-end-column="57" />
+        <state relative-caret-position="442">
+          <caret line="91" column="72" selection-start-line="91" selection-start-column="72" selection-end-line="91" selection-end-column="72" />
+          <folding>
+            <element signature="e#0#90#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myapp/src/components/StatisticsDisplay/ShowStudentStatisticsForAdmin.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-728">
+          <caret line="64" column="66" lean-forward="true" selection-start-line="64" selection-start-column="17" selection-end-line="64" selection-end-column="66" />
+          <folding>
+            <element signature="e#0#110#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myapp/src/components/StatisticsDisplay/StatisticsDisplayForAdmin.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-884">
           <folding>
             <element signature="e#0#31#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/myapp/src/components/AssignmentSimpleDisplay/AssignmentSimpleDisplay.tsx">
+    <entry file="file://$PROJECT_DIR$/myapp/src/components/StatisticsDisplay/ShowAdminStatistics.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="51" column="173" selection-start-line="51" selection-start-column="173" selection-end-line="51" selection-end-column="173" />
+        <state relative-caret-position="355">
+          <caret line="25" column="109" selection-start-line="25" selection-start-column="109" selection-end-line="25" selection-end-column="109" />
+          <folding>
+            <element signature="e#0#54#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myapp/src/components/ReleasementDisplay/ReleasementDisplay.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="279">
+          <caret line="29" column="53" selection-start-line="29" selection-start-column="53" selection-end-line="29" selection-end-column="53" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/myapp/src/components/AssignmentSimpleDisplay/AssignmentSimpleDisplayContainer.tsx">
+    <entry file="file://$PROJECT_DIR$/myapp/src/utils/MarkdownGenerator.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="118">
-          <caret line="192" column="29" selection-start-line="192" selection-start-column="29" selection-end-line="192" selection-end-column="29" />
+        <state relative-caret-position="350">
+          <caret line="14" column="280" selection-start-line="14" selection-start-column="280" selection-end-line="14" selection-end-column="280" />
+          <folding>
+            <element signature="e#0#36#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myapp/src/components/AssignmentDownload/AssignmentDownload.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-411">
           <folding>
             <element signature="e#0#31#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myapp/src/components/SubmisstionDisplay/SubmissionDisplayTableColumns.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-357">
+          <folding>
+            <element signature="e#0#59#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myapp/src/components/ReleasementOperationForTeacher/UploadScoreOperationForm.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="37">
+          <caret line="48" column="16" lean-forward="true" selection-start-line="48" selection-start-column="16" selection-end-line="48" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myapp/src/api/ReleasementAPI.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="58" column="59" lean-forward="true" selection-start-line="58" selection-start-column="59" selection-end-line="58" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myapp/src/components/ContentRouter/VisitorContentRouter.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="395">
+          <caret line="18" column="32" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myapp/src/components/ReleasementDisplay/ReleasementDisplayContainer.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="438">
+          <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/myapp/src/components/App/App.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="52">
-          <caret line="40" column="17" selection-start-line="40" selection-start-column="17" selection-end-line="40" selection-end-column="17" />
+        <state relative-caret-position="163">
+          <caret line="140" column="27" selection-start-line="140" selection-start-column="27" selection-end-line="140" selection-end-column="27" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
           </folding>

@@ -6,6 +6,7 @@ package com.MyCourses.entity;/*
  * @ProjectName MyCoursesServer
  */
 
+import com.MyCourses.entity.enums.SelectionState;
 import lombok.Data;
 
 import java.util.Date;
@@ -55,6 +56,7 @@ public class TeacherStatistics {
             private String studentEmail;
             private Date selectTime;
             private Double studentScore;
+            private SelectionState selectionState;
         }
 
         private String courseName;

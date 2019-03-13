@@ -100,9 +100,10 @@ export default class App extends Component<IAppProps, IAppState> {
     public componentWillMount(): void {
         // const cookie: Cookies = new Cookies();
         // console.log(cookie);
-        const userType: any = localStorage.getItem("userType");
+        let userType: any = localStorage.getItem("userType");
         const token: any = localStorage.getItem("token");
         const email: any = localStorage.getItem("email");
+        if (!userType) userType = this.state.userType;
         this.handleLogInSuccess(userType, email, token);
     }
 
@@ -124,6 +125,7 @@ export default class App extends Component<IAppProps, IAppState> {
     }
 
     private async handleVisitorCome() {
+        console.log("visitor come")
         const response: IAPIResponse<IReleasement[]> = await ReleasementAPI.getInstance().getAvailableReleasement();
         if (response.isSuccess && response.payload)
             this.setState({
@@ -196,7 +198,7 @@ export default class App extends Component<IAppProps, IAppState> {
             this.setState({
                 forTeacher: {
                     ...this.state.forTeacher,
-                    releasementList:App.updateReleasementList(this.state.forTeacher.releasementList, payload),
+                    releasementList: App.updateReleasementList(this.state.forTeacher.releasementList, payload),
                     managingReleasement: payload
                 }
             })
@@ -559,9 +561,9 @@ export default class App extends Component<IAppProps, IAppState> {
         );
     }
 
-    private static updateSelectionList(selectionList: ISelection[], payload: ISelection):ISelection[] {
-        for(let i = 0; i < selectionList.length; i ++){
-            if(selectionList[i].slid === payload.slid){
+    private static updateSelectionList(selectionList: ISelection[], payload: ISelection): ISelection[] {
+        for (let i = 0; i < selectionList.length; i++) {
+            if (selectionList[i].slid === payload.slid) {
                 selectionList[i] = {...payload};
             }
         }

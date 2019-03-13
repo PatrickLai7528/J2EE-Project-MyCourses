@@ -139,6 +139,7 @@ export interface ISimplifySelectionForTeacher {
     studentEmail: string
     selectTime: number
     studentScore: number
+    selectionState: SelectionState
 }
 
 export interface IReleasementStatisticsForTeacher {

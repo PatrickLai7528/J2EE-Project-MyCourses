@@ -45,7 +45,7 @@ class UploadScoreOperationForm extends React.Component<IUploadScoreOperationForm
     }
 
     public render(): React.ReactNode {
-        console.log(this.state.selectionList);
+        // console.log(this.state.selectionList);
         return (
             <Form
                 hideRequiredMark={true}

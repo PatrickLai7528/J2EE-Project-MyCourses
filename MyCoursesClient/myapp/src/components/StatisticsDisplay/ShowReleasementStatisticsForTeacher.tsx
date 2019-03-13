@@ -1,6 +1,7 @@
 import {IReleasementStatisticsForTeacher, ITeacherStatistics} from "../../types/entities";
 import * as React from "react";
 import {Col, Row, Statistic, Table} from "antd";
+import {fromSelectionStateToChinese, SelectionState} from "../../types/enums";
 
 const moment = require("moment");
 
@@ -82,7 +83,15 @@ const simplifySelectionColumns = [
         key: 'selectTime',
         width: 220,
         render: (selectTime: number) => moment(selectTime).format("YYYY-MM-DD HH:mm")
-    }, {
+    },
+    {
+      title:"狀態",
+      dataIndex:"selectionState",
+      key:"selectionState",
+      width: "200",
+      render:(state:SelectionState)=> fromSelectionStateToChinese(state)
+    },
+    {
         title: "成績",
         dataIndex: "studentScore",
         key: "studentScore",

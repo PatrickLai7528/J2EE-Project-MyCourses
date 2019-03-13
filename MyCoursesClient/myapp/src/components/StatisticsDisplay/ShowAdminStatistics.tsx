@@ -21,10 +21,9 @@ export const showAdminStatistics = (statistics?: IAdminStatistics): React.ReactN
                     </Col>
                     <Col span={4}>
                         <Statistic title="學生教師比"
-                                   suffix={"%"}
-                                   precision={1}
+                                   suffix={":1"}
                                    valueStyle={statistics && statistics.outlineStatistics.studentTeacherProportion >= 1 ? {color: '#3f8600'} : {color: '#cf1322'}}
-                                   value={statistics ? statistics.outlineStatistics.studentTeacherProportion * 100 : 0}/>
+                                   value={statistics ? statistics.outlineStatistics.studentTeacherProportion : 0}/>
                     </Col>
                 </Row>
                 <Row type="flex" justify="space-around" align="middle" style={{marginBottom: 20}}>
