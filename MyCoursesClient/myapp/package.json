@@ -16,7 +16,7 @@
     "chai": "^4.2.0",
     "customize-cra": "^0.2.11",
     "mocha": "^5.2.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "react": "^16.7.0",
     "react-app-rewired": "^2.0.3",
     "react-dom": "^16.7.0",
